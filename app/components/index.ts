@@ -1,0 +1,10 @@
+export {default as Navbar} from './Navbar/page';
+export {default as Footer} from './Footer/page';
+export {default as HeroSection} from './HeroSection/page';
+export {default as Slider} from './Slider/page';
+export {default as Review} from './Review/page';
+export {default as ReviewCarousel} from './ReviewCarousel/page';
+export {default as SearchBar} from './SearchBar/page';
+export {default as Logo} from './Logo/page';
+export {default as BookCard} from './BookCard/page';
+export {default as Categories} from './Categories/page';
