@@ -1,8 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 
-import { Navbar, Footer } from "./components";
-
+import { Navbar, Footer } from "../components";
 
 export const metadata: Metadata = {
   title: "PATHOK POINT | Buy Old and New Books",
@@ -16,12 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <body>
-          <Navbar />
-          <div className="h-12" />
-          {children}
-          <Footer />
-        </body>
+      <body>
+        <Navbar />
+        <div className="h-12" />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

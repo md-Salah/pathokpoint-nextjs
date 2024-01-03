@@ -1,6 +1,6 @@
 "use client";
-import { Review } from "@/components";
-import { reviews } from "../../constant";
+import { Review } from "../../components";
+import { reviews } from "../constant";
 
 import { Anek_Bangla } from "next/font/google";
 const anekBangla = Anek_Bangla({ subsets: ["bengali"] });
@@ -20,7 +20,7 @@ const ReviewCarousel = () => {
       </h5>
 
       <Swiper
-        slidesPerView={'auto'}
+        slidesPerView={"auto"}
         spaceBetween={10}
         pagination={{
           clickable: true,
@@ -29,10 +29,13 @@ const ReviewCarousel = () => {
         className="mySwiper"
       >
         {reviews.map((review, index) => (
-          <SwiperSlide key={index} style={{
-            width: 'auto',
-            height: 'auto'
-          }}>
+          <SwiperSlide
+            key={index}
+            style={{
+              width: "auto",
+              height: "auto",
+            }}
+          >
             <Review item={review} />
           </SwiperSlide>
         ))}

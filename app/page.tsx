@@ -1,5 +1,5 @@
 import { Box, Divider } from "@mui/joy";
-import { Categories, HeroSection, ReviewCarousel, Slider } from "./components";
+import { Categories, HeroSection, ReviewCarousel, Slider } from "../components";
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
         <Slider title="Bangla OLD" />
         <Slider title="Imported English Books" />
 
-        <Categories title={'Popular Authors'} />
-        <Categories title={'Popular Genres'} />
+        <Categories title={"Popular Authors"} />
+        <Categories title={"Popular Genres"} />
 
         <ReviewCarousel />
       </Box>
