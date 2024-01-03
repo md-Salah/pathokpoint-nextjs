@@ -1,7 +1,7 @@
 "use client";
-import { BookCard } from "@/components";
+import { BookCard } from "../../components";
 import { Stack, Typography } from "@mui/material";
-import { items } from "../../constant";
+import { items } from "../constant";
 import { Anek_Bangla } from "next/font/google";
 
 interface SliderProps {

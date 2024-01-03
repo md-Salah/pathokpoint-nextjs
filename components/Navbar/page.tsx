@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Box, Stack } from "@mui/material";
 import { Menu, Search, ShoppingCartOutlined } from "@mui/icons-material";
 
-import { SearchBar, Logo } from "@/components";
+import { SearchBar, Logo } from "../../components";
 
 const Navbar = () => {
   const MenuButton = () => (
@@ -51,28 +51,28 @@ const Navbar = () => {
   );
 
   return (
-      <Box
-        className="bg-white w-full flex justify-between items-center fixed top-0 z-10"
-        sx={{
-          height: {
-            xs: "50px",
-            xl: "60px",
-          },
-          paddingX: {
-            xs: '5%',
-            sm: '10%'
-          }
-        }}
-      >
-        <Logo />
-        <Stack direction="row" spacing={2}>
-          <SearchButton />
+    <Box
+      className="bg-white w-full flex justify-between items-center fixed top-0 z-10"
+      sx={{
+        height: {
+          xs: "50px",
+          xl: "60px",
+        },
+        paddingX: {
+          xs: "5%",
+          sm: "10%",
+        },
+      }}
+    >
+      <Logo />
+      <Stack direction="row" spacing={2}>
+        <SearchButton />
 
-          <CartButton item={0} />
+        <CartButton item={0} />
 
-          <MenuButton />
-        </Stack>
-      </Box>
+        <MenuButton />
+      </Stack>
+    </Box>
   );
 };
 
