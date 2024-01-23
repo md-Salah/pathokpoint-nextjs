@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="pl-8 pt-8 min-h-screen">
+    <div className="pl-8 pt-8 min-h-screen w-full overflow-scroll">
       <div className="text-2xl">
         <p className="font-bold">Bold: This is an English text</p>
         <p className="font-bold">Bold: এটি বাংলা লেখা</p>
