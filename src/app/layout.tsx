@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
-import "./globals.css";
-
 const anek = Anek_Bangla({ subsets: ["bengali"] });
+import "./globals.css";
+import { Navbar } from "@/components";
 
 export const metadata: Metadata = {
   title: "Pathok Point",
   description: "An old and new bookshop in Dhaka, Bangladesh",
-  icons: ['favicon.ico'],
+  icons: ["favicon.ico"],
 };
 
 export default function RootLayout({
@@ -17,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={anek.className}>{children}</body>
+      <body className={anek.className}>
+        <main>
+          <Navbar />
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

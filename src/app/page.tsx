@@ -1,9 +1,6 @@
-"use client";
-
-export default function Home() {
-
+const Home = () => {
   return (
-    <main className="pl-8 pt-8 min-h-screen">
+    <div className="pl-8 pt-8 min-h-screen">
       <div className="text-2xl">
         <p className="font-bold">Bold: This is an English text</p>
         <p className="font-bold">Bold: এটি বাংলা লেখা</p>
@@ -45,7 +42,8 @@ export default function Home() {
         <button className="btn btn-outline btn-warning">Warning</button>
         <button className="btn btn-outline btn-error">Error</button>
       </div>
-
-    </main>
+    </div>
   );
-}
+};
+
+export default Home;
