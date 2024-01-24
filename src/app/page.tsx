@@ -1,9 +1,10 @@
-import { HeroSection } from "@/components";
+import { BookCarousel, HeroSection } from "@/components";
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-36">
       <HeroSection />
+      <BookCarousel />
     </div>
   );
 };
