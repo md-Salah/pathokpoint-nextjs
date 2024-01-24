@@ -3,7 +3,7 @@ import Image from "next/image";
 const Logo = () => {
   return (
     <a
-      className="btn btn-ghost text-xl relative w-32 h-auto"
+      className="btn  text-xl relative w-32 h-auto"
       href="/"
     >
       <Image
@@ -11,7 +11,7 @@ const Logo = () => {
         src="/logo-trans.png"
         fill
         priority
-        className="object-contain object-left"
+        className="object-contain object-left mr-8"
       />
     </a>
   );

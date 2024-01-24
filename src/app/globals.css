@@ -12,5 +12,5 @@
 }
 
 .primary-style {
-    @apply hover:bg-primary hover:text-primary-content active:bg-primary active:text-primary-content;
+    @apply hover:bg-primary hover:text-white;
 }

@@ -1,5 +1,7 @@
 // // Navbar Components
+export { TopBanner } from "./TopBanner";
 export { Navbar } from "./Navbar";
+export { SecondNav } from "./SecondNav";
 export { SearchBar } from "./SearchBar";
 export { SearchSuggestion } from "./SearchSuggestion";
 // export {default as Logo} from './Logo/page';

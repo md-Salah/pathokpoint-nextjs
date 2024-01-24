@@ -22,6 +22,13 @@ const SearchIcon = () => {
           className="drawer-overlay"
         ></label>
         <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+
+          {/* Back Icon */}
+          <label htmlFor="right-drawer" className="flex-shrink hover:bg-gray-100 w-fit pr-2 pl-1 mb-2 rounded-md cursor-pointer">
+            <BsArrowLeft className="h-5 w-5 mr-1 inline-block" />
+            <span>Back</span>
+          </label>
+
           <SearchBar />
           <SearchSuggestion />
         </div>

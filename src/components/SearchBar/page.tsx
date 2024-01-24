@@ -1,7 +1,9 @@
 "use client";
+import { RxCross2 } from "react-icons/rx";
 import { useEffect, useState } from "react";
 
 const SearchBar = () => {
+  const [query, setQuery] = useState('');
   const placeholderText = "বই অথবা লেখকের নাম লিখুন";
   const [placeholder, setPlaceholder] = useState("");
 
@@ -24,12 +26,22 @@ const SearchBar = () => {
 
   return (
     <div className="lg:w-96">
-      <label className="form-control w-full">
+      <label className="form-control w-full relative flex justify-center items-end">
         <input
           type="text"
+          value={query}
           placeholder={placeholder}
           className="input input-bordered input-primary w-full input-md lg:text-base"
+          onChange={(e) => setQuery(e.target.value)}
         />
+        {query.length > 0 && (
+          <div
+            className="absolute  rounded p-1 mr-2 cursor-pointer hover:bg-gray-200"
+            onClick={() => setQuery("")}
+          >
+            <RxCross2 />
+          </div>
+        )}
       </label>
     </div>
   );

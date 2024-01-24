@@ -1,6 +1,5 @@
-import TopBanner from "./TopBanner";
+import { TopBanner, SecondNav } from "@/components";
 import Nav from "./Nav";
-import SecondNav from "./SecondNav";
 
 const Navbar = () => {
   return (
