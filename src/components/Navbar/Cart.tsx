@@ -11,7 +11,7 @@ const Cart = () => {
       >
         <div className="indicator">
           <BsCart3 className="h-5 w-5" />
-          <span className="badge badge-sm badge-success indicator-item">8</span>
+          <span className="badge badge-sm badge-primary indicator-item">8</span>
         </div>
       </div>
       <div

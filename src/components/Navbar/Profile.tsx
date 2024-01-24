@@ -23,25 +23,25 @@ const Profile = () => {
         className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
         <li>
-          <Link href="/account">
+          <Link href="/account" className="primary-style">
             <BsPerson className="inline-block" />
             My Account
           </Link>
         </li>
         <li>
-          <Link href="/orders">
+          <Link href="/orders" className="primary-style">
             <BiShoppingBag className="inline-block" />
             My Orders
           </Link>
         </li>
         <li>
-          <Link href="/wishlist">
+          <Link href="/wishlist" className="primary-style">
             <IoMdHeartEmpty className="inline-block" />
             My Wishlist
           </Link>
         </li>
         <li>
-          <Link href="/logout">
+          <Link href="/logout" className="primary-style">
             <IoIosLogOut className="inline-block" />
             Logout
           </Link>
