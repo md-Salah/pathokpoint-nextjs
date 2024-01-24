@@ -1,5 +1,6 @@
 "use client";
 import { banners } from "@/constants";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const HeroSection = () => {
@@ -30,38 +31,55 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const ArrowButtons = () => (
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 ">
+      <a
+        className="btn btn-circle btn-xs md:btn-md opacity-30 hover:opacity-95"
+        onClick={prev}
+      >
+        ❮
+      </a>
+      <a
+        className="btn btn-circle btn-xs md:btn-md opacity-30 hover:opacity-95"
+        onClick={next}
+      >
+        ❯
+      </a>
+    </div>
+  );
+
+  const DotButtons = () => (
+    <div className="flex justify-center gap-1 mt-1">
+      {banners.map((_, index) => (
+        <div
+          key={index}
+          className={`size-2 md:size-3 rounded-full cursor-pointer ${
+            index == current ? "bg-gray-600" : "bg-gray-400"
+          }`}
+          onClick={() => setCurrent(index)}
+        ></div>
+      ))}
+    </div>
+  );
+
   return (
     <div className="custom-margin mt-5">
       <div className="carousel w-full">
         <div id="banner" className="carousel-item relative w-full">
-          <img src={banners[current].src} className="w-full rounded-md" />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 ">
-            <a
-              className="btn btn-circle btn-xs md:btn-md opacity-30 hover:opacity-95"
-              onClick={prev}
-            >
-              ❮
-            </a>
-            <a
-              className="btn btn-circle btn-xs md:btn-md opacity-30 hover:opacity-95"
-              onClick={next}
-            >
-              ❯
-            </a>
-          </div>
+          <Image
+            src={banners[current].src}
+            alt="Banner"
+            width={500}
+            height={500}
+            quality={100}
+            sizes="100vw"
+            priority
+            className="w-full rounded-md object-cover"
+          />
+          <ArrowButtons />
         </div>
       </div>
-      <div className="flex justify-center gap-1">
-        {banners.map((banner, index) => (
-          <div
-            key={index}
-            className={`size-2 md:size-4 rounded-full cursor-pointer ${
-              index == current ? "bg-gray-600" : "bg-gray-400"
-            }`}
-            onClick={() => setCurrent(index)}
-          ></div>
-        ))}
-      </div>
+      <DotButtons />
     </div>
   );
 };

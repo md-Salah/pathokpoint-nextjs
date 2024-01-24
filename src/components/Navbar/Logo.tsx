@@ -2,10 +2,7 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-    <a
-      className="btn  text-xl relative w-32 h-auto"
-      href="/"
-    >
+    <a className="btn btn-link text-xl relative w-32 h-auto" href="/">
       <Image
         alt="Pathok Point"
         src="/logo-trans.png"
