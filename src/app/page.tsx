@@ -1,7 +1,9 @@
+import { HeroSection } from "@/components";
+
 const Home = () => {
   return (
     <div className="min-h-screen">
-      Sweet Home
+      <HeroSection />
     </div>
   );
 };

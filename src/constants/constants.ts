@@ -25,3 +25,21 @@ export const menuItems = [
     },
     
 ]
+
+export const banners = [
+    {
+        name: 'বই মেলা ২০২১',
+        path: '/',
+        src: '/banner/b (1).png'
+    },
+    {
+        name: 'বই মেলা ২০২১',
+        path: '/',
+        src: '/banner/b (2).png'
+    },
+    {
+        name: 'বই মেলা ২০২১',
+        path: '/',
+        src: '/banner/b (3).png'
+    },
+]

@@ -1,5 +1,11 @@
+import { HeroSection } from "@/components";
+
 const Test = () => {
-  return <div>test</div>;
+  return (
+    <div>
+      <HeroSection />
+    </div>
+  );
 };
 
 export default Test;
