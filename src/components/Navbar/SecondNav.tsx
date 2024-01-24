@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const SecondNav = () => {
   return (
-    <div className="custom-padding shadow-sm bg-base-200 flex justify-center border-y-2">
-      <ul className="menu menu-horizontal p-0 [&_li>*]:rounded-none">
+    <div className="custom-padding bg-base-200 flex justify-center border-y-2 overflow-x-auto w-full">
+      <ul className="p-0 [&_li>*]:rounded-none menu menu-horizontal flex-nowrap w-full">
         {menuItems.map((item, index) => (
           <li
             key={index}
