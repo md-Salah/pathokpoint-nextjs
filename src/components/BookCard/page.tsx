@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { IoMdShareAlt } from "react-icons/io";
-import Heart from "./Heart";
+import { Heart } from "@/components";
 import Link from "next/link";
 
 const BookCard = ({ book }: { book: any }) => {
   const Frame = () => (
-    <Link href={`books/${book.slug}`}>
+    <Link href={`books/${book.slug}`} target="_blank">
       <figure className="relative h-48 w-full rounded-t-md bg-gray-200">
         <Image
           src={book.images[0]}
@@ -25,7 +24,7 @@ const BookCard = ({ book }: { book: any }) => {
   );
 
   const Title = () => (
-    <Link href={`books/${book.slug}`} className="hover:underline">
+    <Link href={`books/${book.slug}`} target="_blank" className="hover:underline">
       <h2 className="card-title text-base leading-normal line-clamp-2">
         {book.name}
       </h2>
@@ -35,6 +34,7 @@ const BookCard = ({ book }: { book: any }) => {
   const Author = () => (
     <Link
       href={`authors/${book.authors[0].slug}`}
+      target="_blank"
       className="hover:underline flex-1 mb-2"
     >
       <p className="truncate text-sm leading-tight text-gray-500">
@@ -70,7 +70,7 @@ const BookCard = ({ book }: { book: any }) => {
   );
 
   return (
-    <div className="card w-full max-w-60 bg-white shadow-sm">
+    <div className="card w-full bg-white shadow-sm rounded-md">
       <Frame />
 
       <div className="card-body p-3 gap-0.5 justify-between">

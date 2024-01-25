@@ -1,9 +1,9 @@
-import { HeroSection } from "@/components";
+import { CategoryCarousel, FlashSaleCarousel } from "@/components";
 
 const Test = () => {
   return (
     <div>
-      <HeroSection />
+      <FlashSaleCarousel />
     </div>
   );
 };

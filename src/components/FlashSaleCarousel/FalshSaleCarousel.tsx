@@ -6,9 +6,9 @@ interface Props {
   title: string;
 }
 
-const BookCarousel = ({ title }: Props) => {
+const FlashSaleCarousel = ({ title }: Props) => {
   return (
-    <div className="mt-12 custom-padding py-6">
+    <div className="mt-16 custom-margin p-6 pt-14 bg-black rounded-md">
       <Title title={title} />
       <div className="carousel carousel-end rounded-md mt-4 gap-2 w-full">
         {books.map((book, index) => (
@@ -21,4 +21,4 @@ const BookCarousel = ({ title }: Props) => {
   );
 };
 
-export default BookCarousel;
+export default FlashSaleCarousel;

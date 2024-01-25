@@ -1,10 +1,18 @@
-import { BookCarousel, HeroSection } from "@/components";
+import { BookCarousel, CategoryCarousel, FlashSaleCarousel, HeroSection } from "@/components";
 
 const Home = () => {
   return (
     <div className="min-h-screen pb-36">
       <HeroSection />
-      <BookCarousel />
+      <BookCarousel title='Featured Books' />
+      <CategoryCarousel title='Popular Categories' />
+      <BookCarousel title="Recently Added Books" />
+      <CategoryCarousel title="জনপ্রিয় লেখক" />
+      <FlashSaleCarousel title="Big Sale!" />
+      <BookCarousel title="ভারতীয় বাংলা বই" />
+      <CategoryCarousel title="Related Categories" />
+      <BookCarousel title="সেবা প্রকাশনীর বই" />
+      <CategoryCarousel title='Most Visited Authors' />
     </div>
   );
 };
