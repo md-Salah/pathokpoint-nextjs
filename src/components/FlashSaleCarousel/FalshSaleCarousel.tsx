@@ -8,7 +8,7 @@ interface Props {
 
 const FlashSaleCarousel = ({ title }: Props) => {
   return (
-    <div className="mt-16 custom-margin p-6 pt-14 bg-black rounded-md">
+    <div className="mt-16 custom-margin p-3 sm:p-6 pt-14 bg-black rounded-md">
       <Title title={title} />
       <div className="carousel carousel-end rounded-md mt-4 gap-2 w-full">
         {books.map((book, index) => (
