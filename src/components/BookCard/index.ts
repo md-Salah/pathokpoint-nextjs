@@ -1,1 +1,1 @@
-export { default as BookCard } from "./page";
+export { default as BookCard } from "./BookCard";

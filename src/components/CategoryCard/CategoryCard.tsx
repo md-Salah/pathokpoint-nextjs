@@ -26,6 +26,7 @@ const CategoryCard = ({ category }: Props) => {
           loading="lazy"
           placeholder="blur"
           blurDataURL="/books/logo.png"
+          sizes="50vw"
         />
       </figure>
     </Link>

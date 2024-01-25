@@ -11,7 +11,7 @@ const BookCard = ({ book }: { book: any }) => {
           alt="Book"
           fill
           className="object-contain object-top"
-          sizes="100%"
+          sizes="50vw"
           loading="lazy"
         />
         <div

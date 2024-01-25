@@ -9,6 +9,7 @@ const Logo = () => {
         fill
         priority
         className="object-contain object-left mr-8"
+        sizes="25vw"
       />
     </a>
   );

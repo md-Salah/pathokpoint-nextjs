@@ -1,10 +1,12 @@
 "use client";
 import { banners } from "@/constants";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
+  const [hover, setHover] = useState(false);
 
   const next = () => {
     setCurrent((value) => {
@@ -28,8 +30,11 @@ const HeroSection = () => {
 
   useEffect(() => {
     const interval = setInterval(next, 3000);
+    if (hover) {
+      clearInterval(interval);
+    }
     return () => clearInterval(interval);
-  }, []);
+  }, [hover]);
 
   const ArrowButtons = () => (
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 ">
@@ -63,19 +68,25 @@ const HeroSection = () => {
   );
 
   return (
-    <div className="custom-margin mt-5">
+    <div
+      className="custom-margin mt-5 cursor-pointer"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       <div className="carousel w-full">
         <div id="banner" className="carousel-item relative w-full">
-          <Image
-            src={banners[current].src}
-            alt="Banner"
-            width={500}
-            height={500}
-            quality={100}
-            sizes="100vw"
-            priority
-            className="w-full rounded-md object-cover"
-          />
+          <Link href="/offers">
+            <Image
+              src={banners[current].src}
+              alt="Banner"
+              width={500}
+              height={500}
+              quality={100}
+              sizes="100vw"
+              priority
+              className="w-full rounded-md object-cover"
+            />
+          </Link>
           <ArrowButtons />
         </div>
       </div>
