@@ -10,6 +10,7 @@ export { CategoryCarousel } from "./CategoryCarousel";
 export { FlashSaleCarousel } from "./FlashSaleCarousel";
 
 // Micro Components
+export { ArrowButtons } from "./ArrowButtons";
 export { Heart } from "./Heart";
 export { BookCard } from "./BookCard";
 export { CategoryCard } from "./CategoryCard";
