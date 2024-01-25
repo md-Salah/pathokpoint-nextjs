@@ -1,9 +1,7 @@
-import { CategoryCarousel, FlashSaleCarousel } from "@/components";
-
 const Test = () => {
   return (
     <div>
-      <FlashSaleCarousel />
+      <h1>Test</h1>
     </div>
   );
 };
