@@ -4,67 +4,81 @@ import Heart from "./Heart";
 import Link from "next/link";
 
 const BookCard = ({ book }: { book: any }) => {
-  return (
-    <div className="card card-compact w-64 bg-white shadow-sm">
-      {/* Image */}
-      <Link href={`books/${book.slug}`}>
-        <figure className="relative h-60 w-full rounded-t-md">
-          <Image
-            src={book.images[0]}
-            alt="Book"
-            fill
-            className="object-cover object-top"
-            sizes="100%"
-            loading="lazy"
-          />
-          <div
-            className={`absolute top-0 left-0 rounded-md p-3.5 badge badge-primary font-bold`}
-          >
-            25%
-          </div>
-        </figure>
-      </Link>
-
-      {/* Content */}
-      <div className="card-body">
-        {/* Title */}
-        <Link href={`books/${book.slug}`} className="hover:underline">
-          <h2 className="card-title">{book.name}</h2>
-        </Link>
-
-        {/* Author */}
-        <Link
-          href={`authors/${book.authors[0].slug}`}
-          className="hover:underline"
-        >
-          <p>{book.authors[0].name}</p>
-        </Link>
-
-        {/* Condition */}
+  const Frame = () => (
+    <Link href={`books/${book.slug}`}>
+      <figure className="relative h-48 w-full rounded-t-md bg-gray-200">
+        <Image
+          src={book.images[0]}
+          alt="Book"
+          fill
+          className="object-contain object-top"
+          sizes="100%"
+          loading="lazy"
+        />
         <div
-          className={`badge badge-outline ${
-            book.condition.toLowerCase() == "new"
-              ? "badge-secondary"
-              : "badge-accent"
-          }`}
+          className={`absolute top-0 left-0 rounded-md p-3.5 badge badge-primary font-bold`}
         >
-          {book.condition}
+          25%
         </div>
+      </figure>
+    </Link>
+  );
 
-        {/* Price */}
-        <div className="">
-          <span className="line-through">{`${book.regular_price} ৳`}</span>
-          <span className="ml-2 text-primary font-bold text-lg">{`${book.sell_price} ৳`}</span>
-        </div>
+  const Title = () => (
+    <Link href={`books/${book.slug}`} className="hover:underline">
+      <h2 className="card-title text-base leading-normal line-clamp-2">
+        {book.name}
+      </h2>
+    </Link>
+  );
 
-        {/* Buttons */}
-        <div className="card-actions justify-between mt-2">
-          <button className="btn btn-primary btn-sm flex-1">Add to Cart</button>
-          <Heart />
-          <button className="btn btn-sm bg-gray-200">
-            <IoMdShareAlt className="inline-block h-6 w-6" />
-          </button>
-        </div>
+  const Author = () => (
+    <Link
+      href={`authors/${book.authors[0].slug}`}
+      className="hover:underline flex-1 mb-2"
+    >
+      <p className="truncate text-sm leading-tight text-gray-500">
+        {book.authors[0].name}
+      </p>
+    </Link>
+  );
+
+  const Condition = () => (
+    <div
+      className={`badge badge-sm ${
+        book.condition.toLowerCase() == "new"
+          ? "badge-secondary badge-outline"
+          : "badge-warning"
+      }`}
+    >
+      {book.condition}
+    </div>
+  );
+
+  const Price = () => (
+    <div className="flex items-baseline">
+      <span className="line-through text-sm">{`${book.regular_price} ৳`}</span>
+      <span className="ml-2 text-primary font-bold text-base">{`${book.sell_price} ৳`}</span>
+    </div>
+  );
+
+  const ActionButtons = () => (
+    <div className="card-actions justify-between mt-2">
+      <button className="btn btn-primary btn-sm flex-1">Add to Cart</button>
+      <Heart />
+    </div>
+  );
+
+  return (
+    <div className="card w-full max-w-60 bg-white shadow-sm">
+      <Frame />
+
+      <div className="card-body p-3 gap-0.5 justify-between">
+        <Title />
+        <Author />
+        <Condition />
+        <Price />
+        <ActionButtons />
       </div>
     </div>
   );

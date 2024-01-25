@@ -21,7 +21,7 @@ export const books = [
   },
   {
     name: "পথের পাঁচালী",
-    authors: [{ name: "Bibhutibhushan Bandopadhyay", slug: "bibhutibhushan-bandopadhyay" }],
+    authors: [{ name: "Bibhutibhushan Bandopadhyay Bibhutibhushan Bandopadhyay", slug: "bibhutibhushan-bandopadhyay" }],
     regular_price: 1200,
     sell_price: 300,
     images: ["/books/b (3).jpg"],
