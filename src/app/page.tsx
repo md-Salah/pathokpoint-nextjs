@@ -1,4 +1,4 @@
-import { BookCarousel, CategoryCarousel, FlashSaleCarousel, HeroSection } from "@/components";
+import { BookCarousel, CategoryCarousel, FlashSaleCarousel, HeroSection, ServiceBanner } from "@/components";
 
 const Home = () => {
   return (
@@ -12,6 +12,7 @@ const Home = () => {
       <BookCarousel title="ভারতীয় বাংলা বই" />
       <CategoryCarousel title="Related Categories" />
       <BookCarousel title="সেবা প্রকাশনীর বই" />
+      <ServiceBanner />
       <CategoryCarousel title='Most Visited Authors' />
     </div>
   );

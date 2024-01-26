@@ -1,7 +1,9 @@
+import { ServiceBanner } from "@/components";
+
 const Test = () => {
   return (
     <div>
-      <h1>Test</h1>
+      <ServiceBanner />
     </div>
   );
 };

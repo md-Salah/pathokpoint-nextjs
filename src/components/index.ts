@@ -8,6 +8,7 @@ export { HeroSection } from "./HeroSection";
 export { BookCarousel } from "./BookCarousel";
 export { CategoryCarousel } from "./CategoryCarousel";
 export { FlashSaleCarousel } from "./FlashSaleCarousel";
+export { ServiceBanner } from "./ServiceBanner";
 
 // Micro Components
 export { ArrowButtons } from "./ArrowButtons";

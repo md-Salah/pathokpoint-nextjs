@@ -7,6 +7,12 @@ const nextConfig = {
                 hostname: 'daisyui.com',
                 port: '',
                 pathname: '/images/stock/**'
+            },
+            {
+                protocol: 'http',
+                hostname: 'mdsalah.customerserver003003.eurhosting.net',
+                port: '',
+                pathname: '/test/**'
             }
         ]
     }
