@@ -33,10 +33,38 @@ const HeroSection = () => {
     scrollIntoView(index);
   };
 
+  let isAutoScrolling = useRef<boolean>(false);
+
+  const updateCurrentCardBasedOnScroll = () => {
+    if (scrollRef.current && !isAutoScrolling.current) {
+      const scrollPosition = scrollRef.current.scrollLeft;
+      const cardWidth = scrollRef.current.offsetWidth;
+      const visibleCardIndex = Math.round(scrollPosition / cardWidth);
+      setCurrentCard(visibleCardIndex % banners.length);
+    }
+  };
+
+  useEffect(() => {
+    const scrollDiv = scrollRef.current;
+    scrollDiv?.addEventListener("scroll", updateCurrentCardBasedOnScroll);
+
+    return () => {
+      scrollDiv?.removeEventListener("scroll", updateCurrentCardBasedOnScroll);
+    };
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentCard((currentCard + 1) % banners.length);
-      scrollIntoView((currentCard + 1) % banners.length);
+      if (scrollRef.current) {
+        isAutoScrolling.current = true;
+        const nextCard = (currentCard + 1) % banners.length;
+        const scrollAmount = nextCard * scrollRef.current.offsetWidth;
+        scrollRef.current.scrollTo({ left: scrollAmount, behavior: "smooth" });
+
+        setTimeout(() => {
+          isAutoScrolling.current = false;
+        }, 500);
+      }
     }, 5000);
 
     return () => clearInterval(interval);
