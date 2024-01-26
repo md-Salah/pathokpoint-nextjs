@@ -33,8 +33,17 @@ const HeroSection = () => {
     scrollIntoView(index);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCard((currentCard + 1) % banners.length);
+      scrollIntoView((currentCard + 1) % banners.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentCard]);
+
   return (
-    <div className="mt-12 custom-margin py-6">
+    <div className="custom-margin pt-4">
       <div ref={parentRef} className="relative">
         <div
           ref={scrollRef}
