@@ -2,6 +2,7 @@ import { IoIosLogOut, IoMdHeartEmpty } from "react-icons/io";
 import { BiShoppingBag } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
+import Image from "next/image";
 
 const Profile = () => {
   return (
@@ -12,9 +13,11 @@ const Profile = () => {
         className="btn btn-ghost btn-circle avatar"
       >
         <div className="w-10 rounded-full">
-          <img
-            alt="Tailwind CSS Navbar component"
+          <Image
+            alt="Profile"
             src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            width={40}
+            height={40}
           />
         </div>
       </div>
