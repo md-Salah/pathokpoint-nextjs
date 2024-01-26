@@ -7,7 +7,11 @@ interface Props {
   cardIncrement: (x: number) => void | undefined;
 }
 
-const ArrowButtons = ({ carouselRef, scrollRef, cardIncrement }: Props) => {
+const ArrowButtons = ({
+  carouselRef,
+  scrollRef,
+  cardIncrement = (x) => {},
+}: Props) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
