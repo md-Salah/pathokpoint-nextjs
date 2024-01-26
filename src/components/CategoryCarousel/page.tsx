@@ -25,8 +25,8 @@ const CategoryCarousel = ({ title }: Props) => {
               <CategoryCard category={category} />
             </div>
           ))}
-          <ArrowButtons carouselRef={carouselRef} scrollRef={scrollRef} />
         </div>
+        <ArrowButtons carouselRef={carouselRef} scrollRef={scrollRef} />
       </div>
     </div>
   );

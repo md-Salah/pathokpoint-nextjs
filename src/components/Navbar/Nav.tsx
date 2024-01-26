@@ -29,7 +29,7 @@ const Nav = () => {
     <div className="relative">
       <div
         className={`navbar bg-base-200 custom-padding ${
-          fixedNavbar ? "fixed top-0 z-[1] shadow-md" : ""
+          fixedNavbar ? "fixed top-0 z-20 shadow-md" : ""
         }`}
       >
         <div className="flex-1">

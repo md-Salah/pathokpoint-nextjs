@@ -25,8 +25,8 @@ const BookCarousel = ({ title }: Props) => {
               <BookCard book={book} />
             </div>
           ))}
-          <ArrowButtons carouselRef={carouselRef} scrollRef={scrollRef} />
         </div>
+        <ArrowButtons carouselRef={carouselRef} scrollRef={scrollRef} />
       </div>
     </div>
   );
