@@ -1,14 +1,16 @@
+import { FaStar } from "react-icons/fa";
+
 const Rating = ({ rating }: { rating: number }) => {
+  const ratings = [1, 2, 3, 4, 5];
+
   return (
     <span className="rating rating-xs">
-      {[...Array(5)].map((_, index) => (
-        <input
-          key={index}
-          type="radio"
-          name="rating-5"
-          className="mask mask-star-2 bg-orange-400"
-          checked={index + 1 === rating}
-          readOnly
+      {ratings.map((value) => (
+        <FaStar
+          key={value}
+          className={`${
+            value <= rating ? "text-orange-400" : "text-gray-400"
+          } inline`}
         />
       ))}
     </span>

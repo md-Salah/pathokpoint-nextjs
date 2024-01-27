@@ -9,27 +9,34 @@ import { useEffect, useState } from "react";
 const ReviewCarousel = () => {
   const [centerSlidePercentage, setCenterSlidePercentage] = useState(100);
 
+  const resizeSlide = () => {
+    if (window.innerWidth >= 1100) {
+      setCenterSlidePercentage(32);
+    } else {
+      setCenterSlidePercentage(100);
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      if (window.innerWidth >= 768) setCenterSlidePercentage(32);
-      else if (window.innerWidth >= 640) setCenterSlidePercentage(65);
-      else setCenterSlidePercentage(100);
-    });
+    resizeSlide();
+    window.addEventListener("resize", resizeSlide);
 
     return () => window.removeEventListener("resize", () => {});
   }, []);
 
   return (
-    <div className="custom-margin mt-10 rounded-md">
+    <div className="custom-margin mt-20 rounded-md">
+      <h1 className="text-3xl md:text-4xl font-semibold flex-1 text-center mb-10">Customer Reviews</h1>
       <Carousel
-        autoPlay={true}
-        infiniteLoop={true}
+        autoPlay
+        infiniteLoop
+        stopOnHover
         showStatus={false}
         showThumbs={false}
         transitionTime={1000}
         interval={3000}
-        emulateTouch={true}
-        centerMode
+        emulateTouch={false}
+        centerMode={true}
         centerSlidePercentage={centerSlidePercentage}
         renderArrowPrev={(onClickHandler, hasPrev, label) => {
           return (
