@@ -1,9 +1,9 @@
-import { Footer } from "@/components"
+
 
 const Test = () => {
   return (
     <div>
-      <Footer />
+      Test
     </div>
   )
 }
