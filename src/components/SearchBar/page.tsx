@@ -2,24 +2,29 @@
 import { RxCross2 } from "react-icons/rx";
 import { useEffect, useState } from "react";
 
-const SearchBar = () => {
-  const [query, setQuery] = useState('');
+interface Props {
+  query: string;
+  setQuery: (query: string) => void;
+}
+
+const SearchBar = ({query, setQuery}:Props) => {
+  let i = 0;
   const placeholderText = "বই অথবা লেখকের নাম লিখুন";
   const [placeholder, setPlaceholder] = useState("");
 
+  const typingPlaceholder = () => {
+    setPlaceholder(placeholderText.slice(0, i));
+    i++;
+    if (i === placeholderText.length) {
+      setTimeout(() => {
+        i = 0;
+        setPlaceholder("");
+      }, 3000);
+    }
+  };
+
   useEffect(() => {
-    let i = 0;
-    const type = () => {
-      setPlaceholder(placeholderText.slice(0, i));
-      i++;
-      if (i === placeholderText.length) {
-        setTimeout(() => {
-          i = 0;
-          setPlaceholder("");
-        }, 3000);
-      }
-    };
-    const intervalId = setInterval(type, 100);
+    const intervalId = setInterval(typingPlaceholder, 100);
 
     return () => clearInterval(intervalId);
   }, []);

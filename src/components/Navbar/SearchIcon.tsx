@@ -15,7 +15,8 @@ const SearchIcon = () => {
         </label>
       </div>
 
-      <div className="drawer-side z-[5]">
+      {/* Search Drawer */}
+      <div className="drawer-side z-20">
         <label
           htmlFor="right-drawer"
           aria-label="close sidebar"
@@ -29,8 +30,8 @@ const SearchIcon = () => {
             <span>Back</span>
           </label>
 
-          <SearchBar />
-          <SearchSuggestion />
+          {/* <SearchBar /> */}
+          {/* <SearchSuggestion /> */}
         </div>
       </div>
     </div>

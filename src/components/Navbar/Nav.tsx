@@ -40,7 +40,8 @@ const Nav = () => {
             <SearchIcon />
           </div>
           <div className="hidden md:block mr-2">
-            <SearchBar />
+            {/* <SearchBar /> */}
+            search
           </div>
           <Cart />
           <Profile />

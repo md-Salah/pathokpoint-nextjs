@@ -1,1 +1,1 @@
-export { default as SearchSuggestion } from "./page";
+export { default as SearchSuggestion } from "./SearchSuggestion";
