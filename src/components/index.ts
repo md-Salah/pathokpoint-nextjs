@@ -3,6 +3,9 @@ export { TopBanner } from "./TopBanner";
 export { Navbar } from "./Navbar";
 export { SecondNav } from "./SecondNav";
 
+// Footer Components
+export { Footer } from "./Footer";
+
 // Home
 export { HeroSection } from "./HeroSection";
 export { BookCarousel } from "./BookCarousel";
