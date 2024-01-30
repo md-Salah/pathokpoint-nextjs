@@ -11,7 +11,7 @@ const Category = ({ category }: Props) => {
   return (
     <div>
       <Link href={`/categories/${category.slug}`}>
-        <div className="flex items-center gap-3 mt-1 group bg-gray-50 hover:bg-gray-100 p-1 pl-2">
+        <div className="flex items-center gap-3 mt-0 border-b-2 border-base-300 group bg-white hover:bg-gray-50 p-1 pl-2">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12 bg-primary text-2xl text-center group-hover:opacity-80">
               {category.src ? (

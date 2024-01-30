@@ -42,9 +42,7 @@ const SearchSuggestion = ({ suggestions }: Props) => {
         </div>
         {suggestions.books.length > 0 && (
           <Link href={"search/"} className="hover:underline">
-            <h1 className="mt-1 py-1 bg-gray-100 text-center mx-auto hover:bg-gray-200 uppercase text-secondary">
-              See all
-            </h1>
+            <button className="btn btn-ghost w-full rounded-none underline mt-1 hover:bg-gray-50">See All</button>
           </Link>
         )}
       </div>
