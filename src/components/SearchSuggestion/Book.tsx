@@ -14,11 +14,11 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
   );
 
   return (
-    <div className="mt-2 w-full bg-gray-50 rounded-md shadow-sm group hover:bg-gray-200">
+    <div className="mt-1 w-full bg-gray-50 group hover:bg-gray-200">
       <Link href={`/books/${book.slug}`} className="w-full">
         <div className="flex flex-row p-2">
           {/* Image */}
-          <div className="h-full min-h-20 min-w-14 w-16 relative rounded-md">
+          <div className="h-full min-h-16 min-w-14 w-16 relative rounded-md group-hover:opacity-80">
             <Image
               src={book.images[0]}
               alt={book.name}
@@ -28,7 +28,7 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
           </div>
 
           {/* Name, Author & Price */}
-          <div className="ml-2 mt-1 w-full flex-1">
+          <div className="mx-2 w-full flex-1 ">
             <div className="flex flex-row justify-between">
               <div className="">
                 <h1 className="text-base line-clamp-2 text-secondary group-hover:underline leading-4">

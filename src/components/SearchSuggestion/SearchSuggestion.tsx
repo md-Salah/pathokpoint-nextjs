@@ -18,6 +18,14 @@ interface Props {
 const SearchSuggestion = ({ suggestions }: Props) => {
   const [tab, setTab] = useState(0);
 
+  const NotFound = ({ text }: { text: string }) => {
+    return (
+      <div className="h-20 p-2 bg-gray-100 rounded-b-md">
+        <p className="text-gray-400">{text}</p>
+      </div>
+    );
+  };
+
   const BookTab = () => {
     return (
       <div>
@@ -29,16 +37,16 @@ const SearchSuggestion = ({ suggestions }: Props) => {
               </div>
             ))
           ) : (
-            <div>
-              <p className="text-gray-400">কোন বই পাওয়া যায়নি</p>
-            </div>
+            <NotFound text={"কোন বই পাওয়া যায়নি"} />
           )}
         </div>
-        <Link href={"search/"} className="hover:underline">
-          <h1 className="mt-2 py-1 rounded-md bg-gray-50 text-center mx-auto px-4 hover:bg-gray-200 uppercase text-secondary">
-            See all
-          </h1>
-        </Link>
+        {suggestions.books.length > 0 && (
+          <Link href={"search/"} className="hover:underline">
+            <h1 className="mt-1 py-1 bg-gray-100 text-center mx-auto hover:bg-gray-200 uppercase text-secondary">
+              See all
+            </h1>
+          </Link>
+        )}
       </div>
     );
   };
@@ -53,9 +61,7 @@ const SearchSuggestion = ({ suggestions }: Props) => {
             </div>
           ))
         ) : (
-          <div>
-            <p className="text-gray-400">কোন লেখক পাওয়া যায়নি</p>
-          </div>
+          <NotFound text={"কোন লেখক পাওয়া যায়নি"} />
         )}
       </div>
     );
@@ -71,9 +77,7 @@ const SearchSuggestion = ({ suggestions }: Props) => {
             </div>
           ))
         ) : (
-          <div>
-            <p className="text-gray-400">কোন ক্যাটাগরি পাওয়া যায়নি</p>
-          </div>
+          <NotFound text={"কোন ক্যাটাগরি পাওয়া যায়নি"} />
         )}
       </div>
     );
@@ -85,23 +89,28 @@ const SearchSuggestion = ({ suggestions }: Props) => {
     if (tab == 2) return <CategoryTab />;
   };
 
-  return (
-    <div role="tablist" className="pb-2 bg-base-100 rounded-b-md">
-      <div className="tabs tabs-lifted rounded-t-lg mt-3 bg-base-200">
+  const TabButtons = () => {
+    return (
+      <ul className="tabs tabs-bordered rounded-t-lg mt-3 bg-base-200">
         {["বই", "লেখক", "ক্যাটাগরি"].map((title, index) => (
-          <a
+          <li
             role="tab"
             key={index}
             className={`tab ${tab == index ? "tab-active" : ""}`}
             onClick={() => setTab(index)}
           >
             {title}
-          </a>
+          </li>
         ))}
-      </div>
+      </ul>
+    );
+  };
 
-      {/* Tab Content */}
-      <div className="px-2 w-full h-96 overflow-y-scroll">
+  return (
+    <div role="tablist" className="bg-base-200 rounded-b-md">
+      <TabButtons />
+
+      <div className="w-full max-h-96 overflow-y-scroll rounded-b-md">
         <TabContent />
       </div>
     </div>

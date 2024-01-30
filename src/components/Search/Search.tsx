@@ -90,7 +90,7 @@ const Search = () => {
   return (
     <div className="w-full md:w-96 lg:w-[32rem] xl:w-[36rem] mx-auto relative">
       <SearchBar query={query} handleSearch={handleSearch} />
-      <div className="absolute z-10 w-full bg-white rounded-md mt-2 md:shadow-lg">
+      <div className="z-10 w-full bg-white rounded-md mt-2 md:drop-shadow-lg absolute">
         {query.trim().length > 0 && (
           <SearchSuggestion suggestions={suggestions} />
         )}
