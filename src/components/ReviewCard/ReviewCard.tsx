@@ -58,6 +58,7 @@ const ReviewCard = ({ review }: any) => {
             <Image
               alt={name}
               fill
+              sizes="10vw"
               src={src}
               className="rounded-full object-cover object-bottom"
             />
@@ -92,7 +93,7 @@ const ReviewCard = ({ review }: any) => {
   };
 
   return (
-    <div className="card card-compact h-96 w-80 mx-auto bg-base-200 shadow-lg">
+    <div className="card card-compact h-96 w-80 mx-auto bg-base-200 shadow-lg rounded-md">
       <div className="card-body">
         <NameAvatar
           name={review.name}

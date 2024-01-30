@@ -9,7 +9,7 @@ import {
 
 const Home = () => {
   return (
-    <div className="min-h-screen pb-36">
+    <div className="min-h-screen">
       <HeroSection />
       <BookCarousel title="Featured Books" />
       <CategoryCarousel title="Popular Categories" />

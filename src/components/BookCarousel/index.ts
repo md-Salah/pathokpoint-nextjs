@@ -1,1 +1,1 @@
-export { default as BookCarousel } from "./page";
+export { default as BookCarousel } from "./BookCarousel";

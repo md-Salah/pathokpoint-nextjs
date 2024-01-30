@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Heart } from "@/components";
+import { Heart } from "@/micro-components";
 import Link from "next/link";
 
 const BookCard = ({ book }: { book: any }) => {
@@ -23,11 +23,13 @@ const BookCard = ({ book }: { book: any }) => {
     </Link>
   );
 
-  const Title = () => (
-    <Link href={`books/${book.slug}`} target="_blank" className="hover:underline">
-      <h2 className="card-title text-base leading-normal line-clamp-2">
-        {book.name}
-      </h2>
+  const Title = ({ title }: { title: string }) => (
+    <Link
+      href={`books/${book.slug}`}
+      target="_blank"
+      className="hover:underline"
+    >
+      <h2 className="card-title text-base leading-normal line-clamp-2">{title}</h2>
     </Link>
   );
 
@@ -70,11 +72,11 @@ const BookCard = ({ book }: { book: any }) => {
   );
 
   return (
-    <div className="card w-full bg-white shadow-sm rounded-md">
+    <div className="card carousel-item w-49p sm:w-52 bg-white shadow-sm rounded-md">
       <Frame />
 
       <div className="card-body p-3 gap-0.5 justify-between">
-        <Title />
+        <Title title={book.name} />
         <Author />
         <Condition />
         <Price />

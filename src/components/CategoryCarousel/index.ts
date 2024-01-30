@@ -1,1 +1,1 @@
-export { default as CategoryCarousel } from "./page";
+export { default as CategoryCarousel } from "./CategoryCarousel";

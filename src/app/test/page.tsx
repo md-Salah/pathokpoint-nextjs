@@ -1,8 +1,11 @@
 
+
 const Test = () => {
   return (
-    <div>Test</div>
-  )
-}
+    <div>
+      Test
+    </div>
+  );
+};
 
-export default Test
+export default Test;

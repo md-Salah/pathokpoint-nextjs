@@ -16,7 +16,6 @@ export { ReviewCarousel } from "./ReviewCarousel";
 
 // Mini Components
 export { ArrowButtons } from "./ArrowButtons";
-export { Heart } from "./Heart";
 export { BookCard } from "./BookCard";
 export { ReviewCard } from "./ReviewCard";
 export { CategoryCard } from "./CategoryCard";

@@ -1,27 +1,15 @@
 import Link from "next/link";
-import { FaMapMarkerAlt, FaHeadset } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { legal, shopBy, usefulLinks } from "@/constants/footer";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { GoMail } from "react-icons/go";
-import { CiMail } from "react-icons/ci";
 import { LuMail } from "react-icons/lu";
 import { MdOutlineCall } from "react-icons/md";
-import { LiaFacebook } from "react-icons/lia";
-import { PiFacebookLogoBold } from "react-icons/pi";
-import { RiFacebookCircleLine } from "react-icons/ri";
-import { RiMessengerLine } from "react-icons/ri";
-import {
-  BsFacebook,
-  BsInstagram,
-  BsTelephoneForward,
-  BsMessenger,
-  BsWhatsapp,
-} from "react-icons/bs";
+import { RiFacebookCircleLine, RiMessengerLine } from "react-icons/ri";
+import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer footer-center md:footer py-10 custom-padding bg-secondary text-secondary-content">
+    <div className="custom-mt pt-10">
+      <footer className="footer footer-center md:footer py-10 custom-px bg-secondary text-secondary-content">
         <aside>
           <p className="text-3xl font-semibold">পাঠক পয়েন্ট</p>
           <p className="max-w-72 md:text-justify tracking-wide uppercase">
@@ -58,7 +46,7 @@ const Footer = () => {
           ))}
         </nav>
       </footer>
-      <footer className="footer footer-center pt-8 pb-10 custom-padding bg-secondary text-secondary-content border-t border-gray-600">
+      <footer className="footer footer-center pt-8 pb-10 custom-px bg-secondary text-secondary-content border-t border-gray-600">
         <nav>
           <div className="grid grid-flow-col gap-4 items-center">
             <Link

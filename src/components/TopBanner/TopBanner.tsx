@@ -7,6 +7,7 @@ const TopBanner = () => {
       alt="Get Special Discount | Learn More"
       src="/top-banner.gif"
       fill
+      priority
       className="object-contain"
     />
   </div>

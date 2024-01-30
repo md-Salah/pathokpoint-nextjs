@@ -14,8 +14,7 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
   );
 
   return (
-    // flex items-center gap-3 mt-0 border-b-2 border-base-300 group bg-white hover:bg-gray-50 p-1 pl-2
-    <div className="w-full bg-white group border-b-2 border-base-300 hover:bg-gray-50">
+    <div className="w-full group border-b border-base-300 item-bg">
       <Link href={`/books/${book.slug}`} className="w-full">
         <div className="flex flex-row p-2">
           {/* Image */}
@@ -24,6 +23,7 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
               src={book.images[0]}
               alt={book.name}
               fill
+              sizes="10vw"
               className="object-cover object-top rounded-md"
             />
           </div>

@@ -13,12 +13,12 @@ const CategoryCarousel = ({ title }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="custom-margin mt-10">
+    <div className="custom-mx custom-mt">
       <Title title={title} />
       <div ref={carouselRef} className="relative">
         <div
           ref={scrollRef}
-          className="carousel carousel-end rounded-md mt-4 gap-2 w-full"
+          className="carousel carousel-end rounded-md gap-2 w-full"
         >
           {categories.map((category, index) => (
             <div key={index} className="carousel-item w-40">

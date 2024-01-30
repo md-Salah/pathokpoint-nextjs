@@ -8,7 +8,7 @@ import { banners } from "@/constants";
 
 const HeroSection = () => {
   return (
-    <div className="custom-margin mt-10 rounded-md">
+    <div className="custom-mx custom-mt">
       <Carousel
         autoPlay
         infiniteLoop
@@ -49,12 +49,12 @@ const HeroSection = () => {
       >
         {banners.map((banner, index) => (
           <Link key={index} href="/offers" className="cursor-pointer">
-            <div key={index} className="w-full">
+            <div key={index} className="">
               <Image
                 src={banner.src}
                 alt="Banner"
-                width={500}
-                height={500}
+                width={2240}
+                height={698}
                 quality={100}
                 sizes="100vw"
                 priority

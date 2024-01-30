@@ -25,8 +25,8 @@ const ReviewCarousel = () => {
   }, []);
 
   return (
-    <div className="custom-margin mt-20 rounded-md">
-      <h1 className="text-3xl md:text-4xl font-semibold flex-1 text-center mb-10">Customer Reviews</h1>
+    <div className="custom-mx custom-mt rounded-md">
+      <h1 className="title title-mb flex-1 text-center">Customer Reviews</h1>
       <Carousel
         autoPlay
         infiniteLoop

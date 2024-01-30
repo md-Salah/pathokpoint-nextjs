@@ -13,15 +13,15 @@ const BookCarousel = ({ title }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="mt-12 custom-margin py-6">
+    <div className="custom-mt custom-mx">
       <Title title={title} />
       <div ref={carouselRef} className="relative">
         <div
           ref={scrollRef}
-          className="carousel carousel-end rounded-md mt-4 gap-2 w-full"
+          className="carousel carousel-end rounded-md gap-2 w-full"
         >
           {books.map((book, index) => (
-            <div key={index} className="carousel-item w-49p sm:w-52">
+            <div key={index} className="h-fit">
               <BookCard book={book} />
             </div>
           ))}

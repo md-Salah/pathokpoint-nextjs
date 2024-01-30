@@ -4,13 +4,8 @@ import Nav from "./Nav";
 const Navbar = () => {
   return (
     <div>
-      {/* Top banner */}
       <TopBanner />
-
-      {/* Navbar */}
       <Nav />
-
-      {/* Second Navbar */}
       <SecondNav />
     </div>
   );

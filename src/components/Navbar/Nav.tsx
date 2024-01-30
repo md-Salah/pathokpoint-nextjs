@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import Cart from "./Cart";
 import Logo from "./Logo";
 import SearchIcon from "./SearchIcon";
-import { Search, SearchBar } from "@/components";
+import { Search } from "@/components";
 import { useEffect, useState } from "react";
 
 const Nav = () => {
@@ -28,7 +28,7 @@ const Nav = () => {
   return (
     <div className="relative">
       <div
-        className={`navbar bg-base-200 custom-padding ${
+        className={`navbar bg-base-200 custom-px ${
           fixedNavbar ? "fixed top-0 z-20 shadow-md" : ""
         }`}
       >

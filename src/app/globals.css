@@ -3,16 +3,32 @@
 @tailwind utilities;
 
 
-.custom-padding {
+.custom-px {
     @apply px-2 md:px-5 lg:px-12 xl:px-24 2xl:px-36;
 }
 
-.custom-margin {
+.custom-mx {
     @apply mx-2 md:mx-5 lg:mx-12 xl:mx-24 2xl:mx-36;
+}
+
+.custom-mt {
+    @apply mt-12;
 }
 
 .primary-style {
     @apply hover:bg-primary hover:text-white;
+}
+
+.item-bg {
+    @apply bg-white hover:bg-gray-50;
+}
+
+.title-mb {
+    @apply mb-4;
+}
+
+.title {
+    @apply text-3xl font-semibold;
 }
 
 .w-49p {

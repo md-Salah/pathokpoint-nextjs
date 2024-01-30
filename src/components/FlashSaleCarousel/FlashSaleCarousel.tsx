@@ -13,7 +13,7 @@ const FlashSaleCarousel = ({ title }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="mt-16 pt-14 pb-3 md:pb-5 lg:pb-12 custom-padding bg-[#7d7064]">
+    <div className="custom-px custom-mt pt-14 pb-3 md:pb-5 lg:pb-12 bg-[#7d7064]">
       <Title title={title} />
       <div ref={carouselRef} className="relative">
         <div

@@ -1,1 +1,1 @@
-export { default as SecondNav } from "./page";
+export { default as SecondNav } from "./SecondNav";

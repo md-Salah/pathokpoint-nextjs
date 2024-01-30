@@ -1,1 +1,1 @@
-export { default as TopBanner } from "./page";
+export { default as TopBanner } from "./TopBanner";
