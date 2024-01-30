@@ -14,11 +14,14 @@ export { FlashSaleCarousel } from "./FlashSaleCarousel";
 export { ServiceBanner } from "./ServiceBanner";
 export { ReviewCarousel } from "./ReviewCarousel";
 
-// Micro Components
+// Mini Components
 export { ArrowButtons } from "./ArrowButtons";
 export { Heart } from "./Heart";
 export { BookCard } from "./BookCard";
 export { ReviewCard } from "./ReviewCard";
 export { CategoryCard } from "./CategoryCard";
+
+// Search
+export { Search } from "./Search";
 export { SearchBar } from "./SearchBar";
 export { SearchSuggestion } from "./SearchSuggestion";

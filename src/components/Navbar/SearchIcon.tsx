@@ -1,5 +1,5 @@
 import { BsSearch, BsArrowLeft } from "react-icons/bs";
-import { SearchBar, SearchSuggestion } from "@/components";
+import { Search } from "@/components";
 
 const SearchIcon = () => {
   return (
@@ -15,22 +15,26 @@ const SearchIcon = () => {
         </label>
       </div>
 
-      <div className="drawer-side z-[5]">
+      {/* Search Drawer */}
+      <div className="drawer-side z-20">
         <label
           htmlFor="right-drawer"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-
+        <div className="menu p-3 w-11/12 sm:w-96 min-h-full bg-base-200 text-base-content">
           {/* Back Icon */}
-          <label htmlFor="right-drawer" className="flex-shrink hover:bg-gray-100 w-fit pr-2 pl-1 mb-2 rounded-md cursor-pointer">
+          <label
+            htmlFor="right-drawer"
+            className="flex-shrink hover:bg-gray-100 w-fit pr-2 pl-1 mb-5 rounded-md cursor-pointer"
+          >
             <BsArrowLeft className="h-5 w-5 mr-1 inline-block" />
             <span>Back</span>
           </label>
 
-          <SearchBar />
-          <SearchSuggestion />
+          <div className="w-full">
+            <Search />
+          </div>
         </div>
       </div>
     </div>
