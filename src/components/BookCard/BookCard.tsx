@@ -72,7 +72,7 @@ const BookCard = ({ book }: { book: any }) => {
   );
 
   return (
-    <div className="card carousel-item w-49p sm:w-52 bg-white shadow-sm rounded-md">
+    <div className="card carousel-item w-52 bg-white shadow-sm rounded-md">
       <Frame />
 
       <div className="card-body p-3 gap-0.5 justify-between">
