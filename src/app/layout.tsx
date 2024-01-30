@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
 const anek = Anek_Bangla({ subsets: ["bengali"] });
 import "./globals.css";
-import { Navbar } from "@/components";
+import { Footer, Navbar } from "@/components";
 
 export const metadata: Metadata = {
   title: "Pathok Point",
@@ -21,6 +21,7 @@ export default function RootLayout({
         <main>
           <Navbar />
           {children}
+          <Footer />
         </main>
       </body>
     </html>

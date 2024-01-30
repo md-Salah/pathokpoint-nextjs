@@ -1,8 +1,11 @@
-import { ReviewCarousel } from "@/components";
-import React from "react";
+
 
 const Test = () => {
-  return <ReviewCarousel />;
-};
+  return (
+    <div>
+      Test
+    </div>
+  )
+}
 
-export default Test;
+export default Test
