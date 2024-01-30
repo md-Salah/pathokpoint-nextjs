@@ -1,1 +1,1 @@
-export { default as FlashSaleCarousel } from "./FalshSaleCarousel";
+export { default as FlashSaleCarousel } from "./FlashSaleCarousel";
