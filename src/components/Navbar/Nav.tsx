@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import Cart from "./Cart";
 import Logo from "./Logo";
 import SearchIcon from "./SearchIcon";
-import { SearchBar } from "@/components";
+import { Search, SearchBar } from "@/components";
 import { useEffect, useState } from "react";
 
 const Nav = () => {
@@ -40,8 +40,7 @@ const Nav = () => {
             <SearchIcon />
           </div>
           <div className="hidden md:block mr-2">
-            {/* <SearchBar /> */}
-            search
+            <Search />
           </div>
           <Cart />
           <Profile />

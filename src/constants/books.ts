@@ -1,17 +1,20 @@
+const author_url =
+  "http://mdsalah.customerserver003003.eurhosting.net/test/authors/";
+const category_url =
+  "http://mdsalah.customerserver003003.eurhosting.net/test/categories/";
+
 export const books = [
   {
     name: "অপুর সংকেত",
     authors: [
       {
+        src: author_url + "1.jpg",
         name: "Bibhutibhushan Bandopadhyay",
         slug: "bibhutibhushan-bandopadhyay",
       },
     ],
-    subjects: [
-      {
-        name: "উপন্যাস",
-        slug: "uponnas",
-      },
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
     regular_price: 1000,
     sell_price: 250,
@@ -22,8 +25,16 @@ export const books = [
   },
   {
     name: "ফেলুদা সমগ্র",
-    authors: [{ name: "Satyajit Ray", slug: "satyajit-ray" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "Satyajit Ray",
+        slug: "satyajit-ray",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1500,
     sell_price: 400,
     images: ["/books/b (2).jpg"],
@@ -35,11 +46,14 @@ export const books = [
     name: "পথের পাঁচালী",
     authors: [
       {
+        src: author_url + "1.jpg",
         name: "Bibhutibhushan Bandopadhyay Bibhutibhushan Bandopadhyay",
         slug: "bibhutibhushan-bandopadhyay",
       },
     ],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1200,
     sell_price: 300,
     images: ["/books/b (3).jpg"],
@@ -49,8 +63,16 @@ export const books = [
   },
   {
     name: "শঙ্কু সমগ্র",
-    authors: [{ name: "Samaresh Majumdar", slug: "samaresh-majumdar" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "Samaresh Majumdar",
+        slug: "samaresh-majumdar",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1100,
     sell_price: 280,
     images: ["/books/b (4).jpg"],
@@ -62,11 +84,14 @@ export const books = [
     name: "গোপাল ভার",
     authors: [
       {
+        src: author_url + "1.jpg",
         name: "Sarat Chandra Chattopadhyay",
         slug: "sarat-chandra-chattopadhyay",
       },
     ],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1300,
     sell_price: 350,
     images: ["/books/b (5).jpg"],
@@ -77,9 +102,15 @@ export const books = [
   {
     name: "দীপুর জল",
     authors: [
-      { name: "Tarashankar Bandopadhyay", slug: "tarashankar-bandopadhyay" },
+      {
+        src: author_url + "1.jpg",
+        name: "Tarashankar Bandopadhyay",
+        slug: "tarashankar-bandopadhyay",
+      },
     ],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1400,
     sell_price: 380,
     images: ["/books/b (6).jpg"],
@@ -89,8 +120,16 @@ export const books = [
   },
   {
     name: "কবির কবিতা",
-    authors: [{ name: "Kazi Nazrul Islam", slug: "kazi-nazrul-islam" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "Kazi Nazrul Islam",
+        slug: "kazi-nazrul-islam",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 800,
     sell_price: 250,
     images: ["/books/b (7).jpg"],
@@ -100,8 +139,16 @@ export const books = [
   },
   {
     name: "আগন্তুক",
-    authors: [{ name: "Premendra Mitra", slug: "premendra-mitra" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: "",
+        name: "Premendra Mitra",
+        slug: "premendra-mitra",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1200,
     sell_price: 420,
     images: ["/books/b (8).jpg"],
@@ -111,8 +158,16 @@ export const books = [
   },
   {
     name: "গীতাঞ্জলি",
-    authors: [{ name: "Rabindranath Tagore", slug: "rabindranath-tagore" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: "",
+        name: "Rabindranath Tagore",
+        slug: "rabindranath-tagore",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1000,
     sell_price: 350,
     images: ["/books/b (9).jpg"],
@@ -124,11 +179,14 @@ export const books = [
     name: "প্রজাপতির প্রভাতে",
     authors: [
       {
+        src: author_url + "1.jpg",
         name: "Sarat Chandra Chattopadhyay",
         slug: "sarat-chandra-chattopadhyay",
       },
     ],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 900,
     sell_price: 300,
     images: ["/books/b (10).jpg"],
@@ -138,8 +196,16 @@ export const books = [
   },
   {
     name: "হুমায়ুন আহমেদের শ্রেষ্ঠ উপন্যাস",
-    authors: [{ name: "Humayun Ahmed", slug: "humayun-ahmed" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "Humayun Ahmed",
+        slug: "humayun-ahmed",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1600,
     sell_price: 480,
     images: ["/books/b (11).jpg"],
@@ -149,8 +215,16 @@ export const books = [
   },
   {
     name: "সুনীল গঙ্গোপাধ্যায়ের সমগ্র",
-    authors: [{ name: "Sunil Gangopadhyay", slug: "sunil-gangopadhyay" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: "",
+        name: "Sunil Gangopadhyay",
+        slug: "sunil-gangopadhyay",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 2000,
     sell_price: 600,
     images: ["/books/b (12).jpg"],
@@ -160,8 +234,16 @@ export const books = [
   },
   {
     name: "হুমায়ুন আজাদের গল্প",
-    authors: [{ name: "Humayun Azad", slug: "humayun-azad" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: "",
+        name: "Humayun Azad",
+        slug: "humayun-azad",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1100,
     sell_price: 330,
     images: ["/books/b (13).jpg"],
@@ -171,8 +253,16 @@ export const books = [
   },
   {
     name: "ফেলুদা সমগ্র",
-    authors: [{ name: "Satyajit Ray", slug: "satyajit-ray" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: "",
+        name: "Satyajit Ray",
+        slug: "satyajit-ray",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 1800,
     sell_price: 540,
     images: ["/books/b (14).jpg"],
@@ -182,8 +272,16 @@ export const books = [
   },
   {
     name: "ভূতের গল্প",
-    authors: [{ name: "Various", slug: "various" }],
-    subjects: [{ name: "উপন্যাস", slug: "uponnas" }],
+    authors: [
+      {
+        src: "",
+        name: "Various",
+        slug: "various",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
+    ],
     regular_price: 950,
     sell_price: 285,
     images: ["/books/b (15).jpg"],
@@ -193,19 +291,35 @@ export const books = [
   },
   {
     name: "Steal like an artist",
-    authors: [{ name: "Various", slug: "various" }],
-    subjects: [{ name: "Fiction", slug: "fiction" }],
+    authors: [
+      {
+        src: "",
+        name: "Various",
+        slug: "various",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "Fiction", slug: "fiction" },
+    ],
     regular_price: 950,
     sell_price: 285,
     images: ["/books/b (15).jpg"],
-    quantity: 11,
+    quantity: 0,
     condition: "New",
     slug: "steal-like-an-artist",
   },
   {
     name: "The Silent Observer",
-    authors: [{ name: "Emily Blue", slug: "emily-blue" }],
-    subjects: [{ name: "Mystery", slug: "mystery" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "Emily Blue",
+        slug: "emily-blue",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "Mystery", slug: "mystery" },
+    ],
     regular_price: 1200,
     sell_price: 480,
     images: ["/books/b (4).jpg"],
@@ -215,8 +329,16 @@ export const books = [
   },
   {
     name: "Beyond the Horizon",
-    authors: [{ name: "Alex Turner", slug: "alex-turner" }],
-    subjects: [{ name: "Adventure", slug: "adventure" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "Alex Turner",
+        slug: "alex-turner",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "Adventure", slug: "adventure" },
+    ],
     regular_price: 890,
     sell_price: 355,
     images: ["/books/b (7).jpg"],
@@ -226,19 +348,35 @@ export const books = [
   },
   {
     name: "Whispers in the Wind",
-    authors: [{ name: "Sarah Miller", slug: "sarah-miller" }],
-    subjects: [{ name: "Romance", slug: "romance" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "Sarah Miller",
+        slug: "sarah-miller",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "Romance", slug: "romance" },
+    ],
     regular_price: 750,
     sell_price: 300,
     images: ["/books/b (12).jpg"],
-    quantity: 20,
+    quantity: 0,
     condition: "New",
     slug: "whispers-in-the-wind",
   },
   {
     name: "Mind Games",
-    authors: [{ name: "James Black", slug: "james-black" }],
-    subjects: [{ name: "Psychology", slug: "psychology" }],
+    authors: [
+      {
+        src: author_url + "1.jpg",
+        name: "James Black",
+        slug: "james-black",
+      },
+    ],
+    categories: [
+      { src: category_url + "1.webp", name: "Psychology", slug: "psychology" },
+    ],
     regular_price: 1050,
     sell_price: 420,
     images: ["/books/b (17).jpg"],

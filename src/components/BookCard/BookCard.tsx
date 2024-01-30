@@ -37,7 +37,7 @@ const BookCard = ({ book }: { book: any }) => {
       target="_blank"
       className="hover:underline flex-1 mb-2"
     >
-      <p className="truncate text-sm leading-tight text-gray-500">
+      <p className="truncate text-sm leading-tight gray-subtitle">
         {book.authors[0].name}
       </p>
     </Link>

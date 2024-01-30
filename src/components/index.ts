@@ -10,10 +10,13 @@ export { CategoryCarousel } from "./CategoryCarousel";
 export { FlashSaleCarousel } from "./FlashSaleCarousel";
 export { ServiceBanner } from "./ServiceBanner";
 
-// Micro Components
+// Mini Components
 export { ArrowButtons } from "./ArrowButtons";
 export { Heart } from "./Heart";
 export { BookCard } from "./BookCard";
 export { CategoryCard } from "./CategoryCard";
+
+// Search
+export { Search } from "./Search";
 export { SearchBar } from "./SearchBar";
 export { SearchSuggestion } from "./SearchSuggestion";

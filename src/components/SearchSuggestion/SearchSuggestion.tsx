@@ -3,32 +3,25 @@
 import { useState } from "react";
 import { books } from "@/constants";
 import Book from "./Book";
+import Author from "./Author";
+import Category from "./Category";
+import Link from "next/link";
 
 interface Props {
   suggestions: {
     books: typeof books;
     authors: (typeof books)[0]["authors"];
-    subjects: (typeof books)[0]["subjects"];
+    categories: (typeof books)[0]["categories"];
   };
 }
 
 const SearchSuggestion = ({ suggestions }: Props) => {
   const [tab, setTab] = useState(0);
 
-  return (
-    <div className="mt-2 bg-base-100">
-      <div role="tablist" className="tabs tabs-lifted">
-        {/* Tab1: Books */}
-        <input
-          type="radio"
-          name="suggestion-tab"
-          role="tab"
-          className="tab"
-          aria-label="বই"
-          checked={tab === 0}
-          onChange={() => setTab(0)}
-        />
-        <div role="tabpanel" className="tab-content py-4 px-2">
+  const BookTab = () => {
+    return (
+      <div>
+        <div>
           {suggestions.books.length > 0 ? (
             suggestions.books.map((book, index) => (
               <div key={index}>
@@ -41,54 +34,75 @@ const SearchSuggestion = ({ suggestions }: Props) => {
             </div>
           )}
         </div>
+        <Link href={"search/"} className="hover:underline">
+          <h1 className="mt-2 py-1 rounded-md bg-gray-50 text-center mx-auto px-4 hover:bg-gray-200 uppercase text-secondary">
+            See all
+          </h1>
+        </Link>
+      </div>
+    );
+  };
 
-        {/* Tab2: Authors */}
-        <input
-          type="radio"
-          name="suggestion-tab"
-          role="tab"
-          className="tab"
-          aria-label="লেখক"
-          checked={tab === 1}
-          onChange={() => setTab(1)}
-        />
-        <div role="tabpanel" className="tab-content py-4 px-2">
-          {suggestions.authors.length > 0 ? (
-            suggestions.authors.map((author, index) => (
-              <div key={index}>
-                <h1>{author.name}</h1>
-              </div>
-            ))
-          ) : (
-            <div>
-              <p className="text-gray-400">কোন লেখক পাওয়া যায়নি</p>
+  const AuthorTab = () => {
+    return (
+      <div>
+        {suggestions.authors.length > 0 ? (
+          suggestions.authors.map((author, index) => (
+            <div key={index}>
+              <Author author={author} />
             </div>
-          )}
-        </div>
+          ))
+        ) : (
+          <div>
+            <p className="text-gray-400">কোন লেখক পাওয়া যায়নি</p>
+          </div>
+        )}
+      </div>
+    );
+  };
 
-        {/* Tab3: Subjects */}
-        <input
-          type="radio"
-          name="suggestion-tab"
-          role="tab"
-          className="tab"
-          aria-label="বিষয়"
-          checked={tab === 2}
-          onChange={() => setTab(2)}
-        />
-        <div role="tabpanel" className="tab-content py-4 px-2">
-          {suggestions.subjects.length > 0 ? (
-            suggestions.subjects.map((subject, index) => (
-              <div key={index}>
-                <h1>{subject.name}</h1>
-              </div>
-            ))
-          ) : (
-            <div>
-              <p className="text-gray-400">কোন বিষয় পাওয়া যায়নি</p>
+  const CategoryTab = () => {
+    return (
+      <div>
+        {suggestions.categories.length > 0 ? (
+          suggestions.categories.map((category, index) => (
+            <div key={index}>
+              <Category category={category} />
             </div>
-          )}
-        </div>
+          ))
+        ) : (
+          <div>
+            <p className="text-gray-400">কোন ক্যাটাগরি পাওয়া যায়নি</p>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const TabContent = () => {
+    if (tab == 0) return <BookTab />;
+    else if (tab == 1) return <AuthorTab />;
+    if (tab == 2) return <CategoryTab />;
+  };
+
+  return (
+    <div role="tablist" className="pb-2 bg-base-100 rounded-b-md">
+      <div className="tabs tabs-lifted rounded-t-lg mt-3 bg-base-200">
+        {["বই", "লেখক", "ক্যাটাগরি"].map((title, index) => (
+          <a
+            role="tab"
+            key={index}
+            className={`tab ${tab == index ? "tab-active" : ""}`}
+            onClick={() => setTab(index)}
+          >
+            {title}
+          </a>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      <div className="px-2 w-full h-96 overflow-y-scroll">
+        <TabContent />
       </div>
     </div>
   );

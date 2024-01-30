@@ -1,42 +1,50 @@
 import { books } from "@/constants";
-import { ConditionBadge } from "@/micro-components";
+import { ConditionBadge, InStockBadge } from "@/micro-components";
 import Image from "next/image";
 import Link from "next/link";
 
 const Book = ({ book }: { book: (typeof books)[0] }) => {
-  const Price = () => (
-    <div className="flex flex-col min-w-16 items-end">
+  const PriceAndDiscountPercent = () => (
+    <div className="flex flex-col w-20 items-end">
       <span className="text-primary font-bold text-base">{`${book.sell_price} ৳`}</span>
-      <span className="text-sm">{`(${
-        Math.round((book.sell_price / book.regular_price) * 100)
-      }% off)`}</span>
+      <span className="text-sm">{`(${Math.round(
+        (book.sell_price / book.regular_price) * 100
+      )}% off)`}</span>
     </div>
   );
 
   return (
-    <div className="mt-1 w-full bg-white shadow-md rounded-md group hover:bg-gray-50">
-      <Link href={`/books/${book.slug}`}>
-        <div className="card card-side card-compact">
+    <div className="mt-2 w-full bg-gray-50 rounded-md shadow-sm group hover:bg-gray-200">
+      <Link href={`/books/${book.slug}`} className="w-full">
+        <div className="flex flex-row p-2">
           {/* Image */}
-          <div className="w-20 min-w-20 relative">
+          <div className="h-full min-h-20 min-w-14 w-16 relative rounded-md">
             <Image
               src={book.images[0]}
               alt={book.name}
               fill
-              className="object-cover object-top rounded-l-md"
+              className="object-cover object-top rounded-md"
             />
           </div>
 
-          {/* Name & Author */}
-          <div className="flex flex-row card-body justify-between ">
-            <div>
-              <h1 className="card-title text-base line-clamp-2 group-hover:underline">
-                {book.name}
-              </h1>
-              <p className="text-sm line-clamp-1">{book.authors[0].name}</p>
-              <ConditionBadge condition={book.condition} />
+          {/* Name, Author & Price */}
+          <div className="ml-2 mt-1 w-full flex-1">
+            <div className="flex flex-row justify-between">
+              <div className="">
+                <h1 className="text-base line-clamp-2 text-secondary group-hover:underline leading-4">
+                  {book.name}
+                </h1>
+                <p className="text-sm line-clamp-1 gray-subtitle">
+                  {book.authors[0].name}
+                </p>
+              </div>
+              <PriceAndDiscountPercent />
             </div>
-            <Price />
+
+            <div className="flex justify-between items-end ">
+              <ConditionBadge condition={book.condition} />
+              <InStockBadge inStock={book.quantity > 0} />
+            </div>
           </div>
         </div>
       </Link>

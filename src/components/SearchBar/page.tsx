@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 
 interface Props {
   query: string;
-  setQuery: (query: string) => void;
+  handleSearch: (value: string) => void;
 }
 
-const SearchBar = ({query, setQuery}:Props) => {
+const SearchBar = ({query, handleSearch}:Props) => {
   let i = 0;
   const placeholderText = "বই অথবা লেখকের নাম লিখুন";
   const [placeholder, setPlaceholder] = useState("");
@@ -30,19 +30,19 @@ const SearchBar = ({query, setQuery}:Props) => {
   }, []);
 
   return (
-    <div className="lg:w-96">
+    <div className="">
       <label className="form-control w-full relative flex justify-center items-end">
         <input
           type="text"
           value={query}
           placeholder={placeholder}
           className="input input-bordered input-primary w-full input-md lg:text-base"
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e)=>handleSearch(e.target.value)}
         />
         {query.length > 0 && (
           <div
             className="absolute  rounded p-1 mr-2 cursor-pointer hover:bg-gray-200"
-            onClick={() => setQuery("")}
+            onClick={(e)=>handleSearch("")}
           >
             <RxCross2 />
           </div>
