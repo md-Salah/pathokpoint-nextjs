@@ -25,7 +25,7 @@ const ReviewCarousel = () => {
   }, []);
 
   return (
-    <div className="custom-mx custom-mt rounded-md">
+    <div className="custom-px custom-mt pt-7 pb-10 bg-gray-200">
       <h1 className="title title-mb flex-1 text-center">Customer Reviews</h1>
       <Carousel
         autoPlay
@@ -68,7 +68,6 @@ const ReviewCarousel = () => {
             </div>
           );
         }}
-        className="rounded-md"
       >
         {reviews.map((review, index) => (
           <div key={index} className="w-full">

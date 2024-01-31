@@ -435,3 +435,17 @@ export const reviews = [
       "Well-written and thought-provoking. It's a book that stays with you, making you reflect on life and relationships.",
   },
 ];
+
+const authors = [
+  {
+    name: "জহির রায়হান",
+    slug: "jahir-raihan",
+    src: author_url + "1.jpg",
+  },
+];
+
+for (let i = 0; i < books.length; i++) {
+  authors.push(books[i].authors[0]);
+}
+
+export { authors };

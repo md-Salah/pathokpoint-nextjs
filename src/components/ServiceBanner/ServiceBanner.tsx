@@ -5,9 +5,9 @@ import Link from "next/link";
 const ServiceBanner = () => {
   return (
     <div className="custom-mx custom-mt">
-      <div className="flex gap-1 sm:gap-2 md:gap-3 lg:gap-4 xl:gap-9 justify-center">
+      <div className="flex justify-between">
         {services.map((service, index) => (
-          <Link href='/offers/' key={index}>
+          <Link href="/offers/" key={index}>
             <div key={index} className="rounded-md">
               <Image
                 src={service.src}

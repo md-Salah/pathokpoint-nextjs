@@ -1,4 +1,5 @@
 import {
+  AuthorCarousel,
   BookCarousel,
   CategoryCarousel,
   FlashSaleCarousel,
@@ -14,13 +15,13 @@ const Home = () => {
       <BookCarousel title="Featured Books" />
       <CategoryCarousel title="Popular Categories" />
       <BookCarousel title="Recently Added Books" />
-      <CategoryCarousel title="জনপ্রিয় লেখক" />
+      <AuthorCarousel title="জনপ্রিয় লেখক" />
       <FlashSaleCarousel title="Big Sale!" />
       <BookCarousel title="ভারতীয় বাংলা বই" />
       <CategoryCarousel title="Related Categories" />
       <BookCarousel title="সেবা প্রকাশনীর বই" />
       <ServiceBanner />
-      <CategoryCarousel title="Most Visited Authors" />
+      <AuthorCarousel title="Most Visited Authors" />
       <ReviewCarousel />
     </div>
   );

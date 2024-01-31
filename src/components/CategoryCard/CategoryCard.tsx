@@ -16,37 +16,35 @@ interface Props {
 
 const CategoryCard = ({ category }: Props) => {
   const Frame = () => (
-    <Link href={`categories/${category.slug}`}>
-      <figure className="relative w-full h-32 rounded-t-md bg-gray-200">
-        <Image
-          src={category.image}
-          alt={category.name}
-          fill
-          className="object-cover object-bottom"
-          loading="lazy"
-          placeholder="blur"
-          blurDataURL="/books/logo.png"
-          sizes="50vw"
-        />
-      </figure>
-    </Link>
+    <figure className="relative w-full h-32 rounded-t-md bg-gray-200">
+      <Image
+        src={category.image}
+        alt={category.name}
+        fill
+        className="object-cover object-bottom"
+        loading="lazy"
+        placeholder="blur"
+        blurDataURL="/books/logo.png"
+        sizes="50vw"
+      />
+    </figure>
   );
 
   const Title = () => (
-    <Link href={`categories/${category.slug}`}>
-      <h1 className="card-title text-base hover:underline flex-1 truncate">
-        {category.name}
-      </h1>
-    </Link>
+    <h1 className="card-title text-base group-hover:underline flex-1 truncate">
+      {category.name}
+    </h1>
   );
 
   return (
-    <div className="card w-full bg-white shadow-sm rounded-md">
-      <Frame />
+    <div className="card w-full bg-white shadow-sm rounded-md group">
+      <Link href={`categories/${category.slug}`}>
+        <Frame />
 
-      <div className="card-body p-3 gap-0.5 justify-between">
-        <Title />
-      </div>
+        <div className="card-body p-3 gap-0.5 justify-between">
+          <Title />
+        </div>
+      </Link>
     </div>
   );
 };
