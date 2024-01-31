@@ -31,16 +31,19 @@
     @apply text-3xl font-semibold;
 }
 
-.w-49p {
+.w-book {
     width: 49%;
+    @apply sm:w-52;
+    @apply min-w-44;
+    @apply max-w-52;
 }
 
 .gray-subtitle {
     @apply text-gray-500;
 }
 
-@layer utilities {
 
+@layer utilities {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -49,8 +52,6 @@
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
         -ms-overflow-style: none;
-        /* IE and Edge */
         scrollbar-width: none;
-        /* Firefox */
     }
 }

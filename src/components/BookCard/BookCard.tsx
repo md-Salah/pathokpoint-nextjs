@@ -29,7 +29,9 @@ const BookCard = ({ book }: { book: any }) => {
       target="_blank"
       className="hover:underline"
     >
-      <h2 className="card-title text-base leading-normal line-clamp-2">{title}</h2>
+      <h2 className="card-title text-base leading-normal line-clamp-2">
+        {title}
+      </h2>
     </Link>
   );
 
@@ -72,7 +74,7 @@ const BookCard = ({ book }: { book: any }) => {
   );
 
   return (
-    <div className="card carousel-item w-52 bg-white shadow-sm rounded-md">
+    <div className="card w-full bg-white shadow-sm rounded-md">
       <Frame />
 
       <div className="card-body p-3 gap-0.5 justify-between">

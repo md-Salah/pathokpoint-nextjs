@@ -21,7 +21,7 @@ const BookCarousel = ({ title }: Props) => {
           className="carousel carousel-end rounded-md gap-2 w-full"
         >
           {books.map((book, index) => (
-            <div key={index} className="h-fit">
+            <div key={index} className="carousel-item w-book">
               <BookCard book={book} />
             </div>
           ))}
