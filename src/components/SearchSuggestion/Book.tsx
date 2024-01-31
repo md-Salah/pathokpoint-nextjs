@@ -21,7 +21,7 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
           <div className="h-full min-h-16 min-w-14 w-16 relative rounded-md group-hover:opacity-80">
             <Image
               src={book.images[0]}
-              alt={book.name}
+              alt={book.name[0]}
               fill
               sizes="10vw"
               className="object-cover object-top rounded-md"

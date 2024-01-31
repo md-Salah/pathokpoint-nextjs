@@ -7,6 +7,8 @@ import Author from "./Author";
 import Category from "./Category";
 import Link from "next/link";
 
+import { BsArrowRight } from "react-icons/bs";
+
 interface Props {
   suggestions: {
     books: typeof books;
@@ -43,7 +45,7 @@ const SearchSuggestion = ({ suggestions }: Props) => {
         {suggestions.books.length > 0 && (
           <Link href={"search/"} className="hover:underline">
             <button className="btn btn-ghost w-full rounded-none hover:underline mt-1 hover:bg-gray-50">
-              See All
+              See All <BsArrowRight className="inline" />
             </button>
           </Link>
         )}
