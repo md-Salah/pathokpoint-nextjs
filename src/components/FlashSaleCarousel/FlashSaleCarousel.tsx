@@ -21,7 +21,7 @@ const FlashSaleCarousel = ({ title }: Props) => {
           className="carousel carousel-end rounded-md mt-4 gap-2 w-full"
         >
           {books.map((book, index) => (
-            <div key={index} className="carousel-item w-49p sm:w-52">
+            <div key={index} className="carousel-item w-book">
               <BookCard book={book} />
             </div>
           ))}
