@@ -36,6 +36,23 @@ const config: Config = {
           error: "#e11d48",
         },
       },
+      {
+        dark: {
+          primary: "#ff8200",
+          "primary-content": "#f5f5f5",
+          secondary: "#374151",
+          "secondary-content": "#f5f5f5",
+          accent: "#b91c1c",
+          neutral: "#ff8200",
+          "neutral-content": "#f5f5f5",
+          "base-100": "#1f2937",
+          "base-200": "#0f172a",
+          info: "#1e3a8a",
+          success: "#15803d",
+          warning: "#fcd34d",
+          error: "#e11d48",
+        },
+      },
     ],
   },
 };
