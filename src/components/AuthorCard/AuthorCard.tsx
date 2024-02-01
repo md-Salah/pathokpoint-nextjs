@@ -11,17 +11,19 @@ interface Props {
 
 const AuthorCard = ({ author }: Props) => {
   const Frame = () => (
-    <figure className="relative mask mask-squircle w-full h-32 rounded-t-md bg-gray-200">
-      <Image
-        src={author.src}
-        alt={author.name[0]}
-        fill
-        className="object-cover object-bottom"
-        loading="lazy"
-        placeholder="blur"
-        blurDataURL="/books/logo.png"
-        sizes="(max-width: 768px) 33vw, 10vw"
-      />
+    <figure className="relative mask mask-squircle w-full h-32 rounded-t-md bg-base-300">
+      {author.src && (
+        <Image
+          src={author.src}
+          alt={author.name[0]}
+          fill
+          className="object-cover object-bottom"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="/books/logo.png"
+          sizes="(max-width: 768px) 33vw, 10vw"
+        />
+      )}
     </figure>
   );
 
@@ -32,7 +34,7 @@ const AuthorCard = ({ author }: Props) => {
   );
 
   return (
-    <div className="card w-full bg-white shadow-sm rounded-md pt-4 group">
+    <div className="card w-full bg-base-200 shadow-sm rounded-md pt-4 group">
       <Link href={`authors/${author.slug}`}>
         <Frame />
 

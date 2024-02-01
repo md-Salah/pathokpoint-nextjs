@@ -9,7 +9,7 @@ const Heart = () => {
     setLiked(!liked);
   };
   return (
-    <button className="btn btn-sm bg-gray-200" onClick={toggleLike}>
+    <button className="btn btn-sm bg-base-300" onClick={toggleLike}>
       {liked ? (
         <IoMdHeart className="inline-block h-6 w-6 text-error" />
       ) : (

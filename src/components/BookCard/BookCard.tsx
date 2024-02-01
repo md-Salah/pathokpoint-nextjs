@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { Heart } from "@/micro-components";
+import { ConditionBadge, Heart } from "@/micro-components";
 import Link from "next/link";
 
 const BookCard = ({ book }: { book: any }) => {
   const Frame = () => (
     <Link href={`books/${book.slug}`} target="_blank">
-      <figure className="relative h-48 w-full rounded-t-md bg-gray-200">
+      <figure className="relative h-48 w-full rounded-t-md bg-base-300">
         <Image
           src={book.images[0]}
           alt="Book"
@@ -41,22 +41,10 @@ const BookCard = ({ book }: { book: any }) => {
       target="_blank"
       className="hover:underline flex-1 mb-2"
     >
-      <p className="truncate text-sm leading-tight gray-subtitle">
+      <p className="truncate text-sm leading-tight text-secondary-content">
         {book.authors[0].name}
       </p>
     </Link>
-  );
-
-  const Condition = () => (
-    <div
-      className={`badge badge-sm ${
-        book.condition.toLowerCase() == "new"
-          ? "badge-secondary badge-outline"
-          : "badge-warning"
-      }`}
-    >
-      {book.condition}
-    </div>
   );
 
   const Price = () => (
@@ -74,14 +62,14 @@ const BookCard = ({ book }: { book: any }) => {
   );
 
   return (
-    <div className="card w-full bg-white shadow-sm rounded-md">
+    <div className="card w-full bg-base-200 shadow-sm rounded-md">
       <Frame />
 
       <div className="card-body p-3 gap-0.5 justify-between">
         <Title title={book.name} />
         <Author />
-        <Condition />
         <Price />
+        <ConditionBadge condition={book.condition} />
         <ActionButtons />
       </div>
     </div>

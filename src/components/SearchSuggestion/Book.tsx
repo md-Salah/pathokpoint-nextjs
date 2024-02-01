@@ -7,14 +7,14 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
   const PriceAndDiscountPercent = () => (
     <div className="flex flex-col w-20 items-end">
       <span className="text-primary font-bold text-base">{`${book.sell_price} ৳`}</span>
-      <span className="text-sm">{`(${Math.round(
+      <span className="text-sm text-secondary-content -mt-1">{`(${Math.round(
         (book.sell_price / book.regular_price) * 100
       )}% off)`}</span>
     </div>
   );
 
   return (
-    <div className="w-full group border-b border-base-300 item-bg">
+    <div className="w-full group border-b border-base-300 bg-base-200">
       <Link href={`/books/${book.slug}`} className="w-full">
         <div className="flex flex-row p-2">
           {/* Image */}
@@ -32,17 +32,17 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
           <div className="mx-2 w-full flex-1 ">
             <div className="flex flex-row justify-between">
               <div className="">
-                <h1 className="text-base line-clamp-2 text-secondary group-hover:underline leading-4">
+                <h1 className="text-base line-clamp-2 group-hover:underline leading-4">
                   {book.name}
                 </h1>
-                <p className="text-sm line-clamp-1 gray-subtitle">
+                <p className="text-sm line-clamp-1 text-secondary-content">
                   {book.authors[0].name}
                 </p>
               </div>
               <PriceAndDiscountPercent />
             </div>
 
-            <div className="flex justify-between items-end ">
+            <div className="flex justify-between items-end mt-1">
               <ConditionBadge condition={book.condition} />
               <InStockBadge inStock={book.quantity > 0} />
             </div>

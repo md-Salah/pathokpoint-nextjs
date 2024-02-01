@@ -1,8 +1,9 @@
 "use client";
 import { categories } from "@/constants/categories";
-import Title from "./Title";
+
 import { ArrowButtons, CategoryCard } from "@/components";
 import { useRef } from "react";
+import { CarouselTitle, MoreButton } from "@/micro-components";
 
 interface Props {
   title: string;
@@ -14,7 +15,10 @@ const CategoryCarousel = ({ title }: Props) => {
 
   return (
     <div className="custom-mx custom-mt">
-      <Title title={title} />
+      <div className="flex items-center title-mb">
+        <CarouselTitle title={title} />
+        <MoreButton href={"categories/"} />
+      </div>
       <div ref={carouselRef} className="relative">
         <div
           ref={scrollRef}

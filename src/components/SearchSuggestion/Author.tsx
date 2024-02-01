@@ -11,9 +11,9 @@ const Author = ({ author }: Props) => {
   return (
     <div>
       <Link href={`/author/${author.slug}`}>
-        <div className="flex items-center gap-3 mt-0 border-b border-base-300 group item-bg p-1 pl-2">
+        <div className="flex items-center gap-3 mt-0 border-b border-base-300 group bg-base-200 p-1 pl-2">
           <div className="avatar">
-            <div className="mask mask-squircle w-12 h-12 bg-primary text-2xl text-center group-hover:opacity-80">
+            <div className="mask mask-squircle w-12 h-12 text-2xl text-center group-hover:opacity-80">
               {author.src ? (
                 <Image
                   src={author.src}
@@ -28,7 +28,7 @@ const Author = ({ author }: Props) => {
           </div>
           <div>
             <div className="tracking-wide group-hover:underline">{author.name}</div>
-            <div className="text-sm opacity-50">
+            <div className="text-sm opacity-50 mt-1">
               {Math.round(Math.random() * 100) + " টি বই আছে"}
             </div>
           </div>

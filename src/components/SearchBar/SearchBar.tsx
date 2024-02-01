@@ -41,8 +41,8 @@ const SearchBar = ({query, handleSearch}:Props) => {
         />
         {query.length > 0 && (
           <div
-            className="absolute  rounded p-1 mr-2 cursor-pointer hover:bg-gray-200"
-            onClick={(e)=>handleSearch("")}
+            className="absolute  rounded p-1 mr-2 cursor-pointer hover:bg-secondary"
+            onClick={()=>handleSearch("")}
           >
             <RxCross2 />
           </div>

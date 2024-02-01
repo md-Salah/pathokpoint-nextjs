@@ -1,10 +1,19 @@
+'use client';
 import { IoIosLogOut, IoMdHeartEmpty } from "react-icons/io";
+import { GoSun, GoMoon } from "react-icons/go";
 import { BiShoppingBag } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const Profile = () => {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
     <div className="dropdown dropdown-end">
       <div
@@ -42,6 +51,19 @@ const Profile = () => {
             <IoMdHeartEmpty className="inline-block" />
             My Wishlist
           </Link>
+        </li>
+        <li>
+          <label className="swap swap-rotate primary-style justify-start">
+            <input
+              type="checkbox"
+              className="theme-controller"
+              value={theme}
+              onChange={toggleTheme}
+            />
+            <GoSun className="swap-off inline-block" />
+            <GoMoon className="swap-on inline-block" />
+            Theme
+          </label>
         </li>
         <li>
           <Link href="/logout" className="primary-style">

@@ -3,17 +3,7 @@ interface Props {
 }
 
 const ConditionBadge = ({ condition }: Props) => {
-  return (
-    <div
-      className={`badge badge-sm ${
-        condition.toLowerCase() == "new"
-          ? "badge-secondary badge-outline"
-          : "badge-warning"
-      }`}
-    >
-      {condition}
-    </div>
-  );
+  return <div className="badge badge-sm badge-warning">{condition}</div>;
 };
 
 export default ConditionBadge;

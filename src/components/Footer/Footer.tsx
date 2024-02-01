@@ -9,7 +9,7 @@ import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 const Footer = () => {
   return (
     <div className="custom-mt pt-10">
-      <footer className="footer footer-center md:footer py-10 custom-px bg-secondary text-secondary-content">
+      <footer className="footer footer-center bg-neutral text-neutral-content md:footer py-10 custom-px">
         <aside>
           <p className="text-3xl font-semibold">পাঠক পয়েন্ট</p>
           <p className="max-w-72 md:text-justify tracking-wide uppercase">
@@ -46,11 +46,11 @@ const Footer = () => {
           ))}
         </nav>
       </footer>
-      <footer className="footer footer-center pt-8 pb-10 custom-px bg-secondary text-secondary-content border-t border-gray-600">
+      <footer className="footer footer-center bg-neutral text-neutral-content pt-8 pb-10 custom-px border-t border-gray-600">
         <nav>
           <div className="grid grid-flow-col gap-4 items-center">
             <Link
-              href="tell:+8801686347168"
+              href="tel:+8801686347168"
               className="fill-current tooltip"
               data-tip="01686 -347 168"
             >

@@ -16,7 +16,7 @@ interface Props {
 
 const CategoryCard = ({ category }: Props) => {
   const Frame = () => (
-    <figure className="relative w-full h-32 rounded-t-md bg-gray-200">
+    <figure className="relative w-full h-32 rounded-t-md bg-base-300">
       <Image
         src={category.image}
         alt={category.name}
@@ -37,7 +37,7 @@ const CategoryCard = ({ category }: Props) => {
   );
 
   return (
-    <div className="card w-full bg-white shadow-sm rounded-md group">
+    <div className="card w-full bg-base-200 shadow-sm rounded-md group">
       <Link href={`categories/${category.slug}`}>
         <Frame />
 

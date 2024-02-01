@@ -69,7 +69,7 @@ const ReviewCard = ({ review }: any) => {
       </div>
       <div className="flex-1 text-left ml-2">
         <h1>{name}</h1>
-        <p className="text-xs text-gray-400 mt-1">
+        <p className="text-xs text-secondary-content mt-1">
           <span className="mr-2">{date_created}</span>
           <Rating rating={rating} />
         </p>

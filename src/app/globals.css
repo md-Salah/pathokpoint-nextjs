@@ -15,10 +15,6 @@
     @apply mt-12;
 }
 
-.primary-style {
-    @apply hover:bg-primary hover:text-white;
-}
-
 .item-bg {
     @apply bg-white hover:bg-gray-50;
 }
