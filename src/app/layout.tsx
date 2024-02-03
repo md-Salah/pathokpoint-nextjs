@@ -7,7 +7,7 @@ import { ReduxProvider } from "@/redux/provider";
 
 export const metadata: Metadata = {
   title: "Pathok Point",
-  description: "An old and new bookshop in Dhaka, Bangladesh",
+  description: "Best old & new bookshop",
   icons: ["favicon.ico"],
 };
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       <body className={anek.className}>
         <ReduxProvider>
           <main>

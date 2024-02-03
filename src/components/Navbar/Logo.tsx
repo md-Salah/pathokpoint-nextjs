@@ -1,7 +1,9 @@
+"use client";
+import { useAppSelector } from "@/hooks/storeHook";
 import Image from "next/image";
 
 const Logo = () => {
-  const theme = "light";
+  const { theme } = useAppSelector((state) => state.theme);
 
   return (
     <a className="btn btn-link text-xl relative w-32 h-auto" href="/">

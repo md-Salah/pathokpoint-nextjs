@@ -29,7 +29,7 @@ const BookCard = ({ book }: { book: any }) => {
       target="_blank"
       className="hover:underline"
     >
-      <h2 className="card-title text-base leading-normal line-clamp-2">
+      <h2 className="card-title text-base leading-normal line-clamp-1">
         {title}
       </h2>
     </Link>
@@ -49,8 +49,8 @@ const BookCard = ({ book }: { book: any }) => {
 
   const Price = () => (
     <div className="flex items-baseline">
-      <span className="line-through text-sm">{`${book.regular_price} ৳`}</span>
-      <span className="ml-2 text-primary font-bold text-base">{`${book.sell_price} ৳`}</span>
+      <span className="text-primary font-bold text-base">{`${book.sell_price} ৳`}</span>
+      <span className="ml-2 line-through text-sm text-secondary-content">{`${book.regular_price} ৳`}</span>
     </div>
   );
 

@@ -1,18 +1,17 @@
-'use client';
+"use client";
 import { IoIosLogOut, IoMdHeartEmpty } from "react-icons/io";
 import { GoSun, GoMoon } from "react-icons/go";
 import { BiShoppingBag } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+
+import { useAppDispatch, useAppSelector } from "@/hooks/storeHook";
+import { toggleTheme } from "@/redux/features/theme-slice";
 
 const Profile = () => {
-  const [theme, setTheme] = useState("light");
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const { theme } = useAppSelector((state) => state.theme);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="dropdown dropdown-end">
@@ -58,7 +57,7 @@ const Profile = () => {
               type="checkbox"
               className="theme-controller"
               value={theme}
-              onChange={toggleTheme}
+              onChange={() => dispatch(toggleTheme())}
             />
             <GoSun className="swap-off inline-block" />
             <GoMoon className="swap-on inline-block" />
