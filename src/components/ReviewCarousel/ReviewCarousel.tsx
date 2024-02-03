@@ -10,7 +10,7 @@ const ReviewCarousel = () => {
   const [centerSlidePercentage, setCenterSlidePercentage] = useState(100);
 
   const resizeSlide = () => {
-    if (window.innerWidth >= 1100) {
+    if (window.innerWidth >= 1024) {
       setCenterSlidePercentage(32);
     } else {
       setCenterSlidePercentage(100);
@@ -25,7 +25,7 @@ const ReviewCarousel = () => {
   }, []);
 
   return (
-    <div className="custom-px custom-mt pt-7 pb-16 -mb-24 bg-base-300 shadow-inner">
+    <div className="custom-px custom-mt pt-7 shadow-inner">
       <h1 className="title title-mb flex-1 text-center">Customer Reviews</h1>
       <Carousel
         autoPlay
@@ -68,6 +68,7 @@ const ReviewCarousel = () => {
             </div>
           );
         }}
+        className="w-80 lg:w-[1024px] mx-auto"
       >
         {reviews.map((review, index) => (
           <div key={index} className="w-full">

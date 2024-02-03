@@ -17,6 +17,7 @@ const Nav = () => {
         setFixedNavbar(false);
       }
     };
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
 

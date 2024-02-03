@@ -42,6 +42,7 @@ const config: Config = {
           secondary: "#15191e",
           "secondary-content": "#757575",
           accent: "#b91c1c",
+          "base-100": "#36454F",
           success: "#15803d",
         },
       },
