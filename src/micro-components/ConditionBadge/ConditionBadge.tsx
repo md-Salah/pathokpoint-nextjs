@@ -3,7 +3,7 @@ interface Props {
 }
 
 const ConditionBadge = ({ condition }: Props) => {
-  return <div className="badge badge-sm badge-info badge-outline">{condition}</div>;
+  return <div className="badge badge-sm badge-accent">{condition}</div>;
 };
 
 export default ConditionBadge;

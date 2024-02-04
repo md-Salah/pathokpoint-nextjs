@@ -18,7 +18,7 @@ export const books = [
     ],
     regular_price: 1000,
     sell_price: 250,
-    images: ["/books/b (1).jpg"],
+    images: ["/books/b (1).jpg", "/books/b (2).jpg", "/books/b (3).jpg", "/books/b (4).jpg"],
     quantity: 8,
     condition: "New",
     slug: "apura-sanket",
@@ -35,12 +35,17 @@ export const books = [
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
-    regular_price: 1500,
-    sell_price: 400,
+    regular_price: 100,
+    sell_price: 80,
     images: ["/books/b (2).jpg"],
-    quantity: 10,
+    quantity: 1,
     condition: "OLD-Like New",
     slug: "feluda-samagra",
+    short_description: "Feluda Samagra is a collection of Feluda stories by Satyajit Ray.",
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
   },
   {
     name: "পথের পাঁচালী",
@@ -60,6 +65,7 @@ export const books = [
     quantity: 6,
     condition: "OLD-Good Enough",
     slug: "pather-panchali",
+    short_description: "Pather Panchali is a novel by Bibhutibhushan Bandopadhyay.",
   },
   {
     name: "শঙ্কু সমগ্র",
