@@ -1,16 +1,9 @@
-"use client";
 import { Book } from "@/interface";
 import { books } from "@/constants";
-import { Carousel } from "react-responsive-carousel";
-import Image from "next/image";
-import { useState } from "react";
-import {
-  ConditionBadge,
-  ConditionTable,
-  CopyToClipboard,
-} from "@/micro-components";
+import { AddToBooklist, ShareThisBook } from "@/micro-components";
 import Link from "next/link";
-import { FaInfoCircle } from "react-icons/fa";
+import Frame from "./Frame";
+import Condition from "./Condition";
 
 interface Props {
   book: (typeof books)[0];
@@ -21,24 +14,24 @@ const BookDetails = ({ book }: Props) => {
 
   const InfoCard = () => {
     return (
-      <div className="card-body">
+      <div className="card-body w-full overflow-hidden">
         {/* Title */}
-        <div className="flex items-center gap-5">
-          <h2 className="card-title">{book.name}</h2>
-          <CopyToClipboard text={copyText} />
-        </div>
+        <h2 className="card-title">{book.name}</h2>
+        {/* Author */}
+        {book.authors.length > 0 && (
+          <div>
+            by
+            <Link href={"#"} className="hover:underline ml-1 text-info">
+              {book.authors[0].name}
+            </Link>
+          </div>
+        )}
+
+        {/* Short Description */}
         {book.short_description && <p>{book.short_description}</p>}
 
-        {/* Author, Subject, Publisher & Conditon */}
+        {/* Subject, Publisher & Conditon */}
         <div className="mt-2">
-          {book.authors.length > 0 && (
-            <div>
-              <p className="w-20 inline-block">লেখক:</p>
-              <Link href={"#"} className="hover:underline">
-                {book.authors[0].name}
-              </Link>
-            </div>
-          )}
           {book.publisher && (
             <div>
               <p className="w-20 inline-block">প্রকাশনী:</p>
@@ -68,9 +61,9 @@ const BookDetails = ({ book }: Props) => {
               <span className="text-secondary-content line-through">
                 {book.regular_price} ৳
               </span>
-              <span className="text-secondary-content">{`(${
+              <span className="badge badge-accent badge-outline">{`${
                 100 - Math.round((book.sell_price / book.regular_price) * 100)
-              }% off)`}</span>
+              }% ছাড়`}</span>
             </div>
           ) : (
             <span className="text-3xl text-primary font-bold">
@@ -90,125 +83,33 @@ const BookDetails = ({ book }: Props) => {
 
         {/*  Buttons */}
         <div className="card-actions mt-2">
-          {book.quantity > 0 ? (
-            <button className="btn btn-primary w-48">Add to Cart</button>
-          ) : (
-            <button className="btn btn-accent w-48">
-              Get email when available
-            </button>
-          )}
+          <div className="w-full">
+            {book.quantity > 0 ? (
+              <button className="btn btn-primary w-48">Add to Cart</button>
+            ) : (
+              <button className="btn btn-accent w-48">
+                Get email when available
+              </button>
+            )}
+          </div>
+          <div className="mt-2 flex gap-x-5 text-secondary-content flex-wrap">
+            <AddToBooklist />
+            <ShareThisBook text={copyText} />
+          </div>
         </div>
       </div>
     );
   };
 
   return (
-    <section className="custom-mt">
-      <div className="card shadow-xl flex flex-col md:flex-row">
-        <div className="mx-auto w-11/12 md:w-72">
+    <section className="custom-mt w-full">
+      <div className="card shadow-xl sm:flex-row bg-base-200">
+        <div className="mx-auto w-11/12 sm:w-72">
           <Frame images={book.images} />
         </div>
-        <div className="flex-1">
-          <InfoCard />
-        </div>
+        <InfoCard />
       </div>
     </section>
-  );
-};
-
-const Frame = ({ images }: { images: string[] }) => {
-  const [selected, setSelected] = useState(0);
-  return (
-    <div className="py-8 bg-orange-50">
-      <Carousel
-        showArrows={false}
-        showIndicators={false}
-        showStatus={false}
-        showThumbs={false}
-        selectedItem={selected}
-        className="rounded-l-md"
-      >
-        {images.map((src, index) => (
-          <div key={index} className="relative w-64 h-80 rounded-md mx-auto">
-            <Image
-              src={src}
-              alt="Book Image"
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-contain rounded-md"
-            />
-          </div>
-        ))}
-      </Carousel>
-      {images.length > 1 && (
-        <CustomThumbs
-          images={images}
-          selected={selected}
-          setSelected={setSelected}
-        />
-      )}
-    </div>
-  );
-};
-
-const CustomThumbs = ({
-  images,
-  selected,
-  setSelected,
-}: {
-  images: string[];
-  selected: number;
-  setSelected: (index: number) => void;
-}) => {
-  return (
-    <div className="carousel carousel-end bg-orange-50">
-      <ul className="h-14 flex justify-center items-center my-2 mx-auto">
-        {images.map((src, index) => (
-          <li
-            key={index}
-            className={`relative p-2 border-l border-y border-primary cursor-pointer ${
-              index === images.length - 1 ? "border-r rounded-r-md" : ""
-            }
-          ${selected === index ? "opacity-40" : ""}
-          ${index === 0 ? "rounded-l-md" : ""}
-          `}
-            onClick={() => setSelected(index)}
-          >
-            <div className="relative w-10 h-10">
-              <Image
-                src={src}
-                alt="Book Image"
-                fill
-                className="object-cover rounded-md"
-              />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const Condition = ({ condition }: { condition: string }) => {
-  const [showConditionTable, setShowConditionTable] = useState(false);
-
-  const toggleConditonTable = () => {
-    setShowConditionTable((prev) => !prev);
-  };
-  return (
-    <>
-      <div>
-        <p className="w-20 inline-block">কন্ডিশন:</p>
-        <ConditionBadge condition={condition} />
-        <FaInfoCircle
-          className="text-secondary-content inline-block ml-2 cursor-pointer"
-          onClick={toggleConditonTable}
-        />
-      </div>
-      <div className={`my-2 w-full overflow-x-scroll ${!showConditionTable && "hidden"}`}>
-        <ConditionTable />
-      </div>
-    </>
   );
 };
 

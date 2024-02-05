@@ -7,3 +7,5 @@ export { CarouselTitle } from "./CarouselTitle";
 export { default as CopyToClipboard } from "./CopyToClipboard";
 export { default as ConditionTooltip } from "./ConditionTooltip";
 export { default as ConditionTable } from "./ConditionTable";
+export { default as AddToBooklist } from "./AddToBooklist";
+export { default as ShareThisBook } from "./ShareThisBook";

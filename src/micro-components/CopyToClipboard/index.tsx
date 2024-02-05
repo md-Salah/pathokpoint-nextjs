@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaRegCopy } from "react-icons/fa";
 
-const copyToClipboard = ({ text }: { text: string }) => {
+const CopyToClipboard = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);
 
   const copy = () => {
@@ -24,4 +24,4 @@ const copyToClipboard = ({ text }: { text: string }) => {
   );
 };
 
-export default copyToClipboard;
+export default CopyToClipboard;
