@@ -3,7 +3,7 @@ import { platforms } from "@/constants";
 
 const ConditionTable = () => {
   return (
-    <table className="table table-xs table-zebra">
+    <table className="table table-xs table-zebra-zebra">
       <thead>
         <tr>
           <th>কন্ডিশন</th>

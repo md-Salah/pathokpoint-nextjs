@@ -9,3 +9,4 @@ export { default as ConditionTooltip } from "./ConditionTooltip";
 export { default as ConditionTable } from "./ConditionTable";
 export { default as AddToBooklist } from "./AddToBooklist";
 export { default as ShareThisBook } from "./ShareThisBook";
+export { default as Breadcrumbs } from "./Breadcrumbs";

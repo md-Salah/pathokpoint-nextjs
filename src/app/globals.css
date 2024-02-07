@@ -15,6 +15,10 @@
     @apply mt-12;
 }
 
+.card-mt {
+    @apply mt-2;
+}
+
 .item-bg {
     @apply bg-white hover:bg-gray-50;
 }

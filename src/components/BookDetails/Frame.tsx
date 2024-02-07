@@ -50,7 +50,7 @@ const CustomThumbs = ({
   setSelected: (index: number) => void;
 }) => {
   return (
-    <div className="carousel carousel-end bg-orange-50">
+    <div className="carousel carousel-center">
       <ul className="h-14 flex justify-center items-center my-2 mx-auto">
         {images.map((src, index) => (
           <li

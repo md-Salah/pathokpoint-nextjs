@@ -21,7 +21,7 @@ const Condition = ({ condition }: { condition: string }) => {
         />
       </div>
       <div
-        className={`my-2 py-2 shadow-xl rounded-md overflow-x-auto absolute bg-base-300 right-0 left-0 max-w-lg ${
+        className={`mt-4 shadow-xl rounded-md overflow-x-auto absolute bg-base-200 right-0 left-0 max-w-lg ${
           !showConditionTable && "hidden"
         }`}
       >

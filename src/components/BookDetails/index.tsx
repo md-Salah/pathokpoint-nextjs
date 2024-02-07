@@ -17,6 +17,9 @@ const BookDetails = ({ book }: Props) => {
       <div className="card-body w-full overflow-hidden">
         {/* Title */}
         <h2 className="card-title">{book.name}</h2>
+        {/* Short Description */}
+        {book.short_description && <p className="text-secondary-content">{book.short_description}</p>}
+        
         {/* Author */}
         {book.authors.length > 0 && (
           <div>
@@ -27,11 +30,9 @@ const BookDetails = ({ book }: Props) => {
           </div>
         )}
 
-        {/* Short Description */}
-        {book.short_description && <p>{book.short_description}</p>}
 
         {/* Subject, Publisher & Conditon */}
-        <div className="mt-2">
+        <div className="mt-4">
           {book.publisher && (
             <div>
               <p className="w-20 inline-block">প্রকাশনী:</p>
@@ -52,7 +53,7 @@ const BookDetails = ({ book }: Props) => {
         </div>
 
         {/* Price & Discount */}
-        <div className="mt-2">
+        <div className="mt-4">
           {book.sell_price > 0 && book.regular_price > book.sell_price ? (
             <div className="flex gap-4 items-baseline">
               <span className="text-3xl text-primary font-bold">
@@ -73,7 +74,7 @@ const BookDetails = ({ book }: Props) => {
         </div>
 
         {/* Stock */}
-        <div>
+        <div className="mt-4">
           {book.quantity > 0 ? (
             <span className="text-success">{`${book.quantity} in stock`}</span>
           ) : (
@@ -82,7 +83,7 @@ const BookDetails = ({ book }: Props) => {
         </div>
 
         {/*  Buttons */}
-        <div className="card-actions mt-2">
+        <div className="card-actions">
           <div className="w-full">
             {book.quantity > 0 ? (
               <button className="btn btn-primary w-48">Add to Cart</button>
@@ -102,7 +103,7 @@ const BookDetails = ({ book }: Props) => {
   };
 
   return (
-    <section className="custom-mt w-full">
+    <section className="card-mt w-full">
       <div className="card shadow-xl sm:flex-row bg-base-200">
         <div className="mx-auto w-11/12 sm:w-72">
           <Frame images={book.images} />
