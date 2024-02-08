@@ -1,18 +1,14 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Rating from "./Rating";
 
 const ReviewCard = ({ review }: any) => {
-  const [showFullText, setShowFullText] = useState(false);
+  const [showFullText, setShowFullText] = useState(review.images.length === 0);
 
   const toggleFullText = () => {
     setShowFullText(!showFullText);
   };
-
-  useEffect(() => {
-    if (review.images.length == 0) setShowFullText(true);
-  }, []);
 
   const AvatarPlaceholder = ({ letter }: { letter: string }) => (
     <div className="avatar placeholder w-full h-full">
@@ -61,6 +57,8 @@ const ReviewCard = ({ review }: any) => {
               sizes="10vw"
               src={src}
               className="rounded-full object-cover object-bottom"
+              placeholder="blur"
+              blurDataURL="/default/avatar.svg"
             />
           ) : (
             <AvatarPlaceholder letter={name[0]} />

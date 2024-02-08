@@ -9,19 +9,60 @@ export const books = [
     authors: [
       {
         src: author_url + "1.jpg",
-        name: "Bibhutibhushan Bandopadhyay",
+        name: "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
         slug: "bibhutibhushan-bandopadhyay",
+        description: "Some description about the author",
       },
+      
     ],
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
     regular_price: 1000,
     sell_price: 250,
-    images: ["/books/b (1).jpg"],
+    images: [
+      "/books/b (1).jpg",
+      "/books/b (2).jpg",
+      "/books/b (3).jpg",
+      "/books/b (4).jpg",
+    ],
     quantity: 8,
     condition: "New",
     slug: "apura-sanket",
+    description:
+    "Apur Sansar is a novel by Bibhutibhushan Bandopadhyay. It is the third part of the Apu Trilogy. The first two parts are Pather Panchali and Aparajito. The novel was later adapted into a film of the same name by Satyajit Ray.",
+    short_description: '৪৩ তম BCS পরীক্ষা',
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
+    isbn: "978-93-5214-000-0",
+    edition: "1st Edition, 1998",
+    page: 220,
+    translators: [
+      {
+        src: author_url + "1.jpg",
+        name: "Bibhutibhushan Bandopadhyay",
+        slug: "bibhutibhushan-bandopadhyay",
+      },
+      {
+        src: author_url + "1.jpg",
+        name: "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
+        slug: "bibhutibhushan-bandopadhyay",
+      },
+    ],
+    tags: [
+      {
+        name: "Search Tag 1",
+        slug: "bibhutibhushan-bandopadhyay",
+      },
+      {
+        name: "Tag 2",
+        slug: "bibhutibhushan-bandopadhyay",
+      },
+    ],
+    language: "বাংলা",
+    cover: "Hardcover",
   },
   {
     name: "ফেলুদা সমগ্র",
@@ -30,17 +71,24 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Satyajit Ray",
         slug: "satyajit-ray",
+        description: "Some description about the author",
       },
     ],
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
-    regular_price: 1500,
-    sell_price: 400,
+    regular_price: 100,
+    sell_price: 80,
     images: ["/books/b (2).jpg"],
-    quantity: 10,
+    quantity: 1,
     condition: "OLD-Like New",
     slug: "feluda-samagra",
+    short_description:
+      "Feluda Samagra is a collection of Feluda stories by Satyajit Ray.",
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
   },
   {
     name: "পথের পাঁচালী",
@@ -49,17 +97,24 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Bibhutibhushan Bandopadhyay Bibhutibhushan Bandopadhyay",
         slug: "bibhutibhushan-bandopadhyay",
+        description: ''
       },
     ],
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
     regular_price: 1200,
     sell_price: 300,
     images: ["/books/b (3).jpg"],
     quantity: 6,
     condition: "OLD-Good Enough",
     slug: "pather-panchali",
+    short_description:
+      "Pather Panchali is a novel by Bibhutibhushan Bandopadhyay.",
   },
   {
     name: "শঙ্কু সমগ্র",
@@ -68,8 +123,13 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Samaresh Majumdar",
         slug: "samaresh-majumdar",
+        description: '',
       },
     ],
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
@@ -87,8 +147,14 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Sarat Chandra Chattopadhyay",
         slug: "sarat-chandra-chattopadhyay",
+        description: '',
+
       },
     ],
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
@@ -106,6 +172,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Tarashankar Bandopadhyay",
         slug: "tarashankar-bandopadhyay",
+        description: '',
+
       },
     ],
     categories: [
@@ -125,6 +193,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Kazi Nazrul Islam",
         slug: "kazi-nazrul-islam",
+        description: '',
+
       },
     ],
     categories: [
@@ -144,6 +214,8 @@ export const books = [
         src: "",
         name: "Premendra Mitra",
         slug: "premendra-mitra",
+        description: '',
+
       },
     ],
     categories: [
@@ -163,6 +235,8 @@ export const books = [
         src: "",
         name: "Rabindranath Tagore",
         slug: "rabindranath-tagore",
+        description: '',
+
       },
     ],
     categories: [
@@ -182,6 +256,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Sarat Chandra Chattopadhyay",
         slug: "sarat-chandra-chattopadhyay",
+        description: '',
+
       },
     ],
     categories: [
@@ -201,6 +277,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Humayun Ahmed",
         slug: "humayun-ahmed",
+        description: '',
+
       },
     ],
     categories: [
@@ -220,6 +298,8 @@ export const books = [
         src: "",
         name: "Sunil Gangopadhyay",
         slug: "sunil-gangopadhyay",
+        description: '',
+
       },
     ],
     categories: [
@@ -239,6 +319,8 @@ export const books = [
         src: "",
         name: "Humayun Azad",
         slug: "humayun-azad",
+        description: '',
+
       },
     ],
     categories: [
@@ -258,6 +340,8 @@ export const books = [
         src: "",
         name: "Satyajit Ray",
         slug: "satyajit-ray",
+        description: '',
+
       },
     ],
     categories: [
@@ -277,6 +361,8 @@ export const books = [
         src: "",
         name: "Various",
         slug: "various",
+        description: '',
+
       },
     ],
     categories: [
@@ -296,6 +382,8 @@ export const books = [
         src: "",
         name: "Various",
         slug: "various",
+        description: '',
+
       },
     ],
     categories: [
@@ -315,6 +403,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Emily Blue",
         slug: "emily-blue",
+        description: '',
+
       },
     ],
     categories: [
@@ -334,6 +424,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Alex Turner",
         slug: "alex-turner",
+        description: '',
+
       },
     ],
     categories: [
@@ -353,6 +445,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "Sarah Miller",
         slug: "sarah-miller",
+        description: '',
+
       },
     ],
     categories: [
@@ -372,6 +466,8 @@ export const books = [
         src: author_url + "1.jpg",
         name: "James Black",
         slug: "james-black",
+        description: '',
+
       },
     ],
     categories: [

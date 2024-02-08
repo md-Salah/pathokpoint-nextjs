@@ -24,7 +24,7 @@ const CategoryCard = ({ category }: Props) => {
         className="object-cover object-bottom"
         loading="lazy"
         placeholder="blur"
-        blurDataURL="/books/logo.png"
+        blurDataURL="/default/category.svg"
         sizes="50vw"
       />
     </figure>

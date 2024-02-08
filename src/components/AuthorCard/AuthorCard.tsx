@@ -20,7 +20,7 @@ const AuthorCard = ({ author }: Props) => {
           className="object-cover object-bottom"
           loading="lazy"
           placeholder="blur"
-          blurDataURL="/books/logo.png"
+          blurDataURL="/default/author.svg"
           sizes="(max-width: 768px) 33vw, 10vw"
         />
       )}

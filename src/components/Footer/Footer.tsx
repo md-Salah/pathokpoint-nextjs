@@ -1,6 +1,11 @@
 import Link from "next/link";
-import { FaMapMarkerAlt } from "react-icons/fa";
+
+// Constants
 import { legal, shopBy, usefulLinks } from "@/constants/footer";
+import { platforms } from "@/constants";
+
+// Icon imports
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { LuMail } from "react-icons/lu";
 import { MdOutlineCall } from "react-icons/md";
 import { RiFacebookCircleLine, RiMessengerLine } from "react-icons/ri";
@@ -50,44 +55,45 @@ const Footer = () => {
         <nav>
           <div className="grid grid-flow-col gap-4 items-center">
             <Link
-              href="tel:+8801686347168"
-              className="fill-current tooltip"
-              data-tip="01686 -347 168"
+              href={platforms.Phone.href}
+              className="tooltip tooltip-primary"
+              data-tip={platforms.Phone.tooltip}
             >
               <MdOutlineCall className="w-6 h-6" />
             </Link>
+
             <Link
-              href="mailto:hello@pathokpoint.com"
-              className="fill-current tooltip"
-              data-tip="hello@pathokpoint.com"
+              href={platforms.Email.href}
+              className="tooltip tooltip-primary"
+              data-tip={platforms.Email.tooltip}
             >
               <LuMail className="w-6 h-6" />
             </Link>
             <Link
-              href="https://m.me/pathok.point"
-              className="fill-current tooltip"
-              data-tip="Messenger"
+              href={platforms.Messenger.href}
+              className="tooltip tooltip-primary"
+              data-tip={platforms.Messenger.tooltip}
             >
               <RiMessengerLine className="w-7 h-7" />
             </Link>
             <Link
-              href="https://www.facebook.com/pathok.point"
-              className="fill-current tooltip"
-              data-tip="Facebook"
+              href={platforms.Facebook.href}
+              className="tooltip tooltip-primary"
+              data-tip={platforms.Facebook.tooltip}
             >
               <RiFacebookCircleLine className="w-7 h-7" />
             </Link>
             <Link
-              href="https://wa.me/8801835963652"
-              className="fill-current tooltip"
-              data-tip="Whatsapp"
+              href={platforms.WhatsApp.href}
+              className="tooltip tooltip-primary"
+              data-tip={platforms.WhatsApp.tooltip}
             >
               <BsWhatsapp className="w-6 h-6" />
             </Link>
             <Link
-              href="https://www.instagram.com/pathok.point/"
-              className="fill-current tooltip"
-              data-tip="Instagram"
+              href={platforms.Instagram.href}
+              className="tooltip tooltip-primary"
+              data-tip={platforms.Instagram.tooltip}
             >
               <BsInstagram className="w-6 h-6" />
             </Link>

@@ -15,6 +15,11 @@ export { FlashSaleCarousel } from "./FlashSaleCarousel";
 export { ServiceBanner } from "./ServiceBanner";
 export { ReviewCarousel } from "./ReviewCarousel";
 
+// books/[slug]
+export { default as BookDetails } from "./BookDetails";
+export { default as VariationSlider } from "./VariationSlider";
+export { default as AdditionalInfo } from "./AdditionalInfo";
+
 // Mini Components
 export { ArrowButtons } from "./ArrowButtons";
 export { BookCard } from "./BookCard";

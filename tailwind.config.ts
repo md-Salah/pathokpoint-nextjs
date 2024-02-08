@@ -7,15 +7,7 @@ const config: Config = {
     "./src/micro-components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-    },
-  },
+  theme: {},
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
@@ -26,7 +18,8 @@ const config: Config = {
           "primary-content": "#f5f5f5",
           secondary: "#e5e7eb",
           "secondary-content": "#9E9E9E",
-          accent: "#b91c1c",
+          accent: "#5F0F40",
+          "accent-content": "#EFECEC",
           "base-100": "#f5f5f5",
           "base-200": "#ffffff",
           info: "#1e3a8a",
@@ -48,5 +41,6 @@ const config: Config = {
       },
     ],
   },
+  darkMode: ["class", '[data-theme="dark"]']
 };
 export default config;

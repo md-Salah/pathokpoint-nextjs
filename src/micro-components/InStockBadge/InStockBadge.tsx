@@ -5,7 +5,7 @@ interface Props {
 const InStockBadge = ({ inStock }: Props) => {
   return (
     <div
-      className={`badge badge-sm ${inStock ? "badge-success w-16" : "badge-accent w-20"} `}
+      className={`badge badge-sm badge-outline ${inStock ? "badge-success w-16" : "badge-error w-20"} `}
     >
       {inStock ? "In stock" : "Out of stock"}
     </div>
