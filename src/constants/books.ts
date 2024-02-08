@@ -103,6 +103,10 @@ export const books = [
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
     regular_price: 1200,
     sell_price: 300,
     images: ["/books/b (3).jpg"],
@@ -122,6 +126,10 @@ export const books = [
         description: '',
       },
     ],
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],
@@ -143,6 +151,10 @@ export const books = [
 
       },
     ],
+    publisher: {
+      name: "আনন্দ পাবলিশার্স",
+      slug: "ananda-publishers",
+    },
     categories: [
       { src: category_url + "1.webp", name: "উপন্যাস", slug: "uponnas" },
     ],

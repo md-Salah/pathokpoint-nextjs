@@ -3,91 +3,26 @@ import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 const Brand = () => {
   return (
     <div className="pl-8 pt-8 min-h-screen w-full overflow-scroll">
-      {/* <div className="text-2xl">
-        <p className="font-bold">
-          Font:
-          <br />
-          Bold: This is an English text
-        </p>
-        <p className="font-bold">Bold: এটি বাংলা লেখা</p>
-        <br />
-
-        <p className="font-semibold">Semibold: This is an English text</p>
-        <p className="font-semibold">Semibold: এটি বাংলা লেখা</p>
-        <br />
-
-        <p className="font-normal">Normal: This is an English text</p>
-        <p className="font-normal">Normal: এটি বাংলা লেখা</p>
-        <br />
-
-        <p className="font-light">Light: This is an English text</p>
-        <p className="font-light">Light: এটি বাংলা লেখা</p>
-      </div> */}
 
       <div className="mt-8">
         <div className="title">Button with brand colors</div>
         <div className="flex gap-1">
-          <button className="btn">Button</button>
-          <button className="btn btn-neutral">Neutral</button>
           <button className="btn btn-primary">Primary</button>
-          <button className="btn btn-secondary">Secondary</button>
-          <button className="btn btn-accent">Accent</button>
-          <button className="btn btn-ghost">Ghost</button>
-          <button className="btn btn-link">Link</button>
+          <button className="btn btn-neutral">Neutral</button>
+          <button className="btn">Default</button>
         </div>
       </div>
 
-      {/* <div className="mt-8">
-        <div className="title">Button active</div>
-        <div className="flex gap-1">
-          <button className="btn btn-active">Default</button>
-          <button className="btn btn-active btn-neutral">Neutral</button>
-          <button className="btn btn-active btn-primary">Primary</button>
-          <button className="btn btn-active btn-ghost">Ghost</button>
-          <button className="btn btn-active btn-link">Link</button>
-        </div>
-      </div> */}
-      <div className="mt-8">
-        <div className="title">State colors</div>
-        <div className="flex gap-1">
-          <button className="btn btn-info">Info</button>
-          <button className="btn btn-success">Success</button>
-          <button className="btn btn-warning">Warning</button>
-          <button className="btn btn-error">Error</button>
-        </div>
-      </div>
       <div className="mt-8">
         <div className="title">Outline buttons</div>
         <div className="flex gap-1">
-          <button className="btn btn-outline">Default</button>
-          <button className="btn btn-outline btn-neutral">Neutral</button>
           <button className="btn btn-outline btn-primary">Primary</button>
-          <button className="btn btn-outline btn-accent">Accent</button>
+          <button className="btn btn-outline btn-neutral">Neutral</button>
         </div>
       </div>
-      {/* <div className="mt-8">
-        <div className="title">Button sizes</div>
-        <div className="flex gap-1">
-          <button className="btn btn-lg">Large</button>
-          <button className="btn">Normal</button>
-          <button className="btn btn-sm">Small</button>
-          <button className="btn btn-xs">Tiny</button>
-        </div>
-      </div> */}
-      {/* <div className="mt-8">
-        <div className="title">Button wide</div>
-        <div className="flex gap-1">
-          <button className="btn btn-wide">Wide</button>
-        </div>
-      </div>
+      
       <div className="mt-8">
-        <div className="title">Glass button</div>
-        <div className="flex gap-1">
-          <button className="btn glass">Glass button</button>
-        </div>
-      </div> */}
-      <div className="mt-8">
-        <h1 className="title">Text Styles</h1>
+        <h1 className="title">Common Components</h1>
         <div className="flex flex-col gap-2">
           <h1 className="line-through">1000 ৳</h1>
           <h1 className="text-primary">250 ৳</h1>
@@ -102,7 +37,7 @@ const Brand = () => {
           <button className="btn btn-sm w-16">
             <IoMdHeart className="inline-block h-6 w-6 text-error" />
           </button>
-          <button className="btn btn-sm w-16">
+          <button className="btn btn-sm btn-neutral btn-outline w-16">
             <IoMdHeartEmpty className="inline-block h-6 w-6" />
           </button>
           <div className="badge badge-outline cursor-pointer hover:text-primary font-semibold p-3">

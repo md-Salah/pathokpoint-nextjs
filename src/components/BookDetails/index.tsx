@@ -4,6 +4,7 @@ import { AddToBooklist, ShareThisBook } from "@/micro-components";
 import Link from "next/link";
 import Frame from "./Frame";
 import Condition from "./Condition";
+import { VariationSlider } from "@/components";
 
 interface Props {
   book: (typeof books)[0];
@@ -15,21 +16,26 @@ const BookDetails = ({ book }: Props) => {
   const InfoCard = () => {
     return (
       <div className="card-body w-full overflow-hidden">
-        {/* Title */}
-        <h2 className="card-title">{book.name}</h2>
-        {/* Short Description */}
-        {book.short_description && <p className="text-secondary-content">{book.short_description}</p>}
-        
-        {/* Author */}
-        {book.authors.length > 0 && (
-          <div>
-            by
-            <Link href={"#"} className="hover:underline ml-1 text-info">
-              {book.authors[0].name}
-            </Link>
-          </div>
-        )}
+        <div>
+          {/* Title */}
+          <h2 className="card-title">{book.name}</h2>
+          {/* Short Description */}
+          {book.short_description && (
+            <div>
+              <p className="text-secondary-content">{book.short_description}</p>
+            </div>
+          )}
 
+          {/* Author */}
+          {book.authors.length > 0 && (
+            <div>
+              by
+              <Link href={"#"} className="hover:underline ml-1 text-info">
+                {book.authors[0].name}
+              </Link>
+            </div>
+          )}
+        </div>
 
         {/* Subject, Publisher & Conditon */}
         <div className="mt-4">
@@ -55,16 +61,24 @@ const BookDetails = ({ book }: Props) => {
         {/* Price & Discount */}
         <div className="mt-4">
           {book.sell_price > 0 && book.regular_price > book.sell_price ? (
-            <div className="flex gap-4 items-baseline">
-              <span className="text-3xl text-primary font-bold">
-                {book.sell_price} ৳
-              </span>
-              <span className="text-secondary-content line-through">
-                {book.regular_price} ৳
-              </span>
-              <span className="badge badge-accent badge-outline">{`${
-                100 - Math.round((book.sell_price / book.regular_price) * 100)
-              }% ছাড়`}</span>
+            <div>
+              <div className="flex gap-4 items-baseline">
+                <span className="text-3xl text-primary font-bold">
+                  {book.sell_price} ৳
+                </span>
+                <span className="text-secondary-content line-through">
+                  {book.regular_price} ৳
+                </span>
+              </div>
+              <div className="">
+                <span className="font-semibold">{`${
+                  book.regular_price - book.sell_price
+                } `}</span>
+                <span className="mr-2">টাকা সাশ্রয় হচ্ছে</span>
+                <span className="badge badge-accent badge-outline">{`${
+                  100 - Math.round((book.sell_price / book.regular_price) * 100)
+                }% ছাড়`}</span>
+              </div>
             </div>
           ) : (
             <span className="text-3xl text-primary font-bold">
@@ -104,11 +118,18 @@ const BookDetails = ({ book }: Props) => {
 
   return (
     <section className="card-mt w-full">
-      <div className="card shadow-xl sm:flex-row bg-base-200">
-        <div className="mx-auto w-11/12 sm:w-72">
-          <Frame images={book.images} />
+      <div className="card lg:flex-row">
+        <div className="flex flex-col flex-1 bg-base-200 rounded-md lg:rounded-r-none shadow-sm sm:flex-row">
+          <div className="mx-auto w-11/12 sm:w-72">
+            <Frame images={book.images} />
+          </div>
+          <div className="min-w-96 flex-1">
+            <InfoCard />
+          </div>
         </div>
-        <InfoCard />
+        <div className="w-full bg-base-200 lg:bg-gray-50 rounded-md mt-2 lg:mt-0 lg:rounded-l-none lg:max-w-96 shadow-sm">
+          <VariationSlider />
+        </div>
       </div>
     </section>
   );

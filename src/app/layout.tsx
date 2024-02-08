@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
-const anek = Anek_Bangla({ subsets: ["bengali"] });
+const anek = Anek_Bangla({ subsets: ["bengali", "latin"] });
 import "./globals.css";
 import { Footer, Navbar } from "@/components";
 import { ReduxProvider } from "@/redux/provider";

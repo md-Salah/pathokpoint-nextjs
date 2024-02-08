@@ -20,22 +20,22 @@ const AdditionalInfo = ({ book }: Props) => {
             No description available
           </p>
         )}
-        <table className="mt-8 table">
+        <table className="mt-8 table lg:w-1/2">
           <tbody>
             {book.edition && (
-              <tr className="bg-base-100 rounded-md">
+              <tr>
                 <td className="font-semibold">Edition</td>
                 <td>{book.edition}</td>
               </tr>
             )}
             {book.cover && (
-              <tr className="bg-base-100 rounded-md">
+              <tr>
                 <td className="font-semibold">Cover</td>
                 <td>{book.cover}</td>
               </tr>
             )}
             {book.translators?.length && (
-              <tr className="bg-base-100 rounded-md">
+              <tr>
                 <td className="font-semibold">Translator</td>
                 <td>
                   {book.translators.map((translator, index) => (
@@ -50,25 +50,25 @@ const AdditionalInfo = ({ book }: Props) => {
               </tr>
             )}
             {book.language && (
-              <tr className="bg-base-100 rounded-md">
+              <tr>
                 <td className="font-semibold">Language</td>
                 <td>{book.language}</td>
               </tr>
             )}
             {book.isbn && (
-              <tr className="bg-base-100 rounded-md">
+              <tr>
                 <td className="font-semibold">ISBN</td>
                 <td>{book.isbn}</td>
               </tr>
             )}
             {book.page && (
-              <tr className="bg-base-100 rounded-md">
+              <tr>
                 <td className="font-semibold">Number of Pages</td>
                 <td>{book.page}</td>
               </tr>
             )}
             {book.tags?.length && (
-              <tr className="bg-base-100 rounded-md">
+              <tr>
                 <td className="font-semibold">Search Tags</td>
                 <td>
                   {book.tags.map((tag, index) => (
@@ -92,7 +92,12 @@ const AdditionalInfo = ({ book }: Props) => {
     return (
       <div className="">
         {book.authors.map((author, index) => (
-          <div className={`flex flex-col sm:flex-row gap-5 sm:gap-10 pb-6 mt-4 ${index != book.authors.length - 1 && "border-b"}`}>
+          <div
+            key={index}
+            className={`flex flex-col sm:flex-row gap-5 sm:gap-10 pb-6 mt-4 ${
+              index != book.authors.length - 1 && "border-b"
+            }`}
+          >
             <div className="flex sm:flex-col">
               <Image
                 src={author.src}
