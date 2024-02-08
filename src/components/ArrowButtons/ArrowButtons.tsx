@@ -32,9 +32,10 @@ const ArrowButtons = ({ carouselRef, scrollRef }: Props) => {
 
   useEffect(() => {
     canScroll();
-    scrollRef.current?.addEventListener("scroll", canScroll);
-    return () => scrollRef.current?.removeEventListener("scroll", canScroll);
-  }, []);
+    const scrollDiv = scrollRef.current;
+    scrollDiv?.addEventListener("scroll", canScroll);
+    return () => scrollDiv?.removeEventListener("scroll", canScroll);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="absolute hidden md:flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

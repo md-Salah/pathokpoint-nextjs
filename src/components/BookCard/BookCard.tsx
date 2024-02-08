@@ -3,9 +3,19 @@ import { ConditionBadge, Heart } from "@/micro-components";
 import Link from "next/link";
 
 const BookCard = ({ book }: { book: any }) => {
+  const DiscountBadge = ({ discount }: { discount: number }) => {
+    return (
+      <div
+        className={`absolute top-1 right-1 rounded-md p-3 opacity-85 font-bold mask mask-hexagon-2 bg-[#ff0000] text-white`}
+      >
+        {discount}%
+      </div>
+    );
+  };
+
   const Frame = () => (
     <Link href={`books/${book.slug}`} target="_blank">
-      <figure className="relative h-48 w-full rounded-t-md bg-base-300">
+      <figure className="relative h-48 w-full rounded-t-md bg-gray-200 dark:bg-gray-800">
         <Image
           src={book.images[0]}
           alt="Book"
@@ -13,12 +23,10 @@ const BookCard = ({ book }: { book: any }) => {
           className="object-contain object-top"
           sizes="50vw"
           loading="lazy"
+          placeholder="blur"
+          blurDataURL="/default/book.svg"
         />
-        <div
-          className={`absolute top-0 left-0 rounded-md p-3.5 badge badge-primary font-bold`}
-        >
-          25%
-        </div>
+        <DiscountBadge discount={25} />
       </figure>
     </Link>
   );

@@ -11,7 +11,7 @@ interface Props {
 const VariationSlider = () => {
   const Book = ({ book }: any) => {
     return (
-      <div className="w-full group border-b border-base-300 carousel-item">
+      <div className="w-full group carousel-item">
         <Link href={`/books/${book.slug}`} className="w-full">
           <div className="flex flex-row py-2">
             {/* Image */}
@@ -22,6 +22,8 @@ const VariationSlider = () => {
                 fill
                 sizes="10vw"
                 className="object-cover object-top"
+                placeholder="blur"
+                blurDataURL="/default/book.svg"
               />
             </div>
 
@@ -58,7 +60,7 @@ const VariationSlider = () => {
       <div className="p-4">
         <h1 className="font-bold pb-2 text-lg border-b">Variation</h1>
         <div className="carousel carousel-vertical max-h-96">
-          {books.slice(0, 2).map((book, index) => (
+          {books.slice(0, 6).map((book, index) => (
             <Book key={index} book={book} />
           ))}
         </div>

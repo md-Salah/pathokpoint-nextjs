@@ -29,7 +29,7 @@ const BookDetails = ({ book }: Props) => {
           {/* Author */}
           {book.authors.length > 0 && (
             <div>
-              by
+              By
               <Link href={"#"} className="hover:underline ml-1 text-info">
                 {book.authors[0].name}
               </Link>
@@ -42,7 +42,7 @@ const BookDetails = ({ book }: Props) => {
           {book.publisher && (
             <div>
               <p className="w-20 inline-block">প্রকাশনী:</p>
-              <Link href={"#"} className="hover:underline">
+              <Link href={"#"} className="hover:underline text-info">
                 {book.publisher.name}
               </Link>
             </div>
@@ -50,7 +50,7 @@ const BookDetails = ({ book }: Props) => {
           {book.categories.length > 0 && (
             <div>
               <p className="w-20 inline-block">বিষয়:</p>
-              <Link href={"#"} className="hover:underline">
+              <Link href={"#"} className="hover:underline text-info">
                 {book.categories[0].name}
               </Link>
             </div>
@@ -127,7 +127,7 @@ const BookDetails = ({ book }: Props) => {
             <InfoCard />
           </div>
         </div>
-        <div className="w-full bg-base-200 lg:bg-gray-50 rounded-md mt-2 lg:mt-0 lg:rounded-l-none lg:max-w-96 shadow-sm">
+        <div className="w-full bg-base-200 lg:bg-gray-50 lg:dark:bg-gray-800 rounded-md mt-2 lg:mt-0 lg:rounded-l-none lg:max-w-96 shadow-sm">
           <VariationSlider />
         </div>
       </div>

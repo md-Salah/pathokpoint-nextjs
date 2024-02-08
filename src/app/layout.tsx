@@ -4,6 +4,7 @@ const anek = Anek_Bangla({ subsets: ["bengali", "latin"] });
 import "./globals.css";
 import { Footer, Navbar } from "@/components";
 import { ReduxProvider } from "@/redux/provider";
+import { ThemeProvider } from "@/redux/theme";
 
 export const metadata: Metadata = {
   title: "Pathok Point",
@@ -21,9 +22,11 @@ export default function RootLayout({
       <body className={anek.className}>
         <ReduxProvider>
           <main>
-            <Navbar />
-            {children}
-            <Footer />
+            <ThemeProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </ThemeProvider>
           </main>
         </ReduxProvider>
       </body>

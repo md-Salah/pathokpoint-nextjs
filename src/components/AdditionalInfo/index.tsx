@@ -41,7 +41,7 @@ const AdditionalInfo = ({ book }: Props) => {
                   {book.translators.map((translator, index) => (
                     <span key={index} className="">
                       {index > 0 && ", "}
-                      <span className="hover:underline hover:cursor-pointer text-blue-800">
+                      <span className="hover:underline hover:cursor-pointer text-info">
                         {translator.name}
                       </span>
                     </span>
@@ -74,7 +74,7 @@ const AdditionalInfo = ({ book }: Props) => {
                   {book.tags.map((tag, index) => (
                     <span key={index} className="">
                       {index > 0 && ", "}
-                      <span className="hover:underline hover:cursor-pointer text-blue-800">
+                      <span className="hover:underline hover:cursor-pointer text-info">
                         {tag.name}
                       </span>
                     </span>
@@ -105,6 +105,8 @@ const AdditionalInfo = ({ book }: Props) => {
                 width={100}
                 height={100}
                 className="mask mask-circle"
+                placeholder="blur"
+                blurDataURL="/default/author.svg"
               />
               <div className="ml-5 sm:ml-0">
                 <p className="font-semibold sm:hidden">{author.name}</p>

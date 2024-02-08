@@ -19,10 +19,12 @@ const Frame = ({ images }: { images: string[] }) => {
           <div key={index} className="relative w-64 h-80 rounded-md mx-auto">
             <Image
               src={src}
-              alt="Book Image"
+              alt={`Image ${index + 1}`}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-contain rounded-md"
+              placeholder="blur"
+              blurDataURL="/default/book.svg"
             />
           </div>
         ))}
@@ -69,6 +71,8 @@ const CustomThumbs = ({
                 alt="Book Image"
                 fill
                 className="object-cover rounded-md"
+                placeholder="blur"
+                blurDataURL="/default/book.svg"
               />
             </div>
           </li>
