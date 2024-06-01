@@ -7,6 +7,7 @@ export { SecondNav } from "./SecondNav";
 export { Footer } from "./Footer";
 
 // Home
+export { default as Carousel } from "./Carousel";
 export { HeroSection } from "./HeroSection";
 export { BookCarousel } from "./BookCarousel";
 export { CategoryCarousel } from "./CategoryCarousel";

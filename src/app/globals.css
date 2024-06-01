@@ -3,6 +3,74 @@
 @tailwind utilities;
 
 
+.font-bn {
+    font-family: var(--font-anek-bangla);
+}
+
+.container {
+    width: 1328px;
+    max-width: 90%;
+    @apply mx-auto;
+}
+
+.slick-slide {
+    margin: 0 4px;
+}
+
+
+
+.half-underline {
+    position: relative;
+}
+
+.half-underline:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40%;
+    border-bottom: 2px solid #ff8200;
+    transition: width 0.3s ease, transition-delay 0.3s;
+}
+
+.half-underline:hover:before {
+    width: 100%;
+}
+
+/* OLD */
+input[type="text"],
+input[type="password"] {
+    color: #9B9B9C;
+    /* Black 04 */
+    background-color: #F2F2F2;
+    /* Black 07 */
+    border-color: #CDCDCD;
+    /* Black 05 */
+    font-size: 0.875rem;
+    @apply rounded;
+    @apply border;
+    outline: none;
+}
+
+input:focus {
+    border-color: #ff8200;
+}
+
+.input:focus {
+    @apply outline-none;
+    @apply border-primary;
+}
+
+
+.black-4 {
+    color: #9B9B9C;
+}
+
+.bg-black-7 {
+    background-color: #F2F2F2;
+}
+
+
 .custom-px {
     @apply px-2 md:px-5 lg:px-12 xl:px-24 2xl:px-36;
 }
@@ -43,6 +111,7 @@
 }
 
 @layer utilities {
+
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
         display: none;

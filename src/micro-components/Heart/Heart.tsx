@@ -9,11 +9,11 @@ const Heart = () => {
     setLiked(!liked);
   };
   return (
-    <button className="btn btn-sm bg-base-300" onClick={toggleLike}>
+    <button className="btn btn-sm bg-[#F1F2F4] border-none" onClick={toggleLike}>
       {liked ? (
-        <IoMdHeart className="inline-block h-6 w-6 text-error" />
+        <IoMdHeart className="inline-block h-6 w-6 text-[#F2213A]" />
       ) : (
-        <IoMdHeartEmpty className="inline-block h-6 w-6" />
+        <IoMdHeartEmpty className="inline-block h-6 w-6 text-primary" />
       )}
     </button>
   );

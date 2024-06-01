@@ -1,8 +1,9 @@
 import { Category } from "./category";
 import { Author } from "./author";
+import { Image } from "./image";
 
 export interface Book {
-  id: number;
+  id: string;
   name: string;
   authors: Array<Author>;
   categories: Array<Category>;
@@ -13,7 +14,5 @@ export interface Book {
   condition: string;
   slug: string;
   short_description: string;
-  images: Array<{
-    src: string;
-  }>;
+  images: Array<Image>;
 }

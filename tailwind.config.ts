@@ -9,11 +9,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        black02: "#363739",
+        black04: "#9B9B9C",
+        black06: "#E6E6E6",
       },
+      fontSize: {
+        'xxs': '0.625rem', // 10px
+      }
     },
   },
   plugins: [require("daisyui")],
@@ -23,30 +26,34 @@ const config: Config = {
         light: {
           ...require("daisyui/src/theming/themes")["light"],
           primary: "#ff8200",
-          "primary-content": "#f5f5f5",
+          "primary-content": "#FFFFFF",
           secondary: "#e5e7eb",
-          "secondary-content": "#9E9E9E",
+          "secondary-content": "#9B9B9C",
           accent: "#b91c1c",
           "base-100": "#f5f5f5",
           "base-200": "#ffffff",
           info: "#1e3a8a",
           success: "#15803d",
-          error: "#e11d48",
+          error: "#F2213A",
+
+          "--rounded-box": "0.25rem",
+          "--rounded-btn": "0.25rem"
         },
       },
-      {
-        dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
-          primary: "#ff8200",
-          "primary-content": "#f5f5f5",
-          secondary: "#15191e",
-          "secondary-content": "#757575",
-          accent: "#b91c1c",
-          "base-100": "#36454F",
-          success: "#15803d",
-        },
-      },
+      // {
+      //   dark: {
+      //     ...require("daisyui/src/theming/themes")["dark"],
+      //     primary: "#ff8200",
+      //     "primary-content": "#f5f5f5",
+      //     secondary: "#15191e",
+      //     "secondary-content": "#757575",
+      //     accent: "#b91c1c",
+      //     "base-100": "#36454F",
+      //     success: "#15803d",
+      //   },
+      // },
     ],
+    styled: true,
   },
 };
 export default config;
