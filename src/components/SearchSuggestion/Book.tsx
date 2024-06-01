@@ -6,9 +6,9 @@ import Link from "next/link";
 const Book = ({ book }: { book: (typeof books)[0] }) => {
   const PriceAndDiscountPercent = () => (
     <div className="flex flex-col w-20 items-end">
-      <span className="text-primary font-bold text-base">{`${book.sell_price} ৳`}</span>
+      <span className="text-primary font-bold text-base">{`${book.sale_price} ৳`}</span>
       <span className="text-sm text-secondary-content -mt-1">{`(${Math.round(
-        (book.sell_price / book.regular_price) * 100
+        (book.sale_price / book.regular_price) * 100
       )}% off)`}</span>
     </div>
   );
@@ -20,7 +20,7 @@ const Book = ({ book }: { book: (typeof books)[0] }) => {
           {/* Image */}
           <div className="h-full min-h-16 min-w-14 w-16 relative rounded-md group-hover:opacity-80">
             <Image
-              src={book.images[0]}
+              src={book.images[0].src}
               alt={book.name[0]}
               fill
               sizes="10vw"
