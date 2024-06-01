@@ -1,8 +1,5 @@
 // "use client";
 
-import { BookCard } from "@/components";
-import Carousel from "@/components/Carousel";
-import { books } from "@/constants";
 
 // import { useAppDispatch, useAppSelector } from "@/hooks/storeHook";
 // import { addItemToCart } from "@/redux/features/cart-slice";
@@ -41,13 +38,7 @@ import { books } from "@/constants";
 const Test = () => {
   return (
     <div className="p-4">
-      <div className="container">
-        <Carousel>
-          {books.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
-        </Carousel>
-      </div>
+      lal
     </div>
   );
 };
