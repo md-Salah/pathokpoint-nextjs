@@ -13,7 +13,7 @@ const BookCard = ({ book }: { book: Book }) => {
           sale_price={book.sale_price}
         />
 
-        <div className="card-body p-3 gap-1 justify-between">
+        <div className="card-body px-3 pb-3 sm:pb-3 sm:px-5 pt-3 gap-1 justify-between">
           <Title name={book.name} slug={book.slug} />
           <Author name={book.authors[0].name} slug={book.authors[0].slug} />
           <ConditionBadge condition={book.condition} />

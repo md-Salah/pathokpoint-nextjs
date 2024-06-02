@@ -1,36 +1,55 @@
 "use client";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import React, { lazy } from "react";
+import React, { useRef } from "react";
 import { GrPrevious, GrNext } from "react-icons/gr";
 
-const Carousel = ({ title, children }: { title: string; children: any }) => {
-  const slider = React.useRef<Slider>(null);
+const Carousel = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode[];
+}) => {
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  var settings = {
-    dots: false,
-    infinite: true,
-    autoplay: false,
-    autoplaySpeed: 3000,
-    speed: 1000,
-    variableWidth: true,
-    arrows: false,
-    swipe: true,
-    swipeToSlide: true,
-    touchThreshold: 100,
-    slidesToScroll: 4,
+  const smoothScroll = (direction: "left" | "right") => {
+    const container = carouselRef.current;
+    if (container) {
+      const startScroll = container.scrollLeft;
+      const scrollAmount =
+        direction === "left" ? -container.offsetWidth : container.offsetWidth;
+      const startTime = performance.now();
+      const duration = 500;
+
+      const step = (timestamp: number) => {
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        container.scrollLeft = startScroll + scrollAmount * progress;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
   };
+
+  const handlePrev = () => smoothScroll("left");
+  const handleNext = () => smoothScroll("right");
+
   return (
     <div className="layout-container bg-white layout-p layout-mt">
       <Title title={title} />
       <div className="relative block">
-        <Slider ref={slider} {...settings}>
-          {children}
-        </Slider>
+        <div ref={carouselRef} className="carousel gap-4">
+          {children.map((child, index) => {
+            return (
+              <div key={index} className="carousel-item">
+                {child}
+              </div>
+            );
+          })}
+        </div>
         <div className="hidden sm:block">
-          <PrevArrow slider={slider} />
-          <NextArrow slider={slider} />
+          <PrevArrow handlePrev={handlePrev} />
+          <NextArrow handleNext={handleNext} />
         </div>
       </div>
     </div>
@@ -39,18 +58,18 @@ const Carousel = ({ title, children }: { title: string; children: any }) => {
 
 export default Carousel;
 
-const PrevArrow = ({ slider }: { slider: React.RefObject<Slider> }) => (
+const PrevArrow = ({ handlePrev }: { handlePrev: () => void }) => (
   <button
-    onClick={() => slider?.current?.slickPrev()}
+    onClick={handlePrev}
     className="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md z-10 opacity-60 hover:opacity-95"
   >
     <GrPrevious />
   </button>
 );
 
-const NextArrow = ({ slider }: { slider: React.RefObject<Slider> }) => (
+const NextArrow = ({ handleNext }: { handleNext: () => void }) => (
   <button
-    onClick={() => slider?.current?.slickNext()}
+    onClick={handleNext}
     className="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md z-10 opacity-60 hover:opacity-95"
   >
     <GrNext />
