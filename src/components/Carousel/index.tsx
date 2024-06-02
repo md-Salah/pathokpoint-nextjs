@@ -38,7 +38,7 @@ const Carousel = ({
     <div className="layout-container bg-white layout-p layout-mt">
       <Title title={title} />
       <div className="relative block">
-        <div ref={carouselRef} className="carousel gap-4">
+        <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
           {children.map((child, index) => {
             return (
               <div key={index} className="carousel-item">
