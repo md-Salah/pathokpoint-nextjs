@@ -47,7 +47,7 @@ const Carousel = ({
             );
           })}
         </div>
-        <div className="hidden sm:block">
+        <div className="hidden sm:block z-10">
           <PrevArrow handlePrev={handlePrev} />
           <NextArrow handleNext={handleNext} />
         </div>
@@ -61,7 +61,7 @@ export default Carousel;
 const PrevArrow = ({ handlePrev }: { handlePrev: () => void }) => (
   <button
     onClick={handlePrev}
-    className="absolute top-1/2 -left-5 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md z-10 opacity-60 hover:opacity-95"
+    className="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md opacity-60 hover:opacity-95"
   >
     <GrPrevious />
   </button>
@@ -70,7 +70,7 @@ const PrevArrow = ({ handlePrev }: { handlePrev: () => void }) => (
 const NextArrow = ({ handleNext }: { handleNext: () => void }) => (
   <button
     onClick={handleNext}
-    className="absolute top-1/2 -right-5 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md z-10 opacity-60 hover:opacity-95"
+    className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md opacity-60 hover:opacity-95"
   >
     <GrNext />
   </button>
