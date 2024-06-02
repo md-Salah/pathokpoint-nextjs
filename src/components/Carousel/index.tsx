@@ -18,7 +18,7 @@ const Carousel = ({ title, children }: { title: string; children: any }) => {
     arrows: false,
     swipe: true,
     swipeToSlide: true,
-    touchThreshold: 2,
+    touchThreshold: 100,
     slidesToScroll: 4,
   };
   return (
