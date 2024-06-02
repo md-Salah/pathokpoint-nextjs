@@ -6,7 +6,7 @@ import { Book } from "@/interface";
 const BookCard = ({ book }: { book: Book }) => {
   return (
     <div>
-      <div className="card relative w-[163px] sm:w-[236px] bg-base-200 border border-black06 hover:shadow-md hover:cursor-pointer">
+      <div className="card relative w-[163px] sm:w-[236px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
         <Frame book={book} />
         <Discount
           regular_price={book.regular_price}
@@ -40,6 +40,8 @@ const Frame = ({ book }: { book: Book }) => (
         className="object-contain object-top"
         sizes="50vw"
         loading="lazy"
+        placeholder="blur"
+        blurDataURL="/default/book.png"
       />
     </figure>
   </Link>
@@ -112,7 +114,7 @@ const Price = ({
 
 const ActionButtons = () => (
   <div className="card-actions justify-between mt-1">
-    <button className="btn btn-primary btn-xs sm:btn-sm flex-1">
+    <button className="btn btn-primary btn-sm flex-1 text-sm sm:text-base">
       Add to cart
     </button>
     <div className="hidden sm:block">

@@ -7,18 +7,25 @@
     font-family: var(--font-anek-bangla);
 }
 
-.container {
-    width: 1328px;
-    max-width: 90%;
-    @apply mx-auto;
+.layout-container {
+    @apply mx-auto container sm:w-[1328px] sm:max-w-[90%];
 }
 
+.layout-mt {
+    @apply mt-4 sm:mt-8;
+}
+
+.layout-p {
+    @apply p-4 sm:p-10 sm:pt-7;
+}
+
+
+/* Carousel/Slider */
 .slick-slide {
     margin: 0 4px;
 }
 
-
-
+/* Half underline hover effect */
 .half-underline {
     position: relative;
 }
@@ -36,6 +43,8 @@
 .half-underline:hover:before {
     width: 100%;
 }
+
+
 
 /* OLD */
 input[type="text"],
@@ -79,9 +88,6 @@ input:focus {
     @apply mx-2 md:mx-5 lg:mx-12 xl:mx-24 2xl:mx-36;
 }
 
-.custom-mt {
-    @apply mt-12;
-}
 
 .item-bg {
     @apply bg-white hover:bg-gray-50;
