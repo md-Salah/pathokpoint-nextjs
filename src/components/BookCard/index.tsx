@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ConditionBadge, Heart } from "@/micro-components";
 import Link from "next/link";
 import { Book } from "@/interface";
+import { isEnglish } from "@/utils";
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
@@ -59,10 +60,11 @@ const Discount = ({
       <div
         className={`absolute top-3 right-3 w-8 sm:w-11 h-8 sm:h-11 bg-[#F2213A] rounded-[7px] rotate-45 justify-center items-center flex`}
       >
-        <h4 className="-rotate-45 text-white font-extrabold text-xs sm:text-base">{`${Math.floor(
-          ((regular_price - sale_price) / regular_price) * 100
-        )}`} 
-        <span className="text-[0.5rem] sm:text-[0.875rem]">%</span>
+        <h4 className="-rotate-45 text-white font-extrabold text-xs sm:text-base">
+          {`${Math.floor(
+            ((regular_price - sale_price) / regular_price) * 100
+          )}`}
+          <span className="text-[0.5rem] sm:text-[0.875rem]">%</span>
         </h4>
       </div>
     )}
@@ -70,12 +72,11 @@ const Discount = ({
 );
 
 const Title = ({ name, slug }: { name: string; slug: string }) => {
-  const isEnglish = /^[A-Za-z0-9 ]*$/.test(name);
   return (
     <Link href={`books/${slug}`} target="_blank" className="hover:underline">
       <h2
         className={`card-title text-sm sm:text-base font-semibold line-clamp-1 ${
-          isEnglish ? "" : "font-bn"
+          isEnglish(name) ? "" : "font-bn"
         }`}
       >
         {name}
@@ -85,12 +86,11 @@ const Title = ({ name, slug }: { name: string; slug: string }) => {
 };
 
 const Author = ({ name, slug }: { name: string; slug: string }) => {
-  const isEnglish = /^[A-Za-z0-9 ]*$/.test(name);
   return (
     <Link href={`authors/${slug}`} target="_blank">
       <p
         className={`truncate text-xxs sm:text-xs leading-tight text-secondary-content hover:underline mb-1 ${
-          isEnglish ? "" : "font-bn"
+          isEnglish(name) ? "" : "font-bn"
         }`}
       >
         {"by " + name}

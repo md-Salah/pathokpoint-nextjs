@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Category } from "@/interface";
+import { isEnglish } from "@/utils";
 
 const CategoryCard = ({ category }: { category: Category }) => {
   return (
@@ -38,12 +39,10 @@ const Frame = ({ name, src }: { name: string; src: string | null }) => {
 };
 
 const Title = ({ title }: { title: string }) => {
-  const isEnglish = /^[A-Za-z0-9 ]*$/.test(title);
-
   return (
     <h1
       className={`card-title text-xs sm:text-base font-bold group-hover:underline truncate ${
-        isEnglish ? "" : "font-bn"
+        isEnglish(title) ? "" : "font-bn"
       }`}
     >
       {title}

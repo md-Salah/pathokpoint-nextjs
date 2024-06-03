@@ -1,19 +1,19 @@
-import { FaStar } from "react-icons/fa";
-
 const Rating = ({ rating }: { rating: number }) => {
   const ratings = [1, 2, 3, 4, 5];
 
   return (
-    <span className="rating rating-xs">
+    <div className="rating rating-xs gap-0 sm:gap-0.5">
       {ratings.map((value) => (
-        <FaStar
+        <input
           key={value}
-          className={`${
-            value <= rating ? "text-orange-400" : "text-gray-400"
-          } inline`}
+          type="radio"
+          className={`mask mask-star-2 ${
+                    value <= rating ? "bg-[#F2AE14]" : "bg-[#494747]" }`}
+          checked={value == rating}
+          readOnly={true}
         />
       ))}
-    </span>
+    </div>
   );
 };
 export default Rating;

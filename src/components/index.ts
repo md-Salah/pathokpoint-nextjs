@@ -11,7 +11,6 @@ export { default as Carousel } from "./Carousel";
 export { HeroSection } from "./HeroSection";
 export { FlashSaleCarousel } from "./FlashSaleCarousel";
 export { ServiceBanner } from "./ServiceBanner";
-export { ReviewCarousel } from "./ReviewCarousel";
 
 // Mini Components
 export { ArrowButtons } from "./ArrowButtons";

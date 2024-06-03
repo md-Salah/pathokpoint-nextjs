@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Author } from "@/interface";
+import { isEnglish } from "@/utils";
 
 const AuthorCard = ({ author }: { author: Author }) => {
   return (
@@ -41,11 +42,10 @@ const Frame = ({ name, src }: { name: string; src: string | null }) => {
 };
 
 const Title = ({ title }: { title: string }) => {
-  const isEnglish = /^[A-Za-z0-9 ]*$/.test(title);
   return (
     <h1
       className={`card-title text-xs sm:text-base text-black02 text-center line-clamp-2 group-hover:underline ${
-        isEnglish ? "" : "font-bn"
+        isEnglish(title) ? "" : "font-bn"
       }`}
     >
       {title}

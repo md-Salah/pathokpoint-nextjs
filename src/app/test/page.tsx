@@ -1,11 +1,10 @@
-import { PublisherCard } from "@/components";
-import { publishers } from "@/constants";
+import { ReviewCard } from "@/components";
+import { reviews } from "@/constants";
 
 const Test = () => {
-
   return (
     <div className="p-4">
-      <PublisherCard publisher={publishers[0]} />
+      <ReviewCard review={reviews[0]} />
     </div>
   );
 };

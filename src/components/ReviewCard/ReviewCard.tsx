@@ -1,108 +1,32 @@
-"use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Rating from "./Rating";
+import { Description } from "@/micro-components";
+import { Review } from "@/interface";
+import { isEnglish } from "@/utils";
 
-const ReviewCard = ({ review }: any) => {
-  const [showFullText, setShowFullText] = useState(false);
-
-  const toggleFullText = () => {
-    setShowFullText(!showFullText);
-  };
-
-  useEffect(() => {
-    if (review.images.length == 0) setShowFullText(true);
-  }, []);
-
-  const AvatarPlaceholder = ({ letter }: { letter: string }) => (
-    <div className="avatar placeholder w-full h-full">
-      <div className="bg-neutral text-neutral-content rounded-full w-24">
-        <span className="text-3xl">{letter}</span>
-      </div>
-    </div>
-  );
-
-  const ReviewText = ({ text }: { text: string }) => {
-    if (text.length > 75) {
-      return (
-        <p className="text-justify">
-          {showFullText ? review.review : review.review.slice(0, 75) + "..."}
-          <span
-            className="font-semibold hover:underline capitalize cursor-pointer ml-2"
-            onClick={toggleFullText}
-          >
-            {showFullText ? "show less" : "read more"}
-          </span>
-        </p>
-      );
-    } else {
-      return <p className="text-justify">{review.review}</p>;
-    }
-  };
-
-  const NameAvatar = ({
-    name,
-    src,
-    rating,
-    date_created,
-  }: {
-    name: string;
-    src: string;
-    rating: number;
-    date_created: string;
-  }) => (
-    <div className="card-title">
-      <div className="avatar">
-        <div className="w-14 rounded-full relative">
-          {src ? (
-            <Image
-              alt={name}
-              fill
-              sizes="10vw"
-              src={src}
-              className="rounded-full object-cover object-bottom"
-            />
-          ) : (
-            <AvatarPlaceholder letter={name[0]} />
-          )}
-        </div>
-      </div>
-      <div className="flex-1 text-left ml-2">
-        <h1>{name}</h1>
-        <p className="text-xs text-secondary-content mt-1">
-          <span className="mr-2">{date_created}</span>
-          <Rating rating={rating} />
-        </p>
-      </div>
-    </div>
-  );
-
-  const ReviewImages = ({ images }: { images: string[] }) => {
-    if (images.length == 0) return null;
-    return (
-      <figure className="h-64 relative overflow-clip">
-        <Image
-          src={review.images[0]}
-          alt="Customer Review"
-          sizes="(max-width: 640px) 100vw, 33vw"
-          fill
-          className="w-full object-cover object-bottom"
-        />
-      </figure>
-    );
-  };
+const ReviewCard = ({ review }: { review: Review }) => {
+  const customer_name = review.user.first_name + " " + review.user.last_name;
 
   return (
-    <div className="card card-compact h-96 w-80 mx-auto bg-base-200 shadow-lg rounded-md">
-      <div className="card-body">
-        <NameAvatar
-          name={review.name}
-          src={review.images[0]}
-          rating={review.rating}
-          date_created={review.date_created}
-        />
+    <div className="card w-[203px] sm:w-[298px] h-[271px] sm:h-[397px] overflow-y-scroll bg-white border border-black06 text-black02">
+      <div className="card-body p-[18px] sm:p-7 pt-[22px] sm:pt-8">
+        <div className="card-title mb-4 gap-0">
+          <Avatar name={customer_name} src={review.images[0]?.src || null} />
+          <div className="text-left ml-3 flex flex-col flex-1">
+            <Rating rating={review.average_rating} />
+            <h3 className={`text-sm sm:text-base text-black02 line-clamp-1 font-semibold mt-1 ${isEnglish(customer_name)? "": "font-bn"}`}>
+              {customer_name}
+            </h3>
+            <h4 className="text-xxs sm:text-xs text-black04 font-normal leading-3 mt-1">
+              {review.created_at}
+            </h4>
+          </div>
+        </div>
 
-        <ReviewText text={review.review} />
+        <Description
+          text={review.comment}
+          fullView={review.images.length === 0}
+        />
       </div>
 
       <ReviewImages images={review.images} />
@@ -111,3 +35,47 @@ const ReviewCard = ({ review }: any) => {
 };
 
 export default ReviewCard;
+
+const Avatar = ({ name, src }: { name: string; src: string | null }) => {
+  const defaultSrc = "/default/avatar.png";
+  return (
+    <div className="avatar">
+      <div className="w-11 sm:w-16 h-11 sm:h-16 rounded-full relative text-3xl bg-black06">
+        {src ? (
+          <Image
+            alt=""
+            fill
+            sizes="10vw"
+            src={src || defaultSrc}
+            className="rounded-full object-cover object-center text-center"
+            placeholder="blur"
+            blurDataURL={defaultSrc}
+          />
+        ) : (
+          <div className="avatar placeholder w-full h-full">
+            <div className="bg-black06 rounded-full w-24">
+              <span className="text-3xl">{name[0]}</span>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const ReviewImages = ({ images }: { images: { src: string }[] }) => {
+  const defaultSrc = "/default/review.png";
+  return (
+    <figure className="h-64 relative overflow-clip">
+      <Image
+        src={images[0]?.src || defaultSrc}
+        alt=" "
+        sizes="(max-width: 640px) 100vw, 33vw"
+        fill
+        className="w-full object-cover object-bottom"
+        placeholder="blur"
+        blurDataURL={defaultSrc}
+      />
+    </figure>
+  );
+};

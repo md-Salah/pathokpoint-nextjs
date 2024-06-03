@@ -6,11 +6,11 @@ import {
   FlashSaleCarousel,
   HeroSection,
   PublisherCard,
-  ReviewCarousel,
+  ReviewCard,
   ServiceBanner,
 } from "@/components";
 
-import { books, publishers } from "@/constants";
+import { books, publishers, reviews } from "@/constants";
 
 const Home = () => {
   const authors = books.map((book) => book.authors[0]);
@@ -171,8 +171,11 @@ const Home = () => {
         ))}
       </Carousel>
 
-      {/* <ReviewCarousel /> */}
-      {/* <p className="text-9xl">Home</p> */}
+      <Carousel title="Customer Reviews">
+        {reviews.map((review) => (
+          <ReviewCard key={review.id} review={review} />
+        ))}
+      </Carousel>
     </div>
   );
 };

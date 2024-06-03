@@ -1,4 +1,5 @@
 "use client";
+import { isEnglish } from "@/utils";
 import React, { useRef } from "react";
 import { GrPrevious, GrNext } from "react-icons/gr";
 
@@ -77,13 +78,11 @@ const NextArrow = ({ handleNext }: { handleNext: () => void }) => (
 );
 
 const Title = ({ title }: { title: string }) => {
-  const isEnglish = /^[A-Za-z0-9 ]*$/.test(title);
-
   return (
     <div className="flex items-baseline justify-between font-semibold">
       <h2
         className={`text-base sm:text-xl text-black02 mb-4 sm:mb-5 ${
-          isEnglish ? "" : "font-bn"
+          isEnglish(title) ? "" : "font-bn"
         }`}
       >
         {title}
