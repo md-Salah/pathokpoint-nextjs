@@ -61,7 +61,9 @@ const Discount = ({
       >
         <h4 className="-rotate-45 text-white font-extrabold text-xs sm:text-base">{`${Math.floor(
           ((regular_price - sale_price) / regular_price) * 100
-        )}%`}</h4>
+        )}`} 
+        <span className="text-[0.5rem] sm:text-[0.875rem]">%</span>
+        </h4>
       </div>
     )}
   </>

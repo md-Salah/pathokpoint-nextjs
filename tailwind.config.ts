@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         black02: "#363739",
         black04: "#9B9B9C",
+        black05: "#CDCDCD",
         black06: "#E6E6E6",
       },
       fontSize: {
@@ -40,18 +41,6 @@ const config: Config = {
           "--rounded-btn": "0.25rem"
         },
       },
-      // {
-      //   dark: {
-      //     ...require("daisyui/src/theming/themes")["dark"],
-      //     primary: "#ff8200",
-      //     "primary-content": "#f5f5f5",
-      //     secondary: "#15191e",
-      //     "secondary-content": "#757575",
-      //     accent: "#b91c1c",
-      //     "base-100": "#36454F",
-      //     success: "#15803d",
-      //   },
-      // },
     ],
     styled: true,
   },

@@ -1,7 +1,5 @@
-const author_url =
-  "http://mdsalah.customerserver003003.eurhosting.net/test/authors/";
-const category_url =
-  "http://mdsalah.customerserver003003.eurhosting.net/test/categories/";
+const author_url = "/authors/";
+const category_url = "/";
 
 export const books = [
   {
@@ -12,9 +10,11 @@ export const books = [
     authors: [
       {
         id: "5",
-        src: author_url + "1.jpg",
-        name: "Bibhutibhushan Bandopadhyay",
+        name: "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
         slug: "bibhutibhushan-bandopadhyay",
+        image: {
+          src: author_url + "5.jpg",
+        },
       },
     ],
     categories: [
@@ -39,10 +39,12 @@ export const books = [
     name: "অপুর সংকেত",
     authors: [
       {
-        id: "5",
-        src: author_url + "1.jpg",
-        name: "Bibhutibhushan Bandopadhyay",
-        slug: "bibhutibhushan-bandopadhyay",
+        id: "1",
+        name: "হুমায়ূন আহমেদ",
+        slug: "humayun-ahmed",
+        image: {
+          src: author_url + "1.jpg",
+        },
       },
     ],
     categories: [
@@ -60,7 +62,6 @@ export const books = [
     condition: "New",
     slug: "apura-sanket",
   },
-  // Additional 10 books
   {
     id: "3",
     description: "A timeless tale of love and war",
@@ -68,10 +69,12 @@ export const books = [
     name: "বিষাদ সিন্ধু",
     authors: [
       {
-        id: "6",
-        src: author_url + "2.jpg",
-        name: "Mir Mosharraf Hossain",
-        slug: "mir-mosharraf-hossain",
+        id: "3",
+        name: "সমরেশ মজুমদার",
+        slug: "somoreesh-majumdar",
+        image: {
+          src: author_url + "3.png",
+        },
       },
     ],
     categories: [
@@ -96,10 +99,12 @@ export const books = [
     name: "চাঁদের পাহাড়",
     authors: [
       {
-        id: "7",
-        src: author_url + "3.jpg",
-        name: "Bibhutibhushan Bandopadhyay",
-        slug: "bibhutibhushan-bandopadhyay",
+        image: {
+          src: author_url + "4.jpg",
+        },
+        id: "4",
+        name: "কাজী নজরুল ইসলাম",
+        slug: "kazi-najrul-islam",
       },
     ],
     categories: [
@@ -124,10 +129,12 @@ export const books = [
     name: "পৃথিবীর বাইরে",
     authors: [
       {
-        id: "8",
-        src: author_url + "4.jpg",
-        name: "Muhammed Zafar Iqbal",
-        slug: "muhammed-zafar-iqbal",
+        image: {
+          src: author_url + "7.jpg",
+        },
+        id: "7",
+        name: "রবীন্দ্রনাথ ঠাকুর",
+        slug: "robindranath-thakur",
       },
     ],
     categories: [
@@ -140,7 +147,9 @@ export const books = [
     ],
     regular_price: 800,
     sale_price: 650,
-    images: [{ id: "prithibir", name: "prithibir.img", src: "/books/b (4).jpg" }],
+    images: [
+      { id: "prithibir", name: "prithibir.img", src: "/books/b (4).jpg" },
+    ],
     quantity: 12,
     condition: "New",
     slug: "prithibir-baire",
@@ -152,10 +161,11 @@ export const books = [
     name: "মানবিক দৃষ্টিকোণ",
     authors: [
       {
-        id: "9",
-        src: author_url + "5.jpg",
-        name: "Syed Mujtaba Ali",
-        slug: "syed-mujtaba-ali",
+        image: null,
+        id: "8",
+        src: author_url + "8.jpg",
+        name: "সুকান্ত ভট্টাচার্য",
+        slug: "sukanto-vottacharjo",
       },
     ],
     categories: [
@@ -180,6 +190,7 @@ export const books = [
     name: "কবিতার ভুবন",
     authors: [
       {
+        image: null,
         id: "10",
         src: author_url + "6.jpg",
         name: "Jasimuddin",
@@ -208,6 +219,7 @@ export const books = [
     name: "দর্শনের ছায়া",
     authors: [
       {
+        image: null,
         id: "11",
         src: author_url + "7.jpg",
         name: "Aynal Haque",
@@ -224,7 +236,9 @@ export const books = [
     ],
     regular_price: 900,
     sale_price: 750,
-    images: [{ id: "darshoner", name: "darshoner.img", src: "/books/b (7).jpg" }],
+    images: [
+      { id: "darshoner", name: "darshoner.img", src: "/books/b (7).jpg" },
+    ],
     quantity: 6,
     condition: "New",
     slug: "darshoner-chaya",
@@ -236,6 +250,7 @@ export const books = [
     name: "রাজনীতির গতিপথ",
     authors: [
       {
+        image: null,
         id: "12",
         src: author_url + "8.jpg",
         name: "Anisuzzaman",
@@ -264,6 +279,7 @@ export const books = [
     name: "স্মৃতির পাতা",
     authors: [
       {
+        image: null,
         id: "13",
         src: author_url + "9.jpg",
         name: "Begum Rokeya",
@@ -292,6 +308,7 @@ export const books = [
     name: "ইতিহাসের ধারাপাত",
     authors: [
       {
+        image: null,
         id: "14",
         src: author_url + "10.jpg",
         name: "Rezaul Karim",
@@ -320,6 +337,7 @@ export const books = [
     name: "জীবনের গল্প",
     authors: [
       {
+        image: null,
         id: "15",
         src: author_url + "11.jpg",
         name: "Abdul Mannan",
@@ -340,19 +358,19 @@ export const books = [
     quantity: 8,
     condition: "New",
     slug: "jiboner-golpo",
-  }
-];
-
-const authors = [
-  {
-    name: "জহির রায়হান",
-    slug: "jahir-raihan",
-    src: author_url + "1.jpg",
   },
 ];
 
-for (let i = 0; i < books.length; i++) {
-  authors.push(books[i].authors[0]);
-}
+// const authors = [
+//   {
+//     name: "জহির রায়হান",
+//     slug: "jahir-raihan",
+//     src: author_url + "1.jpg",
+//   },
+// ];
 
-export { authors };
+// for (let i = 0; i < books.length; i++) {
+//   authors.push(books[i].authors[0]);
+// }
+
+// export { authors };

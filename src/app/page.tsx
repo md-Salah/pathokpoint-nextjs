@@ -1,7 +1,6 @@
 import {
-  AuthorCarousel,
+  AuthorCard,
   BookCard,
-  BookCarousel,
   Carousel,
   CategoryCarousel,
   FlashSaleCarousel,
@@ -13,6 +12,8 @@ import {
 import { books } from "@/constants";
 
 const Home = () => {
+  const authors = books.map((book) => book.authors[0]);
+
   return (
     <div className="min-h-screen">
       <HeroSection />
@@ -31,7 +32,7 @@ const Home = () => {
         ))}
       </Carousel>
 
-      <ServiceBanner />
+      {/* <ServiceBanner /> */}
 
       {/* মাস্ট রিড কালেকশন */}
       <Carousel title="মাস্ট রিড কালেকশন">
@@ -126,14 +127,20 @@ const Home = () => {
         ))}
       </Carousel>
 
-      <CategoryCarousel title="জনপ্রিয় ইসলামিক ক্যাটাগরি" />
+      {/* <CategoryCarousel title="জনপ্রিয় ইসলামিক ক্যাটাগরি" />
       <CategoryCarousel title="জনপ্রিয় ইংরেজি ক্যাটাগরি" />
-      <CategoryCarousel title="জনপ্রিয় বাংলা ক্যাটাগরি" />
-      <AuthorCarousel title="জনপ্রিয় লেখক" />
+      <CategoryCarousel title="জনপ্রিয় বাংলা ক্যাটাগরি" /> */}
+
+      <Carousel title="জনপ্রিয় লেখক">
+        {authors.map((author) => (
+          <AuthorCard key={author.id} author={author} />
+        ))}
+      </Carousel>
+
       <CategoryCarousel title="জনপ্রিয় প্রকাশনী" />
       <CategoryCarousel title="সেবা প্রকাশনীর ক্যাটাগরি" />
       <CategoryCarousel title="চাকরির ক্যাটাগরি" />
-      <ReviewCarousel />
+      {/* <ReviewCarousel /> */}
       {/* <p className="text-9xl">Home</p> */}
     </div>
   );
