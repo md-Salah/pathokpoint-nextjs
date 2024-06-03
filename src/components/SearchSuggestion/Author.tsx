@@ -14,9 +14,9 @@ const Author = ({ author }: Props) => {
         <div className="flex items-center gap-3 mt-0 border-b border-base-300 group bg-base-200 p-1 pl-2">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12 text-2xl text-center group-hover:opacity-80">
-              {author.src ? (
+              {author.image?.src ? (
                 <Image
-                  src={author.src}
+                  src={author.image.src}
                   alt={author.name[0]}
                   width={48}
                   height={48}
