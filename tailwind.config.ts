@@ -28,7 +28,7 @@ const config: Config = {
           ...require("daisyui/src/theming/themes")["light"],
           primary: "#ff8200",
           "primary-content": "#FFFFFF",
-          secondary: "#e5e7eb",
+          secondary: "#2B3440",
           "secondary-content": "#9B9B9C",
           accent: "#b91c1c",
           "base-100": "#f5f5f5",

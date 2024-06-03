@@ -1,5 +1,5 @@
 const author_url = "/authors/";
-const category_url = "/";
+const category_url = "/categories/";
 
 export const books = [
   {
@@ -19,10 +19,12 @@ export const books = [
     ],
     categories: [
       {
-        id: "10",
-        src: category_url + "1.webp",
-        name: "উপন্যাস",
-        slug: "uponnas",
+        id: "1",
+        name: "BCS",
+        slug: "bcs-exam",
+        image: {
+          src: category_url + "1.jpg",
+        },
       },
     ],
     regular_price: 1000,
@@ -49,8 +51,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "10",
-        src: category_url + "1.webp",
         name: "উপন্যাস",
         slug: "uponnas",
       },
@@ -79,10 +81,12 @@ export const books = [
     ],
     categories: [
       {
-        id: "11",
-        src: category_url + "2.webp",
-        name: "ঐতিহাসিক",
-        slug: "oitihasik",
+        image: {
+          src: category_url + "2.jpg",
+        },
+        id: "3",
+        name: "Admission",
+        slug: "admission",
       },
     ],
     regular_price: 1200,
@@ -109,10 +113,12 @@ export const books = [
     ],
     categories: [
       {
+        image: {
+          src: category_url + "3.png",
+        },
         id: "12",
-        src: category_url + "3.webp",
-        name: "রোমাঞ্চ",
-        slug: "romanch",
+        name: "Medical",
+        slug: "medical",
       },
     ],
     regular_price: 950,
@@ -139,10 +145,12 @@ export const books = [
     ],
     categories: [
       {
+        image: {
+          src: category_url + "4.jpg",
+        },
         id: "13",
-        src: category_url + "4.webp",
-        name: "বিজ্ঞান কল্পকাহিনী",
-        slug: "biggan-kalpokahini",
+        name: "Job Preparation",
+        slug: "job-preparation",
       },
     ],
     regular_price: 800,
@@ -170,8 +178,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "14",
-        src: category_url + "5.webp",
         name: "নিবন্ধ",
         slug: "nibondho",
       },
@@ -199,8 +207,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "15",
-        src: category_url + "6.webp",
         name: "কবিতা",
         slug: "kobita",
       },
@@ -228,8 +236,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "16",
-        src: category_url + "7.webp",
         name: "দর্শন",
         slug: "darshan",
       },
@@ -259,8 +267,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "17",
-        src: category_url + "8.webp",
         name: "রাজনীতি",
         slug: "rajniti",
       },
@@ -288,8 +296,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "18",
-        src: category_url + "9.webp",
         name: "স্মৃতিকথা",
         slug: "smritikotha",
       },
@@ -317,8 +325,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "19",
-        src: category_url + "10.webp",
         name: "ইতিহাস",
         slug: "itihash",
       },
@@ -346,8 +354,8 @@ export const books = [
     ],
     categories: [
       {
+        image: null,
         id: "20",
-        src: category_url + "11.webp",
         name: "জীবনী",
         slug: "jiboni",
       },

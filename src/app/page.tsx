@@ -2,17 +2,19 @@ import {
   AuthorCard,
   BookCard,
   Carousel,
-  CategoryCarousel,
+  CategoryCard,
   FlashSaleCarousel,
   HeroSection,
+  PublisherCard,
   ReviewCarousel,
   ServiceBanner,
 } from "@/components";
 
-import { books } from "@/constants";
+import { books, publishers } from "@/constants";
 
 const Home = () => {
   const authors = books.map((book) => book.authors[0]);
+  const categories = books.map((book) => book.categories[0]);
 
   return (
     <div className="min-h-screen">
@@ -127,9 +129,23 @@ const Home = () => {
         ))}
       </Carousel>
 
-      {/* <CategoryCarousel title="জনপ্রিয় ইসলামিক ক্যাটাগরি" />
-      <CategoryCarousel title="জনপ্রিয় ইংরেজি ক্যাটাগরি" />
-      <CategoryCarousel title="জনপ্রিয় বাংলা ক্যাটাগরি" /> */}
+      <Carousel title="ইসলামিক ক্যাটাগরি">
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))}
+      </Carousel>
+
+      <Carousel title="জনপ্রিয় ইংরেজি ক্যাটাগরি">
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))}
+      </Carousel>
+
+      <Carousel title="জনপ্রিয় বাংলা ক্যাটাগরি">
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))}
+      </Carousel>
 
       <Carousel title="জনপ্রিয় লেখক">
         {authors.map((author) => (
@@ -137,9 +153,24 @@ const Home = () => {
         ))}
       </Carousel>
 
-      <CategoryCarousel title="জনপ্রিয় প্রকাশনী" />
-      <CategoryCarousel title="সেবা প্রকাশনীর ক্যাটাগরি" />
-      <CategoryCarousel title="চাকরির ক্যাটাগরি" />
+      <Carousel title="জনপ্রিয় প্রকাশনী">
+        {publishers.map((publisher) => (
+          <PublisherCard key={publisher.id} publisher={publisher} />
+        ))}
+      </Carousel>
+
+      <Carousel title="সেবা প্রকাশনীর ক্যাটাগরি">
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))}
+      </Carousel>
+
+      <Carousel title="চাকরির ক্যাটাগরি">
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))}
+      </Carousel>
+
       {/* <ReviewCarousel /> */}
       {/* <p className="text-9xl">Home</p> */}
     </div>
