@@ -10,7 +10,7 @@ const PublisherCard = ({ publisher }: { publisher: Publisher }) => {
     >
       <Frame name={publisher.name} src={publisher.image?.src || null} />
 
-      <div className="card-body p-3 items-center justify-center border-t border-[#F1F2F4]">
+      <div className="card-body p-3 items-center justify-center">
         <Title title={publisher.name} />
       </div>
     </Link>
@@ -22,18 +22,20 @@ export default PublisherCard;
 const Frame = ({ name, src }: { name: string; src: string | null }) => {
   const defaultSrc = "/default/publisher.png";
   return (
-    <figure className="relative w-full h-[181px] rounded-t bg-[#F1F2F4] text-center">
-      <Image
-        src={src || defaultSrc}
-        alt={name}
-        fill
-        className="object-contain object-center"
-        loading="lazy"
-        placeholder="blur"
-        blurDataURL={defaultSrc}
-        sizes="50vw"
-      />
-    </figure>
+    <div className="w-full h-[181px] rounded-t bg-[#F1F2F4] text-center p-6">
+      <figure className="relative w-full h-full">
+        <Image
+          src={src || defaultSrc}
+          alt={name}
+          fill
+          className="object-contain object-center"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL={defaultSrc}
+          sizes="50vw"
+        />
+      </figure>
+    </div>
   );
 };
 
