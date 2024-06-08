@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Box from "./Box";
 
 const Timer = () => {
   const [time, setTime] = useState({
@@ -33,13 +32,23 @@ const Timer = () => {
   }, []);
 
   return (
-    <div className="grid grid-flow-col gap-5 text-center auto-cols-max text-white">
-      <Box value={time.days} text="days" />
-      <Box value={time.hours} text="hours" />
-      <Box value={time.minutes} text="min" />
-      <Box value={time.seconds} text="sec" />
+    <div className="grid grid-flow-col auto-cols-max gap-3">
+      <Box value={time.days} text="Day" />
+      <Box value={time.hours} text="Hour" />
+      <Box value={time.minutes} text="Min" />
+      <Box value={time.seconds} text="Sec" />
     </div>
   );
 };
 
 export default Timer;
+
+const Box = ({ value, text }: { value: number; text: string }) => (
+  <div className="flex flex-col px-4 py-3 items-center bg-white text-primary text-center rounded">
+    <span className="countdown font-bold text-2xl sm:text-4xl">
+      {/* @ts-ignore */}
+      <span style={{ "--value": value }}></span>
+    </span>
+    <span className="border-t mt-1 text-sm sm:text-base">{text}</span>
+  </div>
+);

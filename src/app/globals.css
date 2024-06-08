@@ -19,13 +19,16 @@
     @apply p-4 sm:p-10 sm:pt-7;
 }
 
-
-/* Carousel/Slider */
-.slick-slide {
-    margin: 0 4px;
+.layout-px {
+    @apply px-4 sm:px-10;
 }
 
-/* Half underline hover effect */
+.layout-mx {
+    @apply mx-4 sm:mx-10;
+}
+
+
+/* Half underline */
 .half-underline {
     position: relative;
 }

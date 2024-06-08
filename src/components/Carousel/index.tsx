@@ -1,13 +1,13 @@
 "use client";
+import { NextArrow, PrevArrow } from "@/micro-components";
 import { isEnglish } from "@/utils";
 import React, { useRef } from "react";
-import { GrPrevious, GrNext } from "react-icons/gr";
 
 const Carousel = ({
   title,
   children,
 }: {
-  title: string;
+  title?: string | null;
   children: React.ReactNode[];
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -19,7 +19,7 @@ const Carousel = ({
       const scrollAmount =
         direction === "left" ? -container.offsetWidth : container.offsetWidth;
       const startTime = performance.now();
-      const duration = 500;
+      const duration = 200;
 
       const step = (timestamp: number) => {
         const progress = Math.min((timestamp - startTime) / duration, 1);
@@ -36,9 +36,13 @@ const Carousel = ({
   const handleNext = () => smoothScroll("right");
 
   return (
-    <div className="layout-container bg-white layout-p layout-mt">
-      <Title title={title} />
-      <div className="relative block">
+    <div
+      className={`min-w-0 ${
+        title ? "layout-container bg-white layout-p layout-mt" : "container"
+      }`}
+    >
+      {title && <Title title={title} />}
+      <div className="block relative">
         <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
           {children.map((child, index) => {
             return (
@@ -48,9 +52,10 @@ const Carousel = ({
             );
           })}
         </div>
-        <div className="hidden sm:block z-10">
-          <PrevArrow handlePrev={handlePrev} />
-          <NextArrow handleNext={handleNext} />
+        {/* -left-4 */}
+        <div className="hidden sm:block">
+          <PrevArrow handlePrev={handlePrev} positionClass="-left-4" />
+          <NextArrow handleNext={handleNext} positionClass="-right-4" />
         </div>
       </div>
     </div>
@@ -58,24 +63,6 @@ const Carousel = ({
 };
 
 export default Carousel;
-
-const PrevArrow = ({ handlePrev }: { handlePrev: () => void }) => (
-  <button
-    onClick={handlePrev}
-    className="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md opacity-60 hover:opacity-95"
-  >
-    <GrPrevious />
-  </button>
-);
-
-const NextArrow = ({ handleNext }: { handleNext: () => void }) => (
-  <button
-    onClick={handleNext}
-    className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md opacity-60 hover:opacity-95"
-  >
-    <GrNext />
-  </button>
-);
 
 const Title = ({ title }: { title: string }) => {
   return (

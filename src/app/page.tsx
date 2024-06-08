@@ -3,11 +3,10 @@ import {
   BookCard,
   Carousel,
   CategoryCard,
-  FlashSaleCarousel,
+  BigSale,
   HeroSection,
   PublisherCard,
   ReviewCard,
-  ServiceBanner,
 } from "@/components";
 
 import { books, publishers, reviews } from "@/constants";
@@ -19,6 +18,8 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <HeroSection />
+
+      <BigSale />
 
       {/* Featured Books */}
       <Carousel title="Featured Books">
@@ -77,8 +78,6 @@ const Home = () => {
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
-
-      <FlashSaleCarousel title="Big Sale!" />
 
       {/* ভৌতিক ও থ্রিলার */}
       <Carousel title="ভৌতিক ও থ্রিলার">

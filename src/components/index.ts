@@ -8,14 +8,18 @@ export { Footer } from "./Footer";
 
 // Home
 export { default as Carousel } from "./Carousel";
-export { HeroSection } from "./HeroSection";
-export { FlashSaleCarousel } from "./FlashSaleCarousel";
+export { default as BigSale } from "./BigSale";
 export { ServiceBanner } from "./ServiceBanner";
 
-// Mini Components
-export { ArrowButtons } from "./ArrowButtons";
+// HeroSection
+export { HeroSection } from "./HeroSection";
+export { default as CategoryPanel } from "./CategoryPanel";
+export { CategoryExpand } from "./CategoryPanel/CategoryExpand";
+export { default as HeroBanner } from "./HeroBanner";
+
+// Cards
 export { default as BookCard } from "./BookCard";
-export { ReviewCard } from "./ReviewCard";
+export { default as ReviewCard } from "./ReviewCard";
 export { default as CategoryCard } from "./CategoryCard";
 export { default as AuthorCard } from "./AuthorCard";
 export { default as PublisherCard } from "./PublisherCard";

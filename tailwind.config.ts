@@ -17,7 +17,7 @@ const config: Config = {
       },
       fontSize: {
         'xxs': '0.625rem', // 10px
-      }
+      },
     },
   },
   plugins: [require("daisyui")],

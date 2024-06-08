@@ -1,69 +1,20 @@
 "use client";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
-import Image from "next/image";
-import Link from "next/link";
-
-import { banners } from "@/constants";
+import { CategoryPanel, CategoryExpand, HeroBanner } from "@/components";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+
   return (
-    <div className="custom-mx custom-mt">
-      <Carousel
-        autoPlay
-        infiniteLoop
-        showStatus={false}
-        showThumbs={false}
-        transitionTime={1500}
-        interval={5000}
-        renderArrowPrev={(onClickHandler, hasPrev, label) => {
-          return (
-            <div className="absolute top-0 bottom-0 left-5 h-fit my-auto z-10 hidden sm:block">
-              <button
-                className={`btn btn-circle btn-md opacity-50 hover:opacity-95 ${
-                  hasPrev ? "cursor-pointer" : "cursor-not-allowed"
-                } `}
-                onClick={onClickHandler}
-                aria-label={label}
-              >
-                ❮
-              </button>
-            </div>
-          );
-        }}
-        renderArrowNext={(onClickHandler, hasNext, label) => {
-          return (
-            <div className="absolute top-0 bottom-0 right-5 h-fit my-auto z-10 hidden sm:block">
-              <button
-                className={`btn btn-circle btn-md opacity-50 hover:opacity-95 ${
-                  hasNext ? "cursor-pointer" : "cursor-not-allowed"
-                } `}
-                onClick={onClickHandler}
-                aria-label={label}
-              >
-                ❯
-              </button>
-            </div>
-          );
-        }}
-      >
-        {banners.map((banner, index) => (
-          <Link key={index} href="/offers" className="cursor-pointer">
-            <div key={index} className="">
-              <Image
-                src={banner.src}
-                alt="Banner"
-                width={2240}
-                height={698}
-                quality={100}
-                sizes="100vw"
-                priority
-                className="w-full rounded-md object-cover"
-              />
-            </div>
-          </Link>
-        ))}
-      </Carousel>
+    <div className="layout-container layout-mt h-44 sm:h-96">
+      <div className="flex gap-3" onMouseLeave={() => setSelected(null)}>
+        <div className="hidden md:block">
+          <CategoryPanel selected={selected} setSelected={setSelected} />
+        </div>
+        <div className="flex-1 shadow-sm bg-white min-w-0 layout-mx sm:mx-0">
+          {selected ? <CategoryExpand /> : <HeroBanner />}
+        </div>
+      </div>
     </div>
   );
 };
