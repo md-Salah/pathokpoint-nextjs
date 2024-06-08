@@ -19,7 +19,7 @@ const Carousel = ({
       const scrollAmount =
         direction === "left" ? -container.offsetWidth : container.offsetWidth;
       const startTime = performance.now();
-      const duration = 200;
+      const duration = Math.min(500, Math.abs(scrollAmount) * 0.5);
 
       const step = (timestamp: number) => {
         const progress = Math.min((timestamp - startTime) / duration, 1);

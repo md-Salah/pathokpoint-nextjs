@@ -7,6 +7,7 @@ import {
   HeroSection,
   PublisherCard,
   ReviewCard,
+  Genre,
 } from "@/components";
 
 import { books, publishers, reviews } from "@/constants";
@@ -18,6 +19,8 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <HeroSection />
+
+      <Genre />
 
       <BigSale />
 

@@ -10,6 +10,7 @@ export { Footer } from "./Footer";
 export { default as Carousel } from "./Carousel";
 export { default as BigSale } from "./BigSale";
 export { ServiceBanner } from "./ServiceBanner";
+export { default as Genre } from "./Genre";
 
 // HeroSection
 export { HeroSection } from "./HeroSection";
