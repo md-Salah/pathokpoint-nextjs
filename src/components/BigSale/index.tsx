@@ -11,7 +11,7 @@ const BigSale = () => {
     >
       <div className="flex flex-col lg:flex-row items-center">
         {/* Big Sale */}
-        <div className="w-[512px] pr-0 lg:pr-10 mb-10 lg:mb-0 flex flex-col items-center justify-center ">
+        <div className="max-w-[512px] pr-0 lg:pr-10 mb-10 lg:mb-0 flex flex-col items-center justify-center ">
           <Image
             src={"/default/discount-75.png"}
             alt="Big Sale"

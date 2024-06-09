@@ -36,7 +36,7 @@ const SearchBar = ({query, handleSearch}:Props) => {
           type="text"
           value={query}
           placeholder={placeholder}
-          className="input input-bordered input-primary w-full input-md lg:text-base"
+          className="input input-bordered input-primary w-full input-md lg:text-base h-10 rounded-3xl"
           onChange={(e)=>handleSearch(e.target.value)}
         />
         {query.length > 0 && (

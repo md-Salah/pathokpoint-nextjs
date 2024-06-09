@@ -1,17 +1,15 @@
-import { BsCart3 } from "react-icons/bs";
 import Link from "next/link";
+import { CartIcon } from "@/micro-components";
 
 const Cart = () => {
   return (
     <div className="dropdown dropdown-end">
-      <div
-        tabIndex={0}
-        role="button"
-        className="btn btn-ghost btn-circle bg-base-100"
-      >
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-sm sm:btn-md">
         <div className="indicator">
-          <BsCart3 className="h-5 w-5" />
-          <span className="badge badge-sm badge-primary indicator-item">8</span>
+          <CartIcon />
+          <span className="indicator-item rounded-full bg-highlight text-white px-1 font-bn text-xs">
+            6
+          </span>
         </div>
       </div>
       <div

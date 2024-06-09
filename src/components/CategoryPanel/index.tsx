@@ -31,12 +31,12 @@ export default CategoryPanel;
 const Cat = ({ cat, selected }: { cat: Category; selected: string | null }) => {
   return (
     <div
-      className={`flex items-center justify-between text-black02 pl-6 pr-5 h-12 border-l-4 border-l-white 
+      className={`flex items-center justify-between text-black02 pl-6 pr-5 h-12 border-l-4 
         hover:text-primary hover:border-l-primary hover:bg-[#FF82001A] hover:cursor-pointer 
         ${
           cat.id === selected
             ? "text-primary border-l-primary bg-[#FF82001A]"
-            : ""
+            : "border-l-white"
         }`}
     >
       <h3

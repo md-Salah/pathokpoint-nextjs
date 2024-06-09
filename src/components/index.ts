@@ -1,7 +1,6 @@
 // Navbar Components
 export { default as TopBanner } from "./TopBanner";
-export { Navbar } from "./Navbar";
-export { SecondNav } from "./SecondNav";
+export { default as Navbar } from "./Navbar";
 
 // Footer Components
 export { Footer } from "./Footer";

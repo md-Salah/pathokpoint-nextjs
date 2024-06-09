@@ -1,21 +1,17 @@
-"use client";
-import { useAppSelector } from "@/hooks/storeHook";
 import Image from "next/image";
+import Link from "next/link";
 
 const Logo = () => {
-  const { theme } = useAppSelector((state) => state.theme);
-
   return (
-    <a className="btn btn-link text-xl relative w-32 h-auto" href="/">
+    <Link href="/" className="block relative h-[26px] md:h-[70px] max-w-[128px]">
       <Image
         alt="Pathok Point"
-        src={theme === "light" ? "/logo-trans.png" : "/logo-trans-white.png"}
+        src="/logo-trans.png"
         fill
         priority
-        className="object-contain object-left mr-8"
-        sizes="25vw"
+        className="object-contain object-left text-xl font-bold"
       />
-    </a>
+    </Link>
   );
 };
 

@@ -20,11 +20,11 @@
 }
 
 .layout-px {
-    @apply px-4 sm:px-10;
+    @apply px-4 sm:px-0;
 }
 
 .layout-mx {
-    @apply mx-4 sm:mx-10;
+    @apply mx-4 sm:mx-0;
 }
 
 /* Half underline */
@@ -46,77 +46,6 @@
     width: 100%;
 }
 
-
-
-/* OLD */
-input[type="text"],
-input[type="password"] {
-    color: #9B9B9C;
-    /* Black 04 */
-    background-color: #F2F2F2;
-    /* Black 07 */
-    border-color: #CDCDCD;
-    /* Black 05 */
-    font-size: 0.875rem;
-    @apply rounded;
-    @apply border;
-    outline: none;
-}
-
-input:focus {
-    border-color: #ff8200;
-}
-
-.input:focus {
-    @apply outline-none;
-    @apply border-primary;
-}
-
-
-.black-4 {
-    color: #9B9B9C;
-}
-
-.bg-black-7 {
-    background-color: #F2F2F2;
-}
-
-
-.custom-px {
-    @apply px-2 md:px-5 lg:px-12 xl:px-24 2xl:px-36;
-}
-
-.custom-mx {
-    @apply mx-2 md:mx-5 lg:mx-12 xl:mx-24 2xl:mx-36;
-}
-
-
-.item-bg {
-    @apply bg-white hover:bg-gray-50;
-}
-
-.title-mb {
-    @apply mb-4;
-}
-
-.title {
-    @apply text-3xl font-semibold;
-}
-
-.w-book {
-    width: 49%;
-    @apply sm:w-52;
-    @apply min-w-44;
-    @apply max-w-52;
-}
-
-.gray-subtitle {
-    @apply text-gray-500;
-}
-
-.bg-gradient {
-    @apply bg-gradient-to-r to-gray-800 from-orange-900;
-}
 
 @layer utilities {
 

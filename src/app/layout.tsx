@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Footer, Navbar } from "@/components";
+import { Footer, Navbar, TopBanner } from "@/components";
 import { ReduxProvider } from "@/redux/provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,6 +27,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ReduxProvider>
           <main className={anek.variable}>
+            <TopBanner />
             <Navbar />
             {children}
             <Footer />

@@ -3,7 +3,8 @@
 import { BsSearch } from "react-icons/bs";
 import { useState } from "react";
 import { books } from "@/constants";
-import { SearchBar, SearchSuggestion } from "@/components";
+// import { SearchBar, SearchSuggestion } from "@/components";
+import { FiSearch } from "react-icons/fi";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -67,36 +68,53 @@ const Search = () => {
     console.log(results);
   };
 
-  const RecentSearch = () => {
-    return (
-      <div className="mt-2 pt-3 pb-3 bg-base-100 shadow-lg rounded-md">
-        <h1 className="font-semibold p-2">Recent Search</h1>
-        <ul className="p-2 h-96 overflow-y-scroll shadow-inner">
-          {recent.map((item, index) => (
-            <li
-              key={index}
-              className="mt-1 shadow-md rounded-md bg-white hover:bg-gray-50 hover:text-gray-600 p-2 cursor-pointer"
-              onClick={() => handleSearch(item)}
-            >
-              <BsSearch className="inline-block mr-3" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
-
   return (
-    <div className="w-full md:w-96 lg:w-[32rem] xl:w-[36rem] mx-auto relative">
-      <SearchBar query={query} handleSearch={handleSearch} />
-      <div className="z-10 w-full bg-base-200 rounded-md mt-2 md:drop-shadow-lg absolute">
-        {query.trim().length > 0 && (
-          <SearchSuggestion suggestions={suggestions} />
-        )}
-      </div>
-    </div>
+    // <div className="w-44 h-10 relative">
+    //   <SearchBar query={query} handleSearch={handleSearch} />
+    //   <div className="z-10 w-full bg-base-200 rounded-md mt-2 md:drop-shadow-lg absolute">
+    //     {query.trim().length > 0 && (
+    //       <SearchSuggestion suggestions={suggestions} />
+    //     )}
+    //   </div>
+    // </div>
+
+    <SearchBar />
   );
 };
 
 export default Search;
+
+const SearchBar = () => {
+  return (
+    <label
+      className={`w-full h-full input input-bordered flex items-center gap-2 rounded-3xl pr-1 bg-white font-bn
+                            focus-within:border-primary focus-within:outline-none
+                            `}
+    >
+      <input type="text" className="grow w-full h-full" placeholder="Search" />
+      <div className="bg-primary text-white rounded-full p-2 cursor-pointer">
+        <FiSearch className="w-4 h-4" />
+      </div>
+    </label>
+  );
+};
+
+// const RecentSearch = () => {
+//   return (
+//     <div className="mt-2 pt-3 pb-3 bg-base-100 shadow-lg rounded-md">
+//       <h1 className="font-semibold p-2">Recent Search</h1>
+//       <ul className="p-2 h-96 overflow-y-scroll shadow-inner">
+//         {recent.map((item, index) => (
+//           <li
+//             key={index}
+//             className="mt-1 shadow-md rounded-md bg-white hover:bg-gray-50 hover:text-gray-600 p-2 cursor-pointer"
+//             onClick={() => handleSearch(item)}
+//           >
+//             <BsSearch className="inline-block mr-3" />
+//             {item}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };

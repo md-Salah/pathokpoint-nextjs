@@ -14,6 +14,7 @@ const config: Config = {
         black04: "#9B9B9C",
         black05: "#CDCDCD",
         black06: "#E6E6E6",
+        highlight: "#F2213A",
       },
       fontSize: {
         'xxs': '0.625rem', // 10px
