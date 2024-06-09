@@ -6,7 +6,7 @@ import Menu from "./Menu";
 
 const Navbar = () => {
   return (
-    <div className=" bg-white sticky top-0 z-50 w-full shadow-md">
+    <div className="bg-white sticky top-0 z-50 w-full shadow-md">
       <div className="navbar layout-container layout-px h-14 sm:h-[70px]">
         <div className="w-full">
           <div className="hover:cursor-pointer mr-2 md:hidden">
@@ -18,8 +18,8 @@ const Navbar = () => {
           </div>
 
           <div className="">
-            <ul className="flex gap-1 sm:gap-3 items-center">
-              <li className="max-w-40 sm:max-w-56 h-10">
+            <ul className="flex gap-1 sm:gap-3 items-center justify-end">
+              <li className="max-w-40 sm:max-w-56 md:max-w-96 lg:w-[614px] h-10">
                 <Search />
               </li>
               <li>

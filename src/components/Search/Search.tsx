@@ -3,7 +3,7 @@
 import { BsSearch } from "react-icons/bs";
 import { useState } from "react";
 import { books } from "@/constants";
-// import { SearchBar, SearchSuggestion } from "@/components";
+import { SearchBar, SearchSuggestion } from "@/components";
 import { FiSearch } from "react-icons/fi";
 
 const Search = () => {
@@ -78,26 +78,11 @@ const Search = () => {
     //   </div>
     // </div>
 
-    <SearchBar />
+    <SearchBar query={query} handleSearch={handleSearch} />
   );
 };
 
 export default Search;
-
-const SearchBar = () => {
-  return (
-    <label
-      className={`w-full h-full input input-bordered flex items-center gap-2 rounded-3xl pr-1 bg-white font-bn
-                            focus-within:border-primary focus-within:outline-none
-                            `}
-    >
-      <input type="text" className="grow w-full h-full" placeholder="Search" />
-      <div className="bg-primary text-white rounded-full p-2 cursor-pointer">
-        <FiSearch className="w-4 h-4" />
-      </div>
-    </label>
-  );
-};
 
 // const RecentSearch = () => {
 //   return (

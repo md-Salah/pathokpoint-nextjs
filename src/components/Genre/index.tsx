@@ -6,7 +6,7 @@ import Link from "next/link";
 const Genre = () => {
   return (
     <div className="layout-container layout-mt layout-px sm:px-0">
-      <ul className="flex overflow-x-scroll no-scrollbar gap-3">
+      <ul className="flex overflow-x-scroll no-scrollbar gap-2 sm:gap-3">
         {categories.map((cat) => (
           <li key={cat.id}>
             <Cat cat={cat} />
@@ -20,10 +20,10 @@ const Genre = () => {
 const Cat = ({ cat }: { cat: Category }) => (
   <Link
     href={"category/" + cat.slug}
-    className="flex items-center bg-[#FF820014] border-[0.5px] border-primary rounded h-12 text-nowrap"
+    className="flex items-center bg-[#FF820014] border-[0.5px] border-primary rounded h-8 sm:h-12 text-nowrap"
   >
     <h4
-      className={`text-black02 mx-6 ${
+      className={`text-black02 mx-6 text-sm sm:text-base ${
         isEnglish(cat.name) ? "" : "font-bn"
       } hover:text-primary hover:underline`}
     >

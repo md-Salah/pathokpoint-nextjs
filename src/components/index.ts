@@ -8,7 +8,6 @@ export { Footer } from "./Footer";
 // Home
 export { default as Carousel } from "./Carousel";
 export { default as BigSale } from "./BigSale";
-export { ServiceBanner } from "./ServiceBanner";
 export { default as Genre } from "./Genre";
 
 // HeroSection

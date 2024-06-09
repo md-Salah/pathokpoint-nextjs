@@ -1,21 +1,21 @@
 "use client";
-import { RxCross2 } from "react-icons/rx";
 import { useEffect, useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
 interface Props {
   query: string;
   handleSearch: (value: string) => void;
 }
 
-const SearchBar = ({query, handleSearch}:Props) => {
+const SearchBar = ({ query, handleSearch }: Props) => {
   let i = 0;
-  const placeholderText = "বই অথবা লেখকের নাম লিখুন";
-  const [placeholder, setPlaceholder] = useState("");
+  const text = "বই অথবা লেখকের নাম লিখুন";
+  const [placeholder, setPlaceholder] = useState<string>("");
 
   const typingPlaceholder = () => {
-    setPlaceholder(placeholderText.slice(0, i));
+    setPlaceholder(text.slice(0, i));
     i++;
-    if (i === placeholderText.length) {
+    if (i === text.length) {
       setTimeout(() => {
         i = 0;
         setPlaceholder("");
@@ -25,30 +25,24 @@ const SearchBar = ({query, handleSearch}:Props) => {
 
   useEffect(() => {
     const intervalId = setInterval(typingPlaceholder, 100);
-
     return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <div className="">
-      <label className="form-control w-full relative flex justify-center items-end">
-        <input
-          type="text"
-          value={query}
-          placeholder={placeholder}
-          className="input input-bordered input-primary w-full input-md lg:text-base h-10 rounded-3xl"
-          onChange={(e)=>handleSearch(e.target.value)}
-        />
-        {query.length > 0 && (
-          <div
-            className="absolute  rounded p-1 mr-2 cursor-pointer hover:bg-secondary"
-            onClick={()=>handleSearch("")}
-          >
-            <RxCross2 />
-          </div>
-        )}
-      </label>
-    </div>
+    <label
+      className={`w-full h-full input input-bordered flex items-center gap-2 rounded-3xl pr-1 bg-white font-bn
+                            focus-within:border-primary focus-within:outline-none
+                            `}
+    >
+      <input
+        type="text"
+        className="grow w-full h-full"
+        placeholder={placeholder}
+      />
+      <div className="bg-primary text-white rounded-full p-2 cursor-pointer">
+        <FiSearch className="w-4 h-4" />
+      </div>
+    </label>
   );
 };
 
