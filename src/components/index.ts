@@ -1,9 +1,9 @@
-// Navbar Components
+// Header Footer
 export { default as TopBanner } from "./TopBanner";
 export { default as Navbar } from "./Navbar";
-
-// Footer Components
 export { Footer } from "./Footer";
+
+export { default as Drawer } from "./Drawer";
 
 // Home
 export { default as Carousel } from "./Carousel";
@@ -24,6 +24,4 @@ export { default as AuthorCard } from "./AuthorCard";
 export { default as PublisherCard } from "./PublisherCard";
 
 // Search
-export { Search } from "./Search";
-export { SearchBar } from "./SearchBar";
-export { SearchSuggestion } from "./SearchSuggestion";
+export { default as Search } from "./Search";

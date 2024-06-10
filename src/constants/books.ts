@@ -1,3 +1,5 @@
+import { Author } from "@/interface";
+
 const author_url = "/authors/";
 const category_url = "/categories/";
 
@@ -369,16 +371,9 @@ export const books = [
   },
 ];
 
-// const authors = [
-//   {
-//     name: "জহির রায়হান",
-//     slug: "jahir-raihan",
-//     src: author_url + "1.jpg",
-//   },
-// ];
+const authors: Author[] = [];
+for (let i = 0; i < books.length; i++) {
+  authors.push(books[i].authors[0]);
+}
 
-// for (let i = 0; i < books.length; i++) {
-//   authors.push(books[i].authors[0]);
-// }
-
-// export { authors };
+export { authors };

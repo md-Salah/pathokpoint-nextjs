@@ -1,9 +1,10 @@
-import { books } from "@/constants";
-import { ConditionBadge, InStockBadge } from "@/micro-components";
 import Image from "next/image";
 import Link from "next/link";
 
-const Book = ({ book }: { book: (typeof books)[0] }) => {
+import { ConditionBadge, InStockBadge } from "@/micro-components";
+import { Book as BookInterface } from "@/interface";
+
+const Book = ({ book }: { book: BookInterface }) => {
   const PriceAndDiscountPercent = () => (
     <div className="flex flex-col w-20 items-end">
       <span className="text-primary font-bold text-base">{`${book.sale_price} ৳`}</span>
