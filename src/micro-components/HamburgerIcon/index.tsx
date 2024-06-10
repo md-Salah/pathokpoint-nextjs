@@ -9,9 +9,9 @@ const HambugerIcon = () => (
     <path
       d="M3 18H19M3 12H19M3 6H19"
       stroke="#363739"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

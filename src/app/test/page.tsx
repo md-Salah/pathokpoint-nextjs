@@ -1,11 +1,8 @@
-import { ReviewCard } from "@/components";
-import { reviews } from "@/constants";
-import { FiSearch } from "react-icons/fi";
 
 const Test = () => {
   return (
-    <div className="m-4 w-44 h-8">
-      bolo mofiz
+    <div>
+      <div className="w-24 h-24 block bg-red-500 transition-all duration-[5000ms] hover:hidden">lal</div>
     </div>
   );
 };

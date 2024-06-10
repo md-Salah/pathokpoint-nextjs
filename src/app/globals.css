@@ -27,6 +27,10 @@
     @apply mx-4 sm:mx-0;
 }
 
+.menu-item {
+    @apply border-l-4 rounded-none border-white font-bn flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A] 
+}
+
 /* Half underline */
 .half-underline {
     position: relative;
