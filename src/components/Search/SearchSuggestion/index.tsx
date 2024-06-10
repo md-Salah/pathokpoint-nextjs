@@ -35,21 +35,21 @@ const SearchSuggestion = ({ suggestions }: Props) => {
           className={`tab ${tab === 0 && "tab-active"}`}
           onClick={() => setTab(0)}
         >
-          বই
+          বই ({suggestions.books.length})
         </div>
         <div
           role="tab"
           className={`tab ${tab == 1 && "tab-active"}`}
           onClick={() => setTab(1)}
         >
-          লেখক
+          লেখক ({suggestions.authors.length})
         </div>
         <div
           role="tab"
           className={`tab ${tab == 2 && "tab-active"}`}
           onClick={() => setTab(2)}
         >
-          বিষয়
+          বিষয় ({suggestions.categories.length})
         </div>
       </div>
 
