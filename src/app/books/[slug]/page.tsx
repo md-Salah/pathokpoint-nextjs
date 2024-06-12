@@ -21,7 +21,8 @@ const Book = ({ params }: { params: Params }) => {
             <BookDetails book={book} />
           </div>
           <div className="col-span-8 sm:col-span-5 lg:col-span-8 lg:order-1">
-            Additional info
+            {/* <AdditionalInfo book={book} /> */}
+            Additional Info
           </div>
           <div className="col-span-8 sm:col-span-3 lg:col-span-2">
             <Variation books={books.slice(0, 5)} />
