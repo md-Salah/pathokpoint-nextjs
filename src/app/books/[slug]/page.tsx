@@ -1,4 +1,4 @@
-import { AdditionalInfo, BookDetails, Variation } from "@/components";
+import { BookDetails, Variation } from "@/components";
 import { books } from "@/constants";
 
 interface Params {
