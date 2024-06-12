@@ -1,5 +1,6 @@
 import { Category } from "./category";
 import { Author } from "./author";
+import { Publisher } from "./publisher";
 import { Image } from "./image";
 
 export interface Book {
@@ -7,6 +8,7 @@ export interface Book {
   name: string;
   authors: Array<Author>;
   categories: Array<Category>;
+  publisher: Publisher;
   regular_price: number;
   sale_price: number;
   quantity: number;

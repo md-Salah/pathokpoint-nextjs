@@ -6,14 +6,22 @@ const category_url = "/categories/";
 export const books = [
   {
     id: "1",
-    description: "This is a book about a",
-    short_description: "This is a book about a",
+    description: "পথের পাঁচালী হল প্রখ্যাত সাহিত্যিক বিভূতিভূষণ বন্দ্যোপাধ্যায় রচিত একটি বিখ্যাত উপন্যাস।",
+    short_description: "পথের পাঁচালী হল প্রখ্যাত সাহিত্যিক বিভূতিভূষণ বন্দ্যোপাধ্যায় রচিত একটি বিখ্যাত উপন্যাস।",
     name: "অপুর সংকেত",
     authors: [
       {
         id: "5",
         name: "বিভূতিভূষণ বন্দ্যোপাধ্যায়",
         slug: "bibhutibhushan-bandopadhyay",
+        image: {
+          src: author_url + "5.jpg",
+        },
+      },
+      {
+        id: "3",
+        name: "Ismat Chughtai",
+        slug: "ismat-chughtai",
         image: {
           src: author_url + "5.jpg",
         },
@@ -28,7 +36,20 @@ export const books = [
           src: category_url + "1.jpg",
         },
       },
+      {
+        id: "1",
+        name: "Admission",
+        slug: "admission",
+        image: {
+          src: category_url + "1.jpg",
+        },
+      },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 1000,
     sale_price: 250,
     images: [{ id: "lal", name: "lal.img", src: "/books/b (1).jpg" }],
@@ -59,6 +80,11 @@ export const books = [
         slug: "uponnas",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 1000,
     sale_price: 1000,
     images: [{ id: "lal", name: "lal.img", src: "/books/b (1).jpg" }],
@@ -91,6 +117,11 @@ export const books = [
         slug: "admission",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 1200,
     sale_price: 900,
     images: [{ id: "bishad", name: "bishad.img", src: "/books/b (2).jpg" }],
@@ -123,6 +154,11 @@ export const books = [
         slug: "medical",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 950,
     sale_price: 850,
     images: [{ id: "chander", name: "chander.img", src: "/books/b (3).jpg" }],
@@ -155,6 +191,11 @@ export const books = [
         slug: "job-preparation",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 800,
     sale_price: 650,
     images: [
@@ -186,6 +227,11 @@ export const books = [
         slug: "nibondho",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 700,
     sale_price: 600,
     images: [{ id: "manobik", name: "manobik.img", src: "/books/b (5).jpg" }],
@@ -215,6 +261,11 @@ export const books = [
         slug: "kobita",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 500,
     sale_price: 450,
     images: [{ id: "kobitar", name: "kobitar.img", src: "/books/b (6).jpg" }],
@@ -244,6 +295,11 @@ export const books = [
         slug: "darshan",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 900,
     sale_price: 750,
     images: [
@@ -275,6 +331,11 @@ export const books = [
         slug: "rajniti",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 1100,
     sale_price: 950,
     images: [{ id: "rajniti", name: "rajniti.img", src: "/books/b (8).jpg" }],
@@ -304,6 +365,11 @@ export const books = [
         slug: "smritikotha",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 1300,
     sale_price: 1150,
     images: [{ id: "smritir", name: "smritir.img", src: "/books/b (9).jpg" }],
@@ -333,6 +399,11 @@ export const books = [
         slug: "itihash",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 1250,
     sale_price: 1100,
     images: [{ id: "itihash", name: "itihash.img", src: "/books/b (10).jpg" }],
@@ -362,6 +433,11 @@ export const books = [
         slug: "jiboni",
       },
     ],
+    publisher: {
+      id: "1",
+      name: "Ananda Publishers",
+      slug: "ananda-publishers",
+    },
     regular_price: 1000,
     sale_price: 900,
     images: [{ id: "jibon", name: "jibon.img", src: "/books/b (11).jpg" }],

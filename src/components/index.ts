@@ -25,3 +25,8 @@ export { default as PublisherCard } from "./PublisherCard";
 
 // Search
 export { default as Search } from "./Search";
+
+// BookDetails
+export { default as AdditionalInfo } from "./AdditionalInfo";
+export { default as BookDetails } from "./BookDetails";
+export { default as Variation } from "./Variation";

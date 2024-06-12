@@ -27,8 +27,13 @@
     @apply mx-4 sm:mx-0;
 }
 
+/* Customize daisy UI */
 .menu-item {
     @apply border-l-4 rounded-none border-white font-bn flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A] 
+}
+
+.btn-link {
+    @apply px-0 no-underline hover:underline font-normal;
 }
 
 /* Half underline */

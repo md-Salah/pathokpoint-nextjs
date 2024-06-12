@@ -14,6 +14,7 @@ const config: Config = {
         black04: "#9B9B9C",
         black05: "#CDCDCD",
         black06: "#E6E6E6",
+        black07: "#F2F2F2",
         highlight: "#F2213A",
       },
       fontSize: {
@@ -36,7 +37,7 @@ const config: Config = {
           "base-100": "#f5f5f5",
           "base-200": "#ffffff",
           info: "#1e3a8a",
-          success: "#15803d",
+          success: "#02BF6C",
           error: "#F2213A",
 
           "--rounded-box": "0.25rem",
