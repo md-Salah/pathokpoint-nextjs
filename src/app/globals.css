@@ -36,6 +36,11 @@
     @apply px-0 no-underline hover:underline font-normal;
 }
 
+/* Table */
+.table-left-0 :where(th, td) {
+    padding-left: 0;
+}
+
 /* Half underline */
 .half-underline {
     position: relative;

@@ -1,5 +1,12 @@
-import { BookDetails, Variation } from "@/components";
-import { books } from "@/constants";
+import {
+  AdditionalInfo,
+  BookCard,
+  BookDetails,
+  Carousel,
+  CategoryCard,
+  Variation,
+} from "@/components";
+import { books, categories } from "@/constants";
 
 interface Params {
   slug: string;
@@ -21,17 +28,23 @@ const Book = ({ params }: { params: Params }) => {
             <BookDetails book={book} />
           </div>
           <div className="col-span-8 sm:col-span-5 lg:col-span-8 lg:order-1">
-            {/* <AdditionalInfo book={book} /> */}
-            Additional Info
+            <AdditionalInfo book={book} />
           </div>
           <div className="col-span-8 sm:col-span-3 lg:col-span-2">
             <Variation books={books.slice(0, 5)} />
           </div>
         </div>
       )}
-      {/* Reviews */}
-      {/* RelatedBooks */}
-      {/* RelatedCategories */}
+      <Carousel title="Related Books">
+        {books.map((book) => (
+          <BookCard key={book.id} book={book} />
+        ))}
+      </Carousel>
+      <Carousel title="Related Categories">
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))}
+      </Carousel>
     </div>
   );
 };

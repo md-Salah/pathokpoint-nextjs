@@ -11,7 +11,7 @@ interface Props {
 
 const VariationSlider = ({ books }: Props) => {
   return (
-    <div className="sm:ml-3 sm:pt-8 h-full">
+    <div className="layout-mt sm:mt-0 sm:ml-3 sm:pt-8 h-full">
       <div className="bg-white h-full">
         <h1 className="p-4 font-semibold border-b">Variation</h1>
         <div className="carousel carousel-vertical">
@@ -48,7 +48,7 @@ const Book = ({ book }: { book: BookInterface }) => {
           {/* Name, Publisher & Price */}
           <div className="flex flex-1 flex-col ml-2">
             <h1
-              className={`text-base font-semibold truncate group-hover:underline ${
+              className={`text-base font-medium truncate group-hover:underline ${
                 !isEnglish(book.name) && "font-bn"
               }`}
             >
@@ -68,7 +68,7 @@ const Book = ({ book }: { book: BookInterface }) => {
               <ConditionBadge condition={book.condition} />
             </div>
             <div className="mt-0.5 sm:mt-1">
-              <span className="text-base text-[#2B2B2B] font-semibold">
+              <span className="text-base text-[#2B2B2B] font-medium">
                 ৳{book.sale_price}
               </span>
               {book.regular_price > book.sale_price && (
