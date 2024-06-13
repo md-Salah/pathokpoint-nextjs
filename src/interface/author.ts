@@ -2,8 +2,9 @@ export interface Author {
     id: string;
     name: string;
     slug: string;
-    image: {
+    image?: {
         src: string;
     } | null;
+    description?: string;
 }
 
