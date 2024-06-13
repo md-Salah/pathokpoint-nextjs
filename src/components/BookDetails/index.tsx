@@ -5,7 +5,7 @@ import { Book } from "@/interface";
 import {
   ConditionBadge,
   ConditionExplain,
-  Heart,
+  WishlistButton,
   NumberInput,
   Share,
 } from "@/micro-components";
@@ -150,7 +150,7 @@ const BookDetails = ({ book }: Props) => {
               Add to Cart
             </button>
             <div className="w-[3.75rem] h-full">
-              <Heart />
+              <WishlistButton />
             </div>
             <div className="w-[3.75rem] h-full">
               <Share text={copyText} />

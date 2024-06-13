@@ -1,7 +1,7 @@
 export { AvatarPlaceholder } from "./AvatarPlaceholder";
 export { ConditionBadge } from "./ConditionBadge";
 export { InStockBadge } from "./InStockBadge";
-export { Heart } from "./Heart";
+export { default as WishlistButton } from "./WishlistButton";
 export { default as Description } from "./Description";
 export { default as ConditionExplain } from "./ConditionExplain";
 export { default as Share } from "./Share";

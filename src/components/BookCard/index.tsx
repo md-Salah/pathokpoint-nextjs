@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ConditionBadge, Heart } from "@/micro-components";
+import { ConditionBadge, WishlistButton } from "@/micro-components";
 import Link from "next/link";
 import { Book } from "@/interface";
 import { isEnglish } from "@/utils";
@@ -14,7 +14,7 @@ const BookCard = ({ book }: { book: Book }) => {
           sale_price={book.sale_price}
         />
 
-        <div className="card-body px-3 pb-3 sm:pb-3 sm:px-5 pt-3 gap-1 justify-between">
+        <div className="card-body px-3 pb-3 sm:pb-3 sm:px-5 pt-3 gap-1 justify-between bg-white">
           <Title name={book.name} slug={book.slug} />
           <Author name={book.authors[0].name} slug={book.authors[0].slug} />
           <ConditionBadge condition={book.condition} />
@@ -89,7 +89,7 @@ const Author = ({ name, slug }: { name: string; slug: string }) => {
   return (
     <Link href={`authors/${slug}`} target="_blank">
       <p
-        className={`truncate text-xxs sm:text-xs leading-tight text-secondary-content hover:underline mb-1 ${
+        className={`truncate text-xs leading-tight text-secondary-content hover:underline mb-1 ${
           isEnglish(name) ? "" : "font-bn"
         }`}
       >
@@ -116,11 +116,11 @@ const Price = ({
 
 const ActionButtons = () => (
   <div className="card-actions justify-between mt-1">
-    <button className="btn btn-primary btn-sm flex-1 text-sm sm:text-base">
+    <button className="btn btn-primary btn-sm flex-1 text-xs sm:text-sm md:text-base font-bold h-8 sm:h-9">
       Add to cart
     </button>
-    <div className="hidden sm:block">
-      <Heart />
+    <div className="hidden sm:block h-9 w-10">
+      <WishlistButton />
     </div>
   </div>
 );
