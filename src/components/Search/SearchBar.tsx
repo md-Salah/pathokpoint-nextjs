@@ -14,19 +14,17 @@ const SearchBar = ({ query, handleSearch, focus }: Props) => {
   const text = "বই, লেখক, অথবা বিষয় লিখুন";
   const [placeholder, setPlaceholder] = useState<string>("");
 
-  const typingPlaceholder = () => {
-    setPlaceholder(text.slice(0, i));
-    i++;
-    if (i === text.length) {
-      setTimeout(() => {
-        i = 0;
-        setPlaceholder("");
-      }, 3000);
-    }
-  };
-
   useEffect(() => {
-    const intervalId = setInterval(typingPlaceholder, 100);
+    const intervalId = setInterval(() => {
+      setPlaceholder(text.slice(0, i));
+      i++;
+      if (i === text.length) {
+        setTimeout(() => {
+          i = 0;
+          setPlaceholder("");
+        }, 3000);
+      }
+    }, 100);
     return () => clearInterval(intervalId);
   }, []);
 

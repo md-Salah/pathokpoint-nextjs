@@ -26,11 +26,12 @@ const AdditionalInfo = ({ book }: Props) => {
             <div>
               {book.authors.map((author, index) => (
                 <div
+                  key={author.id}
                   className={`${
                     index !== book.authors.length - 1 && "border-b pb-10"
                   }`}
                 >
-                  <AuthorInfo key={author.id} author={author} />
+                  <AuthorInfo author={author} />
                 </div>
               ))}
             </div>
