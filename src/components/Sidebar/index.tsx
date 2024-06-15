@@ -5,12 +5,20 @@ import { MdOutlineStorefront } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { PiPackage } from "react-icons/pi";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { IoImagesOutline } from "react-icons/io5";
+import { CiShoppingTag } from "react-icons/ci";
+import { MdOutlineReviews } from "react-icons/md";
+import { FcStatistics } from "react-icons/fc";
+import { IoIosArrowBack } from "react-icons/io";
 import Image from "next/image";
+import Link from "next/link";
 
 const Sidebar = () => {
   const [isProductManagementClicked, setIsProductManagementClicked] =
     useState(false);
   const [isTransactionClicked, setIsTransactionClicked] = useState(false);
+  const [isSidebarExpandClicked, setIsSidebarExpandClicked] = useState(true);
   return (
     <>
       <div className="w-72 bg-gray-900 text-gray-200 min-h-screen py-10">
@@ -23,12 +31,17 @@ const Sidebar = () => {
             className="object-contain object-left text-xl font-bold"
           />
         </div>
-        <div className="text-lg font-bold py-8">MAINMENU</div>
+        <div className="text-lg font-bold py-8 px-2 flex items-center justify-between">
+          <span className="mx-auto">MAINMENU</span>
+          <div className="bg-primary rounded-md py-[8px] px-[5px] cursor-pointer" onClick={() => setIsSidebarExpandClicked((prevState) => !prevState)}>
+            <IoIosArrowBack size={18} className={`transition-all duration-200 ${isSidebarExpandClicked ? "" : "rotate-180"}`}/>
+          </div>
+        </div>
         <div className="p-2 flex flex-col space-y-2">
-          <div className="sidebar-menu-btn">
+          <Link className="sidebar-menu-btn" href={"/admin/dashboard"}>
             <RxDashboard size={18} />
             <span>Dashboard</span>
-          </div>
+          </Link>
           <div>
             <div
               className={`sidebar-menu-btn justify-between ${
@@ -57,30 +70,30 @@ const Sidebar = () => {
                   : "hidden transition-all duration-500 ease-in"
               }`}
             >
-              <a
-                href="#"
+              <Link
+                href={"/admin/product-management/books"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
               >
                 Books
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href={"/admin/product-management/authors"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
               >
                 Authors
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href={"/admin/product-management/categories"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
               >
                 Category
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href={"/admin/product-management/publishers"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
               >
                 Publishers
-              </a>
+              </Link>
               <a
                 href="#"
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
@@ -89,30 +102,30 @@ const Sidebar = () => {
               </a>
             </div>
           </div>
-          <div className="sidebar-menu-btn">
-            <RxDashboard size={18} />
+          <Link href={"/admin/images"} className="sidebar-menu-btn">
+            <IoImagesOutline size={18} />
             <span>Images</span>
-          </div>
-          <div className="sidebar-menu-btn">
-            <RxDashboard size={18} />
+          </Link>
+          <Link href={"/admin/order-management"} className="sidebar-menu-btn">
+            <MdOutlineShoppingCart size={18} />
             <span>Order Management</span>
-          </div>
-          <div className="sidebar-menu-btn">
-            <RxDashboard size={18} />
+          </Link>
+          <Link href={"/admin/coupon"} className="sidebar-menu-btn">
+            <CiShoppingTag size={18} />
             <span>Coupon</span>
-          </div>
-          <div className="sidebar-menu-btn">
-            <RxDashboard size={18} />
+          </Link>
+          <Link href={"/admin/reviews"} className="sidebar-menu-btn">
+            <MdOutlineReviews size={18} />
             <span>Reviews</span>
-          </div>
-          <div className="sidebar-menu-btn">
+          </Link>
+          <Link href={"/admin/users"} className="sidebar-menu-btn">
             <FaRegUser size={18} />
             <span>User</span>
-          </div>
-          <div className="sidebar-menu-btn">
+          </Link>
+          <Link href={"/admin/couriers"} className="sidebar-menu-btn">
             <PiPackage size={18} />
             <span>Courier</span>
-          </div>
+          </Link>
           <div>
             <div
               className={`sidebar-menu-btn justify-between ${
@@ -121,7 +134,7 @@ const Sidebar = () => {
               onClick={() => setIsTransactionClicked((prevState) => !prevState)}
             >
               <div className="flex items-center space-x-2">
-                <MdOutlineStorefront size={18} />
+                <FcStatistics size={18} />
                 <span>Transaction</span>
               </div>
               <IoIosArrowDown
@@ -139,24 +152,24 @@ const Sidebar = () => {
                   : "hidden"
               }`}
             >
-              <a
-                href="#"
+              <Link
+                href={"/admin/transaction/payment-gateway"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
               >
                 Payment Gateway
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href={"/admin/transaction/activity-log"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
               >
                 Activity Log
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href={"/admin/transaction/email-log"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
               >
                 Email Log
-              </a>
+              </Link>
             </div>
           </div>
         </div>

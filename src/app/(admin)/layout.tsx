@@ -29,9 +29,9 @@ export default function AdminLayout({
           <main className={anek.variable}>
             <div className="flex items-start">
               <Sidebar />
-              <div className="">
+              <div>
                 <AdminHeader />
-                {children}
+                <div className="pt-24">{children}</div>
               </div>
             </div>
           </main>
