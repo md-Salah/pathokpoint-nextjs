@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { Footer, Navbar, TopBanner } from "@/components";
+import "../globals.css";
 import { ReduxProvider } from "@/redux/provider";
+import { AdminHeader, Sidebar } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 const anek = Anek_Bangla({
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   icons: ["favicon.ico"],
 };
 
-export default function RootLayout({
+export default function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -27,10 +27,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <ReduxProvider>
           <main className={anek.variable}>
-            <TopBanner />
-            <Navbar />
-            {children}
-            <Footer />
+            <div className="flex items-start">
+              <Sidebar />
+              <div className="">
+                <AdminHeader />
+                {children}
+              </div>
+            </div>
           </main>
         </ReduxProvider>
       </body>

@@ -2,75 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .font-bn {
-    font-family: var(--font-anek-bangla);
+  font-family: var(--font-anek-bangla);
 }
 
 .layout-container {
-    @apply mx-auto container sm:w-[1328px] sm:max-w-[90%];
+  @apply mx-auto container sm:w-[1328px] sm:max-w-[90%];
 }
 
 .layout-mt {
-    @apply mt-4 sm:mt-8;
+  @apply mt-4 sm:mt-8;
 }
 
 .layout-p {
-    @apply p-4 sm:p-10 sm:pt-7;
+  @apply p-4 sm:p-10 sm:pt-7;
 }
 
 .layout-px {
-    @apply px-4 sm:px-0;
+  @apply px-4 sm:px-0;
 }
 
 .layout-mx {
-    @apply mx-4 sm:mx-0;
+  @apply mx-4 sm:mx-0;
 }
 
 /* Customize daisy UI */
 .menu-item {
-    @apply border-l-4 rounded-none border-white font-bn flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A] 
+  @apply border-l-4 rounded-none border-white font-bn flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A];
 }
 
 .btn-link {
-    @apply px-0 no-underline hover:underline font-normal;
+  @apply px-0 no-underline hover:underline font-normal;
+}
+
+.sidebar-menu-btn {
+  @apply flex items-center space-x-2 py-4 pl-8 pr-2 hover:bg-gray-700 rounded-lg cursor-pointer text-sm;
 }
 
 /* Table */
 .table-left-0 :where(th, td) {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 /* Half underline */
 .half-underline {
-    position: relative;
+  position: relative;
 }
 
 .half-underline:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 40%;
-    border-bottom: 2px solid #ff8200;
-    transition: width 0.3s ease, transition-delay 0.3s;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  border-bottom: 2px solid #ff8200;
+  transition: width 0.3s ease, transition-delay 0.3s;
 }
 
 .half-underline:hover:before {
-    width: 100%;
+  width: 100%;
 }
 
-
 @layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
