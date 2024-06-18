@@ -5,4 +5,3 @@ export { reviews } from "./reviews";
 export { publishers } from "./publishers";
 export { categories } from "./categories";
 export { social } from "./social";
-export { iconsMap } from "./icons";

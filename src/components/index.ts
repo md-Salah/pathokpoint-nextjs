@@ -33,4 +33,3 @@ export { default as Variation } from "./Variation";
 
 //Admin
 export { default as Sidebar } from "./Sidebar";
-export { default as AdminHeader } from "./AdminHeader";
