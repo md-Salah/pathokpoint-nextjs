@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { RxDashboard } from "react-icons/rx";
 import { MdOutlineStorefront } from "react-icons/md";
-import { IoIosArrowDown } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { PiPackage } from "react-icons/pi";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -15,13 +14,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Sidebar = () => {
-  const [isProductManagementClicked, setIsProductManagementClicked] =
-    useState(false);
-  const [isTransactionClicked, setIsTransactionClicked] = useState(false);
   const [isSidebarExpandClicked, setIsSidebarExpandClicked] = useState(true);
   return (
     <>
-      <div className="w-72 bg-gray-900 text-gray-200 min-h-screen py-10">
+      <div className="w-72 bg-gray-900 text-gray-200 py-10 min-h-fit md:block hidden">
         <div className="mx-auto relative h-[26px] md:h-[70px] max-w-[128px]">
           <Image
             alt="Pathok Point"
@@ -33,8 +29,16 @@ const Sidebar = () => {
         </div>
         <div className="text-lg font-bold py-8 px-2 flex items-center justify-between">
           <span className="mx-auto">MAINMENU</span>
-          <div className="bg-primary rounded-md py-[8px] px-[5px] cursor-pointer" onClick={() => setIsSidebarExpandClicked((prevState) => !prevState)}>
-            <IoIosArrowBack size={18} className={`transition-all duration-200 ${isSidebarExpandClicked ? "" : "rotate-180"}`}/>
+          <div
+            className="bg-primary rounded-md py-[8px] px-[5px] cursor-pointer"
+            onClick={() => setIsSidebarExpandClicked((prevState) => !prevState)}
+          >
+            <IoIosArrowBack
+              size={18}
+              className={`transition-all duration-200 ${
+                isSidebarExpandClicked ? "" : "rotate-180"
+              }`}
+            />
           </div>
         </div>
         <div className="p-2 flex flex-col space-y-2">
@@ -42,34 +46,14 @@ const Sidebar = () => {
             <RxDashboard size={18} />
             <span>Dashboard</span>
           </Link>
-          <div>
-            <div
-              className={`sidebar-menu-btn justify-between ${
-                isProductManagementClicked ? "bg-gray-700" : ""
-              }`}
-              onClick={() =>
-                setIsProductManagementClicked((prevState) => !prevState)
-              }
-            >
+          <details className="collapse collapse-arrow">
+            <summary className="collapse-title pl-8 hover:bg-gray-700 rounded-lg">
               <div className="flex items-center space-x-2">
                 <MdOutlineStorefront size={18} />
                 <span>Product Management</span>
               </div>
-              <IoIosArrowDown
-                className={`${
-                  isProductManagementClicked
-                    ? "rotate-180 transition-all duration-200"
-                    : "transition-all duration-200"
-                }`}
-              />
-            </div>
-            <div
-              className={`mt-2 pl-6 ${
-                isProductManagementClicked
-                  ? "flex flex-col space-y-2 transition-all duration-500 ease-out"
-                  : "hidden transition-all duration-500 ease-in"
-              }`}
-            >
+            </summary>
+            <div className="collapse-content">
               <Link
                 href={"/admin/product-management/books"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
@@ -101,7 +85,7 @@ const Sidebar = () => {
                 Tags
               </a>
             </div>
-          </div>
+          </details>
           <Link href={"/admin/images"} className="sidebar-menu-btn">
             <IoImagesOutline size={18} />
             <span>Images</span>
@@ -126,32 +110,14 @@ const Sidebar = () => {
             <PiPackage size={18} />
             <span>Courier</span>
           </Link>
-          <div>
-            <div
-              className={`sidebar-menu-btn justify-between ${
-                isTransactionClicked ? "bg-gray-700" : ""
-              }`}
-              onClick={() => setIsTransactionClicked((prevState) => !prevState)}
-            >
+          <details className="collapse collapse-arrow">
+            <summary className="collapse-title pl-8 hover:bg-gray-700 rounded-lg">
               <div className="flex items-center space-x-2">
                 <FcStatistics size={18} />
                 <span>Transaction</span>
               </div>
-              <IoIosArrowDown
-                className={`${
-                  isTransactionClicked
-                    ? "rotate-180 transition-all duration-200"
-                    : "transition-all duration-200"
-                }`}
-              />
-            </div>
-            <div
-              className={`mt-2 pl-6 ${
-                isTransactionClicked
-                  ? "flex flex-col space-y-2 transition-all duration-500 ease-out"
-                  : "hidden"
-              }`}
-            >
+            </summary>
+            <div className="collapse-content">
               <Link
                 href={"/admin/transaction/payment-gateway"}
                 className="block py-2 pl-8 hover:bg-gray-700 rounded text-sm"
@@ -171,7 +137,7 @@ const Sidebar = () => {
                 Email Log
               </Link>
             </div>
-          </div>
+          </details>
         </div>
       </div>
     </>

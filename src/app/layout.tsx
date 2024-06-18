@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
 import { Inter } from "next/font/google";
-import "../globals.css";
+import "./globals.css";
 import { Footer, Navbar, TopBanner } from "@/components";
 import { ReduxProvider } from "@/redux/provider";
 
