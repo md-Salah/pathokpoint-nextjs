@@ -13,19 +13,19 @@ const MenuContent = ({
 }) => {
   return (
     <ul className="menu px-0">
-      {menuItems.map((menuItem) => {
+      {menuItems.map((menuItem: MenuItem, index) => {
         if (menuItem.submenus.length > 0) {
           return (
-            <li>
+            <li key={index}>
               <details>
                 <summary className="menu-item">
                   <h3>{menuItem.name}</h3>
                 </summary>
                 <div className="h-48 overflow-y-scroll">
                   <ul>
-                    {menuItem.submenus.map((subMenuItem: SubMenuItem) => (
+                    {menuItem.submenus.map((subMenuItem: SubMenuItem, index) => (
                       <Item
-                        key={subMenuItem.name}
+                        key={index}
                         name={subMenuItem.name}
                         slug={subMenuItem.slug}
                         handleClose={handleClose}
@@ -38,7 +38,7 @@ const MenuContent = ({
           );
         } else {
           return (
-            <li className="menu-item">
+            <li className="menu-item" key={index}>
               <Link
                 href={menuItem.slug}
                 onClick={handleClose}

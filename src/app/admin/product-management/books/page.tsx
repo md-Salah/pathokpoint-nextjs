@@ -1,6 +1,6 @@
 import { ConditionBadge, InStockBadge } from "@/micro-components";
 import { CiMenuKebab } from "react-icons/ci";
-import { books } from "@/constants";
+import { bookGlobalOptions, books, bookSortOptions } from "@/constants";
 import Sidebar from "@/components/Sidebar";
 import { CiSearch } from "react-icons/ci";
 import React from "react";
@@ -10,7 +10,7 @@ const Books = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="w-[80%] p-8 bg-white rounded-md my-8 mx-auto">
+      <div className="w-[95%] sm:w-[80%] p-4 sm:p-8 bg-white rounded-md my-8 mx-auto">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-semibold">Books</h1>
           <button className="btn btn-secondary text-white text-base rounded-lg">
@@ -19,55 +19,85 @@ const Books = () => {
             </Link>
           </button>
         </div>
-        <div className="pb-4 flex items-center space-x-4">
-          <div>
-            <select className="select max-w-xs">
-              <option disabled selected>
-                All
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
+        <div className="pb-4 grid grid-cols-2 grid-flow-row gap-3 sm:flex sm:items-center sm:space-x-2 text-xs sm:text-sm">
+          <div className="flex items-center">
+            <select className="select max-w-xs select-sm sm:select-md">
+              {bookGlobalOptions.map((option, index) => (
+                <option selected={option.id === 1} key={index}>
+                  {option.title}
+                </option>
+              ))}
             </select>
             <label className="w-full relative">
               <input
                 type="text"
                 placeholder="Search"
-                className="input max-w-xs relative"
+                className="input w-40 relative rounded-r-lg input-sm sm:input-md"
               />
-              <CiSearch className="absolute z-20 right-1 top-0" size={20} />
+              <CiSearch className="absolute z-20 right-2 top-3" size={20} />
             </label>
           </div>
-          <select className="select max-w-xs">
+          <div></div>
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
             <option disabled selected>
               Stock
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs">
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
             <option disabled selected>
               Condition
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs">
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
             <option disabled selected>
               Cover
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs">
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
             <option disabled selected>
               Author
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+            <option disabled selected>
+              Publisher
+            </option>
+            <option>Han Solo</option>
+            <option>Greedo</option>
+          </select>
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+            <option disabled selected>
+              Category
+            </option>
+            <option>Han Solo</option>
+            <option>Greedo</option>
+          </select>
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+            <option disabled selected>
+              Tag
+            </option>
+            <option>Han Solo</option>
+            <option>Greedo</option>
+          </select>
+          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+            <option disabled selected>
+              Sort
+            </option>
+            {bookSortOptions.map((option, index) => (
+              <option key={index}>{option.title}</option>
+            ))}
+          </select>
         </div>
         <div className="overflow-x-auto">
-          <table className="table w-full text-sm">
+          <table className="table w-full text-xs sm:text-sm">
             <thead className="bg-base-200">
               <tr>
                 <th>Public ID & SKU</th>
