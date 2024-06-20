@@ -54,6 +54,7 @@ const Pagination = ({
           </span>
         ) : (
           <a
+            key={index}
             className={`btn btn-sm ${
               currentPage === number ? "btn-primary" : "btn-ghost"
             }`}
