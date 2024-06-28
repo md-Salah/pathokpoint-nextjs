@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-date-picker__wrapper {
+  @apply rounded-md p-2 flex items-center gap-2 cursor-pointer;
+}
+
+.react-date-picker__inputGroup {
+  @apply text-lg text-gray-600 cursor-pointer;
+}
+
+.react-date-picker__calendar-button {
+  @apply border-none bg-none cursor-pointer;
+}
+
+.react-date-picker__clear-button {
+  @apply hidden;
+}
+
 .font-bn {
   font-family: var(--font-anek-bangla);
 }
