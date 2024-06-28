@@ -10,41 +10,17 @@ import {
 import { RiNotification4Fill } from "react-icons/ri";
 import React, {
   forwardRef,
-  LegacyRef,
-  MouseEvent,
-  MouseEventHandler,
   useEffect,
   useState,
 } from "react";
 import { dashboardDateOptions } from "@/constants/constants";
-import 'react-datepicker/dist/react-datepicker.css';
-import { BsCalendarMinusFill } from "react-icons/bs";
-import DatePicker from "react-datepicker";
 
-interface CustomInputProps {
-  value?: string;
-  onClick?: () => void;
-}
 
 
 const Dashboard = () => {
   const [selectDate, onChange] = useState<Date | null>(null);
   const [activeDateOption, setActiveDateOption] = useState<string>(
     dashboardDateOptions[0].value
-  );
-
-  const CustomDateInput = React.forwardRef<HTMLButtonElement,CustomInputProps>(
-    ({ value, onClick }, ref) => (
-      <button
-        type="button"
-        className="border border-gray-300 rounded-md px-3 py-2 flex items-center gap-2 text-gray-500"
-        onClick={onClick}
-        ref={ref}
-      >
-        <BsCalendarMinusFill />
-        {value || "Select Date"}
-      </button>
-    )
   );
 
   const handleChangeActiveDateOption = (option: string) => {
