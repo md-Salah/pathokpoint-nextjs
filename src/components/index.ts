@@ -33,3 +33,7 @@ export { default as Variation } from "./Variation";
 
 //Admin
 export { default as Sidebar } from "./Sidebar";
+export { default as OrderTabOptions } from "./AdminOrderManagement/OrderTabOptions";
+export { default as Pagination } from "./Pagination";
+export { default as OrderSummary } from "./AdminOrderManagement/OrderSummary";
+export { default as OrderedBookItem } from "./AdminOrderManagement/OrderedBookItem";

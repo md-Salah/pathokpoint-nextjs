@@ -174,3 +174,10 @@ export const frontendMenuItems: MenuItem[] = [
     type: "frontend",
   },
 ];
+
+export const orderStatuses = {
+  PENDING: "PENDING",
+  ON_DELIVERY: "ON_DELIVERY",
+  DELIVERED: "DELIVERED",
+  CANCELLED: "CANCELLED",
+};
