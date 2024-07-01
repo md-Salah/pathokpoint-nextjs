@@ -9,7 +9,7 @@ import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 const Footer = () => {
   return (
     <div className="bg-neutral">
-      <div className="layout-container layout-px layout-mt font-bn">
+      <div className="layout-container layout-px font-bn">
         <footer className="footer footer-center text-white md:footer py-10">
           <aside>
             <p className="text-3xl font-semibold font-bn">পাঠক পয়েন্ট</p>
