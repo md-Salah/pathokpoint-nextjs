@@ -56,12 +56,14 @@ const Images = () => {
             />
           </div>
           <div className="py-6 grid grid-cols-6 grid-flow-row gap-8">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => (
-              <ImageContainer />
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
+              <ImageContainer key={item} />
             ))}
           </div>
           <div className="flex items-center space-x-3 justify-start">
-            <span className="text-sm text-[#6F6E77]">The page you're on</span>
+            <span className="text-sm text-[#6F6E77]">
+              The page you&apos;re on
+            </span>
             <Pagination
               currentPage={currentPage}
               handleChangeCurrentPage={handleChangeCurrentPage}
