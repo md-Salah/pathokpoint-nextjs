@@ -33,3 +33,5 @@ export { default as Variation } from "./Variation";
 
 //Admin
 export { default as Sidebar } from "./Sidebar";
+export { default as ImageContainer } from "./AdminImages/ImageContainer";
+export { default as Pagination } from "./Pagination";
