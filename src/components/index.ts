@@ -34,3 +34,10 @@ export { default as Variation } from "./Variation";
 //Admin
 export { default as Sidebar } from "./Sidebar";
 export { default as Pagination } from "./Pagination";
+export { default as DashboardSummaryBox } from "./AdminDashboard/DashboardSummaryBox";
+export { default as ProfitSummary } from "./AdminDashboard/ProfitSummary";
+export { default as OrderSummary } from "./AdminDashboard/OrderSummary";
+export { default as DeliverySummary } from "./AdminDashboard/DeliverySummary";
+export { default as StatisticBarChart } from "./AdminDashboard/StatisticBarChart";
+export { default as OrderedProductPreviewItem } from "./AdminDashboard/OrderedProductPreviewItem";
+export { default as OrderTable } from "./AdminDashboard/OrderTable";
