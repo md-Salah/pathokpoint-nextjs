@@ -12,4 +12,6 @@ export { default as HambugerIcon } from "./HamburgerIcon";
 export { default as PrevArrow } from "./PrevArrow";
 export { default as NextArrow } from "./NextArrow";
 
+//Admin
+export { default as OrderStatusBadge } from "./OrderStatusBadge";
 export {default as ProductShipmentStatusBadge} from './ProductShipmentStatusBadge';

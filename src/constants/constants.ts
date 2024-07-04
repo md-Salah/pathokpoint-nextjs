@@ -211,3 +211,10 @@ export const dashboardIconColors = {
   discount: '#FF8200',
   dollar: '#EB3D4D'
 }
+
+export const orderStatuses = {
+  PENDING: "PENDING",
+  ON_DELIVERY: "ON_DELIVERY",
+  DELIVERED: "DELIVERED",
+  CANCELLED: "CANCELLED",
+};

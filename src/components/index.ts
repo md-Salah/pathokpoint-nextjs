@@ -41,3 +41,7 @@ export { default as DeliverySummary } from "./AdminDashboard/DeliverySummary";
 export { default as StatisticBarChart } from "./AdminDashboard/StatisticBarChart";
 export { default as OrderedProductPreviewItem } from "./AdminDashboard/OrderedProductPreviewItem";
 export { default as OrderTable } from "./AdminDashboard/OrderTable";
+export { default as OrderedBookItem } from "./AdminOrderManagement/OrderedBookItem";
+export { default as OrderSummary } from "./AdminOrderManagement/OrderSummary";
+export { default as OrderTabOptions } from "./AdminOrderManagement/OrderTabOptions";
+
