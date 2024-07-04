@@ -33,3 +33,7 @@ export { default as Variation } from "./Variation";
 
 //Admin
 export { default as Sidebar } from "./Sidebar";
+export { default as Pagination } from "./Pagination";
+export { default as CarouselModal } from "./AdminReviews/CarouselModal";
+export { default as ReviewDetailsModal } from "./AdminReviews/ReviewDetailsModal";
+export { default as StarRating } from "./AdminReviews/StarRating";
