@@ -218,3 +218,30 @@ export const orderStatuses = {
   DELIVERED: "DELIVERED",
   CANCELLED: "CANCELLED",
 };
+
+export const imageFolders = [
+  {
+    id: 1,
+    name: "Book",
+  },
+  {
+    id: 2,
+    name: "Author",
+  },
+  {
+    id: 3,
+    name: "Category",
+  },
+  {
+    id: 4,
+    name: "Publisher",
+  },
+  {
+    id: 5,
+    name: "Profile Picture",
+  },
+  {
+    id: 6,
+    name: "Review",
+  },
+];

@@ -44,4 +44,4 @@ export { default as OrderTable } from "./AdminDashboard/OrderTable";
 export { default as OrderedBookItem } from "./AdminOrderManagement/OrderedBookItem";
 export { default as OrderSummary } from "./AdminOrderManagement/OrderSummary";
 export { default as OrderTabOptions } from "./AdminOrderManagement/OrderTabOptions";
-
+export { default as ImageContainer } from "./AdminImages/ImageContainer";
