@@ -45,3 +45,6 @@ export { default as OrderedBookItem } from "./AdminOrderManagement/OrderedBookIt
 export { default as OrderSummary } from "./AdminOrderManagement/OrderSummary";
 export { default as OrderTabOptions } from "./AdminOrderManagement/OrderTabOptions";
 export { default as ImageContainer } from "./AdminImages/ImageContainer";
+export { default as CarouselModal } from "./AdminReviews/CarouselModal";
+export { default as ReviewDetailsModal } from "./AdminReviews/ReviewDetailsModal";
+export { default as StarRating } from "./AdminReviews/StarRating";
