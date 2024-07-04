@@ -164,7 +164,7 @@ const Reviews = () => {
             <span className="text-xs text-[#6F6E77]">1 of 1240 Authors</span>
 
             <div className="flex items-center justify-end space-x-2">
-              <span className="text-xs text-[#6F6E77]">The page you're on</span>
+              <span className="text-xs text-[#6F6E77]">The page you&apos;re on</span>
               <Pagination
                 currentPage={currentPage}
                 totalPages={10}

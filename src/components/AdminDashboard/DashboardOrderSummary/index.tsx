@@ -3,7 +3,7 @@ import DashboardSummaryBox from "../DashboardSummaryBox";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { dashboardIconColors } from "@/constants/constants";
 
-const OrderSummary = () => {
+const DashboardOrderSummary = () => {
   return (
     <div>
       <h1 className="text-3xl font-semibold">Order Summary</h1>
@@ -66,4 +66,4 @@ const OrderSummary = () => {
   );
 };
 
-export default OrderSummary;
+export default DashboardOrderSummary;

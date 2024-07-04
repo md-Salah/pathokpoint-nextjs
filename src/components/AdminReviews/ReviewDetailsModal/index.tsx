@@ -44,7 +44,7 @@ const ReviewDetailsModal = ({ onClose }: Props) => {
                   {Array(4)
                     .fill(4)
                     .map((_, i) => (
-                      <RiStarFill color="#F2AE14" size={20} />
+                      <RiStarFill color="#F2AE14" size={20} key={i} />
                     ))}
                 </span>
                 <span className="text-black04 text-sm">(Average Rating)</span>
@@ -83,7 +83,7 @@ const ReviewDetailsModal = ({ onClose }: Props) => {
                 {Array(5)
                   .fill(5)
                   .map((_, i) => (
-                    <RiStarFill color="#F2AE14" size={20} />
+                    <RiStarFill color="#F2AE14" size={20} key={i} />
                   ))}
               </span>
             </div>
@@ -93,7 +93,7 @@ const ReviewDetailsModal = ({ onClose }: Props) => {
                 {Array(4)
                   .fill(4)
                   .map((_, i) => (
-                    <RiStarFill color="#F2AE14" size={20} />
+                    <RiStarFill color="#F2AE14" size={20} key={i} />
                   ))}
               </span>
             </div>
@@ -103,7 +103,7 @@ const ReviewDetailsModal = ({ onClose }: Props) => {
                 {Array(5)
                   .fill(5)
                   .map((_, i) => (
-                    <RiStarFill color="#F2AE14" size={20} />
+                    <RiStarFill color="#F2AE14" size={20} key={i} />
                   ))}
               </span>
             </div>
@@ -113,7 +113,7 @@ const ReviewDetailsModal = ({ onClose }: Props) => {
                 {Array(4)
                   .fill(4)
                   .map((_, i) => (
-                    <RiStarFill color="#F2AE14" size={20} />
+                    <RiStarFill color="#F2AE14" size={20} key={i} />
                   ))}
               </span>
             </div>

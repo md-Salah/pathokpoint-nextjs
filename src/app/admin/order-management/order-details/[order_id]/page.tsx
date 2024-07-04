@@ -267,7 +267,7 @@ const OrderDetails = () => {
               className="btn btn-sm btn-outline"
               onClick={handleRestockModalClose}
             >
-              Don't restock, Just remove
+              Don&apos;t restock, Just remove
             </button>
           </div>
         </div>

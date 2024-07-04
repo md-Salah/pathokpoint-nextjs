@@ -2,10 +2,10 @@
 import {
   ProfitSummary,
   Sidebar,
-  OrderSummary,
   DeliverySummary,
   StatisticBarChart,
   OrderTable,
+  DashboardOrderSummary
 } from "@/components";
 import { RiNotification4Fill } from "react-icons/ri";
 import React, {
@@ -98,7 +98,7 @@ const Dashboard = () => {
           </div>
           <div className="flex flex-col space-y-4">
             <ProfitSummary />
-            <OrderSummary />
+            <DashboardOrderSummary />
             <DeliverySummary />
           </div>
           <div className="flex flex-col space-y-4">
