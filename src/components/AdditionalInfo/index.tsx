@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Book as BookInterface } from "@/interface";
 import BookInfo from "./BookInfo";
 import AuthorInfo from "./AuthorInfo";
+import Reviews from "./Reviews";
 
 interface Props {
   book: BookInterface;
@@ -36,7 +37,7 @@ const AdditionalInfo = ({ book }: Props) => {
               ))}
             </div>
           )}
-          {tab === "Reviews" && <div>Reviews</div>}
+          {tab === "Reviews" && <Reviews />}
         </div>
       </div>
     </div>

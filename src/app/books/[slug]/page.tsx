@@ -35,11 +35,13 @@ const Book = ({ params }: { params: Params }) => {
           </div>
         </div>
       )}
-      <Carousel title="Related Books">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <div className="mt-8">
+        <Carousel title="Related Books">
+          {books.map((book) => (
+            <BookCard key={book.id} book={book} />
+          ))}
+        </Carousel>
+      </div>
       <Carousel title="Related Categories">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />

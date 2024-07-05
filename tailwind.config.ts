@@ -33,7 +33,7 @@ const config: Config = {
           "base-content": "#363739",
           secondary: "#2B3440",
           "secondary-content": "#9B9B9C",
-          accent: "#b91c1c",
+          accent: "#F2AE14",
           "base-100": "#f5f5f5",
           "base-200": "#F2F2F2",
           info: "#1e3a8a",
