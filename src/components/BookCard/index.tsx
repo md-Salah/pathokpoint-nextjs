@@ -6,8 +6,8 @@ import { isEnglish } from "@/utils";
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
-    <div>
-      <div className="card relative w-[163px] sm:w-[236px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
+    <div className="flex flex-grow">
+      <div className="card relative w-full min-w-[163px] md:min-w-[236px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
         <Frame book={book} />
         <Discount
           regular_price={book.regular_price}
@@ -87,7 +87,7 @@ const Title = ({ name, slug }: { name: string; slug: string }) => {
 
 const Author = ({ name, slug }: { name: string; slug: string }) => {
   return (
-    <Link href={`authors/${slug}`} target="_blank">
+    <Link href={`/authors/${slug}`} target="_blank">
       <p
         className={`truncate text-xs leading-tight text-secondary-content hover:underline mb-1 ${
           isEnglish(name) ? "" : "font-bn"
