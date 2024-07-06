@@ -1,0 +1,14 @@
+/* Range Slider */
+#range-slider {
+    height: 3px;
+}
+
+#range-slider .range-slider__range {
+    background: #ff8200;
+}
+
+#range-slider .range-slider__thumb {
+    background: #ff8200;
+    height: 16px;
+    width: 16px;
+}

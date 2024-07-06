@@ -30,3 +30,8 @@ export { default as Search } from "./Search";
 export { default as AdditionalInfo } from "./AdditionalInfo";
 export { default as BookDetails } from "./BookDetails";
 export { default as Variation } from "./Variation";
+
+// Filters
+export { default as Filter } from "./Filter";
+export { default as FilterInMobile } from "./FilterInMobile";
+export { default as PriceRangeFilter } from "./PriceRangeFilter";
