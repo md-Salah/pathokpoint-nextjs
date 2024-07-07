@@ -1,29 +1,29 @@
-import { books, authors } from "@/constants";
+import { books, publishers } from "@/constants";
 import { BookCard, Filter, FilterInMobile, Profile } from "@/components";
 
 interface Params {
   slug: string;
 }
 
-const Author = ({ params }: { params: Params }) => {
-  const author = authors.find((author) => author.slug === params.slug);
-  const defaultSrc = "/default/author.png";
+const Publisher = ({ params }: { params: Params }) => {
+  const publisher = publishers.find(
+    (publisher) => publisher.slug === params.slug
+  );
+  const defaultSrc = "/default/publisher.png";
 
-  if (!author)
+  if (!publisher)
     return (
       <div className="layout-container py-10">
-        <h1 className="text-center text-3xl">Author not found</h1>
+        <h1 className="text-center text-3xl">Publisher not found</h1>
       </div>
     );
 
   return (
     <div className="layout-container layout-px">
       <Profile
-        name={author.name}
-        description={author.description}
-        dp={author.image?.src || defaultSrc}
+        name={publisher.name}
+        dp={publisher.image?.src || defaultSrc}
         cover="/banner/b (2).png"
-        handleFollow={() => {}}
       />
 
       <div className="flex sm:hidden mt-3 justify-end">
@@ -38,7 +38,7 @@ const Author = ({ params }: { params: Params }) => {
           <div className="flex justify-between gap-2.5">
             <input
               type="text"
-              placeholder={`Search in ${author.name}...`}
+              placeholder={`Search in ${publisher.name}...`}
               className="input input-bordered input-xs sm:input-sm font-bn min-w-0"
             />
             <select className="select select-bordered select-xs sm:select-sm min-w-0">
@@ -67,4 +67,4 @@ const Author = ({ params }: { params: Params }) => {
   );
 };
 
-export default Author;
+export default Publisher;

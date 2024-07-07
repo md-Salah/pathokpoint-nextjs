@@ -14,7 +14,7 @@ const FilterInMobile = () => {
         Filter
         <SlEqualizer className="w-4 h-4 inline-block" />
       </button>
-      <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Drawer isOpen={isOpen} setIsOpen={setIsOpen} right={true}>
         <div className="bg-base-200 pb-8">
           <Filter />
         </div>
