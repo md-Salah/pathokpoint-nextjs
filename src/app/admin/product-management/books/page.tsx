@@ -21,7 +21,7 @@ const Books = () => {
         </div>
         <div className="pb-4 grid grid-cols-2 grid-flow-row gap-3 sm:flex sm:items-center sm:space-x-2 text-xs sm:text-sm">
           <div className="flex items-center">
-            <select className="select max-w-xs select-sm sm:select-md">
+            <select className="select max-w-xs select-sm">
               {bookGlobalOptions.map((option, index) => (
                 <option selected={option.id === 1} key={index}>
                   {option.title}
@@ -32,62 +32,62 @@ const Books = () => {
               <input
                 type="text"
                 placeholder="Search"
-                className="input w-40 relative rounded-r-lg input-sm sm:input-md"
+                className="input w-40 relative rounded-r-lg input-sm"
               />
-              <CiSearch className="absolute z-20 right-2 top-3" size={20} />
+              <CiSearch className="absolute z-20 right-2 top-2" size={20} />
             </label>
           </div>
           <div></div>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Stock
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Condition
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Cover
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Author
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Publisher
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Category
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Tag
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
-          <select className="select max-w-xs rounded-lg select-sm sm:select-md">
+          <select className="select max-w-xs rounded-lg select-sm">
             <option disabled selected>
               Sort
             </option>
