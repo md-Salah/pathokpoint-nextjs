@@ -35,7 +35,7 @@ const Coupon = () => {
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-xl sm:text-2xl font-semibold">Coupon</h1>
           <button className="btn btn-secondary btn-sm sm:btn-md text-white text-sm sm:text-base rounded-lg">
-            <Link href={"/admin/couriers/add-courier"}>Add Coupon</Link>
+            <Link href={"/admin/coupon/add-coupon"}>Add Coupon</Link>
           </button>
         </div>
         <div className="border-b-[1px] border-[#6F6E77] text-sm sm:text-base border-opacity-20 w-full">
