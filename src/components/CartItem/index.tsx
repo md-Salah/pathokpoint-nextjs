@@ -65,7 +65,7 @@ const ProductDetails = ({ book }: { book: CartItemType }) => {
     <div className="w-full group">
       <Link href={`/books/${book.slug}`} className="w-full">
         <div className="flex w-full overflow-hidden">
-          <figure className="min-w-24 w-24 relative group-hover:opacity-80 border rounded">
+          <figure className="w-16 sm:min-w-24 sm:w-24 relative group-hover:opacity-80 sm:border rounded">
             <Image
               src={book.images[0].src || defaultSrc}
               alt={book.name}
