@@ -27,3 +27,7 @@ export interface Book {
   no_of_pages?: number;
   tags?: Array<{ id: string; name: string; slug: string }>;
 }
+
+export interface CartItem extends Book {
+  count: number;
+}

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,6 +14,7 @@ import { isEnglish } from "@/utils";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { AiFillMinusCircle } from "react-icons/ai";
 import { PiSealPercentFill } from "react-icons/pi";
+import { useState } from "react";
 
 interface Props {
   book: Book;
@@ -22,8 +24,10 @@ const BookDetails = ({ book }: Props) => {
   const copyText = `${book.name} (${book.condition}) by ${book.authors[0].name}, ${book.sale_price} Tk`;
   const defaultSrc = "/default/book.png";
 
+  const [qty, setQty] = useState(1);
+
   return (
-    <div className="card sm:card-side rounded-none sm:mt-8 pb-6 sm:px-7 sm:py-7 lg:py-12 bg-white">
+    <div className="card sm:card-side rounded-none layout-mt pb-6 sm:px-7 sm:py-7 lg:py-12 bg-white">
       {/* Image */}
       <figure className="w-full sm:w-[453px] h-64 sm:h-[568px] relative bg-black07 sm:bg-white">
         <Image
@@ -106,7 +110,12 @@ const BookDetails = ({ book }: Props) => {
 
           <div className="flex items-center">
             <span className="mr-4">Quantity:</span>
-            <NumberInput min={1} max={book.quantity} />
+            <NumberInput
+              min={1}
+              max={book.quantity}
+              value={qty}
+              setValue={setQty}
+            />
           </div>
 
           <div>

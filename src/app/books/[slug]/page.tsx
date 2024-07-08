@@ -30,12 +30,12 @@ const Book = ({ params }: { params: Params }) => {
           <div className="col-span-8 sm:col-span-5 lg:col-span-8 lg:order-1">
             <AdditionalInfo book={book} />
           </div>
-          <div className="col-span-8 sm:col-span-3 lg:col-span-2">
+          <div className="layout-mt col-span-8 sm:col-span-3 lg:col-span-2">
             <Variation books={books.slice(0, 5)} />
           </div>
         </div>
       )}
-      <div className="mt-8">
+      <div className="layout-mt">
         <Carousel title="Related Books">
           {books.map((book) => (
             <BookCard key={book.id} book={book} />

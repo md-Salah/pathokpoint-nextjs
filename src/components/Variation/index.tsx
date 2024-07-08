@@ -11,7 +11,7 @@ interface Props {
 
 const VariationSlider = ({ books }: Props) => {
   return (
-    <div className="layout-mt sm:mt-0 sm:ml-3 sm:pt-8 h-full">
+    <div className="sm:ml-3 h-full">
       <div className="bg-white h-full">
         <h1 className="p-4 font-semibold border-b">Variation</h1>
         <div className="carousel carousel-vertical">

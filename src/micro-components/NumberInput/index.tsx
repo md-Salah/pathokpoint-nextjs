@@ -2,9 +2,19 @@
 import { useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 
-const NumberInput = ({ min, max }: { min: number; max: number }) => {
-  const [value, setValue] = useState<number>(min);
-
+const NumberInput = ({
+  min,
+  max,
+  size = "xs",
+  value,
+  setValue,
+}: {
+  min: number;
+  max: number;
+  size?: string;
+  value: number;
+  setValue: (value: number) => void;
+}) => {
   const handleIncrement = () => {
     if (value < max) {
       setValue(value + 1);
@@ -18,18 +28,20 @@ const NumberInput = ({ min, max }: { min: number; max: number }) => {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center justify-end">
       <button
         onClick={handleDecrement}
-        className={`btn btn-xs bg-black07 w-[30px] h-[30px] rounded-[5px] ${
+        className={`btn btn-xs bg-black07 rounded ${
           value == min && "btn-disabled"
-        }`}
+        } ${size === "xxs" ? "w-6 h-6" : "w-[30px] h-[30px]"} `}
       >
-        <HiMinus />
+        <HiMinus className="min-w-3 min-h-3" />
       </button>
       <input
         type="text"
-        className="w-[43px] h-[30px] text-center bg-black07 mx-1 rounded-[5px] text-xs font-semibold"
+        className={`text-center bg-black07 rounded text-xs ${
+          size === "xxs" ? "w-9 h-6" : "w-[42px] h-[30px]"
+        } ${size === "xxs" ? "mx-0.5" : "mx-1"} `}
         value={value}
         readOnly
         min={min}
@@ -37,11 +49,11 @@ const NumberInput = ({ min, max }: { min: number; max: number }) => {
       />
       <button
         onClick={handleIncrement}
-        className={`btn btn-xs bg-black07 w-[30px] h-[30px] rounded-[5px] ${
+        className={`btn btn-xs bg-black07 rounded ${
           value == max && "btn-disabled"
-        }`}
+        } ${size === "xxs" ? "w-6 h-6" : "w-[30px] h-[30px]"} `}
       >
-        <HiPlus />
+        <HiPlus className="min-w-3 min-h-3" />
       </button>
     </div>
   );

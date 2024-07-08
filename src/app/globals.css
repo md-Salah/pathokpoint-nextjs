@@ -12,11 +12,11 @@
 }
 
 .layout-mt {
-    @apply mt-4 sm:mt-8;
+    @apply mt-4 sm:mt-5 md:mt-6 lg:mt-8;
 }
 
 .layout-p {
-    @apply p-4 sm:p-10 sm:pt-7;
+    @apply p-4 sm:p-6 md:p-7 lg:p-10 md:pt-7;
 }
 
 .layout-px {
@@ -29,16 +29,21 @@
 
 /* Customize daisy UI */
 .menu-item {
-    @apply border-l-4 rounded-none border-white font-bn flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A] 
+    @apply border-l-4 rounded-none border-white font-bn flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A]
 }
 
 .btn-link {
-    @apply px-0 no-underline hover:underline font-normal;
+    @apply px-0 no-underline hover:underline;
 }
 
 /* Table */
 .table-left-0 :where(th, td) {
     padding-left: 0;
+}
+
+.table-px-0 :where(th, td) {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Half underline */

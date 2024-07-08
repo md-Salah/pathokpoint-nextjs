@@ -38,3 +38,8 @@ export { default as Profile } from "./Profile";
 export { default as Filter } from "./Filter";
 export { default as FilterInMobile } from "./FilterInMobile";
 export { default as PriceRangeFilter } from "./PriceRangeFilter";
+
+// Cart & Checkout
+export { default as CartItem } from "./CartItem";
+export { default as CartSummary } from "./CartSummary";
+export { default as PromoCode } from "./PromoCode";
