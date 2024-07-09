@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { BsArrowRight } from "react-icons/bs";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 import {
   BookCard,
@@ -12,6 +12,7 @@ import {
 import { books } from "@/constants";
 import { useState } from "react";
 import { CartItem as ItemType } from "@/interface";
+import Link from "next/link";
 
 const Cart = () => {
   const router = useRouter();
@@ -46,36 +47,55 @@ const Cart = () => {
             <div className="bg-white w-full layout-p">
               <h1 className="font-semibold text-base sm:text-xl">My Cart</h1>
 
-              <div className="mt-8 overflow-scroll">
-                <table className="table table-px-0 border-t">
-                  <tbody>
-                    {items.map((item) => (
-                      <CartItem
-                        key={item.id}
-                        book={item}
-                        handleCountChange={handleCountChange}
-                        removeItem={removeItem}
-                      />
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              {items.length > 0 ? (
+                <div className="mt-3 sm:mt-5 md:mt-6 lg:mt-8 overflow-scroll">
+                  <table className="table table-px-0 border-t">
+                    <tbody>
+                      {items.map((item) => (
+                        <CartItem
+                          key={item.id}
+                          book={item}
+                          handleCountChange={handleCountChange}
+                          removeItem={removeItem}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="my-10 flex flex-col items-center">
+                  <h4 className="text-center font-bold">Your cart is empty!</h4>
+                  <h6 className="text-center text-xs mt-2">
+                    add items on the cart before you proceed to checkout
+                  </h6>
+                  <Link href="/" className="mt-4 btn btn-primary btn-sm">
+                    <BsArrowLeft className="inline-block" />
+                    RETURN TO SHOP
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
-          <div className="bg-white w-full md:w-64 lg:w-80 layout-p">
-            <h1 className="font-semibold text-xl">Order Summary</h1>
-            <CartSummary items={items} discount={discount} />
 
-            <PromoCode discount={discount} setDiscount={setDiscount} />
+          {/* Cart Summary */}
+          {items.length > 0 && (
+            <div className="bg-white w-full md:w-64 lg:w-80 layout-p">
+              <h1 className="font-semibold text-base sm:text-xl">
+                Order Summary
+              </h1>
+              <CartSummary items={items} discount={discount} />
 
-            <button
-              className="mt-12 btn btn-primary w-full"
-              onClick={handleCheckoutClick}
-            >
-              Checkout
-              <BsArrowRight />
-            </button>
-          </div>
+              <PromoCode discount={discount} setDiscount={setDiscount} />
+
+              <button
+                className="mt-12 btn btn-primary w-full"
+                onClick={handleCheckoutClick}
+              >
+                Checkout
+                <BsArrowRight />
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <Carousel title="Books you may love">

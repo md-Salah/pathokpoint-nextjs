@@ -15,7 +15,7 @@ const CartSummary = ({
   const grandTotal = totalSum + 100 - discount;
 
   return (
-    <table className="mt-5 table text-xs table-px-0 dropdown">
+    <table className="mt-2 sm:mt-3 lg:mt-5 table text-xs table-px-0 dropdown">
       <tbody>
         <tr>
           <td className="pl-0">Sub Total ({items.length} items)</td>
@@ -32,7 +32,7 @@ const CartSummary = ({
             />
             <div
               tabIndex={0}
-              className="dropdown-content dropdown-open font-bn left-0 right-0 z-[1] bg-white shadow-lg py-4 px-2 mt-4"
+              className="dropdown-content dropdown-open font-bn left-0 right-0 z-[1] bg-white shadow-lg py-8 px-4 mt-4"
             >
               বইয়ের পরিমাণ, আপনার ঠিকানা ও কুরিয়ার অনুযায়ী ডেলিভারি চার্জ
               নির্ধারণ করা হবে।

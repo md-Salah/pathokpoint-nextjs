@@ -31,7 +31,7 @@ const PromoCode = ({
       {voucher ? (
         <div className="mt-5">
           <h3 className="font-medium text-sm">Voucher for your order</h3>
-          <div className="mt-4 border border-black06 rounded p-2">
+          <div className="mt-4 border border-black06 rounded px-2 py-3">
             <div className="flex items-center gap-2">
               <RiDiscountPercentFill className="w-6 h-6 text-primary" />
               <div className="font-semibold">
@@ -76,6 +76,8 @@ const PromoCode = ({
               applyVoucher={applyVoucher}
             />
           </div>
+
+          {/* Apply code */}
           <div className="mt-5">
             <h3 className="font-medium text-sm">Promo Code</h3>
             <div className="mt-4 flex gap-2">
@@ -86,7 +88,7 @@ const PromoCode = ({
                 onChange={(e) => setValue(e.target.value)}
               />
               <button
-                className="btn btn-sm h-11 bg-highlight hover:bg-[#C2182E] text-white"
+                className="btn btn-sm h-11 btn-error"
                 onClick={() => applyVoucher(value.trim())}
               >
                 Apply

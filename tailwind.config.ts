@@ -39,6 +39,7 @@ const config: Config = {
           info: "#1e3a8a",
           success: "#02BF6C",
           error: "#F2213A",
+          "error-content": "#FFFFFF",
 
           "--rounded-box": "0.25rem",
           "--rounded-btn": "0.25rem"
