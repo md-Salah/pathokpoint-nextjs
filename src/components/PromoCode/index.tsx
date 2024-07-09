@@ -79,7 +79,7 @@ const PromoCode = ({
 
           {/* Apply code */}
           <div className="mt-5">
-            <h3 className="font-medium text-sm">Promo Code</h3>
+            <h3 className="font-medium text-sm">Promo code</h3>
             <div className="mt-4 flex gap-2">
               <input
                 type="text"

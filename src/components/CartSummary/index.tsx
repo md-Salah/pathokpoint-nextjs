@@ -18,13 +18,13 @@ const CartSummary = ({
     <table className="mt-2 sm:mt-3 lg:mt-5 table text-xs table-px-0 dropdown">
       <tbody>
         <tr>
-          <td className="pl-0">Sub Total ({items.length} items)</td>
+          <td className="pl-0">Sub total ({items.length} items)</td>
           <td></td>
           <td className="w-10">৳{totalSum}</td>
         </tr>
         <tr>
           <td>
-            Delivery Charge
+            Delivery charge
             <IoInformationCircleOutline
               tabIndex={0}
               role="button"
@@ -49,7 +49,7 @@ const CartSummary = ({
           </tr>
         )}
         <tr className="font-bold">
-          <td>Grand Total</td>
+          <td>Grand total</td>
           <td></td>
           <td>৳{grandTotal}</td>
         </tr>

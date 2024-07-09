@@ -45,7 +45,7 @@ const Cart = () => {
         <div className="flex flex-col md:flex-row gap-2.5">
           <div className="flex flex-1">
             <div className="bg-white w-full layout-p">
-              <h1 className="font-semibold text-base sm:text-xl">My Cart</h1>
+              <h1 className="font-semibold sm:text-lg md:text-xl">My cart</h1>
 
               {items.length > 0 ? (
                 <div className="mt-3 sm:mt-5 md:mt-6 lg:mt-8 overflow-scroll">
@@ -80,8 +80,8 @@ const Cart = () => {
           {/* Cart Summary */}
           {items.length > 0 && (
             <div className="bg-white w-full md:w-64 lg:w-80 layout-p">
-              <h1 className="font-semibold text-base sm:text-xl">
-                Order Summary
+              <h1 className="font-semibold sm:text-lg md:text-xl">
+                Order summary
               </h1>
               <CartSummary items={items} discount={discount} />
 
