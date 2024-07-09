@@ -1,3 +1,5 @@
+"use client";
+
 import {
   OrderSummary,
   PaymentMethod,
@@ -5,8 +7,11 @@ import {
   ShippingMethod,
 } from "@/components";
 import { OrderTerms } from "@/micro-components";
+import { useState } from "react";
 
 const Checkout = () => {
+  const [termsAggreed, setTermsAggreed] = useState<boolean>(false);
+
   return (
     <div className="layout-container">
       <div className="grid grid-cols-12 md:gap-3">
@@ -32,9 +37,16 @@ const Checkout = () => {
               <OrderTerms />
             </div>
             <div className="mt-8">
-              <AggreementCheckbox />
-              <button className="mt-4 btn btn-primary w-full">
-                Pay & Confirm Order
+              <AcceptTerms
+                termsAggreed={termsAggreed}
+                setTermsAggreed={setTermsAggreed}
+              />
+              <button
+                className={`mt-4 btn btn-primary w-full ${
+                  !termsAggreed && "btn-disabled"
+                }`}
+              >
+                Pay now
               </button>
             </div>
           </div>
@@ -46,12 +58,20 @@ const Checkout = () => {
 
 export default Checkout;
 
-const AggreementCheckbox = () => {
+const AcceptTerms = ({
+  termsAggreed,
+  setTermsAggreed,
+}: {
+  termsAggreed: boolean;
+  setTermsAggreed: (val: boolean) => void;
+}) => {
   return (
     <label className="cursor-pointer flex items-center gap-2">
       <input
         type="checkbox"
         className="checkbox checkbox-xs checkbox-primary"
+        checked={termsAggreed}
+        onChange={(e) => setTermsAggreed(e.target.checked)}
       />
       <span className="label-text font-bn text-xs">
         উপরোক্ত শর্তাবলী মেনে অর্ডার প্রদান করছি।
