@@ -11,3 +11,4 @@ export { default as NumberInput } from "./NumberInput";
 export { default as HambugerIcon } from "./HamburgerIcon";
 export { default as PrevArrow } from "./PrevArrow";
 export { default as NextArrow } from "./NextArrow";
+export { default as OrderTerms } from "./OrderTerms";

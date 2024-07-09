@@ -46,6 +46,10 @@
     padding-right: 0;
 }
 
+.table-no-border :where(tbody, tr) {
+    border-bottom: none;
+}
+
 /* Half underline */
 .half-underline {
     position: relative;
