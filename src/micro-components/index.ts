@@ -12,3 +12,7 @@ export { default as HambugerIcon } from "./HamburgerIcon";
 export { default as PrevArrow } from "./PrevArrow";
 export { default as NextArrow } from "./NextArrow";
 export { default as OrderTerms } from "./OrderTerms";
+export { default as PaymentSuccessSVG } from "./PaymentSuccessSVG";
+export { default as PaymentCanceledSVG } from "./PaymentCanceledSVG";
+export { default as WhatsAppSVG } from "./WhatsAppSVG";
+export { default as MessengerSVG } from "./MessengerSVG";
