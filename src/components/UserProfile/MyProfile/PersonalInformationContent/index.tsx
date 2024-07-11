@@ -1,17 +1,52 @@
-import React from "react";
+"use client";
+import React, { useRef, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { IoIosFemale, IoIosMale } from "react-icons/io";
 import { IoTransgenderSharp } from "react-icons/io5";
 import { RiPencilFill } from "react-icons/ri";
 
+type Image = { file: File; previewUrl: string };
+
 const PersonalInformationContent = () => {
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [dateofBirth, setDateofBirth] = useState<Date | null>(null);
+  const [profileImage, setProfileImage] = useState<Image | null>(null);
+
+  const handleChangeProfileImage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const newImage: Image = {
+      file: event.target.files?.[0] as File,
+      previewUrl: URL.createObjectURL(event.target.files?.[0] as File),
+    };
+
+    setProfileImage(newImage);
+  };
   return (
     <div className="w-full bg-white rounded-lg min-h-screen py-14 px-20">
       <div className="avatar relative w-32">
-        <div className="ring-primary w-full rounded-full ring ring-offset-4">
-          <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-          <div className="absolute bottom-0 h-[30%] bg-primary bg-opacity-30 rounded-b-full w-[90%] cursor-pointer hover:z-20 left-[5%]">
+        <div className="ring-primary w-full rounded-full ring ring-offset-4 group">
+          <img
+            src={
+              profileImage !== null
+                ? profileImage.previewUrl
+                : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            }
+          />
+          <div
+            className="absolute bottom-0 h-[30%] bg-primary bg-opacity-30 rounded-b-full w-[90%] cursor-pointer hover:z-20 left-[5%] hidden group-hover:block"
+            onClick={() => fileInput.current?.click()}
+          >
             <RiPencilFill color="#ffffff" size={28} className="mx-auto" />
           </div>
+          <input
+            type="file"
+            className="hidden"
+            ref={fileInput}
+            onChange={handleChangeProfileImage}
+            accept="image/*"
+          />
         </div>
       </div>
       <div className="grid grid-cols-2 grid-flow-row gap-7 pt-10">
@@ -60,10 +95,11 @@ const PersonalInformationContent = () => {
           <label className="text-sm font-semibold text-black03">
             Date of Birth
           </label>
-          <input
-            type="text"
-            placeholder="Enter Date of Birth"
-            className="input input-bordered text-base text-black02"
+          <DatePicker
+            selected={dateofBirth}
+            onChange={(date: Date | null) => setDateofBirth(date as Date)}
+            placeholderText="Enter Date of Birth"
+            className="input input-bordered w-full outline-none text-sm sm:text-base"
           />
         </div>
         <div className="flex flex-col space-y-2">

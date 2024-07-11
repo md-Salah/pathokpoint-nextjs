@@ -38,3 +38,7 @@ export { default as PasswordContent } from "./UserProfile/MyProfile/PasswordCont
 
 export { default as MyProfile } from "./UserProfile/MyProfile";
 export { default as MyOrder } from "./UserProfile/MyOrder";
+export { default as Following } from "./UserProfile/Following";
+export { default as Wishlist } from "./UserProfile/Wishlist";
+export { default as MyReviews } from "./UserProfile/MyReviews";
+export { default as Pagination } from "./Pagination";
