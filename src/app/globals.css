@@ -52,7 +52,7 @@
 }
 
 .sidebar-menu-btn {
-  @apply flex items-center space-x-2 py-4 pl-8 pr-2 hover:bg-gray-700 rounded-lg cursor-pointer text-sm;
+  @apply flex items-center space-x-2 py-4 pl-6 pr-2 hover:bg-gray-700 rounded-lg cursor-pointer text-sm;
 }
 
 /* Table */

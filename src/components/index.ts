@@ -56,3 +56,4 @@ export { default as ImageContainer } from "./AdminImages/ImageContainer";
 export { default as CarouselModal } from "./AdminReviews/CarouselModal";
 export { default as ReviewDetailsModal } from "./AdminReviews/ReviewDetailsModal";
 export { default as StarRating } from "./AdminReviews/StarRating";
+export { default as MultipleItemSelector } from "./MultipleItemSelector";
