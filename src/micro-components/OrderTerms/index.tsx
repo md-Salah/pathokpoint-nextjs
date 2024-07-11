@@ -23,12 +23,23 @@ const OrderTerms = () => {
         ২। অর্ডার বাতিল করা যাবে। সেক্ষেত্রে ৩ কার্যদিবসের মধ্যে রিফান্ড করা
         হবে।
         <br />
-        ৩। বইয়ের কন্ডিশন দেখতে
-        &nbsp;
-        <Link href={social.Messenger.href} target="_blank" className="btn btn-link">Messenger</Link>/
-        <Link href={social.WhatsApp.href} target="_blank" className="btn btn-link">WhatsApp</Link>
-        &nbsp;
-        এ অর্ডার আইডি ইনবক্স করুন।
+        ৩। বইয়ের কন্ডিশন দেখতে &nbsp;
+        <Link
+          href={social.Messenger.href}
+          target="_blank"
+          className="btn btn-link"
+        >
+          Messenger
+        </Link>
+        /
+        <Link
+          href={social.WhatsApp.href}
+          target="_blank"
+          className="btn btn-link"
+        >
+          WhatsApp
+        </Link>
+        &nbsp; এ অর্ডার আইডি ইনবক্স করুন।
         <br />
         <br />
         পার্সেল কুরিয়ার করা হয়ে গেলে ডেলিভারি চার্জ রিফান্ড করা হবে না। তবে

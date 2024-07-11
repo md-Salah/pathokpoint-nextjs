@@ -18,7 +18,7 @@ const Checkout = () => {
         <section className="layout-p layout-mt bg-white col-span-12 md:col-span-5">
           <ShippingAddress />
         </section>
-        <div className="col-span-12 md:col-span-7">
+        <div className="col-span-12 md:col-span-7 grid">
           <PaymentMethod />
           <ShippingMethod />
         </div>
