@@ -16,3 +16,6 @@ export { default as PaymentSuccessSVG } from "./PaymentSuccessSVG";
 export { default as PaymentCanceledSVG } from "./PaymentCanceledSVG";
 export { default as WhatsAppSVG } from "./WhatsAppSVG";
 export { default as MessengerSVG } from "./MessengerSVG";
+export { default as SignUpSVG } from "./SignUpSVG";
+export { default as GoogleSVG } from "./GoogleSVG";
+export { default as FacebookSVG } from "./FacebookSVG";
