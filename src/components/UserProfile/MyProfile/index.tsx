@@ -29,7 +29,7 @@ const MyProfile = () => {
     setActiveTabIndex(index);
   };
   return (
-    <div className="w-full flex flex-col space-y-4">
+    <div className="w-full flex flex-col md:space-y-4">
       <TabOptions
         tabOptions={myProfileTabs}
         activeIndex={activeTabIndex}

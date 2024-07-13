@@ -24,7 +24,7 @@ const PersonalInformationContent = () => {
     setProfileImage(newImage);
   };
   return (
-    <div className="w-full bg-white rounded-lg min-h-screen py-14 px-20">
+    <div className="w-full bg-white rounded-lg min-h-screen p-10  md:py-14 md:px-20">
       <div className="avatar relative w-32">
         <div className="ring-primary w-full rounded-full ring ring-offset-4 group">
           <img
@@ -49,7 +49,7 @@ const PersonalInformationContent = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 grid-flow-row gap-7 pt-10">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 grid-flow-row md:gap-7 pt-10">
         <div className="flex flex-col space-y-2">
           <label className="text-sm font-semibold text-black03">
             First Name
