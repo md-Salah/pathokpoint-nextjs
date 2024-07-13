@@ -1,4 +1,4 @@
-import { SignUpForm } from "@/components";
+import { LoginForm } from "@/components";
 import { SignUpSVG } from "@/micro-components";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
         </div>
         <div>
           <div className="mx-auto max-w-xs">
-            <SignUpForm />
+            <LoginForm />
           </div>
         </div>
       </div>

@@ -4,13 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-const SignUpForm = () => {
+const LoginForm = () => {
   const [showPass, setShowPass] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
   });
@@ -18,17 +16,8 @@ const SignUpForm = () => {
   const handleSignUp = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordMinLength = 8;
-    const nameMinLength = 2;
 
-    if (!user.firstName) {
-      setError("First name is required");
-    } else if (user.firstName.length < nameMinLength) {
-      setError(`First name must be at least ${nameMinLength} characters long`);
-    } else if (!user.lastName) {
-      setError("Last name is required");
-    } else if (user.lastName.length < nameMinLength) {
-      setError(`Last name must be at least ${nameMinLength} characters long`);
-    } else if (!user.email) {
+    if (!user.email) {
       setError("Email is required");
     } else if (!emailRegex.test(user.email)) {
       setError("Please enter a valid email address");
@@ -54,27 +43,13 @@ const SignUpForm = () => {
 
   return (
     <div className="bg-white">
-      <h1 className="mt-5 font-bold md:text-xl text-primary text-center lg:text-left">Sign Up</h1>
+      <h1 className="mt-5 font-bold md:text-xl text-primary text-center lg:text-left">
+        Login
+      </h1>
       <div className="mt-6 grid gap-3">
         <input
           type="text"
-          placeholder="First name"
-          className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
-          name="firstName"
-          value={user.firstName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Last name"
-          className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
-          name="lastName"
-          value={user.lastName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Email or phone"
+          placeholder="Email"
           className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
           name="email"
           value={user.email}
@@ -100,6 +75,14 @@ const SignUpForm = () => {
             )}
           </div>
         </label>
+        <div className="flex justify-end">
+          <Link
+            href="/auth/reset-password"
+            className="btn btn-link btn-sm text-primary min-h-0 h-4"
+          >
+            Forgot Password?
+          </Link>
+        </div>
       </div>
       <p className="text-highlight text-sm mt-4">{error}</p>
       <button
@@ -107,11 +90,11 @@ const SignUpForm = () => {
         onClick={handleSignUp}
       >
         {loading && <span className="loading loading-spinner"></span>}
-        Sign Up
+        Login
       </button>
 
       <div className="text-center lg:text-left">
-        <p className="mt-6 text-sm text-black04">Or, sign up with</p>
+        <p className="mt-6 text-sm text-black04">Or, login with</p>
         <div className="grid grid-cols-2 gap-2 mt-6">
           <button className="btn btn-sm btn-outline h-12 text-black04 border-black05">
             <GoogleSVG className="w-8 h-8" />
@@ -123,9 +106,9 @@ const SignUpForm = () => {
           </button>
         </div>
         <p className="mt-3 text-sm text-black04">
-          Already have an account?&nbsp;
-          <Link href="/auth/login" className="btn btn-link">
-            Login
+          Don't have an account?&nbsp;
+          <Link href="/auth/signup" className="btn btn-link">
+            Sign Up
           </Link>
         </p>
       </div>
@@ -133,4 +116,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default LoginForm;
