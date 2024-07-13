@@ -24,29 +24,31 @@ const PersonalInformationContent = () => {
     setProfileImage(newImage);
   };
   return (
-    <div className="w-full bg-white rounded-lg min-h-screen p-10  md:py-14 md:px-20">
-      <div className="avatar relative w-32">
-        <div className="ring-primary w-full rounded-full ring ring-offset-4 group">
-          <img
-            src={
-              profileImage !== null
-                ? profileImage.previewUrl
-                : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-            }
-          />
-          <div
-            className="absolute bottom-0 h-[30%] bg-primary bg-opacity-30 rounded-b-full w-[90%] cursor-pointer hover:z-20 left-[5%] hidden group-hover:block"
-            onClick={() => fileInput.current?.click()}
-          >
-            <RiPencilFill color="#ffffff" size={28} className="mx-auto" />
+    <div className="w-full bg-white rounded-lg min-h-screen py-10 px-5 md:py-14 md:px-20">
+      <div className="w-full flex justify-center md:block">
+        <div className="avatar relative w-28 md:w-32">
+          <div className="ring-primary w-full rounded-full ring ring-offset-4 group">
+            <img
+              src={
+                profileImage !== null
+                  ? profileImage.previewUrl
+                  : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              }
+            />
+            <div
+              className="absolute bottom-0 h-[30%] bg-primary bg-opacity-30 rounded-b-full w-[90%] cursor-pointer hover:z-20 left-[5%] hidden group-hover:block"
+              onClick={() => fileInput.current?.click()}
+            >
+              <RiPencilFill color="#ffffff" size={28} className="mx-auto" />
+            </div>
+            <input
+              type="file"
+              className="hidden"
+              ref={fileInput}
+              onChange={handleChangeProfileImage}
+              accept="image/*"
+            />
           </div>
-          <input
-            type="file"
-            className="hidden"
-            ref={fileInput}
-            onChange={handleChangeProfileImage}
-            accept="image/*"
-          />
         </div>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 grid-flow-row md:gap-7 pt-10">
@@ -157,8 +159,8 @@ const PersonalInformationContent = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-end pt-14">
-        <button className="btn btn-primary px-10 text-base">Update</button>
+      <div className="w-full md:flex md:justify-end pt-14">
+        <button className="btn btn-primary px-10 text-base w-full md:w-fit">Update</button>
       </div>
     </div>
   );
