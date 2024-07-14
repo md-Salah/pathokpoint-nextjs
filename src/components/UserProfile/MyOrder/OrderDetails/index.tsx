@@ -4,8 +4,8 @@ import React from "react";
 
 const OrderDetails = () => {
   return (
-    <div className="bg-white w-full h-screen rounded-lg flex flex-col space-y-14">
-      <div className="border-b border-black06 py-4 px-7 flex items-center justify-between">
+    <div className="bg-white w-full h-screen rounded-lg flex flex-col space-y-14 my-10">
+      <div className="border-b border-black06 py-4 md:px-7 flex items-center justify-between">
         <div className="flex flex-col space-y-2">
           <div className="text-base flex items-center space-x-1">
             <span className="text-[#2B2B2B]">Order ID</span>

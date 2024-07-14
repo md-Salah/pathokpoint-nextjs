@@ -27,12 +27,12 @@ const CodeInputForm = ({ handleInput, inputs, onClose }: Props) => {
     }
   }, [time]);
   return (
-    <div className="modal-box rounded-lg bg-[#F3F5F6] max-w-none w-[600px]">
+    <div className="modal-box rounded-lg bg-[#F3F5F6] md:max-w-none md:w-[600px]">
       <div className="w-full flex justify-end pb-4">
-        <button className="btn btn-circle btn-outline btn-sm" onClick={onClose}>
+        <button className="btn btn-circle btn-outline btn-xs md:btn-sm" onClick={onClose}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="w-4 h-4 md:h-5 md:w-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -46,7 +46,7 @@ const CodeInputForm = ({ handleInput, inputs, onClose }: Props) => {
           </svg>
         </button>
       </div>
-      <div className="bg-white rounded-lg w-full flex flex-col space-y-4 p-14">
+      <div className="bg-white rounded-lg w-full flex flex-col space-y-4 p-4 md:p-14">
         <h2 className="text-lg text-[#363739]">Enter 5 Digits Code</h2>
         <p className="text-sm text-[#6F6E77]">
           Enter the 5 digits code that you received on your mobile number

@@ -60,10 +60,10 @@ const PasswordContent = () => {
             />
           </div>
         </div>
-        <div className="w-1/2 flex justify-end pt-14 mx-auto">
+        <div className="w-full md:w-1/2 md:flex md:justify-end pt-14 px-5 md:px-0 md:mx-auto">
           <button
-            className="btn btn-primary px-10 text-base"
-            onClick={handleOpenInputDigitsModal}
+            className="btn btn-primary px-10 text-base w-full md:w-fit"
+            onClick={handleOpenInputDigitsModal} 
           >
             Update
           </button>

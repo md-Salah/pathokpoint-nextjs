@@ -43,4 +43,4 @@ export { default as Wishlist } from "./UserProfile/Wishlist";
 export { default as MyReviews } from "./UserProfile/MyReviews";
 export { default as SidebarMobile } from "./UserProfile/SidebarMobile";
 export { default as SidebarDesktop } from "./UserProfile/SidebarDesktop";
-export { default as Pagination } from "./Pagination";
+export { default as Pagination } from "./Pagination"; 

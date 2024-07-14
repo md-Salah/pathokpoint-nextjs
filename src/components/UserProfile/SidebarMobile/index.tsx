@@ -25,19 +25,24 @@ const SidebarMobile = () => {
             </div>
             <span className="text-black0 text-sm">My Profile</span>
           </div>
-          <span className="text-center">
+          <div className="pt-2">
             <HiChevronRight size={20} />
-          </span>
+          </div>
         </Link>
-        <div className="w-full flex item-center justify-between border-b border-b-black06 py-3">
+        <Link
+          href={"/me/user/my-order"}
+          className="w-full flex item-center justify-between border-b border-b-black06 py-3"
+        >
           <div className="flex items-center space-x-4">
             <div className="bg-primary bg-opacity-10 p-2 rounded-full">
               <IoDocumentText size={20} color="#FF8200" />
             </div>
             <span className="text-black0 text-sm">My Order</span>
           </div>
-          <HiChevronRight size={20} />
-        </div>
+          <div className="pt-2">
+            <HiChevronRight size={20} />
+          </div>
+        </Link>
         <div className="w-full flex item-center justify-between border-b border-b-black06 py-3">
           <div className="flex items-center space-x-4">
             <div className="bg-primary bg-opacity-10 p-2 rounded-full">
@@ -45,7 +50,9 @@ const SidebarMobile = () => {
             </div>
             <span className="text-black0 text-sm">Following</span>
           </div>
-          <HiChevronRight size={20} />
+          <div className="pt-2">
+            <HiChevronRight size={20} />
+          </div>
         </div>
         <div className="w-full flex item-center justify-between border-b border-b-black06 py-3">
           <div className="flex items-center space-x-4">
@@ -54,7 +61,9 @@ const SidebarMobile = () => {
             </div>
             <span className="text-black0 text-sm">Wishlist</span>
           </div>
-          <HiChevronRight size={20} />
+          <div className="pt-2">
+            <HiChevronRight size={20} />
+          </div>
         </div>
         <div className="w-full flex item-center justify-between py-3">
           <div className="flex items-center space-x-4">
@@ -63,7 +72,9 @@ const SidebarMobile = () => {
             </div>
             <span className="text-black0 text-sm">My Reviews</span>
           </div>
-          <HiChevronRight size={20} />
+          <div className="pt-2">
+            <HiChevronRight size={20} />
+          </div>
         </div>
       </div>
       <div className="border border-black06 rounded-lg px-4 mx-4">
@@ -74,7 +85,9 @@ const SidebarMobile = () => {
             </div>
             <span className="text-black0 text-sm">Sign Out</span>
           </div>
-          <HiChevronRight size={20} />
+          <div className="pt-2">
+            <HiChevronRight size={20} />
+          </div>
         </div>
       </div>
     </div>
