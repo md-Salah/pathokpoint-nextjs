@@ -2,7 +2,7 @@ import React from "react";
 
 const ProgressTracker = () => {
   return (
-    <div className="w-full pl-[30%] py-5 md:pl-0 md:py-0">
+    <div className="w-full pl-[30%] py-5 md:pl-0">
       <ul className="steps steps-vertical md:steps-horizontal w-full">
         <li className="step step-success ">
           <div className="flex flex-col items-start md:items-center">

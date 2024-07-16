@@ -20,6 +20,7 @@ const OrdersPage = () => {
                 : "bg-black07 text-[#777777]"
             } text-xs font-semibold rounded-2xl text-nowrap`}
             onClick={() => handleSetActiveIndex(tab.tabIndex)}
+            key={tab.tabIndex}
           >
             <p>
               {tab.name}({tab.count})
@@ -53,7 +54,7 @@ const OrdersPage = () => {
             }`}
             key={elem}
           >
-            <OrderCard />
+            <OrderCard key={elem} />
           </div>
         ))}
       </div>

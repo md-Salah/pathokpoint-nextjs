@@ -39,11 +39,13 @@ const Following = () => {
                 />
               </td>
               <td>
-                <span className="text-xs md:text-sm text-nowrap">হুমায়ূন আহমেদ</span>
+                <span className="text-xs md:text-sm text-nowrap">
+                  হুমায়ূন আহমেদ
+                </span>
               </td>
               <td>125k</td>
               <td>
-                <button className="btn btn-outline btn-xs md:btn-md btn-primary px-5">
+                <button className="btn btn-outline btn-xs md:btn-sm btn-primary px-5 md:px-7 bg-primary bg-opacity-10">
                   Unfollow
                 </button>
               </td>

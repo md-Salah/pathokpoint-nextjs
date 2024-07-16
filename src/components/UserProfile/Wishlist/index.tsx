@@ -26,7 +26,7 @@ const Wishlist = () => {
           <tbody>
             <tr>
               <td>
-                <div className="flex items-start space-x-2 h-fit">
+                <div className="flex items-start space-x-3 h-fit">
                   <div className="w-14 bg-white border-[#E6E6E6]">
                     <img
                       src="https://www.designforwriters.com/wp-content/uploads/2017/10/design-for-writers-book-cover-tf-2-a-million-to-one.jpg"
@@ -62,7 +62,7 @@ const Wishlist = () => {
                 <BsTrash size={20} className="cursor-pointer" />
               </td>
               <td>
-                <button className="btn btn-primary">
+                <button className="btn btn-primary btn-xs md:btn-sm px-5 md:px-7">
                   <MdOutlineAddShoppingCart size={20} />
                   Move to Cart
                 </button>

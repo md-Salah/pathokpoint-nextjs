@@ -1,10 +1,27 @@
+"use client";
+import { MIN_DESKTOP_WIDTH } from "@/constants/constants";
+import useScreenSize from "@/hooks/useScreenSize";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-const OrderCard = () => {
+type Props = {
+  handleSetActiveOrderId?: (orderId: number) => void;
+};
+
+const OrderCard = ({ handleSetActiveOrderId }: Props) => {
+  const { width } = useScreenSize();
+  const router = useRouter();
+  const handleViewOrderClick = () => {
+    if (width >= MIN_DESKTOP_WIDTH && handleSetActiveOrderId) {
+      handleSetActiveOrderId(1);
+    } else {
+      router.push("/me/user/my-order/1");
+    }
+  };
   return (
-    <div className="w-full md:bg-white md:rounded-lg flex items-center justify-between">
-      <div className="flex flex-col space-y-4">
+    <div className="w-full md:bg-white md:rounded-lg flex items-center justify-between p-5">
+      <div className="flex flex-col space-y-2">
         <div className="text-base flex items-center space-x-1">
           <span className="text-[#2B2B2B]">Order ID</span>
           <span className="text-primary font-bold">#A125452</span>
@@ -40,8 +57,11 @@ const OrderCard = () => {
           </div>
         </div>
         <div>
-          <button className="btn btn-primary btn-sm md:btn-md px-5 text-sm">
-            <Link href={"/me/user/my-order/1"}>View Order</Link>
+          <button
+            className="btn btn-primary btn-xs md:btn-sm px-5 md:px-7"
+            onClick={handleViewOrderClick}
+          >
+            View Order
           </button>
         </div>
       </div>

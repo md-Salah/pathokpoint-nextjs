@@ -32,19 +32,19 @@ const MyProfile = () => {
   };
   return (
     <div className="w-full flex flex-col md:space-y-4 my-10 md:my-0">
+      <TabOptions
+        tabOptions={myProfileTabs}
+        activeIndex={activeTabIndex}
+        setActiveIndex={handleSetActiveTabIndex}
+      />
       <div className="flex items-center w-full pt-6 pb-3 bg-white md:hidden">
-        <Link href={'/me/user'} className="pl-5" >
+        <Link href={"/me/user"} className="pl-5">
           <IoChevronBack size={20} />
         </Link>
         <div className="flex justify-center w-full">
           <h2 className="text-base font-bold text-black02">My Profile</h2>
         </div>
       </div>
-      <TabOptions
-        tabOptions={myProfileTabs}
-        activeIndex={activeTabIndex}
-        setActiveIndex={handleSetActiveTabIndex}
-      />
       {getTabContent(activeTabIndex)}
     </div>
   );

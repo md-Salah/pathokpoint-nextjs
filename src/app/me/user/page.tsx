@@ -68,13 +68,13 @@ const User = () => {
   return (
     <>
       <SidebarMobile
-        handleOpenSignOutConfirmationModal={handleCloseSignOutConfirmationModal}
+        handleOpenSignOutConfirmationModal={handleOpenSignOutConfirmationModal}
       />
       <div className="layout-container py-10 flex items-start space-x-4 w-full">
         <SidebarDesktop
           activeMenu={activeMenu}
           handleOpenSignOutConfirmationModal={
-            handleCloseSignOutConfirmationModal
+            handleOpenSignOutConfirmationModal
           }
           handleSetActiveMenu={handleSetActiveMenu}
         />

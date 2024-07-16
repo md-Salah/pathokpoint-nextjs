@@ -10,14 +10,14 @@ type Props = {
 const ReviewItemDesktop = ({ handleOpenImageCarouselModal }: Props) => {
   return (
     <div className="border border-black06 rounded-lg p-4 flex items-start justify-between space-x-5">
-      <div className="flex items-start space-x-2 h-fit">
+      <div className="flex items-start space-x-3 h-fit">
         <div className="w-14 bg-white border-[#E6E6E6]">
           <img
             src="https://www.designforwriters.com/wp-content/uploads/2017/10/design-for-writers-book-cover-tf-2-a-million-to-one.jpg"
             className="w-full rounded-md"
           />
         </div>
-        <div className="flex flex-col space-y-1">
+        <div className="flex flex-col">
           <span className="text-sm md:text-base font-semibold text-black02">
             Pather Panchali
           </span>
@@ -27,7 +27,9 @@ const ReviewItemDesktop = ({ handleOpenImageCarouselModal }: Props) => {
           <div className="hidden md:block">
             <ConditionBadge condition="Old-like-New" />
           </div>
-          <StarRating rating={4} isReadOnly={true} iconSize={16} />
+          <div className="pt-0 md:pt-1">
+            <StarRating rating={4} isReadOnly={true} iconSize={16} />
+          </div>
         </div>
       </div>
       <div className="w-[40%]">

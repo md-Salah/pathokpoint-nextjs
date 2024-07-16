@@ -69,7 +69,7 @@ const CodeInputForm = ({ handleInput, inputs, onClose }: Props) => {
         <button className="btn btn-primary w-full">Submit</button>
         <div className="flex items-center justify-between mt-4">
           <span className="text-sm text-black04">
-            Didn't get any code?{" "}
+            Didnt get any code?{" "}
             <span className="font-semibold text-primary">{`${String(
               Math.floor(time / 60)
             ).padStart(2, "0")}:${String(time % 60).padStart(2, "0")}`}</span>

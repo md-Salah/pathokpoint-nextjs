@@ -6,10 +6,15 @@ import OrderCard from "./OrderCard";
 import OrderDetails from "./OrderDetails";
 
 const MyOrder = () => {
+  const [activeOrderId, setActiveOrderId] = useState<number | null>(null);
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
 
   const handleSetActiveTabIndex = (index: number) => {
     setActiveTabIndex(index);
+  };
+
+  const handleSetActiveOrderId = (orderId: number) => {
+    setActiveOrderId(orderId);
   };
   return (
     <div className="w-full flex flex-col space-y-4">
@@ -29,9 +34,16 @@ const MyOrder = () => {
           </select>
         </div>
       </div>
-      {[1, 2, 3, 4].map((item) => (
-        <OrderCard key={item} />
-      ))}
+      {activeOrderId === null ? (
+        [1, 2, 3, 4].map((item) => (
+          <OrderCard
+            key={item}
+            handleSetActiveOrderId={handleSetActiveOrderId}
+          />
+        ))
+      ) : (
+        <OrderDetails />
+      )}
     </div>
   );
 };
