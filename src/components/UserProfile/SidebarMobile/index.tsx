@@ -65,7 +65,10 @@ const SidebarMobile = () => {
             <HiChevronRight size={20} />
           </div>
         </div>
-        <div className="w-full flex item-center justify-between py-3">
+        <Link
+          href={"/me/user/my-reviews"}
+          className="w-full flex item-center justify-between py-3"
+        >
           <div className="flex items-center space-x-4">
             <div className="bg-primary bg-opacity-10 p-2 rounded-full">
               <MdReviews size={20} color="#FF8200" />
@@ -75,7 +78,7 @@ const SidebarMobile = () => {
           <div className="pt-2">
             <HiChevronRight size={20} />
           </div>
-        </div>
+        </Link>
       </div>
       <div className="border border-black06 rounded-lg px-4 mx-4">
         <div className="w-full flex item-center justify-between py-3">
