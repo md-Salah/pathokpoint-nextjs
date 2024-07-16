@@ -35,7 +35,6 @@ export { default as Variation } from "./Variation";
 export { default as PersonalInformationContent } from "./UserProfile/MyProfile/PersonalInformationContent";
 export { default as AddressContent } from "./UserProfile/MyProfile/AddressContent";
 export { default as PasswordContent } from "./UserProfile/MyProfile/PasswordContent";
-
 export { default as MyProfile } from "./UserProfile/MyProfile";
 export { default as MyOrder } from "./UserProfile/MyOrder";
 export { default as Following } from "./UserProfile/Following";

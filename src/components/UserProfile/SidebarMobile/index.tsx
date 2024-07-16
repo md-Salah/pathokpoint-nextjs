@@ -43,7 +43,7 @@ const SidebarMobile = () => {
             <HiChevronRight size={20} />
           </div>
         </Link>
-        <div className="w-full flex item-center justify-between border-b border-b-black06 py-3">
+        <Link href={'/me/user/following'} className="w-full flex item-center justify-between border-b border-b-black06 py-3">
           <div className="flex items-center space-x-4">
             <div className="bg-primary bg-opacity-10 p-2 rounded-full">
               <BsFillPersonPlusFill size={20} color="#FF8200" />
@@ -53,7 +53,7 @@ const SidebarMobile = () => {
           <div className="pt-2">
             <HiChevronRight size={20} />
           </div>
-        </div>
+        </Link>
         <div className="w-full flex item-center justify-between border-b border-b-black06 py-3">
           <div className="flex items-center space-x-4">
             <div className="bg-primary bg-opacity-10 p-2 rounded-full">

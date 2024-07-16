@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const OrderCard = () => {
@@ -39,7 +40,9 @@ const OrderCard = () => {
           </div>
         </div>
         <div>
-          <button className="btn btn-primary btn-sm md:btn-md px-5 text-sm">View Order</button>
+          <button className="btn btn-primary btn-sm md:btn-md px-5 text-sm">
+            <Link href={"/me/user/my-order/1"}>View Order</Link>
+          </button>
         </div>
       </div>
     </div>
