@@ -29,7 +29,9 @@ const MyOrder = () => {
           </select>
         </div>
       </div>
-      <OrderDetails />
+      {[1, 2, 3, 4].map((item) => (
+        <OrderCard key={item} />
+      ))}
     </div>
   );
 };

@@ -10,11 +10,12 @@ type Props = {
 const ReviewItemMobile = ({ handleOpenImageCarouselModal }: Props) => {
   return (
     <div className="flex items-start space-x-4 w-full border-b border-b-black06 pb-5">
-      <div className="w-24 bg-white border-[#E6E6E6]">
+      <div className="flex flex-col space-y-4">
         <img
           src="https://www.designforwriters.com/wp-content/uploads/2017/10/design-for-writers-book-cover-tf-2-a-million-to-one.jpg"
-          className="w-full rounded-md"
+          className="w-24 rounded-md"
         />
+        <button className="btn btn-xs btn-outline btn-primary text-[10px] text-nowrap">Edit Review</button>
       </div>
       <div className="flex flex-col space-y-1 w-full">
         <div className="flex items-center justify-between">

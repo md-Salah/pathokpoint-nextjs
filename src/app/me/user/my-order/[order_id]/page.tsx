@@ -1,7 +1,7 @@
 import OrderDetails from "@/components/UserProfile/MyOrder/OrderDetails";
 import React from "react";
 
-const Order = () => {
+const OrderDetailsPage = () => {
   return (
     <div>
       <OrderDetails />
@@ -9,4 +9,4 @@ const Order = () => {
   );
 };
 
-export default Order;
+export default OrderDetailsPage;

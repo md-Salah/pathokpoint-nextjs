@@ -3,7 +3,7 @@ import OrderCard from "@/components/UserProfile/MyOrder/OrderCard";
 import { myOrderTabs } from "@/constants/userProfile";
 import React, { useState } from "react";
 
-const Orders = () => {
+const OrdersPage = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const handleSetActiveIndex = (index: number) => {
@@ -61,4 +61,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default OrdersPage;

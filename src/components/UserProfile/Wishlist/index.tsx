@@ -14,12 +14,14 @@ const Wishlist = () => {
   };
   return (
     <div className="w-full flex flex-col space-y-4">
-      <TabOptions
-        tabOptions={wishlistTabs}
-        activeIndex={activeTabIndex}
-        setActiveIndex={handleSetActiveTabIndex}
-      />
-      <div className="overflow-x- bg-white rounded-lg h-screen p-10">
+      <div className="hidden md:block">
+        <TabOptions
+          tabOptions={wishlistTabs}
+          activeIndex={activeTabIndex}
+          setActiveIndex={handleSetActiveTabIndex}
+        />
+      </div>
+      <div className="overflow-x-auto bg-white rounded-lg h-screen p-10">
         <table className="table">
           <tbody>
             <tr>
@@ -61,7 +63,7 @@ const Wishlist = () => {
               </td>
               <td>
                 <button className="btn btn-primary">
-                  <MdOutlineAddShoppingCart size={20}/>
+                  <MdOutlineAddShoppingCart size={20} />
                   Move to Cart
                 </button>
               </td>
