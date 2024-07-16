@@ -2,20 +2,25 @@
 import React, { useState } from "react";
 import TabOptions from "../shared/TabOptions";
 import { followingTabs } from "@/constants/userProfile";
+import useScreenSize from "@/hooks/useScreenSize";
+import { MIN_DESKTOP_WIDTH } from "@/constants/constants";
 
 const Following = () => {
+  const { width } = useScreenSize();
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
   const handleSetActiveTabIndex = (index: number) => {
     setActiveTabIndex(index);
   };
   return (
     <div className="w-full flex flex-col space-y-4">
-      <TabOptions
-        tabOptions={followingTabs}
-        activeIndex={activeTabIndex}
-        setActiveIndex={handleSetActiveTabIndex}
-      />
-      <div className="overflow-x- bg-white rounded-lg h-screen p-10">
+      {width > MIN_DESKTOP_WIDTH && (
+        <TabOptions
+          tabOptions={followingTabs}
+          activeIndex={activeTabIndex}
+          setActiveIndex={handleSetActiveTabIndex}
+        />
+      )}
+      <div className="overflow-x-auto bg-white rounded-lg h-screen p-3 md:p-10">
         <table className="table">
           <thead>
             <tr>
@@ -33,10 +38,12 @@ const Following = () => {
                   className="w-20 rounded-xl"
                 />
               </td>
-              <td>হুমায়ূন আহমেদ</td>
+              <td>
+                <span className="text-xs md:text-sm text-nowrap">হুমায়ূন আহমেদ</span>
+              </td>
               <td>125k</td>
               <td>
-                <button className="btn btn-outline btn-primary px-5">
+                <button className="btn btn-outline btn-xs md:btn-md btn-primary px-5">
                   Unfollow
                 </button>
               </td>
