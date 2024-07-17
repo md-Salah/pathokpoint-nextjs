@@ -1,8 +1,10 @@
+'use client';
 import { VerifyOTP } from "@/components";
 
 const SignUp = () => {
   const handleOTPSubmit = () => {
     //verify otp
+    console.log("OTP verified");
   };
 
   return (
