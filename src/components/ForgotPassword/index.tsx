@@ -1,6 +1,7 @@
 "use client";
 
 import { isEmail } from "@/utils";
+import Link from "next/link";
 import { useState } from "react";
 
 interface Props {
@@ -43,10 +44,19 @@ const ForgotPassword = ({ email, handleChange, handleEmailSubmit }: Props) => {
         />
       </div>
       <p className="text-highlight text-sm mt-4">{error}</p>
-      <button className="btn btn-primary btn-sm btn-block h-12 bg-primary mt-2 rounded" onClick={handleSubmit}>
+      <button
+        className="btn btn-primary btn-sm btn-block h-12 bg-primary mt-2 rounded"
+        onClick={handleSubmit}
+      >
         {false && <span className="loading loading-spinner"></span>}
         Send OTP
       </button>
+      <p className="mt-3 text-sm text-black04">
+        Remember password?&nbsp;
+        <Link href="/auth/login" className="btn btn-link">
+          Login
+        </Link>
+      </p>
     </div>
   );
 };

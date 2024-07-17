@@ -52,7 +52,7 @@ const VerifyOTP = ({handleOTPSubmit}: Props) => {
       </div>
       <div className="flex justify-between mt-2 text-black04">
         <h5 className="text-sm">
-          Didn't get any code?&nbsp;
+          Didn&apos;t get any code?&nbsp;
           <span className="half-underline text-primary font-medium cursor-pointer py-0.5">
             Resend
           </span>

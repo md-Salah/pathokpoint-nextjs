@@ -45,6 +45,11 @@ const ResetPassword = () => {
             )}
             {step === 2 && <VerifyOTP handleOTPSubmit={handleOTPSubmit} />}
             {step === 3 && <SetPassword />}
+            {/* <div className="toast toast-top toast-center top-36">
+              <div className="alert alert-info">
+                <span>Password changed successfully.</span>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>

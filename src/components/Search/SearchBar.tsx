@@ -10,11 +10,11 @@ interface Props {
 }
 
 const SearchBar = ({ query, handleSearch, focus }: Props) => {
-  let i = 0;
   const text = "বই, লেখক, অথবা বিষয় লিখুন";
   const [placeholder, setPlaceholder] = useState<string>("");
 
   useEffect(() => {
+    let i = 0;
     const intervalId = setInterval(() => {
       setPlaceholder(text.slice(0, i));
       i++;
