@@ -2,7 +2,11 @@
 import React, { useState, useRef } from "react";
 import Timer from "./Timer";
 
-const VerifyOTP = () => {
+interface Props {
+  handleOTPSubmit: () => void;
+}
+
+const VerifyOTP = ({handleOTPSubmit}: Props) => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
@@ -22,8 +26,9 @@ const VerifyOTP = () => {
     }
   };
 
-  const handleOtpSubmit = () => {
+  const handleSubmit = () => {
     const fullOtp = otp.join("");
+    handleOTPSubmit();
   };
 
   return (
@@ -57,7 +62,7 @@ const VerifyOTP = () => {
         </div>
       </div>
       <button
-        onClick={handleOtpSubmit}
+        onClick={handleSubmit}
         disabled={otp.join("").length !== 6}
         className="mt-10 btn btn-primary btn-block btn-sm h-11"
       >

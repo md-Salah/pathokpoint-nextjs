@@ -19,3 +19,4 @@ export { default as MessengerSVG } from "./MessengerSVG";
 export { default as SignUpSVG } from "./SignUpSVG";
 export { default as GoogleSVG } from "./GoogleSVG";
 export { default as FacebookSVG } from "./FacebookSVG";
+export { default as ForgotPassSVG } from "./ForgotPassSVG";
