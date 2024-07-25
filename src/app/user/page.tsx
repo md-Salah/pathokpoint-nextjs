@@ -10,7 +10,6 @@ import {
   SidebarMobile,
   Wishlist,
 } from "@/components";
-import useScreenSize from "@/hooks/useScreenSize";
 
 const getMenuContent = (activeMenu: number) => {
   switch (activeMenu) {
@@ -36,7 +35,6 @@ const getMenuContent = (activeMenu: number) => {
 };
 
 const User = () => {
-  const screenSize = useScreenSize();
   const [activeMenu, setActiveMenu] = useState<number>(0);
 
   const handleSetActiveMenu = (index: number) => {
@@ -70,7 +68,9 @@ const User = () => {
           }
           handleSetActiveMenu={handleSetActiveMenu}
         />
-        {getMenuContent(activeMenu)}
+        <div className="hidden md:block md:w-full">
+          {getMenuContent(activeMenu)}
+        </div>
       </div>
       <dialog id="signout_confirmation_modal" className="modal">
         <SignOutModal

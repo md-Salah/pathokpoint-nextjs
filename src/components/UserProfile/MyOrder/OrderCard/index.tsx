@@ -1,7 +1,6 @@
 "use client";
 import { MIN_DESKTOP_WIDTH } from "@/constants/constants";
 import useScreenSize from "@/hooks/useScreenSize";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -20,7 +19,7 @@ const OrderCard = ({ handleSetActiveOrderId }: Props) => {
     }
   };
   return (
-    <div className="w-full md:bg-white flex items-center justify-between py-5 px-7">
+    <div className="w-full md:bg-white flex items-center justify-between p-5 md:py-5 md:px-7">
       <div className="flex flex-col space-y-2">
         <div className="text-base flex items-center space-x-1">
           <span className="text-[#2B2B2B]">Order ID</span>
