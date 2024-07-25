@@ -7,10 +7,9 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     cart: cartSlice,
-    theme: themeSlice
+    theme: themeSlice,
   },
 });
-
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
