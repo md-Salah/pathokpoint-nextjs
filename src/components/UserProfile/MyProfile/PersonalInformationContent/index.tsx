@@ -61,6 +61,7 @@ const PersonalInformationContent = () => {
             value={"Tanvir Rayhan"}
             placeholder="Enter First Name"
             className="input input-bordered text-base text-black02"
+            onChange={() => {}}
           />
         </div>
         <div className="flex flex-col space-y-2">
