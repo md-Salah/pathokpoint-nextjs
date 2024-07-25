@@ -21,7 +21,7 @@ const Wishlist = () => {
           setActiveIndex={handleSetActiveTabIndex}
         />
       </div>
-      <div className="overflow-x-auto bg-white rounded-lg h-screen p-10">
+      <div className="overflow-x-auto bg-white h-screen p-10">
         <table className="table">
           <tbody>
             <tr>

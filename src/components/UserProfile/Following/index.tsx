@@ -20,7 +20,7 @@ const Following = () => {
           setActiveIndex={handleSetActiveTabIndex}
         />
       )}
-      <div className="overflow-x-auto bg-white rounded-lg h-screen p-3 md:p-10">
+      <div className="overflow-x-auto bg-white h-screen p-3 md:p-10">
         <table className="table">
           <thead>
             <tr>

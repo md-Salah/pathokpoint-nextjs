@@ -1,24 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { IoPersonSharp } from "react-icons/io5";
-import { IoDocumentText } from "react-icons/io5";
-import { BsFillPersonPlusFill } from "react-icons/bs";
-import { FaHeart } from "react-icons/fa";
-import { MdReviews } from "react-icons/md";
-import { BiSolidLogOut } from "react-icons/bi";
 import {
   Following,
   MyOrder,
   MyProfile,
   MyReviews,
   SidebarDesktop,
+  SignOutModal,
   SidebarMobile,
   Wishlist,
 } from "@/components";
-import { PiWarningCircleBold } from "react-icons/pi";
-import ProfileAvatar from "@/components/UserProfile/shared/ProfileAvatar";
 import useScreenSize from "@/hooks/useScreenSize";
-import { MIN_DESKTOP_WIDTH } from "@/constants/constants";
 
 const getMenuContent = (activeMenu: number) => {
   switch (activeMenu) {
@@ -78,28 +70,14 @@ const User = () => {
           }
           handleSetActiveMenu={handleSetActiveMenu}
         />
-        {screenSize.width >= MIN_DESKTOP_WIDTH && getMenuContent(activeMenu)}
+        {getMenuContent(activeMenu)}
       </div>
       <dialog id="signout_confirmation_modal" className="modal">
-        <div className="modal_box rounded-lg bg-[#F3F5F6] max-w-none w-[500px] flex flex-col items-center space-y-5 py-10">
-          <div className="bg-primary bg-opacity-20 rounded-full p-2 w-fit">
-            <PiWarningCircleBold color="#FF8200" size={36} />
-          </div>
-          <span className="text-2xl text-[#363739] font-bold">
-            Are you sure ?
-          </span>
-          <div className="flex items-center space-x-4">
-            <button className="btn btn-secondary btn-sm  text-white w-36">
-              Yes
-            </button>
-            <button
-              className="btn btn-secondary btn-sm btn-outline w-36"
-              onClick={handleCloseSignOutConfirmationModal}
-            >
-              No
-            </button>
-          </div>
-        </div>
+        <SignOutModal
+          handleCloseSignOutConfirmationModal={
+            handleCloseSignOutConfirmationModal
+          }
+        />
       </dialog>
     </>
   );

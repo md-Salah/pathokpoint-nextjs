@@ -18,7 +18,7 @@ const SidebarDesktop = ({
   handleOpenSignOutConfirmationModal,
 }: Props) => {
   return (
-    <div className="bg-white rounded-lg h-screen w-[30%] hidden md:block">
+    <div className="bg-white h-screen w-[30%] hidden md:block">
       <div className="border-b border-b-[#E6E6E6]">
         <ProfileAvatar />
       </div>
