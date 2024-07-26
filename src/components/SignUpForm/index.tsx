@@ -1,36 +1,55 @@
 "use client";
-import { FacebookSVG, GoogleSVG } from "@/micro-components";
+
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+
+import { FacebookSVG, GoogleSVG } from "@/micro-components";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { isEmail } from "@/utils";
 
-const SignUpForm = () => {
+interface UserSignup {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+}
+
+interface Props {
+  handleSignup: (user: any) => void;
+  error: string | null;
+  setError: (error: string | null) => void;
+  user: UserSignup;
+  setUser: (user: UserSignup) => void;
+  loading: boolean;
+}
+
+const SignUpForm = ({
+  handleSignup,
+  error,
+  setError,
+  user,
+  setUser,
+  loading,
+}: Props) => {
   const [showPass, setShowPass] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
 
-  const handleSignUp = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     const passwordMinLength = 8;
     const nameMinLength = 2;
 
-    if (!user.firstName) {
+    if (!user.first_name) {
       setError("First name is required");
-    } else if (user.firstName.length < nameMinLength) {
+    } else if (user.first_name.length < nameMinLength) {
       setError(`First name must be at least ${nameMinLength} characters long`);
-    } else if (!user.lastName) {
+    } else if (!user.last_name) {
       setError("Last name is required");
-    } else if (user.lastName.length < nameMinLength) {
+    } else if (user.last_name.length < nameMinLength) {
       setError(`Last name must be at least ${nameMinLength} characters long`);
     } else if (!user.email) {
       setError("Email is required");
-    } else if (!emailRegex.test(user.email)) {
+    } else if (!isEmail(user.email)) {
       setError("Please enter a valid email address");
     } else if (!user.password) {
       setError("Password is required");
@@ -39,12 +58,8 @@ const SignUpForm = () => {
         `Password must be at least ${passwordMinLength} characters long`
       );
     } else {
-      setError("");
-      setLoading(true);
-      // Call your signup function here
-      setTimeout(() => {
-        setLoading(false);
-      }, 4000);
+      setError(null);
+      handleSignup(user);
     }
   };
 
@@ -54,61 +69,65 @@ const SignUpForm = () => {
 
   return (
     <div className="bg-white">
-      <h1 className="mt-5 font-bold md:text-xl text-primary text-center lg:text-left">Sign Up</h1>
-      <div className="mt-6 grid gap-3">
-        <input
-          type="text"
-          placeholder="First name"
-          className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
-          name="firstName"
-          value={user.firstName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Last name"
-          className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
-          name="lastName"
-          value={user.lastName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          placeholder="Email or phone"
-          className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
-          name="email"
-          value={user.email}
-          onChange={handleInputChange}
-        />
-        <label className="input input-sm flex items-center gap-2 h-11 input-bordered focus-within:outline-none focus-within:border-primary">
+      <form onSubmit={handleSubmit}>
+        <h1 className="mt-5 font-bold md:text-xl text-primary text-center lg:text-left">
+          Sign Up
+        </h1>
+        <div className="mt-6 grid gap-3">
           <input
-            type={showPass ? "text" : "password"}
-            placeholder="Password"
-            className="grow bg-transparent"
-            name="password"
-            value={user.password}
+            type="text"
+            placeholder="First name"
+            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            name="first_name"
+            value={user.first_name}
             onChange={handleInputChange}
           />
-          <div
-            className="btn btn-link text-black04"
-            onClick={() => setShowPass(!showPass)}
-          >
-            {showPass ? (
-              <AiOutlineEye className="w-4 h-4" />
-            ) : (
-              <AiOutlineEyeInvisible className="w-4 h-4" />
-            )}
-          </div>
-        </label>
-      </div>
-      <p className="text-highlight text-sm mt-4">{error}</p>
-      <button
-        className="btn btn-primary btn-sm btn-block h-12 bg-primary mt-2 rounded"
-        onClick={handleSignUp}
-      >
-        {loading && <span className="loading loading-spinner"></span>}
-        Sign Up
-      </button>
+          <input
+            type="text"
+            placeholder="Last name"
+            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            name="last_name"
+            value={user.last_name}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            placeholder="Email or phone"
+            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            name="email"
+            value={user.email}
+            onChange={handleInputChange}
+          />
+          <label className="input input-sm flex items-center gap-2 h-11 input-bordered focus-within:outline-none focus-within:border-primary">
+            <input
+              type={showPass ? "text" : "password"}
+              placeholder="Password"
+              className="grow bg-transparent"
+              name="password"
+              value={user.password}
+              onChange={handleInputChange}
+            />
+            <div
+              className="btn btn-link text-black04"
+              onClick={() => setShowPass(!showPass)}
+            >
+              {showPass ? (
+                <AiOutlineEye className="w-4 h-4" />
+              ) : (
+                <AiOutlineEyeInvisible className="w-4 h-4" />
+              )}
+            </div>
+          </label>
+        </div>
+        <p className="text-highlight text-sm mt-4">{error}</p>
+        <button
+          className="btn btn-primary btn-sm btn-block h-12 bg-primary mt-2 rounded"
+          type="submit"
+        >
+          {loading && <span className="loading loading-spinner"></span>}
+          Sign Up
+        </button>
+      </form>
 
       <div className="text-center lg:text-left">
         <p className="mt-6 text-sm text-black04">Or, sign up with</p>

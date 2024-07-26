@@ -89,7 +89,7 @@ const LoginForm = () => {
           <div className="flex justify-end">
             <Link
               href="/auth/reset-password"
-              className="btn btn-link btn-xs text-primary min-h-0 h-3"
+              className="btn btn-link btn-sm text-primary min-h-0 h-4"
             >
               Forgot Password?
             </Link>
