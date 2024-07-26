@@ -15,7 +15,7 @@ const OrderCard = ({ handleSetActiveOrderId }: Props) => {
     if (width >= MIN_DESKTOP_WIDTH && handleSetActiveOrderId) {
       handleSetActiveOrderId(1);
     } else {
-      router.push("/me/user/my-order/1");
+      router.push("/user/my-order/1");
     }
   };
   return (

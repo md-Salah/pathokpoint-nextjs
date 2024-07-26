@@ -14,13 +14,13 @@ type Props = {
 
 const SidebarMobile = ({ handleOpenSignOutConfirmationModal }: Props) => {
   return (
-    <div className="w-full space-y-4 md:hidden">
+    <div className="w-full space-y-4 bg-white md:hidden h-screen py-10">
       <div className="w-full mx-auto">
         <ProfileAvatar />
       </div>
       <div className="border border-black06 rounded-lg px-4 mx-4">
         <Link
-          href={"/me/user/my-profile"}
+          href={"/user/me"}
           className="w-full flex item-end justify-between border-b border-b-black06 py-3"
         >
           <div className="flex items-center space-x-4">
@@ -34,7 +34,7 @@ const SidebarMobile = ({ handleOpenSignOutConfirmationModal }: Props) => {
           </div>
         </Link>
         <Link
-          href={"/me/user/my-order"}
+          href={"/user/my-order"}
           className="w-full flex item-center justify-between border-b border-b-black06 py-3"
         >
           <div className="flex items-center space-x-4">
@@ -48,7 +48,7 @@ const SidebarMobile = ({ handleOpenSignOutConfirmationModal }: Props) => {
           </div>
         </Link>
         <Link
-          href={"/me/user/following"}
+          href={"/user/following"}
           className="w-full flex item-center justify-between border-b border-b-black06 py-3"
         >
           <div className="flex items-center space-x-4">
@@ -62,7 +62,7 @@ const SidebarMobile = ({ handleOpenSignOutConfirmationModal }: Props) => {
           </div>
         </Link>
         <Link
-          href={"/me/user/wishlist"}
+          href={"/user/wishlist"}
           className="w-full flex item-center justify-between border-b border-b-black06 py-3"
         >
           <div className="flex items-center space-x-4">
@@ -76,7 +76,7 @@ const SidebarMobile = ({ handleOpenSignOutConfirmationModal }: Props) => {
           </div>
         </Link>
         <Link
-          href={"/me/user/my-reviews"}
+          href={"/user/my-reviews"}
           className="w-full flex item-center justify-between py-3"
         >
           <div className="flex items-center space-x-4">

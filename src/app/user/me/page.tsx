@@ -1,12 +1,14 @@
-import React from 'react' 
-import { MyProfile } from '@/components'
+import React from "react";
+import { MyProfile, SidebarDesktopLayout } from "@/components";
 
-const  MyProfilePage = () => {
+const MyProfilePage = () => {
   return (
-    <div>
-        <MyProfile/>
-    </div>
-  )
-}
+    <>
+      <SidebarDesktopLayout>
+        <MyProfile />
+      </SidebarDesktopLayout>
+    </>
+  );
+};
 
-export default MyProfilePage
+export default MyProfilePage;

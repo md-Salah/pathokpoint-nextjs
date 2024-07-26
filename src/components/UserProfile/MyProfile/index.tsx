@@ -33,7 +33,7 @@ const MyProfile = () => {
   return (
     <div className="w-full flex flex-col space-y-0 md:space-y-4 my-10 md:my-0">
       <div className="flex items-center w-full pt-6 pb-3 md:pt-0 md:pb-0 bg-white md:hidden">
-        <Link href={"/me/user"} className="pl-5">
+        <Link href={"/user"} className="pl-5">
           <IoChevronBack size={20} />
         </Link>
         <div className="flex justify-center w-full">
