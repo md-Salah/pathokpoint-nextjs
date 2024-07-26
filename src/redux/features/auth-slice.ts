@@ -1,30 +1,47 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "@/utils/axiosConfig";
+import { User } from "@/interface";
 
-type User = {
-  email: string;
-  first_name: string;
-  last_name: string;
-  username: string;
-  role: string;
-  gender: string;
-};
-
-type InitialState = {
+interface InitialState {
   user: User | null;
   loading: boolean;
-  error: string | null;
   token: string | null;
   isStaff: boolean;
-};
+}
 
 const initialState: InitialState = {
   user: null,
   loading: false,
-  error: null,
   token: null,
   isStaff: false,
 };
+
+export const initializeAuth = createAsyncThunk(
+  "auth/initializeAuth",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token =
+        localStorage && localStorage.getItem("access_token")
+          ? localStorage.getItem("access_token")
+          : null;
+      if (token) {
+        const userResponse = await axios.get("/user/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        return {
+          token,
+          user: userResponse.data,
+        };
+      }
+      return { token: null, user: null };
+    } catch (error) {
+      console.error("Failed to initialize auth", error);
+      return rejectWithValue("Failed to initialize auth");
+    }
+  }
+);
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -56,12 +73,15 @@ export const login = createAsyncThunk(
   }
 );
 
+const isStaff = (role: string) =>
+  ["admin", "staff", "super-admin"].includes(role);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     logout: () => {
-      localStorage.removeItem('access_token');
+      localStorage.removeItem("access_token");
       return initialState;
     },
   },
@@ -69,7 +89,6 @@ export const authSlice = createSlice({
     builder
       .addCase(login.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(
         login.fulfilled,
@@ -77,15 +96,28 @@ export const authSlice = createSlice({
           state.loading = false;
           state.token = action.payload.token;
           state.user = action.payload.user;
-          state.isStaff = ["admin", "staff", "super-admin"].includes(
-            action.payload.user.role
-          );
+          state.isStaff = isStaff(action.payload.user.role);
         }
       )
       .addCase(login.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
-        state.error = action.payload;
-      });
+      })
+      .addCase(
+        initializeAuth.fulfilled,
+        (
+          state,
+          action: PayloadAction<{
+            token: string | null;
+            user: User | null;
+          }>
+        ) => {
+          state.token = action.payload.token;
+          state.user = action.payload.user;
+          state.isStaff = action.payload.user
+            ? isStaff(action.payload.user.role)
+            : false;
+        }
+      );
   },
 });
 

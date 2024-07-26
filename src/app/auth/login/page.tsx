@@ -1,4 +1,4 @@
-import LoginForm from "./LoginForm";
+import { LoginForm } from "@/components";
 import { SignUpSVG } from "@/micro-components";
 
 const Login = () => {

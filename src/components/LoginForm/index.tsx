@@ -17,9 +17,8 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const [success, setSuccess] = useState<boolean>(false);
   const [err, setErr] = useState<string | null>(null);
-  const { loading } = useSelector((state: RootState) => state.auth);
+  const { loading, user } = useSelector((state: RootState) => state.auth);
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,14 +41,15 @@ const LoginForm = () => {
           password: password,
         })
       );
-      if (login.fulfilled.match(action)) {
-        setSuccess(true);
-        router.push("/");
-      } else if (login.rejected.match(action)) {
+      if (login.rejected.match(action)) {
         setErr(action.payload as string);
       }
     }
   };
+
+  if (user) {
+    router.push("/");
+  }
 
   return (
     <div className="bg-white">
@@ -101,7 +101,7 @@ const LoginForm = () => {
           type="submit"
         >
           {loading && <span className="loading loading-spinner"></span>}
-          {success ? "Login success" : "Login"}
+          Login
         </button>
       </form>
 
