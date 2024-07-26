@@ -7,6 +7,7 @@ const MyProfilePage = () => {
       <SidebarDesktopLayout>
         <MyProfile />
       </SidebarDesktopLayout>
+      <MyProfile/>
     </>
   );
 };

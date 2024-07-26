@@ -33,10 +33,10 @@ const OrdersPage = () => {
             </div>
           ))}
         </div>
-        <div className="py-5 space-y-4 h-screen overflow-y-auto">
+        <div className="h-screen overflow-y-auto">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((elem, i) => (
             <div
-              className={`${i < 10 && "border-b border-b-black06 pb-4"}`}
+              className={`${i < 10 && "border-b border-b-black06"}`}
               key={elem}
             >
               <OrderCard key={elem} />

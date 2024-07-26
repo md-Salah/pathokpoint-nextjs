@@ -18,7 +18,7 @@ const WishlistPage = () => {
           <Link href={"/user"} className="pl-5">
             <IoChevronBack size={20} />
           </Link>
-          <div className="flex justify-center w-full">
+          <div className="flex justify-center w-full absolute">
             <h2 className="text-base font-bold text-black02">Wishlist</h2>
           </div>
         </div>

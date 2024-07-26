@@ -57,7 +57,7 @@ const OrderCard = ({ handleSetActiveOrderId }: Props) => {
         </div>
         <div>
           <button
-            className="btn btn-primary btn-xs md:btn-sm px-5 md:px-7"
+            className="btn btn-primary btn-sm px-3 md:px-7"
             onClick={handleViewOrderClick}
           >
             View Order

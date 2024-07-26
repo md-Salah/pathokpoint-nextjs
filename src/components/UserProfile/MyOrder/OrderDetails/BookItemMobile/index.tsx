@@ -18,12 +18,12 @@ const BookItemMobile = () => {
           <span className="text-sm md:text-base font-semibold text-black02">
             Pather Panchali
           </span>
-          <span className="text-xxs md:text-xs text-black04">
+          <span className="text-xxs md:text-xs text-black04 font-normal">
             {truncateWithEllipsis("by Bibhutibushan Bandapaddhay", 16)}
           </span>
           <div className="flex items-center space-x-1">
-            <span className="font-bold text-base text-[#2B2B2B]">৳500</span>
-            <span className="font-semibold text-xs text-secondary-content line-through">
+            <span className="font-semibold text-base text-[#2B2B2B]">৳500</span>
+            <span className="font-medium text-xs text-secondary-content line-through">
               ৳600
             </span>
           </div>
@@ -32,7 +32,7 @@ const BookItemMobile = () => {
       <div className="space-y-2">
         <div className="flex items-center space-x-1">
           <span className="text-xs text-secondary-content">Total:</span>
-          <span className="font-bold text-base text-[#2B2B2B]">৳500</span>
+          <span className="font-semibold text-base text-[#2B2B2B]">৳500</span>
         </div>
         <div className="p-[3px] bg-primary bg-opacity-20 text-primary text-xs rounded-full font-semibold">
           <span>Old-Readable</span>
