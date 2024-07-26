@@ -24,13 +24,13 @@ const DashboardSummaryBox = (props: Props) => {
         <span
           className={`${
             props.variant === "Secondary" ? "text-white" : "text-[#777980]"
-          } font-semibold`}
+          } text-xs md:text-base md:font-medium`}
         >
           {props.title}
         </span>
       </div>
       <h1
-        className={`text-3xl font-bold tracking-wide ${
+        className={`text-xl md:text-3xl font-semibold tracking-wide ${
           props.variant === "Secondary" && "text-white"
         }`}
       >
@@ -41,21 +41,21 @@ const DashboardSummaryBox = (props: Props) => {
         <span
           className={`${
             props.variant === "Secondary" ? "text-white" : "text-[#858D9D]"
-          } text-sm`}
+          } text-xxs md:text-sm`}
         >
           {props.orderStatus}
         </span>
       ) : (
         <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-1">
-            <span className="text-[#1A9882] text-sm font-extrabold">
+            <span className="text-[#1A9882] text-xxs md:text-sm font-bold">
               {props.riseInPercentage}%
             </span>
             <FaCaretUp color="#1A9882" />
           </div>
           <div>
             <span
-              className={`text-sm ${
+              className={`text-xxs md:text-sm font-normal ${
                 props.variant === "Secondary" ? "text-white" : "text-[#858D9D]"
               }`}
             >
