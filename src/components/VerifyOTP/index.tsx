@@ -5,8 +5,8 @@ import Timer from "./Timer";
 
 interface Props {
   handleOTPSubmit: (otp: string) => void;
-  error: string | null;
-  loading: boolean;
+  error?: string | null;
+  loading?: boolean;
 }
 
 const VerifyOTP = ({ handleOTPSubmit, error, loading }: Props) => {
