@@ -9,6 +9,7 @@ const Logo = () => {
         src="/logo-trans.png"
         fill
         priority
+        sizes="(max-width: 640px) 100vw, 128px"
         className="object-contain object-left text-xl font-bold"
       />
     </Link>

@@ -40,9 +40,6 @@ export { default as FilterInMobile } from "./FilterInMobile";
 export { default as PriceRangeFilter } from "./PriceRangeFilter";
 
 // Cart & Checkout
-export { default as CartItem } from "./CartItem";
-export { default as CartSummary } from "./CartSummary";
-export { default as PromoCode } from "./PromoCode";
 export { default as ShippingAddress } from "./ShippingAddress";
 export { default as PaymentMethod } from "./PaymentMethod";
 export { default as ShippingMethod } from "./ShippingMethod";

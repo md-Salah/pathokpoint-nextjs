@@ -1,41 +1,34 @@
 "use client";
-import { randomInt } from "crypto";
+import { applyCoupon, removeCoupon } from "@/redux/features/cart-slice";
+import { AppDispatch, RootState } from "@/redux/store";
 import { useState } from "react";
 import { FaCircleCheck } from "react-icons/fa6";
 import { RiDiscountPercentFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 
-const PromoCode = ({
-  discount,
-  setDiscount,
-}: {
-  discount: number;
-  setDiscount: (val: number) => void;
-}) => {
-  const [voucher, setVoucher] = useState<string | null>(null);
-  const [value, setValue] = useState<string>("");
+const PromoCode = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { discount, coupon } = useSelector((state: RootState) => state.cart);
+  const [value, setValue] = useState("");
 
   const applyVoucher = (code: string) => {
-    if (code != "") {
-      setVoucher(code);
-      setDiscount(120);
-    }
+    dispatch(applyCoupon({ coupon: code }));
   };
 
   const removeVoucher = () => {
-    setVoucher(null);
-    setDiscount(0);
+    dispatch(removeCoupon());
   };
 
   return (
     <div>
-      {voucher ? (
+      {coupon ? (
         <div className="mt-5">
           <h3 className="font-medium text-sm">Voucher for your order</h3>
           <div className="mt-4 border border-black06 rounded px-2 py-3">
             <div className="flex items-center gap-2">
               <RiDiscountPercentFill className="w-6 h-6 text-primary" />
               <div className="font-semibold">
-                <h3 className="text-xs">{voucher}</h3>
+                <h3 className="text-xs">{coupon}</h3>
                 <p className="text-primary text-xxs">-Tk {discount}</p>
               </div>
             </div>

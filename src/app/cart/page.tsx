@@ -1,42 +1,23 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-
-import {
-  BookCard,
-  Carousel,
-  CartItem,
-  CartSummary,
-  PromoCode,
-} from "@/components";
-import { books } from "@/constants";
-import { useState } from "react";
-import { CartItem as ItemType } from "@/interface";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+
+import { BookCard, Carousel } from "@/components";
+import { CartItem as CartItemType } from "@/interface";
+import { books } from "@/constants";
+import { RootState } from "@/redux/store";
+import PromoCode from "./PromoCode";
+import CartSummary from "./CartSummary";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const router = useRouter();
-  const bookInCart = books.map((book) => ({ ...book, count: 1 }));
-  const [items, setItems] = useState<ItemType[]>(bookInCart);
-  const [discount, setDiscount] = useState<number>(0);
+  const { cartItems } = useSelector((state: RootState) => state.cart);
 
   const handleCheckoutClick = () => {
     router.push("/checkout");
-  };
-
-  const handleCountChange = (id: string, count: number) => {
-    const newItems = items.map((item) => {
-      if (item.id === id && count <= item.quantity) {
-        return { ...item, count };
-      }
-      return item;
-    });
-    setItems(newItems);
-  };
-
-  const removeItem = (id: string) => {
-    const newItems = items.filter((item) => item.id !== id);
-    setItems(newItems);
   };
 
   return (
@@ -47,17 +28,12 @@ const Cart = () => {
             <div className="bg-white w-full layout-p">
               <h1 className="font-semibold sm:text-lg md:text-xl">My cart</h1>
 
-              {items.length > 0 ? (
+              {cartItems.length > 0 ? (
                 <div className="mt-3 sm:mt-5 md:mt-6 lg:mt-8 overflow-scroll">
                   <table className="table table-px-0 border-t">
                     <tbody>
-                      {items.map((item) => (
-                        <CartItem
-                          key={item.id}
-                          book={item}
-                          handleCountChange={handleCountChange}
-                          removeItem={removeItem}
-                        />
+                      {cartItems.map((item: CartItemType) => (
+                        <CartItem key={item.id} book={item} />
                       ))}
                     </tbody>
                   </table>
@@ -78,15 +54,13 @@ const Cart = () => {
           </div>
 
           {/* Cart Summary */}
-          {items.length > 0 && (
+          {cartItems.length > 0 && (
             <div className="bg-white w-full md:w-64 lg:w-80 layout-p">
               <h1 className="font-semibold sm:text-lg md:text-xl">
                 Order summary
               </h1>
-              <CartSummary items={items} discount={discount} />
-
-              <PromoCode discount={discount} setDiscount={setDiscount} />
-
+              <CartSummary />
+              <PromoCode />
               <button
                 className="mt-12 btn btn-primary w-full"
                 onClick={handleCheckoutClick}

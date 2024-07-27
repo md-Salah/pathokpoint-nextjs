@@ -1,26 +1,19 @@
-import { CartItem } from "@/interface";
-import { IoInformationCircleOutline } from "react-icons/io5";
+"use client";
 
-const CartSummary = ({
-  items,
-  discount,
-}: {
-  items: CartItem[];
-  discount: number;
-}) => {
-  const totalSum = items.reduce(
-    (sum, item) => sum + item.count * item.sale_price,
-    0
-  );
-  const grandTotal = totalSum + 100 - discount;
+import { RootState } from "@/redux/store";
+import { IoInformationCircleOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+
+const CartSummary = () => {
+  const cart = useSelector((state: RootState) => state.cart);
 
   return (
     <table className="mt-2 sm:mt-3 lg:mt-5 table text-xs table-px-0 dropdown">
       <tbody>
         <tr>
-          <td className="pl-0">Sub total ({items.length} items)</td>
+          <td className="pl-0">Sub total ({cart.cartItems.length} items)</td>
           <td></td>
-          <td className="w-10">৳{totalSum}</td>
+          <td className="w-10">৳{cart.subTotal}</td>
         </tr>
         <tr>
           <td>
@@ -39,19 +32,19 @@ const CartSummary = ({
             </div>
           </td>
           <td></td>
-          <td>৳100</td>
+          <td>৳{cart.deliveryCharge + cart.weightCharge}</td>
         </tr>
-        {discount > 0 && (
+        {cart.discount > 0 && (
           <tr>
             <td>Voucher</td>
             <td>-</td>
-            <td>৳{discount}</td>
+            <td>৳{cart.discount}</td>
           </tr>
         )}
         <tr className="font-bold">
           <td>Grand total</td>
           <td></td>
-          <td>৳{grandTotal}</td>
+          <td>৳{cart.grandTotal}</td>
         </tr>
       </tbody>
     </table>

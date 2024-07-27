@@ -3,6 +3,7 @@ import { ConditionBadge, WishlistButton } from "@/micro-components";
 import Link from "next/link";
 import { Book } from "@/interface";
 import { isEnglish } from "@/utils";
+import AddToCart from "./AddToCart";
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
@@ -22,7 +23,13 @@ const BookCard = ({ book }: { book: Book }) => {
             regular_price={book.regular_price}
             sale_price={book.sale_price}
           />
-          <ActionButtons />
+          {/* Action buttons */}
+          <div className="card-actions justify-between mt-1">
+            <AddToCart book={book} />
+            <div className="hidden sm:block h-9 w-10">
+              <WishlistButton />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -111,16 +118,5 @@ const Price = ({
     {regular_price > sale_price && (
       <span className="ml-2 line-through text-black04 font-medium text-xxs md:text-xs">{`${regular_price} ৳`}</span>
     )}
-  </div>
-);
-
-const ActionButtons = () => (
-  <div className="card-actions justify-between mt-1">
-    <button className="btn btn-primary btn-sm flex-1 text-xs md:text-sm lg:text-base font-bold h-8 md:h-9">
-      Add to cart
-    </button>
-    <div className="hidden sm:block h-9 w-10">
-      <WishlistButton />
-    </div>
   </div>
 );

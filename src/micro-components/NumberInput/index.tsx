@@ -1,5 +1,3 @@
-"use client";
-import { useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 
 const NumberInput = ({

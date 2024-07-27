@@ -1,68 +1,100 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { CartItem } from "@/interface";
 
-const cartFromLocalStorage =
-  typeof localStorage !== "undefined" && localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart") as string)
-    : [];
-
-interface Item {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
-
-interface CartState {
-  cartItems: Item[];
-}
-
-const initialState: CartState = {
-  cartItems: cartFromLocalStorage,
+const cartStateFromLocalStorage = () => {
+  if (
+    typeof localStorage !== "undefined" &&
+    localStorage.getItem("cartState")
+  ) {
+    return JSON.parse(localStorage.getItem("cartState") as string);
+  }
+  return initialState;
 };
 
-export const cartSlice = createSlice({
+const initialState: CartState = {
+  cartItems: [],
+  deliveryCharge: 0,
+  weightCharge: 0,
+  coupon: null,
+  discount: 0,
+  subTotal: 0,
+  grandTotal: 0,
+};
+
+const calculateSubTotal = (cartItems: CartItem[]): number => {
+  return cartItems.reduce(
+    (acc, item) => acc + item.sale_price * item.selectedQuantity,
+    0
+  );
+};
+
+const calculateGrandTotal = (state: CartState): number => {
+  return (
+    state.subTotal + state.deliveryCharge + state.weightCharge - state.discount
+  );
+};
+
+interface CartState {
+  cartItems: CartItem[];
+  deliveryCharge: number;
+  weightCharge: number;
+  coupon: string | null;
+  discount: number;
+  subTotal: number;
+  grandTotal: number;
+}
+
+const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItemToCart: (state, action: PayloadAction<any>) => {
+    initCartState: (state) => {
+      const cartState = cartStateFromLocalStorage();
+      return { ...state, ...cartState };
+    },
+    addItemToCart: (state, action: PayloadAction<CartItem>) => {
       const newItem = action.payload;
       const existingItem = state.cartItems.find(
-        (item) => item.id === newItem.id
+        (item: CartItem) => item.id === newItem.id
       );
       if (existingItem) {
-        existingItem.quantity += newItem.quantity;
+        const newQuantity =
+          existingItem.selectedQuantity + newItem.selectedQuantity;
+        if (newQuantity >= 0 && newQuantity <= existingItem.quantity) {
+          existingItem.selectedQuantity = newQuantity;
+        }
       } else {
         state.cartItems.push(newItem);
       }
-
-      localStorage.setItem("cart", JSON.stringify(state.cartItems));
+      state.subTotal = calculateSubTotal(state.cartItems);
+      state.grandTotal = calculateGrandTotal(state);
+      localStorage.setItem("cartState", JSON.stringify(state));
     },
     removeItemFromCart: (state, action: PayloadAction<{ id: string }>) => {
       const index = state.cartItems.findIndex(
-        (cartItem) => cartItem.id === action.payload.id
+        (item: CartItem) => item.id === action.payload.id
       );
       state.cartItems.splice(index, 1);
-
-      localStorage.setItem("cart", JSON.stringify(state.cartItems));
+      state.subTotal = calculateSubTotal(state.cartItems);
+      state.grandTotal = calculateGrandTotal(state);
+      localStorage.setItem("cartState", JSON.stringify(state));
     },
     clearCart: (state) => {
-      state.cartItems = [];
+      Object.assign(state, initialState);
+      localStorage.removeItem("cartState");
     },
     applyCoupon: (state, action: PayloadAction<{ coupon: string }>) => {
       const coupon = action.payload.coupon;
-      const couponList = ["DISCOUNT", "OFFER", "SALE"];
-      if (couponList.includes(coupon)) {
-        state.cartItems.forEach((item) => {
-          item.price = item.price - item.price * 0.1;
-        });
-      } else {
-        alert("Invalid Coupon");
-      }
+      state.coupon = coupon;
+      state.discount = 150;
+      state.grandTotal = calculateGrandTotal(state);
+      localStorage.setItem("cartState", JSON.stringify(state));
     },
     removeCoupon: (state) => {
-      state.cartItems.forEach((item) => {
-        item.price = item.price + item.price * 0.1;
-      });
+      state.coupon = null;
+      state.discount = 0;
+      state.grandTotal = calculateGrandTotal(state);
+      localStorage.setItem("cartState", JSON.stringify(state));
     },
   },
 });
@@ -73,5 +105,6 @@ export const {
   clearCart,
   applyCoupon,
   removeCoupon,
+  initCartState,
 } = cartSlice.actions;
 export default cartSlice.reducer;

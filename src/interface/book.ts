@@ -28,6 +28,17 @@ export interface Book {
   tags?: Array<{ id: string; name: string; slug: string }>;
 }
 
-export interface CartItem extends Book {
-  count: number;
+export interface CartItem {
+  id: string;
+  public_id?: string;
+  name: string;
+  slug: string;
+  authors: Array<Author>;
+  regular_price: number;
+  sale_price: number;
+  quantity: number;
+  condition: string;
+  images: Array<Image>;
+  cover?: string;
+  selectedQuantity: number;
 }
