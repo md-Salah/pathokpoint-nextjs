@@ -56,7 +56,7 @@ const SidebarCollapse = ({
     };
   }, []);
   return (
-    <div className="w-32 bg-gray-900 text-gray-200 py-10 min-h-fit md:block hidden transition-all duration-500">
+    <div className="w-32 bg-gray-900 text-gray-200 py-10 min-h-screen md:block hidden transition-all duration-500">
       <div className="pt-28 text-base font-bold py-8 px-2 flex items-center justify-between w-full">
         <span>MAINMENU</span>
         <div

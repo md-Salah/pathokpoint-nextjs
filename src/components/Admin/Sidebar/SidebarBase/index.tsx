@@ -24,8 +24,7 @@ const SidebarBase = ({
   setIsSidebarExpandClicked,
 }: Props) => {
   return (
-    <div className="w-72 bg-gray-900 text-gray-200 py-10 min-h-fit md:block hidden transition-all duration-500">
-        
+    <div className="w-72 bg-gray-900 text-gray-200 py-10 min-h-screen md:block hidden transition-all duration-500">
       <div className="mx-auto relative h-[26px] md:h-[70px] max-w-[128px]">
         <Image
           alt="Pathok Point"
@@ -147,8 +146,7 @@ const SidebarBase = ({
           </div>
         </details>
       </div>
-      </div>
-
+    </div>
   );
 };
 
