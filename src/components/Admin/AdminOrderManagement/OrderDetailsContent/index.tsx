@@ -1,34 +1,44 @@
 import { OrderedBookItem, OrderSummary } from "@/components";
 import { ConditionBadge } from "@/micro-components";
-import { CiMenuKebab } from "react-icons/ci";
-import { RiErrorWarningLine } from "react-icons/ri";
+import { GoKebabHorizontal } from "react-icons/go";
+import OrderDetailsRestockModal from "./OrderDetailsRestockModal";
+import OrderDetailsChangeStatusModal from "./OrderDetailsChangeStatusModal";
+import OrderDetailsRefundModal from "./OrderDetailsRefundModal";
 
 type Props = {
   orderId: string;
   handleRestockModalOpen: () => void;
   handleRestockModalClose: () => void;
+  handleChangeStatusModalOpen: () => void;
+  handleChangeStatusModalClose: () => void;
+  handleRefundModalOpen: () => void;
+  handleRefundModalClose: () => void;
 };
 
 const OrderDetailsContent = ({
   orderId,
   handleRestockModalClose,
   handleRestockModalOpen,
+  handleChangeStatusModalOpen,
+  handleChangeStatusModalClose,
+  handleRefundModalOpen,
+  handleRefundModalClose,
 }: Props) => {
   return (
     <>
       <div className="w-[95%] sm:w-[80%] p-4 sm:p-8 bg-white rounded-md my-8 mx-auto flex flex-col space-y-5">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-xl sm:text-2xl font-semibold">
+          <h1 className="text-xl sm:text-2xl font-medium">
             ID {orderId || ""}
           </h1>
           <div className="dropdown dropdown-bottom dropdown-end">
-            <CiMenuKebab
-              tabIndex={0}
-              role="button"
-              color="#363739"
-              size={18}
-              className="text-center"
-            />
+            <div tabIndex={0} role="button">
+              <GoKebabHorizontal
+                color="#363739"
+                size={18}
+                className="text-center rotate-90"
+              />
+            </div>
 
             <ul
               tabIndex={0}
@@ -49,28 +59,26 @@ const OrderDetailsContent = ({
           </span>
           <div className="grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-4 md:gap-0 pt-4">
             <div className="flex flex-col items-start space-y-3 border-r-1 border-[#E6E6E6]">
-              <span className="text-lg font-semibold pb-2">General</span>
+              <span className="text-lg font-medium pb-2">General</span>
               <div className="flex items-center space-x-2 text-sm md:text-base">
                 <span>Customer Name:</span>
-                <span className="font-semibold">Zahid Hasan</span>
+                <span className="font-medium">Zahid Hasan</span>
               </div>
               <div className="flex items-center space-x-2 text-sm md:text-base">
                 <span>Customer Contact:</span>
-                <span className="font-semibold">+8801944557788</span>
+                <span className="font-medium">+8801944557788</span>
               </div>
               <div className="flex items-center space-x-2 text-sm md:text-base">
                 <span>Invoice:</span>
-                <span className="font-semibold">06</span>
+                <span className="font-medium">06</span>
               </div>
               <div className="flex items-center space-x-2 text-sm md:text-base">
                 <span>Email:</span>
-                <span className="font-semibold">Zahid.hasan@gmail.com</span>
+                <span className="font-medium">Zahid.hasan@gmail.com</span>
               </div>
             </div>
             <div className="flex flex-col items-start space-y-3 border-r-[#E6E6E6]">
-              <span className="text-lg font-semibold pb-2">
-                Shipping Address
-              </span>
+              <span className="text-lg font-medium pb-2">Shipping Address</span>
               <div className="flex items-center space-x-2 text-sm md:text-base">
                 <span className="w-[70%]">
                   Matikata, 81/A Dhaka Cantonment, Dhaka-1206
@@ -78,9 +86,7 @@ const OrderDetailsContent = ({
               </div>
             </div>
             <div className="flex flex-col items-start space-y-3">
-              <span className="text-lg font-semibold pb-2">
-                Shipping Method
-              </span>
+              <span className="text-lg font-medium pb-2">Shipping Method</span>
               <div className="text-sm md:text-base">
                 <span>Sundarban Courier</span>
               </div>
@@ -95,8 +101,8 @@ const OrderDetailsContent = ({
         </div>
         <div className="flex flex-col space-y-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl sm:text-2xl font-semibold">Order Items</h1>
-            <select className="select max-w-xs select-sm sm:select-md">
+            <h1 className="text-xl sm:text-2xl font-medium">Order Items</h1>
+            <select className="select max-w-xs select-sm sm:select-md select-bordered">
               <option selected>Delivered</option>
               <option>Homer</option>
               <option>Marge</option>
@@ -106,8 +112,8 @@ const OrderDetailsContent = ({
             </select>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="table w-full text-xs sm:text-sm">
+          <div className="overflow-y-hidden overflow-x-auto relative">
+            <table className="table w-full text-xs sm:text-sm table-pin-rows">
               <thead className="bg-base-200">
                 <tr>
                   <th>Item</th>
@@ -122,61 +128,63 @@ const OrderDetailsContent = ({
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <OrderedBookItem />
-                  </td>
-                  <td>
-                    <ConditionBadge condition="OLD-Like New" />
-                  </td>
-                  <td>Hard</td>
-                  <td>x5</td>
-                  <td>$15,452</td>
-                  <td>$15,452</td>
-                  <td>$15,452</td>
-                  <td>
-                    <button
-                      className="btn btn-primary text-white btn-sm rounded-lg px-6"
-                      onClick={handleRestockModalOpen}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                  <td>
-                    <div className="dropdown dropdown-bottom dropdown-end">
-                      <CiMenuKebab
-                        tabIndex={0}
-                        role="button"
-                        color="#363739"
-                        size={18}
-                        className="text-center"
-                      />
-
-                      <ul
-                        tabIndex={0}
-                        className="dropdown-content z-[1] menu p-1 shadow bg-base-100 rounded-box w-36"
+                {[1, 2, 3, 4, 5].map((item) => (
+                  <tr key={item}>
+                    <td>
+                      <OrderedBookItem />
+                    </td>
+                    <td>
+                      <ConditionBadge condition="OLD-Like New" />
+                    </td>
+                    <td>Hard</td>
+                    <td>x5</td>
+                    <td>$15,452</td>
+                    <td>$15,452</td>
+                    <td>$15,452</td>
+                    <td>
+                      <button
+                        className="btn btn-primary text-white btn-sm rounded-lg px-6"
+                        onClick={handleRestockModalOpen}
                       >
-                        <li>
-                          <a>Copy</a>
-                        </li>
-                        <li>
-                          <a>Delete</a>
-                        </li>
-                        <li>
-                          <a>Out of Stock</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
+                        Delete
+                      </button>
+                    </td>
+                    <td>
+                      <div className="dropdown dropdown-bottom dropdown-end">
+                        <div tabIndex={0} role="button">
+                          <GoKebabHorizontal
+                            color="#363739"
+                            size={18}
+                            className="text-center rotate-90"
+                          />
+                        </div>
+
+                        <ul
+                          tabIndex={0}
+                          className="dropdown-content z-[1] menu p-1 shadow bg-base-100 rounded-box w-36"
+                        >
+                          <li>
+                            <a>Copy</a>
+                          </li>
+                          <li>
+                            <a>Delete</a>
+                          </li>
+                          <li>
+                            <a>Out of Stock</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
           <OrderSummary />
           <div className="flex justify-between items-center mb-4">
-            <select className="select max-w-xs select-sm sm:select-md">
+            <select className="select max-w-xs select-sm sm:select-md select-bordered">
               <option selected>Delivered</option>
-              <option>Homer</option>
+              <option onClick={handleChangeStatusModalOpen}>Homer</option>
               <option>Marge</option>
               <option>Bart</option>
               <option>Lisa</option>
@@ -184,7 +192,10 @@ const OrderDetailsContent = ({
             </select>
             <div className="flex items-center space-x-3">
               <button className="btn btn-primary btn-sm">Payment</button>
-              <button className="btn btn-primary btn-sm btn-outline">
+              <button
+                className="btn btn-primary btn-sm btn-outline"
+                onClick={handleRefundModalOpen}
+              >
                 Refund
               </button>
             </div>
@@ -219,43 +230,19 @@ const OrderDetailsContent = ({
       </div>
 
       <dialog id="restock_modal" className="modal">
-        <div className="modal-box rounded-xl">
-          <RiErrorWarningLine size={36} className="mx-auto" color="#FF8200" />
-          <div className="flex justify-center py-4 text-base md:text-xl font-semibold text-center">
-            <span>Are you sure you want to remove this items?</span>
-          </div>
-          <div className="py-4 text-center text-sm md:text-base w-full">
-            <table className="table w-full text-xs sm:text-sm">
-              <thead className="bg-base-200">
-                <tr>
-                  <td>Item</td>
-                  <td>Quantity</td>
-                  <td>Total</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <OrderedBookItem />
-                  </td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="w-full flex flex-col space-y-3 md:flex-row md:items-center md:space-y-0 md:space-x-3 md:justify-center ">
-            <button className="btn btn-primary btn-sm">
-              Remove & restock items
-            </button>
-            <button
-              className="btn btn-sm btn-outline"
-              onClick={handleRestockModalClose}
-            >
-              Don&apos;t restock, Just remove
-            </button>
-          </div>
-        </div>
+        <OrderDetailsRestockModal
+          handleRestockModalClose={handleRestockModalClose}
+        />
+      </dialog>
+      <dialog id="change_status_modal" className="modal">
+        <OrderDetailsChangeStatusModal
+          handleChangeStatusModalClose={handleChangeStatusModalClose}
+        />
+      </dialog>
+      <dialog id="refund_modal" className="modal">
+        <OrderDetailsRefundModal
+          handleRefundModalClose={handleRefundModalClose}
+        />
       </dialog>
     </>
   );

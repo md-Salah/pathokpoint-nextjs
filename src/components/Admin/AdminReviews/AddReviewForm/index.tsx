@@ -1,6 +1,6 @@
 import { StarRating } from "@/components";
 import { RxCross2 } from "react-icons/rx";
-import { FiPlusCircle } from "react-icons/fi";
+import { GoPlusCircle } from "react-icons/go";
 import { RefObject } from "react";
 import { Image } from "@/app/admin/reviews/add-review/page";
 
@@ -38,7 +38,7 @@ const AddReviewForm = ({
   const { productRating, timeRating, websiteRating, deliveryRating } = ratings;
   return (
     <div className="bg-white rounded-md my-8 mx-auto w-[95%] sm:w-[50%]">
-      <h4 className="text-secondary-content text-base px-6 py-3 font-semibold">
+      <h4 className="text-secondary-content text-base px-6 py-3 font-medium border-b border-b-black06">
         Add Review
       </h4>
       <div className="pt-4 px-6 flex flex-col space-y-4">
@@ -145,7 +145,7 @@ const AddReviewForm = ({
                 src={
                   images.find((image) => image.id === 1)?.previewUrl as string
                 }
-                className="w-32 h-24 rounded-lg relative"
+                className="w-32 h-20 rounded-lg relative"
                 alt="preview image 1"
               />
               <div
@@ -157,10 +157,10 @@ const AddReviewForm = ({
             </div>
           ) : (
             <div
-              className="border border-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+              className="border border-dashed border-black05 w-32 h-20 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
               onClick={() => fileInput1.current?.click()}
             >
-              <FiPlusCircle size={56} color="#CDCDCD" className="mx-auto" />
+              <GoPlusCircle size={42} color="#CDCDCD" className="mx-auto" />
             </div>
           )}
           {images.find((image) => image.id === 2) ? (
@@ -169,7 +169,7 @@ const AddReviewForm = ({
                 src={
                   images.find((image) => image.id === 2)?.previewUrl as string
                 }
-                className="w-32 h-24 rounded-lg relative"
+                className="w-32 h-20 rounded-lg relative"
                 alt="preview image 2"
               />
               <div
@@ -181,10 +181,10 @@ const AddReviewForm = ({
             </div>
           ) : (
             <div
-              className="border border-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+              className="border border-dashed border-black05 w-32 h-20 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
               onClick={() => fileInput2.current?.click()}
             >
-              <FiPlusCircle size={56} color="#CDCDCD" className="mx-auto" />
+              <GoPlusCircle size={42} color="#CDCDCD" className="mx-auto" />
             </div>
           )}
           {images.find((image) => image.id === 3) ? (
@@ -193,7 +193,7 @@ const AddReviewForm = ({
                 src={
                   images.find((image) => image.id === 3)?.previewUrl as string
                 }
-                className="w-32 h-24 rounded-lg relative"
+                className="w-32 h-20 rounded-lg relative"
                 alt="preview image 2"
               />
               <div
@@ -205,10 +205,10 @@ const AddReviewForm = ({
             </div>
           ) : (
             <div
-              className="border border-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+              className="border border-dashed border-black05 w-32 h-20 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
               onClick={() => fileInput3.current?.click()}
             >
-              <FiPlusCircle size={56} color="#CDCDCD" className="mx-auto" />
+              <GoPlusCircle size={42} color="#CDCDCD" className="mx-auto" />
             </div>
           )}
           {images.find((image) => image.id === 4) ? (
@@ -217,7 +217,7 @@ const AddReviewForm = ({
                 src={
                   images.find((image) => image.id === 4)?.previewUrl as string
                 }
-                className="w-32 h-24 rounded-lg relative"
+                className="w-32 h-20 rounded-lg relative"
                 alt="preview image 2"
               />
               <div
@@ -229,10 +229,10 @@ const AddReviewForm = ({
             </div>
           ) : (
             <div
-              className="border border-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+              className="border border-dashed border-black05 w-32 h-20 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
               onClick={() => fileInput4.current?.click()}
             >
-              <FiPlusCircle size={56} color="#CDCDCD" className="mx-auto" />
+              <GoPlusCircle size={42} color="#CDCDCD" className="mx-auto" />
             </div>
           )}
         </div>

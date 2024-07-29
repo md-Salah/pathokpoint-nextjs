@@ -104,20 +104,20 @@ const AddCouponForm = ({
             <label>Coupon Code</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Expired Date</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
         </div>
         <div className="space-y-2">
           <label>Short Description</label>
-          <div className="relative w-full">
+          <div className="relative w-full md:w-[90%]">
             <textarea
               className="textarea textarea-sm sm:textarea-lg w-full relative z-0"
               placeholder="Enter Short Description"
@@ -132,59 +132,59 @@ const AddCouponForm = ({
             <label>Discount Type</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Use Limit</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Discount New</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Discount Old</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Max Discount New</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Max Discount Old</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Min Discount New</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Min Discount Old</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Conditions</label>
             <MultipleItemSelector
               value={includedConditions}
@@ -192,7 +192,7 @@ const AddCouponForm = ({
               suggestions={conditionSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Books</label>
             <MultipleItemSelector
               value={includedBooks}
@@ -200,7 +200,7 @@ const AddCouponForm = ({
               suggestions={bookSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Authors</label>
             <MultipleItemSelector
               value={includedAuthors}
@@ -208,7 +208,7 @@ const AddCouponForm = ({
               suggestions={authorSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Categories</label>
             <MultipleItemSelector
               value={includedCategories}
@@ -216,7 +216,7 @@ const AddCouponForm = ({
               suggestions={categorySuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Publishers</label>
             <MultipleItemSelector
               value={includedPublishers}
@@ -224,7 +224,7 @@ const AddCouponForm = ({
               suggestions={publisherSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Tags</label>
             <MultipleItemSelector
               value={includedTags}
@@ -232,7 +232,7 @@ const AddCouponForm = ({
               suggestions={tagSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Exclude Books</label>
             <MultipleItemSelector
               value={excludedBooks}
@@ -240,7 +240,7 @@ const AddCouponForm = ({
               suggestions={bookSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Exclude Authors</label>
             <MultipleItemSelector
               value={excludedAuthors}
@@ -248,7 +248,7 @@ const AddCouponForm = ({
               suggestions={authorSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Exclude Categories</label>
             <MultipleItemSelector
               value={excludedCategories}
@@ -256,7 +256,7 @@ const AddCouponForm = ({
               suggestions={categorySuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Exclude Publisher</label>
             <MultipleItemSelector
               value={excludedPublishers}
@@ -264,7 +264,7 @@ const AddCouponForm = ({
               suggestions={publisherSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Exclude Tags</label>
             <MultipleItemSelector
               value={excludedTags}
@@ -272,7 +272,7 @@ const AddCouponForm = ({
               suggestions={tagSuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Allowed Users</label>
             <MultipleItemSelector
               value={allowedUsers}

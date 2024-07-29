@@ -1,11 +1,12 @@
 import { ConditionBadge, InStockBadge } from "@/micro-components";
-import { CiMenuKebab } from "react-icons/ci";
+import { GoKebabHorizontal } from "react-icons/go";
 import { bookGlobalOptions, books, bookSortOptions } from "@/constants";
-import { CiSearch } from "react-icons/ci";
+import { FiPlus } from "react-icons/fi";
 import React from "react";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import { IPagination } from "@/interface";
+import { isEnglish } from "@/utils";
 
 type Props = {
   pagination: IPagination;
@@ -14,31 +15,42 @@ type Props = {
 const BooksContent = ({ pagination }: Props) => {
   const { currentPage, totalPages, handleChangeCurrentPage } = pagination;
   return (
-    <div className="w-[95%] sm:w-[80%] p-4 sm:p-8 bg-white rounded-md my-8 mx-auto">
+    <div className="w-[95%] sm:w-[80%] min-h-screen p-4 sm:p-8 bg-white rounded-md my-8 mx-auto">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold">Books</h1>
-        <button className="btn btn-secondary text-white text-base rounded-lg">
-          <Link href={"/admin/product-management/books/add-book"}>
+        <h1 className="text-2xl font-medium">Books</h1>
+        <button className="btn btn-secondary font-medium text-white text-base rounded-lg">
+          <Link
+            href={"/admin/product-management/books/add-book"}
+            className="flex items-center space-x-4"
+          >
+            <FiPlus color="#ffffff" size={20} />
             Add Book
           </Link>
         </button>
       </div>
       <div className="pb-4 grid grid-cols-2 grid-flow-row gap-3 sm:flex sm:items-center sm:space-x-2 text-xs sm:text-sm">
         <div className="flex items-center">
-          <select className="select max-w-xs select-sm">
+          <select className="select max-w-xs select-sm rounded-l-lg rounded-r-none">
             {bookGlobalOptions.map((option, index) => (
               <option selected={option.id === 1} key={index}>
                 {option.title}
               </option>
             ))}
           </select>
-          <label className="w-full relative">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input w-40 relative rounded-r-lg input-sm"
-            />
-            <CiSearch className="absolute z-20 right-2 top-2" size={20} />
+          <label className="input rounded-r-lg rounded-l-none input-sm flex items-center gap-2">
+            <input type="text" className="grow w-40" placeholder="Search" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
           </label>
         </div>
         <div></div>
@@ -100,8 +112,8 @@ const BooksContent = ({ pagination }: Props) => {
           ))}
         </select>
       </div>
-      <div className="overflow-x-auto">
-        <table className="table w-full text-xs sm:text-sm">
+      <div className="overflow-y-hidden overflow-x-auto relative">
+        <table className="table w-full text-xs sm:text-sm table-pin-rows">
           <thead className="bg-base-200">
             <tr>
               <th>Public ID & SKU</th>
@@ -123,8 +135,14 @@ const BooksContent = ({ pagination }: Props) => {
             {books.map((book) => (
               <tr key={book.id}>
                 <td>{book.isbn}</td>
-                <td>{book.name}</td>
-                <td>{book.authors[0].name}</td>
+                <td className={`${!isEnglish(book.name) && "font-bn"}`}>
+                  {book.name}
+                </td>
+                <td
+                  className={`${!isEnglish(book.authors[0].name) && "font-bn"}`}
+                >
+                  {book.authors[0].name}
+                </td>
                 <td>{book.publisher.name}</td>
                 <td>{book.edition}</td>
                 <td>{book.cover}</td>
@@ -142,23 +160,23 @@ const BooksContent = ({ pagination }: Props) => {
                   )}
                 </td>
                 <td>
-                  <button className="btn btn-primary text-white btn-sm rounded-lg px-6">
+                  <button className="btn btn-outline btn-primary text-white btn-sm rounded-lg px-6">
                     Edit
                   </button>
                 </td>
                 <td>
-                  <div className="dropdown dropdown-bottom dropdown-end">
-                    <CiMenuKebab
-                      tabIndex={0}
-                      role="button"
-                      color="#363739"
-                      size={18}
-                      className="text-center"
-                    />
+                  <div className="dropdown dropdown-bottom dropdown-end z-20">
+                    <div tabIndex={0} role="button">
+                      <GoKebabHorizontal
+                        color="#363739"
+                        size={18}
+                        className="text-center rotate-90"
+                      />
+                    </div>
 
                     <ul
                       tabIndex={0}
-                      className="dropdown-content z-[1] menu p-1 shadow bg-base-100 rounded-box w-36"
+                      className="dropdown-content menu p-1 shadow bg-base-100 rounded-box w-36"
                     >
                       <li>
                         <a>Copy</a>

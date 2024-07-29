@@ -5,11 +5,21 @@ import React, { useEffect, useRef, useState } from "react";
 export type Image = { file: File; previewUrl: string };
 
 const AddAuthor = () => {
+  const [birthDate, setBirthDate] = useState<Date | null>(null);
+  const [deathDate, setDeathDate] = useState<Date | null>(null);
   const fileInput1 = useRef<HTMLInputElement | null>(null);
   const fileInput2 = useRef<HTMLInputElement | null>(null);
 
   const [profileImage, setProfileImage] = useState<Image | null>(null);
   const [bannerImage, setBannerImage] = useState<Image | null>(null);
+
+  const handleChangeBirthDate = (date: Date | null) => {
+    setBirthDate(date);
+  };
+
+  const handleChangeDeathDate = (date: Date | null) => {
+    setDeathDate(date);
+  };
 
   const handleChangeProfileImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProfileImage({
@@ -43,6 +53,9 @@ const AddAuthor = () => {
         handleDeleteProfileImage={handleDeleteProfileImage}
         profileImage={profileImage}
         bannerImage={bannerImage}
+        dates={{ birthDate, deathDate }}
+        handleChangeBirthDate={handleChangeBirthDate}
+        handleChangeDeathDate={handleChangeDeathDate}
       />
     </SidebarLayout>
   );

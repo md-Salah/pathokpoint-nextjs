@@ -3,7 +3,7 @@ import React from "react";
 const AddUserForm = () => {
   return (
     <div className="bg-white rounded-md my-8 mx-auto w-[95%] sm:w-[50%]">
-      <h4 className="text-secondary-content text-base px-6 py-3 font-semibold">
+      <h4 className="text-secondary-content text-base px-6 py-3 font-medium">
         Add User
       </h4>
       <div className="border-[1px] border-[#E6E6E6]"></div>
@@ -21,49 +21,49 @@ const AddUserForm = () => {
             <label>First Name</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Last Name</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>User Name</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Date of Birth</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Phone Number</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Email</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Gender</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
@@ -110,13 +110,13 @@ const AddUserForm = () => {
             <label>Alternative Phone Number</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
         </div>
         <div className="space-y-2">
           <label>Address</label>
-          <div className="relative w-full">
+          <div className="relative w-full md:w-[90%]">
             <textarea
               className="textarea textarea-sm sm:textarea-lg w-full relative z-0"
               placeholder="Enter Address"

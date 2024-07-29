@@ -118,9 +118,13 @@ const MultipleItemSelector: React.FC<InputWrapperProps> = ({
                   isIncluded && "bg-[#E8E9EB]"
                 } hover:bg-[#E8E9EB] p-3 rounded-md text-black02 cursor-pointer`}
                 key={index}
-                onClick={() => handleSelectItem(suggestion.id)}
               >
-                <button>{suggestion.title}</button>
+                <button
+                  onClick={() => handleSelectItem(suggestion.id)}
+                  className="w-full text-start"
+                >
+                  {suggestion.title}
+                </button>
               </li>
             );
           })}

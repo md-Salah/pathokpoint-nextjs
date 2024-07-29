@@ -2,7 +2,7 @@ import React from "react";
 import { CarouselModal, Pagination, ReviewDetailsModal } from "@/components";
 import { truncateString } from "@/utils";
 import Link from "next/link";
-import { FiEye } from "react-icons/fi";
+import { FiEye, FiPlus } from "react-icons/fi";
 import { RiStarFill } from "react-icons/ri";
 import { RxCrossCircled } from "react-icons/rx";
 import { IPagination } from "@/interface";
@@ -36,9 +36,18 @@ const AdminReviews = ({
   return (
     <>
       <div className="w-[95%] sm:w-[80%] p-4 sm:p-8 bg-white rounded-md my-8 mx-auto flex flex-col space-y-5">
-        <div className="w-full flex items-center justify-end ">
-          <button className="btn btn-primary btn-sm text-white w-fit">
-            <Link href={"/admin/reviews/add-review"}>Add Review</Link>
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-lg sm:text-2xl font-medium text-[#363739]">
+            Reviews
+          </h1>
+          <button className="btn btn-secondary btn-sm sm:btn-md text-white text-sm sm:text-base rounded-lg">
+            <Link
+              href={"/admin/reviews/add-review"}
+              className="flex items-center space-x-4"
+            >
+              <FiPlus color="#ffffff" size={20} />
+              Add Review
+            </Link>
           </button>
         </div>
         <div className="border-b-[1px] border-[#6F6E77] text-sm sm:text-base border-opacity-20 w-full">
@@ -58,8 +67,8 @@ const AdminReviews = ({
             ))}
           </div>
         </div>
-        <div className="overflow-x-auto">
-          <table className="table w-full text-xs sm:text-sm">
+        <div className="overflow-y-hidden overflow-x-auto relative">
+          <table className="table w-full text-xs sm:text-sm table-pin-rows">
             <thead className="bg-base-200">
               <tr>
                 <th>Order ID</th>

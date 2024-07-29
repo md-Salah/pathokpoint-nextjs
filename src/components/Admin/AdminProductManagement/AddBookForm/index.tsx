@@ -1,4 +1,7 @@
 import { Image } from "@/app/admin/product-management/books/add-book/page";
+import MultipleItemSelector, {
+  SuggestionOpitonType,
+} from "@/components/MultipleItemSelector";
 import { LegacyRef, RefObject } from "react";
 import { GoPlus } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
@@ -16,6 +19,19 @@ type Props = {
   ) => void;
   handleDeleteImage: (id: number) => void;
   images: Image[];
+  includedAuthors: SuggestionOpitonType[];
+  setIncludedAuthors: React.Dispatch<
+    React.SetStateAction<SuggestionOpitonType[]>
+  >;
+  includedCategories: SuggestionOpitonType[];
+  setIncludedCategories: React.Dispatch<
+    React.SetStateAction<SuggestionOpitonType[]>
+  >;
+  includedTags: SuggestionOpitonType[];
+  setIncludedTags: React.Dispatch<React.SetStateAction<SuggestionOpitonType[]>>;
+  authorSuggestions: SuggestionOpitonType[];
+  categorySuggestions: SuggestionOpitonType[];
+  tagSuggestions: SuggestionOpitonType[];
 };
 
 const AddBookForm = ({
@@ -23,6 +39,15 @@ const AddBookForm = ({
   handleChangeImage,
   handleDeleteImage,
   images,
+  includedAuthors,
+  setIncludedAuthors,
+  includedCategories,
+  setIncludedCategories,
+  includedTags,
+  setIncludedTags,
+  authorSuggestions,
+  categorySuggestions,
+  tagSuggestions,
 }: Props) => {
   const { fileInput1, fileInput2, fileInput3, fileInput4 } = fileRefs;
   return (
@@ -53,20 +78,20 @@ const AddBookForm = ({
             <label>SKU</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Product Name</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
         </div>
         <div className="space-y-2">
           <label>Short Description</label>
-          <div className="relative w-full">
+          <div className="relative w-[90%]">
             <textarea
               className="textarea textarea-sm sm:textarea-lg w-full relative z-0"
               placeholder="Enter Short Description"
@@ -81,64 +106,65 @@ const AddBookForm = ({
             <label>Slug</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Author</label>
-            <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+            <MultipleItemSelector
+              value={includedAuthors}
+              setValue={setIncludedAuthors}
+              suggestions={authorSuggestions}
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Cover</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Edition</label>
             <input
               type="text"
-              className="input rounded-lg  input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg  input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Translator</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div></div>
           <div className="flex flex-col items-start space-y-2">
             <label>Regular Price</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Selling Price</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>In Stock</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Stock Quantity</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
         </div>
@@ -176,28 +202,28 @@ const AddBookForm = ({
             <label>Publisher</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Edition</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Cover</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Language</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
@@ -215,20 +241,20 @@ const AddBookForm = ({
             <label>ISBN</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>No. of Pages</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
         </div>
         <div className="space-y-2">
           <label>Notes</label>
-          <div className="relative w-full">
+          <div className="relative w-[90%]">
             <textarea
               className="textarea textarea-sm sm:textarea-lg w-full relative z-0"
               placeholder="Notes"
@@ -242,50 +268,52 @@ const AddBookForm = ({
           <div className="flex flex-col items-start space-y-2">
             <label>Cost</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Weight in gm</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Stock Location</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Tags</label>
-            <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+            <MultipleItemSelector
+              value={includedTags}
+              setValue={setIncludedTags}
+              suggestions={tagSuggestions}
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Row Column</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Shelf</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Categories</label>
-            <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+            <MultipleItemSelector
+              value={includedCategories}
+              setValue={setIncludedCategories}
+              suggestions={categorySuggestions}
             />
           </div>
         </div>
@@ -338,7 +366,7 @@ const AddBookForm = ({
               </div>
             ) : (
               <div
-                className="bg-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
                 onClick={() => fileInput1.current?.click()}
               >
                 <GoPlus size={56} className="mx-auto" />
@@ -362,7 +390,7 @@ const AddBookForm = ({
               </div>
             ) : (
               <div
-                className="bg-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
                 onClick={() => fileInput2.current?.click()}
               >
                 <GoPlus size={56} className="mx-auto" />
@@ -386,7 +414,7 @@ const AddBookForm = ({
               </div>
             ) : (
               <div
-                className="bg-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
                 onClick={() => fileInput3.current?.click()}
               >
                 <GoPlus size={56} className="mx-auto" />
@@ -410,7 +438,7 @@ const AddBookForm = ({
               </div>
             ) : (
               <div
-                className="bg-black05 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
+                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
                 onClick={() => fileInput4.current?.click()}
               >
                 <GoPlus size={56} className="mx-auto" />
@@ -420,7 +448,7 @@ const AddBookForm = ({
         </div>
         <div className="space-y-2">
           <label>Description</label>
-          <div className="relative w-full">
+          <div className="relative w-full md:w-[90%]">
             <textarea
               className="textarea textarea-sm sm:textarea-lg w-full relative z-0"
               placeholder="Enter Product Description"

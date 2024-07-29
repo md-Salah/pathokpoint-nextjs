@@ -3,7 +3,7 @@ import React from "react";
 const AddActivityLogForm = () => {
   return (
     <div className="bg-white rounded-md my-8 mx-auto w-[95%] sm:w-[50%]">
-      <h4 className="text-secondary-content text-base px-6 py-3 font-semibold">
+      <h4 className="text-secondary-content text-base px-6 py-3 font-medium">
         Add Transaction
       </h4>
       <div className="border-[1px] border-[#E6E6E6]"></div>
@@ -31,52 +31,52 @@ const AddActivityLogForm = () => {
             <label>Reference</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Account Number</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Gateway ID</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Order ID</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Customer ID</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
 
           <div className="flex flex-col items-start space-y-2">
             <label>Refunded by ID</label>
-            <select className="select-sm sm:select-md w-full max-w-xs rounded-lg">
-              <option>Bangladesh</option>
-              <option>India</option>
-              <option>Nepal</option>
-              <option>Srilanka</option>
-              <option>United States</option>
+            <select className="select w-full max-w-xs">
+              <option>Homer</option>
+              <option>Marge</option>
+              <option>Bart</option>
+              <option>Lisa</option>
+              <option>Maggie</option>
             </select>
           </div>
         </div>
         <div className="space-y-2">
           <label>Refund Reason</label>
-          <div className="relative w-full">
+          <div className="relative w-full md:w-[90%]">
             <textarea
               className="textarea textarea-sm sm:textarea-lg w-full relative z-0"
               placeholder="Enter Refund Reason"
@@ -91,42 +91,42 @@ const AddActivityLogForm = () => {
             <label>Gateway</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Order</label>
-            <select className="select-sm sm:select-md w-full max-w-xs rounded-lg">
-              <option>Bangladesh</option>
-              <option>India</option>
-              <option>Nepal</option>
-              <option>Srilanka</option>
-              <option>United States</option>
+            <select className="select w-full max-w-xs">
+              <option>Homer</option>
+              <option>Marge</option>
+              <option>Bart</option>
+              <option>Lisa</option>
+              <option>Maggie</option>
             </select>
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Customer</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Refunded by</label>
-            <select className="select-sm sm:select-md w-full max-w-xs rounded-lg">
-              <option>Bangladesh</option>
-              <option>India</option>
-              <option>Nepal</option>
-              <option>Srilanka</option>
-              <option>United States</option>
+            <select className="select w-full max-w-xs">
+              <option>Homer</option>
+              <option>Marge</option>
+              <option>Bart</option>
+              <option>Lisa</option>
+              <option>Maggie</option>
             </select>
           </div>
         </div>
         <div className="flex items-center justify-end space-x-2">
-          <button className="btn btn-outline btn-black05 px-3 rounded-lg">
+          <button className="btn btn-sm sm:btn-md btn-outline btn-black05 sm:px-5 rounded-lg">
             Cancel
           </button>
-          <button className="btn bg-primary text-white px-8 rounded-lg">
+          <button className="btn btn-sm sm:btn-md btn-primary text-white sm:px-8 rounded-lg">
             Add
           </button>
         </div>

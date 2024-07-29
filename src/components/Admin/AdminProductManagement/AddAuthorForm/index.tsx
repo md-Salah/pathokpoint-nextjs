@@ -1,9 +1,16 @@
+"use client";
 import { Image } from "@/app/admin/product-management/authors/add-author/page";
 import React, { RefObject } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 type Props = {
+  dates: {
+    birthDate: Date | null;
+    deathDate: Date | null;
+  };
   fileRefs: {
     fileInput1: RefObject<HTMLInputElement | null>;
     fileInput2: RefObject<HTMLInputElement | null>;
@@ -14,6 +21,8 @@ type Props = {
   handleDeleteBannerImage: () => void;
   profileImage: Image | null;
   bannerImage: Image | null;
+  handleChangeBirthDate: (date: Date | null) => void;
+  handleChangeDeathDate: (date: Date | null) => void;
 };
 
 const AddAuthorForm = ({
@@ -24,11 +33,15 @@ const AddAuthorForm = ({
   handleDeleteProfileImage,
   profileImage,
   bannerImage,
+  dates,
+  handleChangeBirthDate,
+  handleChangeDeathDate,
 }: Props) => {
   const { fileInput1, fileInput2 } = fileRefs;
+  const { birthDate, deathDate } = dates;
   return (
     <div className="bg-white rounded-md my-8 mx-auto w-[95%] sm:w-[50%]">
-      <h4 className="text-secondary-content text-base px-6 py-3 font-semibold">
+      <h4 className="text-secondary-content text-base px-6 py-3 font-medium">
         Add Author
       </h4>
       <div className="border-[1px] border-[#E6E6E6]"></div>
@@ -36,41 +49,39 @@ const AddAuthorForm = ({
         <div className="grid grid-cols-2 grid-flow-row gap-3 sm:gap-8">
           <div className="flex flex-col items-start space-y-2">
             <label>ID</label>
-            <span className="font-semibold">5b36385d-27bf-47dd</span>
+            <span className="font-medium">5b36385d-27bf-47dd</span>
           </div>
-          <div className="flex flex-col items-start space-y-2">
-            <label>Public ID</label>
-            <span className="font-semibold">5b36385d-27bf-47dd</span>
-          </div>
-          <div className="flex flex-col items-start space-y-2">
-            <label>Book Sold</label>
-            <span className="font-semibold">1900</span>
-          </div>
+
           <div className="flex flex-col items-start space-y-2">
             <label>Date</label>
-            <span className="font-semibold">02 Jan, 2023</span>
+            <span className="font-medium">02 Jan, 2023</span>
           </div>
           <div className="flex flex-col items-start space-y-2">
-            <label>SKU</label>
+            <label>Followers</label>
+            <span className="font-medium">1900</span>
+          </div>
+          <div></div>
+          <div className="flex flex-col items-start space-y-2">
+            <label>Name</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
-            <label>Product Name</label>
+            <label>Book Published</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
         </div>
         <div className="space-y-2">
-          <label>Short Description</label>
-          <div className="relative w-full">
+          <label>Description</label>
+          <div className="relative w-full md:w-[90%]">
             <textarea
               className="textarea textarea-sm sm:textarea-lg w-full relative z-0"
-              placeholder="Enter Short Description"
+              placeholder="Enter Description"
             ></textarea>
             <span className="absolute right-2 bottom-2 z-20 text-xs">
               0/150 Words
@@ -78,39 +89,41 @@ const AddAuthorForm = ({
           </div>
         </div>
         <div className="grid grid-cols-2 grid-flow-row gap-8">
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 min-w-full">
             <label>Birth Date</label>
-            <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+            <DatePicker
+              selected={birthDate}
+              onChange={handleChangeBirthDate}
+              className="input input-md rounded-lg w-full"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Death Date</label>
-            <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+            <DatePicker
+              selected={deathDate}
+              onChange={handleChangeDeathDate}
+              className="input input-md rounded-lg w-full"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>City</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Country</label>
             <input
               type="text"
-              className="input rounded-lg  input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg  input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Slug</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
         </div>

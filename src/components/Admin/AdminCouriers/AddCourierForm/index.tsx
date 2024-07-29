@@ -32,7 +32,7 @@ const AddCourierForm = ({
 }: Props) => {
   return (
     <div className="bg-white rounded-md my-8 mx-auto w-[95%] sm:w-[50%]">
-      <h4 className="text-secondary-content text-base px-6 py-3 font-semibold">
+      <h4 className="text-secondary-content text-base px-6 py-3 font-medium">
         Add Courier
       </h4>
       <div className="border-[1px] border-[#E6E6E6]"></div>
@@ -46,31 +46,31 @@ const AddCourierForm = ({
             <label>Company Name</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Method Name</label>
             <input
               type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Base Charge</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
           <div className="flex flex-col items-start space-y-2">
             <label>Weight Charge (kg)</label>
             <input
-              type="text"
-              className="input rounded-lg input-sm w-full sm:w-full sm:input-md"
+              type="number"
+              className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Country</label>
             <MultipleItemSelector
               value={includedCountries}
@@ -78,7 +78,7 @@ const AddCourierForm = ({
               suggestions={countrySuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include City</label>
 
             <MultipleItemSelector
@@ -87,7 +87,7 @@ const AddCourierForm = ({
               suggestions={citySuggestions}
             />
           </div>
-          <div className="flex flex-col items-start space-y-2">
+          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Exclude City</label>
             <MultipleItemSelector
               value={excludedCities}
