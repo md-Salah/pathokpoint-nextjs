@@ -27,60 +27,60 @@ const SidebarDesktop = ({ handleOpenSignOutConfirmationModal }: Props) => {
           <Link
             className={`flex items-center space-x-2 cursor-pointer py-3 pl-6 ${
               pathname === userProfileLinks.myProfile &&
-              "bg-primary bg-opacity-20 border-r-4 border-r-primary"
-            } hover:bg-primary hover:bg-opacity-20 hover:border-r-4 hover:border-r-primary w-full`}
+              "bg-primary bg-opacity-10 border-r-[6px] border-r-primary"
+            } hover:bg-primary hover:bg-opacity-10 hover:border-r-[6px] hover:border-r-primary w-full`}
             href={userProfileLinks.myProfile}
           >
             <IoPersonSharp size={20} color="#9B9B9C" />
-            <span className="text-black04 text-sm font-bold">My Profile</span>
+            <span className="text-black04 text-sm font-semibold">My Profile</span>
           </Link>
           <Link
             className={`flex items-center space-x-2 cursor-pointer py-3 pl-6 ${
               pathname === userProfileLinks.myOrder &&
-              "bg-primary bg-opacity-20 border-r-4 border-r-primary"
-            } hover:bg-primary hover:bg-opacity-20 hover:border-r-4 hover:border-r-primary w-full`}
+              "bg-primary bg-opacity-10 border-r-[6px] border-r-primary"
+            } hover:bg-primary hover:bg-opacity-10 hover:border-r-[6px] hover:border-r-primary w-full`}
             href={userProfileLinks.myOrder}
           >
             <IoDocumentText size={20} color="#9B9B9C" />
-            <span className="text-black04 text-sm font-bold">My Order</span>
+            <span className="text-black04 text-sm font-semibold">My Order</span>
           </Link>
           <Link
             className={`flex items-center space-x-2 cursor-pointer py-3 pl-6 ${
               pathname === userProfileLinks.following &&
-              "bg-primary bg-opacity-20 border-r-4 border-r-primary"
-            } hover:bg-primary hover:bg-opacity-20 hover:border-r-4 hover:border-r-primary w-full`}
+              "bg-primary bg-opacity-10 border-r-[6px] border-r-primary"
+            } hover:bg-primary hover:bg-opacity-10 hover:border-r-[6px] hover:border-r-primary w-full`}
             href={userProfileLinks.following}
           >
             <BsFillPersonPlusFill size={20} color="#9B9B9C" />
-            <span className="text-black04 text-sm font-bold">Following</span>
+            <span className="text-black04 text-sm font-semibold">Following</span>
           </Link>
           <Link
             className={`flex items-center space-x-2 cursor-pointer py-3 pl-6 ${
               pathname === userProfileLinks.wishlist &&
-              "bg-primary bg-opacity-20 border-r-4 border-r-primary"
-            } hover:bg-primary hover:bg-opacity-20 hover:border-r-4 hover:border-r-primary w-full`}
+              "bg-primary bg-opacity-10 border-r-[6px] border-r-primary"
+            } hover:bg-primary hover:bg-opacity-10 hover:border-r-[6px] hover:border-r-primary w-full`}
             href={userProfileLinks.wishlist}
           >
             <FaHeart size={20} color="#9B9B9C" />
-            <span className="text-black04 text-sm font-bold">Wishlist</span>
+            <span className="text-black04 text-sm font-semibold">Wishlist</span>
           </Link>
           <Link
             className={`flex items-center space-x-2 cursor-pointer py-3 pl-6 ${
               pathname === userProfileLinks.myReviews &&
-              "bg-primary bg-opacity-20 border-r-4 border-r-primary"
-            } hover:bg-primary hover:bg-opacity-20 hover:border-r-4 hover:border-r-primary w-full`}
+              "bg-primary bg-opacity-10 border-r-[6px] border-r-primary"
+            } hover:bg-primary hover:bg-opacity-10 hover:border-r-[6px] hover:border-r-primary w-full`}
             href={userProfileLinks.myReviews}
           >
             <MdReviews size={20} color="#9B9B9C" />
-            <span className="text-black04 text-sm font-bold">My Reviews</span>
+            <span className="text-black04 text-sm font-semibold">My Reviews</span>
           </Link>
         </div>
         <div
-          className="flex items-center space-x-2 cursor-pointer py-3 pl-6 hover:bg-primary hover:bg-opacity-20 hover:border-r-4 hover:border-r-primary w-full"
+          className="flex items-center space-x-2 cursor-pointer py-3 pl-6 hover:bg-primary hover:bg-opacity-10 hover:border-r-[6px] hover:border-r-primary w-full"
           onClick={handleOpenSignOutConfirmationModal}
         >
           <BiSolidLogOut size={20} color="#9B9B9C" />
-          <span className="text-black04 text-sm font-bold">Sign Out</span>
+          <span className="text-black04 text-sm font-semibold">Sign Out</span>
         </div>
       </div>
     </div>

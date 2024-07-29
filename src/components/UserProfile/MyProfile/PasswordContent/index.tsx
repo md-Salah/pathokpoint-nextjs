@@ -30,7 +30,7 @@ const PasswordContent = () => {
       <div className="bg-white w-full h-screen py-10 md:py-14">
         <div className="space-y-4 w-full md:w-1/2 px-5 md:mx-auto">
           <div className="flex flex-col space-y-2">
-            <label className="text-sm font-semibold text-black03">
+            <label className="text-sm font-medium text-black03">
               Current Password
             </label>
             <input
@@ -40,7 +40,7 @@ const PasswordContent = () => {
             />
           </div>
           <div className="flex flex-col space-y-2">
-            <label className="text-sm font-semibold text-black03">
+            <label className="text-sm font-medium text-black03">
               New Password
             </label>
             <input
@@ -50,7 +50,7 @@ const PasswordContent = () => {
             />
           </div>
           <div className="flex flex-col space-y-2">
-            <label className="text-sm font-semibold text-black03">
+            <label className="text-sm font-medium text-black03">
               Confirm Password
             </label>
             <input
@@ -63,7 +63,7 @@ const PasswordContent = () => {
         <div className="w-full md:w-1/2 md:flex md:justify-end pt-14 px-5 md:px-0 md:mx-auto">
           <button
             className="btn btn-primary px-10 text-base w-full md:w-fit"
-            onClick={handleOpenInputDigitsModal} 
+            onClick={handleOpenInputDigitsModal}
           >
             Update
           </button>

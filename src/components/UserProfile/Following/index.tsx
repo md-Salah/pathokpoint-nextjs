@@ -17,8 +17,8 @@ const Following = () => {
           setActiveIndex={handleSetActiveTabIndex}
         />
       </div>
-      <div className="overflow-x-auto bg-white h-screen p-3 md:p-10">
-        <table className="table">
+      <div className="overflow-y-hidden overflow-x-auto bg-white h-screen p-3 md:p-10">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>Image</th>
