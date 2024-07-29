@@ -24,7 +24,7 @@ const PersonalInformationContent = () => {
     setProfileImage(newImage);
   };
   return (
-    <div className="w-full bg-white rounded-lg min-h-screen py-10 px-5 md:py-14 md:px-20">
+    <div className="w-full bg-white min-h-screen py-10 px-5 md:py-14 md:px-20">
       <div className="w-full flex justify-center md:block">
         <div className="avatar relative w-28 md:w-32">
           <div className="ring-primary w-full rounded-full ring ring-offset-4 group">

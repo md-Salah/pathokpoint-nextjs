@@ -27,7 +27,7 @@ const PasswordContent = () => {
   };
   return (
     <>
-      <div className="bg-white rounded-lg w-full h-screen py-10 md:py-14">
+      <div className="bg-white w-full h-screen py-10 md:py-14">
         <div className="space-y-4 w-full md:w-1/2 px-5 md:mx-auto">
           <div className="flex flex-col space-y-2">
             <label className="text-sm font-semibold text-black03">

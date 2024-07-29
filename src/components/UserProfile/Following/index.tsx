@@ -2,25 +2,22 @@
 import React, { useState } from "react";
 import TabOptions from "../shared/TabOptions";
 import { followingTabs } from "@/constants/userProfile";
-import useScreenSize from "@/hooks/useScreenSize";
-import { MIN_DESKTOP_WIDTH } from "@/constants/constants";
 
 const Following = () => {
-  const { width } = useScreenSize();
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
   const handleSetActiveTabIndex = (index: number) => {
     setActiveTabIndex(index);
   };
   return (
-    <div className="w-full flex flex-col space-y-4">
-      {width > MIN_DESKTOP_WIDTH && (
+    <div className="w-full flex flex-col space-y-0 md:space-y-4">
+      <div className="hidden md:block">
         <TabOptions
           tabOptions={followingTabs}
           activeIndex={activeTabIndex}
           setActiveIndex={handleSetActiveTabIndex}
         />
-      )}
-      <div className="overflow-x-auto bg-white rounded-lg h-screen p-3 md:p-10">
+      </div>
+      <div className="overflow-x-auto bg-white h-screen p-3 md:p-10">
         <table className="table">
           <thead>
             <tr>

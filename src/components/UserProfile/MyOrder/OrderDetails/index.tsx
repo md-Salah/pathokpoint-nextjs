@@ -10,7 +10,7 @@ import PaymentItem from "./PaymentItem";
 
 const OrderDetails = () => {
   return (
-    <div className="md:bg-white bg-none w-full  overflow-y-auto md:overflow-y-hidden rounded-lg flex flex-col space-y-0 md:space-y-14 my-10">
+    <div className="md:bg-white bg-none w-full  overflow-y-auto md:overflow-y-hidden flex flex-col space-y-0 md:space-y-14 my-10">
       <div className="bg-white md:bg-none ">
         <div className="border-b border-black06 py-4 mx-5 md:mx-0 md:px-7 flex items-center justify-between">
           <div className="flex flex-col space-y-2">

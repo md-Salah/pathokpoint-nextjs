@@ -11,7 +11,7 @@ type Props = {
 
 const TabOptions = ({ activeIndex, setActiveIndex, tabOptions }: Props) => {
   return (
-    <div className="w-full bg-white rounded-lg pt-6 pb-3">
+    <div className="w-full bg-white pt-6 pb-3">
       
       <div className="border-b border-b-[#E6E6E6] w-full flex items-center justify-evenly mx-auto overflow-x-auto ">
         {tabOptions.map((option) => (

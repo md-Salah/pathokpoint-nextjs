@@ -17,13 +17,13 @@ const BookItemMobile = () => {
           <span className="text-sm md:text-base font-semibold text-black02">
             Pather Panchali
           </span>
-          <span className="text-xxs md:text-xs text-black04">
+          <span className="text-xxs font-normal md:text-xs text-black04">
             {truncateWithEllipsis("by Bibhutibushan Bandapaddhay", 16)}
           </span>
           <ConditionBadge condition="New" />
           <div className="flex items-center space-x-1">
-            <span className="font-bold text-base text-[#2B2B2B]">৳500</span>
-            <span className="font-semibold text-xs text-secondary-content line-through">
+            <span className="text-base font-semibold text-[#2B2B2B]">৳500</span>
+            <span className="font-medium text-xs text-secondary-content line-through">
               ৳600
             </span>
           </div>
