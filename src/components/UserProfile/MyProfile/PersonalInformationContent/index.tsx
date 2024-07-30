@@ -2,6 +2,7 @@
 import React, { useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { BsGenderFemale, BsGenderMale, BsGenderTrans } from "react-icons/bs";
 import { IoIosFemale, IoIosMale } from "react-icons/io";
 import { IoTransgenderSharp } from "react-icons/io5";
 import { RiPencilFill } from "react-icons/ri";
@@ -27,7 +28,7 @@ const PersonalInformationContent = () => {
     <div className="w-full bg-white min-h-screen py-10 px-5 md:py-14 md:px-20">
       <div className="w-full flex justify-center md:block">
         <div className="avatar relative w-28 md:w-32">
-          <div className="ring-primary w-full rounded-full ring ring-offset-4 group">
+          <div className="ring-primary w-full rounded-full ring-[1px] ring-offset-4 group">
             <img
               src={
                 profileImage !== null
@@ -53,7 +54,7 @@ const PersonalInformationContent = () => {
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 grid-flow-row md:gap-7 pt-10">
         <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-black03">
+          <label className="text-sm font-medium text-black03">
             First Name
           </label>
           <input
@@ -65,7 +66,7 @@ const PersonalInformationContent = () => {
           />
         </div>
         <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-black03">
+          <label className="text-sm font-medium text-black03">
             User Name
           </label>
           <input
@@ -75,7 +76,7 @@ const PersonalInformationContent = () => {
           />
         </div>
         <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-black03">
+          <label className="text-sm font-medium text-black03">
             Last Name
           </label>
           <input
@@ -85,7 +86,7 @@ const PersonalInformationContent = () => {
           />
         </div>
         <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-black03">
+          <label className="text-sm font-medium text-black03">
             Email Address
           </label>
           <input
@@ -95,7 +96,7 @@ const PersonalInformationContent = () => {
           />
         </div>
         <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-black03">
+          <label className="text-sm font-medium text-black03">
             Date of Birth
           </label>
           <DatePicker
@@ -106,7 +107,7 @@ const PersonalInformationContent = () => {
           />
         </div>
         <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-black03">
+          <label className="text-sm font-medium text-black03">
             Phone Number
           </label>
           <input
@@ -117,43 +118,43 @@ const PersonalInformationContent = () => {
         </div>
         <div className="flex items-center space-x-2">
           <div className="form-control">
-            <label className="label cursor-pointer bg-black07 border border-black05 rounded px-2">
-              <div className="flex items-center space-x-1 pr-2">
-                <IoIosMale size={20} />
+            <label className="label cursor-pointer bg-black07 border border-black05 rounded px-2 md:px-4">
+              <div className="flex items-center space-x-1 pr-2 text-base font-normal">
+                <BsGenderMale size={20} />
                 <span>Male</span>
               </div>
               <input
                 type="radio"
                 name="radio-10"
-                className="radio checked:bg-primary radio-sm"
+                className="radio checked:bg-primary radio-xs"
                 defaultChecked
               />
             </label>
           </div>
           <div className="form-control">
-            <label className="label cursor-pointer bg-black07 border border-black05 rounded px-2">
-              <div className="flex items-center space-x-1 pr-2">
-                <IoIosFemale size={20} />
+            <label className="label cursor-pointer bg-black07 border border-black05 rounded px-2 md:px-4">
+              <div className="flex items-center space-x-1 pr-2 text-base font-normal">
+                <BsGenderFemale size={20} />
                 <span>Female</span>
               </div>
               <input
                 type="radio"
                 name="radio-10"
-                className="radio checked:bg-primary radio-sm"
+                className="radio checked:bg-primary radio-xs"
                 defaultChecked
               />
             </label>
           </div>
           <div className="form-control">
-            <label className="label cursor-pointer bg-black07 border border-black05 rounded px-2">
-              <div className="flex items-center space-x-1 pr-2">
-                <IoTransgenderSharp size={20} />
+            <label className="label cursor-pointer bg-black07 border border-black05 rounded px-2 md:px-4">
+              <div className="flex items-center space-x-1 pr-2 text-base font-normal">
+                <BsGenderTrans size={20} />
                 <span>Others</span>
               </div>
               <input
                 type="radio"
                 name="radio-10"
-                className="radio checked:bg-primary radio-sm"
+                className="radio checked:bg-primary radio-xs"
                 defaultChecked
               />
             </label>

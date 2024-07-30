@@ -7,7 +7,10 @@ const MyProfilePage = () => {
       <SidebarDesktopLayout>
         <MyProfile />
       </SidebarDesktopLayout>
-      <MyProfile/>
+
+      <div className="block md:hidden">
+        <MyProfile />
+      </div>
     </>
   );
 };

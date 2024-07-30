@@ -47,8 +47,8 @@ const CodeInputForm = ({ handleInput, inputs, onClose }: Props) => {
         </button>
       </div>
       <div className="bg-white rounded-lg w-full flex flex-col space-y-4 p-4 md:p-14">
-        <h2 className="text-lg text-[#363739]">Enter 5 Digits Code</h2>
-        <p className="text-sm text-[#6F6E77]">
+        <h2 className="text-lg text-[#363739] font-normal">Enter 5 Digits Code</h2>
+        <p className="text-sm text-[#6F6E77] font-normal">
           Enter the 5 digits code that you received on your mobile number
         </p>
         <div id="code-inputs" className="flex justify-evenly w-full">
@@ -68,15 +68,15 @@ const CodeInputForm = ({ handleInput, inputs, onClose }: Props) => {
         </div>
         <button className="btn btn-primary w-full">Submit</button>
         <div className="flex items-center justify-between mt-4">
-          <span className="text-sm text-black04">
+          <span className="text-sm text-black04 font-normal">
             Didnt get any code?{" "}
-            <span className="font-semibold text-primary">{`${String(
+            <span className="font-medium text-primary">{`${String(
               Math.floor(time / 60)
             ).padStart(2, "0")}:${String(time % 60).padStart(2, "0")}`}</span>
           </span>
           <a
             href="#"
-            className="text-sm text-primary font-semibold hover:underline-offset-1"
+            className="text-sm text-primary font-medium hover:underline-offset-1"
           >
             Resend
           </a>

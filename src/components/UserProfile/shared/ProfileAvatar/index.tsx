@@ -8,9 +8,7 @@ const ProfileAvatar = () => {
           <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
         </div>
       </div>
-      <span className="text-sm font-semibold text-[#363739]">
-        Tanvir Rayhan
-      </span>
+      <span className="text-sm font-medium text-[#363739]">Tanvir Rayhan</span>
     </div>
   );
 };
