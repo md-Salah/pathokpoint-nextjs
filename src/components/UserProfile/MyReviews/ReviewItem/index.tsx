@@ -1,5 +1,6 @@
 import StarRating from "@/components/StarRating";
 import { ConditionBadge } from "@/micro-components";
+import Image from "next/image";
 import React from "react";
 
 type Props = {
@@ -7,12 +8,18 @@ type Props = {
 };
 
 const ReviewItem = ({ handleOpenImageCarouselModal }: Props) => {
+  const defaultSrc = "/default/book.png";
+
   return (
     <div className="flex items-start space-x-4 w-full border-b border-b-black06 pb-5">
       <div>
-        <img
-          src="https://www.designforwriters.com/wp-content/uploads/2017/10/design-for-writers-book-cover-tf-2-a-million-to-one.jpg"
-          className="w-24"
+        <Image
+          src={defaultSrc}
+          alt="book"
+          width={64}
+          height={64}
+          objectFit="cover"
+          className="rounded-md"
         />
         <button className="btn btn-xs btn-outline btn-primary text-[10px] text-nowrap mt-4">
           Edit Review
@@ -45,17 +52,25 @@ const ReviewItem = ({ handleOpenImageCarouselModal }: Props) => {
           </p>
 
           <div className="flex items-center justify-start lg:justify-end space-x-2 col-span-12 lg:col-span-3">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx4ONp_TLFBtxBvGsPl3Ny-r3l-EYkYjB6pQ&s"
-              className="w-16 h-16 object-cover"
+            <Image
+              src={defaultSrc}
+              alt="book"
+              width={64}
+              height={64}
+              objectFit="cover"
+              className="rounded-md"
             />
             <div
               className="relative cursor-pointer"
               onClick={handleOpenImageCarouselModal}
             >
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG7ekxu3OzvIQLn2K9bnYPHvNlHiVnR216eg&s"
-                className="w-16 h-16 object-cover relative opacity-25 z-0"
+              <Image
+                src={defaultSrc}
+                alt="book"
+                width={64}
+                height={64}
+                objectFit="cover"
+                className="rounded-md"
               />
               <span className="absolute inset-0 text-center top-4 text-base text-gray-600 font-bold z-20">
                 2+

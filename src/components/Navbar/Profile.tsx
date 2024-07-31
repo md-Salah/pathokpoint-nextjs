@@ -20,7 +20,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(initializeAuth());
-  }, []);
+  }, [dispatch]);
 
   if (!user)
     return (

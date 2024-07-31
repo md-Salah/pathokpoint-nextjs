@@ -11,7 +11,7 @@ interface Props {
 
 const VerifyOTP = ({ handleOTPSubmit, error, loading }: Props) => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
-  const inputRefs = useRef<HTMLInputElement[]>([]);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -23,9 +23,9 @@ const VerifyOTP = ({ handleOTPSubmit, error, loading }: Props) => {
 
     // Handle focus on next input
     if (event.target.value !== "" && index < 5) {
-      inputRefs.current[index + 1].focus();
+      inputRefs.current[index + 1]?.focus();
     } else if (event.target.value === "" && index > 0) {
-      inputRefs.current[index - 1].focus();
+      inputRefs.current[index - 1]?.focus();
     }
   };
 
@@ -51,7 +51,9 @@ const VerifyOTP = ({ handleOTPSubmit, error, loading }: Props) => {
               maxLength={1}
               value={digit}
               onChange={(e) => handleChange(e, index)}
-              ref={(el) => el && (inputRefs.current[index] = el)}
+              ref={(el) => {
+                inputRefs.current[index] = el;
+              }}
               className="input input-sm input-bordered min-w-0 text-center focus:outline-none focus:border-primary"
             />
           ))}

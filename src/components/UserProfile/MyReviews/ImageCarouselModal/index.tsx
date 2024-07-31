@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 
 const images = [
@@ -40,10 +41,13 @@ const ImageCarouselModal = ({ isOpen, onClose }: Props) => {
         </button>
         <div className="carousel w-full">
           <div className="carousel-item w-full">
-            <img
-              src={images[currentIndex]}
-              className="w-full h-auto relative"
-              alt="Carousel Image"
+            <Image
+              src="/default/book.png"
+              alt="book"
+              width={64}
+              height={64}
+              objectFit="cover"
+              className="rounded-md"
             />
           </div>
         </div>
