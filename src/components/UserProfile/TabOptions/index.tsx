@@ -1,29 +1,33 @@
 "use client";
-import React from "react";
-
-export type TabOption = { tabIndex: number; name: string; count?: number };
+export type TabOption = { name: string; count?: number };
 
 type Props = {
-  activeIndex: number;
-  setActiveIndex: (index: number, type: string) => void;
+  tab: string;
+  setTab: (val: string) => void;
   tabOptions: TabOption[];
 };
 
-const TabOptions = ({ activeIndex, setActiveIndex, tabOptions }: Props) => {
+const TabOptions = ({ tab, setTab, tabOptions }: Props) => {
   return (
     <div className="w-full bg-white pt-8 pb-3">
       <div className="border-b border-b-[#E6E6E6] w-full flex items-center justify-evenly mx-auto overflow-x-auto ">
-        {tabOptions.map((option) => (
+        {tabOptions.map(({ name, count }: TabOption) => (
           <div
             className={`${
-              activeIndex === option.tabIndex
+              tab === name
                 ? "border-b-4 border-b-primary text-primary"
                 : "text-black04"
             } text-sm font-semibold pb-2 cursor-pointer`}
-            key={option.tabIndex}
-            onClick={() => setActiveIndex(option.tabIndex, "")}
+            key={name}
+            onClick={() => setTab(name)}
           >
-            <span>{option.name}</span>
+            {count ? (
+              <span>
+                {name} ({count})
+              </span>
+            ) : (
+              <span>{name}</span>
+            )}
           </div>
         ))}
       </div>

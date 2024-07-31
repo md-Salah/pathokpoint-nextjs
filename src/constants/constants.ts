@@ -45,11 +45,3 @@ export const banners = [
 
 export const MIN_DESKTOP_WIDTH = 1025;
 export const MIN_MOBILE_WIDTH = 480;
-
-export const userProfileLinks = {
-  myProfile: '/user/me',
-  myOrder: '/user/my-order',
-  following: '/user/following',
-  wishlist: '/user/wishlist',
-  myReviews: '/user/my-reviews'
-}

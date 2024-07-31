@@ -36,16 +36,12 @@ export { default as PersonalInformationContent } from "./UserProfile/MyProfile/P
 export { default as AddressContent } from "./UserProfile/MyProfile/AddressContent";
 export { default as PasswordContent } from "./UserProfile/MyProfile/PasswordContent";
 export { default as MyProfile } from "./UserProfile/MyProfile";
-export { default as MyOrder } from "./UserProfile/MyOrder";
-export { default as Following } from "./UserProfile/Following";
 export { default as Wishlist } from "./UserProfile/Wishlist";
 export { default as MyReviews } from "./UserProfile/MyReviews";
 export { default as SidebarMobile } from "./UserProfile/SidebarMobile";
 export { default as SidebarDesktop } from "./UserProfile/SidebarDesktop";
-export { default as SidebarDesktopLayout } from "./UserProfile/SidebarDesktopLayout";
-export { default as SignOutModal } from "./UserProfile/SignOutModal";
-export { default as Pagination } from "./Pagination"; 
-
+export { default as LogoutModal } from "./UserProfile/LogoutModal";
+export { default as Pagination } from "./Pagination";
 
 // Books/authors/publishers/categories
 export { default as Profile } from "./Profile";

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import TabOptions from "../shared/TabOptions";
+import TabOptions from "../TabOptions";
 import { myReviewsTabs } from "@/constants/userProfile";
 import { truncateWithEllipsis } from "@/utils";
 import { ConditionBadge } from "@/micro-components";
@@ -38,35 +38,7 @@ const MyReviews = () => {
   const handleChangeCurrentPage = (currentPage: number) => {
     setCurrentPage(currentPage);
   };
-  return (
-    <>
-      <div className="w-full flex flex-col space-y-4">
-        <TabOptions
-          tabOptions={myReviewsTabs}
-          activeIndex={activeTabIndex}
-          setActiveIndex={handleSetActiveTabIndex}
-        />
-        <div className="bg-white flex flex-col space-y-4 p-14 h-screen">
-          <ReviewItemDesktop
-            handleOpenImageCarouselModal={handleOpenImageCarouselModal}
-          />
-          <div className="flex justify-end pt-10">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={15}
-              handleChangeCurrentPage={handleChangeCurrentPage}
-            />
-          </div>
-        </div>
-      </div>
-      <dialog id="image_carousel_modal" className="modal">
-        <ImageCarouselModal
-          isOpen={isImageCarouselModalOpen}
-          onClose={handleCloseImageCarouselModal}
-        />
-      </dialog>
-    </>
-  );
+  return <div>My reviews deprecated</div>;
 };
 
 export default MyReviews;

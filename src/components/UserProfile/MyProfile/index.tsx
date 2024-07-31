@@ -1,56 +1,35 @@
 "use client";
 import React, { useState } from "react";
-import TabOptions from "../shared/TabOptions";
-import { myProfileTabs } from "@/constants/userProfile";
+
 import PersonalInformationContent from "./PersonalInformationContent";
 import AddressContent from "./AddressContent";
 import PasswordContent from "./PasswordContent";
-import { IoChevronBack } from "react-icons/io5";
-import Link from "next/link";
-import useScreenSize from "@/hooks/useScreenSize";
-import { MIN_DESKTOP_WIDTH } from "@/constants/constants";
-
-const getTabContent = (tabIndex: number) => {
-  switch (tabIndex) {
-    case 0:
-      return <PersonalInformationContent />;
-      break;
-    case 1:
-      return <AddressContent />;
-      break;
-    case 2:
-      return <PasswordContent />;
-      break;
-    default:
-      return <PersonalInformationContent />;
-      break;
-  }
-};
+import { MobileHeader, TabOptions } from "@/components/UserProfile";
 
 const MyProfile = () => {
-  const { width } = useScreenSize();
-  const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
-  const handleSetActiveTabIndex = (index: number) => {
-    setActiveTabIndex(index);
-  };
+  const [tab, setTab] = useState<string>("Personal Information");
+
   return (
-    <div className="w-full flex flex-col space-y-0 md:space-y-4 my-10 md:my-0">
-      {width < MIN_DESKTOP_WIDTH && (
-        <div className="flex items-center w-full pt-6 pb-3 bg-white">
-          <Link href={"/user"} className="pl-5">
-            <IoChevronBack size={20} />
-          </Link>
-          <div className="flex justify-center w-full absolute">
-            <h2 className="text-base font-bold text-black02">My Profile</h2>
-          </div>
-        </div>
-      )}
+    <div>
+      <MobileHeader title="My Profile" />
+
+      {/* Tabs */}
       <TabOptions
-        tabOptions={myProfileTabs}
-        activeIndex={activeTabIndex}
-        setActiveIndex={handleSetActiveTabIndex}
+        tab={tab}
+        setTab={setTab}
+        tabOptions={[
+          { name: "Personal Information" },
+          { name: "Address" },
+          { name: "Password" },
+        ]}
       />
-      {getTabContent(activeTabIndex)}
+
+      {/* Tab Content */}
+      <div>
+        {tab === "Personal Information" && <PersonalInformationContent />}
+        {tab === "Address" && <AddressContent />}
+        {tab === "Password" && <PasswordContent />}
+      </div>
     </div>
   );
 };

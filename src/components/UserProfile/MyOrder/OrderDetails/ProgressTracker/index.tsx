@@ -1,25 +1,25 @@
-import React from "react";
+import Step from "./Step";
 
 const ProgressTracker = () => {
   return (
-    <div className="w-full pl-[30%] py-5 md:pl-0">
-      <ul className="steps steps-vertical md:steps-horizontal w-full">
-        <li className="step step-success ">
-          <div className="flex flex-col items-start md:items-center">
-            <span className="text-black02 text-sm">Register</span>
-            <span className="text-black04 text-xxs">26 Jan 2024, 16:14</span>
-          </div>
-        </li>
-        <li className="step">
-          <span className="text-black04 text-sm">Choose plan</span>
-        </li>
-        <li className="step">
-          <span className="text-black04 text-sm">Purchase</span>
-        </li>
-        <li className="step">
-          <span className="text-black04 text-sm">Recieve Product</span>
-        </li>
-      </ul>
+    <div className="w-full p-4 lg:p-7 lg:mt-4">
+      <div className="mx-auto w-fit">
+        <ul className="steps steps-vertical lg:steps-horizontal">
+          <Step
+            status="Pending"
+            datetime="26 Jan 2024, 4:04 PM"
+            isSuccess={true}
+          />
+          <Step
+            status="Confirmed"
+            datetime="26 Jan 2024, 5:30 PM"
+            isSuccess={true}
+          />
+          <Step status="Out for Delivery" />
+          <Step status="Delivered" />
+          <Step status="Completed" />
+        </ul>
+      </div>
     </div>
   );
 };

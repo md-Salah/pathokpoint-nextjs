@@ -1,9 +1,7 @@
-import React from "react";
-
 const TransactionsTable = () => {
   return (
-    <div className="overflow-x-auto px-7 hidden md:block">
-      <table className="table w-full text-xs md:text-sm">
+    <div className="bg-white overflow-x-auto p-4 lg:p-7 hidden lg:block">
+      <table className="table table-px-0 w-full text-xs md:text-sm text-center">
         <thead className="bg-base-200">
           <tr>
             <th>Date</th>

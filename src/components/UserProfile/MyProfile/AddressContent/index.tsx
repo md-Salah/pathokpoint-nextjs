@@ -2,7 +2,7 @@ import React from "react";
 
 const AddressContent = () => {
   return (
-    <div className="bg-white w-full h-screen py-10 px-5  md:py-14 md:px-10">
+    <div className="bg-white w-full py-10 px-5  md:py-14 md:px-10">
       <div className="grid grid-cols-1 md:grid-cols-2 grid-flow-row gap-4 md:gap-5">
         <div className="flex flex-col space-y-2">
           <label className="text-sm font-medium text-black03">City</label>

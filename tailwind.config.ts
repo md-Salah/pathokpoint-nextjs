@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         black02: "#363739",
+        black03: "#6F6E77",
         black04: "#9B9B9C",
         black05: "#CDCDCD",
         black06: "#E6E6E6",
@@ -38,6 +39,7 @@ const config: Config = {
           "base-200": "#F2F2F2",
           info: "#1e3a8a",
           success: "#02BF6C",
+          "success-content": "#FFFFFF",
           error: "#F2213A",
           "error-content": "#FFFFFF",
 

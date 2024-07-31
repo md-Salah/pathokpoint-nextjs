@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import TabOptions from "../shared/TabOptions";
+import TabOptions from "../TabOptions";
 import { wishlistTabs } from "@/constants/userProfile";
 import { truncateWithEllipsis } from "@/utils";
 import { ConditionBadge } from "@/micro-components";
@@ -14,14 +14,14 @@ const Wishlist = () => {
   };
   return (
     <div className="w-full flex flex-col space-y-4">
-      <div className="hidden md:block">
+      {/* <div className="hidden md:block">
         <TabOptions
           tabOptions={wishlistTabs}
           activeIndex={activeTabIndex}
           setActiveIndex={handleSetActiveTabIndex}
         />
-      </div>
-      <div className="h-screen bg-white p-10 w-full flex flex-col space-y-4">
+      </div> */}
+      {/* <div className="h-screen bg-white p-10 w-full flex flex-col space-y-4">
         <div className="pb-2 border-b border-b-black06">
           <p className="text-black04 font-semibold text-xs">TOTAL ITEMS: 3</p>
         </div>
@@ -56,7 +56,7 @@ const Wishlist = () => {
             Move to Cart
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

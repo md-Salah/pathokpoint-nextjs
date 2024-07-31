@@ -1,16 +1,9 @@
-import React from "react";
-import { MyProfile, SidebarDesktopLayout } from "@/components";
+import { MyProfile } from "@/components";
 
 const MyProfilePage = () => {
   return (
     <>
-      <SidebarDesktopLayout>
-        <MyProfile />
-      </SidebarDesktopLayout>
-
-      <div className="block md:hidden">
-        <MyProfile />
-      </div>
+      <MyProfile />
     </>
   );
 };
