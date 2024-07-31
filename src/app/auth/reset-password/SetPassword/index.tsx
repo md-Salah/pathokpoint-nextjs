@@ -24,7 +24,7 @@ const SetPassword = ({
   const [showConfirmPass, setShowConfirmPass] = useState<boolean>(false);
 
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
-  const inputRefs = useRef<HTMLInputElement[]>([]);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleOTPChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -36,9 +36,9 @@ const SetPassword = ({
 
     // Handle focus on next input
     if (event.target.value !== "" && index < 5) {
-      inputRefs.current[index + 1].focus();
+      inputRefs.current[index + 1]?.focus();
     } else if (event.target.value === "" && index > 0) {
-      inputRefs.current[index - 1].focus();
+      inputRefs.current[index - 1]?.focus();
     }
   };
 
@@ -71,7 +71,9 @@ const SetPassword = ({
             maxLength={1}
             value={digit}
             onChange={(e) => handleOTPChange(e, index)}
-            ref={(el) => el && (inputRefs.current[index] = el)}
+            ref={(el) => {
+              inputRefs.current[index] = el;
+            }}
             className="input input-sm input-bordered min-w-0 h-9 lg:h-10 text-center focus:outline-none focus:border-primary"
           />
         ))}
