@@ -50,6 +50,13 @@
     border-bottom: none;
 }
 
+/* Step */
+.steps .step::before {
+    @apply w-[3px] lg:w-full;
+    @apply lg:max-h-[3px];
+}
+
+
 /* Half underline */
 .half-underline {
     position: relative;

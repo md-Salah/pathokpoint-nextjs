@@ -42,3 +42,6 @@ export const banners = [
     src: "/banner/b (3).png",
   },
 ];
+
+export const MIN_DESKTOP_WIDTH = 1025;
+export const MIN_MOBILE_WIDTH = 480;
