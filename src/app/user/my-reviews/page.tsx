@@ -1,10 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
-import Link from "next/link";
 
-import ImageCarouselModal from "@/components/UserProfile/MyReviews/ImageCarouselModal";
-import ReviewItemMobile from "@/components/UserProfile/MyReviews/ReviewItemMobile";
-import { IoChevronBack } from "react-icons/io5";
+import {
+  ReviewItem,
+  ImageCarouselModal,
+} from "@/components/UserProfile/MyReviews";
 import Pagination from "@/components/Pagination";
 import { MobileHeader } from "@/components/UserProfile";
 
@@ -34,7 +34,7 @@ const MyReviewsPage = () => {
 
         <div className="space-y-5 mt-6 lg:mt-10">
           {[1, 2, 3, 4, 5, 6].map((item) => (
-            <ReviewItemMobile
+            <ReviewItem
               key={item}
               handleOpenImageCarouselModal={handleOpenImageCarouselModal}
             />

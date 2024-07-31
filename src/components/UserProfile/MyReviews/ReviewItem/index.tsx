@@ -6,7 +6,7 @@ type Props = {
   handleOpenImageCarouselModal: () => void;
 };
 
-const ReviewItemMobile = ({ handleOpenImageCarouselModal }: Props) => {
+const ReviewItem = ({ handleOpenImageCarouselModal }: Props) => {
   return (
     <div className="flex items-start space-x-4 w-full border-b border-b-black06 pb-5">
       <div>
@@ -68,4 +68,4 @@ const ReviewItemMobile = ({ handleOpenImageCarouselModal }: Props) => {
   );
 };
 
-export default ReviewItemMobile;
+export default ReviewItem;
