@@ -20,3 +20,7 @@ export { default as SignUpSVG } from "./SignUpSVG";
 export { default as GoogleSVG } from "./GoogleSVG";
 export { default as FacebookSVG } from "./FacebookSVG";
 export { default as ForgotPassSVG } from "./ForgotPassSVG";
+
+//Admin
+export { default as OrderStatusBadge } from "./OrderStatusBadge";
+export {default as ProductShipmentStatusBadge} from './ProductShipmentStatusBadge';

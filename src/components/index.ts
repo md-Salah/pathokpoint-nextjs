@@ -39,7 +39,7 @@ export { default as MyProfile } from "./UserProfile/MyProfile";
 export { default as SidebarMobile } from "./UserProfile/SidebarMobile";
 export { default as SidebarDesktop } from "./UserProfile/SidebarDesktop";
 export { default as LogoutModal } from "./UserProfile/LogoutModal";
-export { default as Pagination } from "./Pagination";
+// export { default as Pagination } from "./Pagination";
 
 // Books/authors/publishers/categories
 export { default as Profile } from "./Profile";
@@ -59,3 +59,17 @@ export { default as OrderSummary } from "./OrderSummary";
 export { default as SignUpForm } from "./SignUpForm";
 export { default as LoginForm } from "./LoginForm";
 export { default as VerifyOTP } from "./VerifyOTP";
+//Admin
+export { default as Pagination } from "./Pagination";
+export { default as DashboardSummaryBox } from "./Admin/AdminDashboard/DashboardSummaryBox";
+export { default as ProfitSummary } from "./Admin/AdminDashboard/ProfitSummary";
+export { default as DashboardOrderSummary } from "./Admin/AdminDashboard/DashboardOrderSummary";
+export { default as DeliverySummary } from "./Admin/AdminDashboard/DeliverySummary";
+export { default as StatisticBarChart } from "./Admin/AdminDashboard/StatisticBarChart";
+export { default as OrderTabOptions } from "./Admin/AdminOrderManagement/OrderTabOptions";
+export { default as ImageContainer } from "./Admin/AdminImages/ImageContainer";
+export { default as CarouselModal } from "./Admin/AdminReviews/CarouselModal";
+export { default as ReviewDetailsModal } from "./Admin/AdminReviews/ReviewDetailsModal";
+export { default as StarRating } from "./Admin/AdminReviews/StarRating";
+
+

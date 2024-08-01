@@ -2,13 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-date-picker__wrapper {
+  @apply rounded-md p-2 flex items-center gap-2 cursor-pointer;
+}
+
+.react-date-picker__inputGroup {
+  @apply text-lg text-gray-600 cursor-pointer;
+}
+
+.react-date-picker__calendar-button {
+  @apply border-none bg-none cursor-pointer;
+}
+
+.react-date-picker__clear-button {
+  @apply hidden;
+}
 
 .font-bn {
-    font-family: var(--font-anek-bangla);
+  font-family: var(--font-anek-bangla);
 }
 
 .layout-container {
-    @apply mx-auto container sm:w-[1328px] sm:max-w-[90%];
+  @apply mx-auto container sm:w-[1328px] sm:max-w-[90%];
 }
 
 .layout-mt {
@@ -20,11 +35,11 @@
 }
 
 .layout-px {
-    @apply px-4 sm:px-0;
+  @apply px-4 sm:px-0;
 }
 
 .layout-mx {
-    @apply mx-4 sm:mx-0;
+  @apply mx-4 sm:mx-0;
 }
 
 /* Customize daisy UI */
@@ -38,7 +53,7 @@
 
 /* Table */
 .table-left-0 :where(th, td) {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .table-px-0 :where(th, td) {
@@ -59,34 +74,32 @@
 
 /* Half underline */
 .half-underline {
-    position: relative;
+  position: relative;
 }
 
 .half-underline:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 40%;
-    border-bottom: 2px solid #ff8200;
-    transition: width 0.3s ease, transition-delay 0.3s;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  border-bottom: 2px solid #ff8200;
+  transition: width 0.3s ease, transition-delay 0.3s;
 }
 
 .half-underline:hover:before {
-    width: 100%;
+  width: 100%;
 }
 
-
 @layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
