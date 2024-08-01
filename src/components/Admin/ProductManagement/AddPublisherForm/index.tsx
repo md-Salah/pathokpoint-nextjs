@@ -1,5 +1,5 @@
 import React, { RefObject } from "react";
-import { Image } from "@/app/admin/product-management/publishers/add-publisher/page";
+import { Image } from "@/app/admin/publishers/add-publisher/page";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 

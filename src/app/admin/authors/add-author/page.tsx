@@ -1,5 +1,5 @@
 "use client";
-import { AddAuthorForm } from "@/components";
+import { AddAuthorForm } from "@/components/Admin/ProductManagement";
 import React, { useRef, useState } from "react";
 
 export type Image = { file: File; previewUrl: string };

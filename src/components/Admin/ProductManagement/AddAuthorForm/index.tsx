@@ -1,5 +1,5 @@
 "use client";
-import { Image } from "@/app/admin/product-management/authors/add-author/page";
+import { Image } from "@/app/admin/authors/add-author/page";
 import React, { RefObject } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";

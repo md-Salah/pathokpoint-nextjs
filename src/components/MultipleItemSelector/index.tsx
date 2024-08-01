@@ -68,15 +68,14 @@ const MultipleItemSelector: React.FC<InputWrapperProps> = ({
     setValue([...value, { ...newCategory }]);
   };
 
-  function filterItems() {
-    const remainingSuggestions = suggestions.filter((item) =>
-      item.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    setFilteredSuggestions(remainingSuggestions);
-  }
-
   useEffect(() => {
+    function filterItems() {
+      const remainingSuggestions = suggestions.filter((item) =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      setFilteredSuggestions(remainingSuggestions);
+    }
     filterItems();
   }, [searchTerm]);
 

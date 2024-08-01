@@ -1,4 +1,4 @@
-import { Pagination, Sidebar } from "@/components";
+import { Pagination } from "@/components";
 import { users } from "@/constants";
 import { IPagination } from "@/interface";
 import Link from "next/link";
@@ -71,7 +71,7 @@ const AdminUsers = ({
           </div>
         </div>
         <div className="overflow-y-hidden overflow-x-auto relative pt-6">
-        <table className="table w-full text-xs sm:text-sm table-pin-rows">
+          <table className="table w-full text-xs sm:text-sm table-pin-rows">
             <thead className="bg-base-200">
               <tr>
                 <th>Name</th>

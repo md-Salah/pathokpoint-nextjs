@@ -1,5 +1,5 @@
 "use client";
-import { AdminCoupon } from "@/components";
+import { AdminCoupon } from "@/components/Admin";
 import React, { useState } from "react";
 
 const tabOptions = [

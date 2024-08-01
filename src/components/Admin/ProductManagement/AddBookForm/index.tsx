@@ -1,4 +1,4 @@
-import { Image } from "@/app/admin/product-management/books/add-book/page";
+import { Image } from "@/app/admin/books/add-book/page";
 import MultipleItemSelector, {
   SuggestionOpitonType,
 } from "@/components/MultipleItemSelector";

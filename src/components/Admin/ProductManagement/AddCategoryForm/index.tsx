@@ -1,4 +1,4 @@
-import { Image } from "@/app/admin/product-management/categories/add-category/page";
+import { Image } from "@/app/admin/categories/add-category/page";
 import React, { RefObject } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";

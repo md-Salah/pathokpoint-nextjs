@@ -1,4 +1,5 @@
-import { OrderedBookItem, OrderSummary } from "@/components";
+import { OrderSummary } from "@/components";
+import OrderedBookItem from "@/components/Admin/AdminOrderManagement/OrderedBookItem";
 import { ConditionBadge } from "@/micro-components";
 import { GoKebabHorizontal } from "react-icons/go";
 import OrderDetailsRestockModal from "./OrderDetailsRestockModal";

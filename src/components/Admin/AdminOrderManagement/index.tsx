@@ -1,5 +1,5 @@
 "use client";
-import { OrderTabOptions, Pagination, Sidebar } from "@/components";
+import { OrderTabOptions, Pagination } from "@/components";
 import Link from "next/link";
 import React from "react";
 import DatePicker from "react-datepicker";

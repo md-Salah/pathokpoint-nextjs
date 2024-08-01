@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const OrderedProductPreviewItem = () => {
@@ -5,7 +6,7 @@ const OrderedProductPreviewItem = () => {
     <div className="flex items-center space-x-2">
       <div className="avatar">
         <div className="w-8 rounded-full">
-          <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <Image src="/default/user.avif" alt="" />
         </div>
       </div>
       <div className="flex flex-col space-y-1">

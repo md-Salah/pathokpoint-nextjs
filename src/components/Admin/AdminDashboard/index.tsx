@@ -8,6 +8,7 @@ import {
 import { RiNotification4Fill } from "react-icons/ri";
 import React, { useState } from "react";
 import { dashboardDateOptions } from "@/constants/constants";
+import Image from "next/image";
 
 const DashboardContent = () => {
   const [selectDate, onChange] = useState<Date | null>(null);
@@ -47,7 +48,7 @@ const DashboardContent = () => {
             <div className="flex items-center space-x-3">
               <div className="avatar online">
                 <div className="w-8 rounded-full">
-                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                  <Image src="/default/user.avif" alt="" />
                 </div>
               </div>
               <div className="flex flex-col items-start">
