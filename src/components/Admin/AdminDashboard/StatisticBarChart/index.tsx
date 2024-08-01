@@ -101,39 +101,40 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
 
 const StatisticBarChart = () => {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data} barCategoryGap={"2%"}>
-        <defs>
-          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#22CAAD" stopOpacity={1} />
-            <stop offset="95%" stopColor="#2BB2FE" stopOpacity={1} />
-          </linearGradient>
-          <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#FFD700" stopOpacity={1} />
-            <stop offset="95%" stopColor="#FF4500" stopOpacity={1} />
-          </linearGradient>
-        </defs>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <Tooltip content={<CustomTooltip />} />
-        <Legend verticalAlign="top" align="right" />
-        <Bar
-          dataKey="revenue"
-          fill="url(#colorUv)"
-          barSize={10}
-          radius={12}
-          activeBar={<Rectangle fill="pink" stroke="blue" />}
-        />
-        <Bar
-          dataKey="sales"
-          fill="url(#colorPv)"
-          barSize={10}
-          radius={12}
-          activeBar={<Rectangle fill="gold" stroke="purple" />}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+    // <ResponsiveContainer width="100%" height="100%">
+    //   <BarChart data={data} barCategoryGap={"2%"}>
+    //     <defs>
+    //       <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+    //         <stop offset="5%" stopColor="#22CAAD" stopOpacity={1} />
+    //         <stop offset="95%" stopColor="#2BB2FE" stopOpacity={1} />
+    //       </linearGradient>
+    //       <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+    //         <stop offset="5%" stopColor="#FFD700" stopOpacity={1} />
+    //         <stop offset="95%" stopColor="#FF4500" stopOpacity={1} />
+    //       </linearGradient>
+    //     </defs>
+    //     <CartesianGrid strokeDasharray="3 3" />
+    //     <XAxis dataKey="month" />
+    //     <YAxis />
+    //     <Tooltip content={<CustomTooltip />} />
+    //     <Legend verticalAlign="top" align="right" />
+    //     <Bar
+    //       dataKey="revenue"
+    //       fill="url(#colorUv)"
+    //       barSize={10}
+    //       radius={12}
+    //       activeBar={<Rectangle fill="pink" stroke="blue" />}
+    //     />
+    //     <Bar
+    //       dataKey="sales"
+    //       fill="url(#colorPv)"
+    //       barSize={10}
+    //       radius={12}
+    //       activeBar={<Rectangle fill="gold" stroke="purple" />}
+    //     />
+    //   </BarChart>
+    // </ResponsiveContainer>
+    <div>StatisticBarChart</div>
   );
 };
 

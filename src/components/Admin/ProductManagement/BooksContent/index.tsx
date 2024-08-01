@@ -32,7 +32,7 @@ const BooksContent = ({ pagination }: Props) => {
         <div className="flex items-center">
           <select className="select max-w-xs select-sm rounded-l-lg rounded-r-none">
             {bookGlobalOptions.map((option, index) => (
-              <option selected={option.id === 1} key={index}>
+              <option value={option.id} selected={option.id === 1} key={index}>
                 {option.title}
               </option>
             ))}

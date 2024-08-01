@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sidebar } from "@/components";
+import { Sidebar } from "@/components/Admin";
 
 export const metadata: Metadata = {
   title: "Admin | Pathok Point",
@@ -16,7 +16,7 @@ export default function RootLayout({
       <aside>
         <Sidebar />
       </aside>
-      <div className="w-full">{children}</div>
+      <div className="w-full overflow-hidden">{children}</div>
     </div>
   );
 }

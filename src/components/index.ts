@@ -40,7 +40,6 @@ export { default as FilterInMobile } from "./FilterInMobile";
 export { default as PriceRangeFilter } from "./PriceRangeFilter";
 
 //Admin
-export { default as Sidebar } from "./Admin/Sidebar";
 export { default as Pagination } from "./Pagination";
 export { default as DashboardSummaryBox } from "./Admin/AdminDashboard/DashboardSummaryBox";
 export { default as ProfitSummary } from "./Admin/AdminDashboard/ProfitSummary";
