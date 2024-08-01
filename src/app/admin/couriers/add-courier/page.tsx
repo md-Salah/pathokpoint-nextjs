@@ -1,10 +1,5 @@
 "use client";
-import {
-  AddCourierForm,
-  MultipleItemSelector,
-  Sidebar,
-  SidebarLayout,
-} from "@/components";
+import AddCourierForm from "@/components/Admin/AdminCouriers/AddCourierForm";
 import { SuggestionOpitonType } from "@/components/MultipleItemSelector";
 import React, { useState } from "react";
 
@@ -76,18 +71,16 @@ const AddCourier = () => {
   const countries = ["Africa", "Armenia", "Canada", "United States"];
 
   return (
-    <SidebarLayout>
-      <AddCourierForm
-        includedCountries={includedCountries}
-        includedCities={includedCities}
-        excludedCities={excludedCities}
-        setIncludedCities={setIncludedCities}
-        setIncludedCountries={setIncludedCountries}
-        setExcludedCities={setExcludedCities}
-        countrySuggestions={countrySuggestions}
-        citySuggestions={citySuggestions}
-      />
-    </SidebarLayout>
+    <AddCourierForm
+      includedCountries={includedCountries}
+      includedCities={includedCities}
+      excludedCities={excludedCities}
+      setIncludedCities={setIncludedCities}
+      setIncludedCountries={setIncludedCountries}
+      setExcludedCities={setExcludedCities}
+      countrySuggestions={countrySuggestions}
+      citySuggestions={citySuggestions}
+    />
   );
 };
 

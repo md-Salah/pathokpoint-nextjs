@@ -1,6 +1,6 @@
 "use client";
-import { AddAuthorForm, Sidebar, SidebarLayout } from "@/components";
-import React, { useEffect, useRef, useState } from "react";
+import { AddAuthorForm } from "@/components";
+import React, { useRef, useState } from "react";
 
 export type Image = { file: File; previewUrl: string };
 
@@ -44,20 +44,18 @@ const AddAuthor = () => {
   };
 
   return (
-    <SidebarLayout>
-      <AddAuthorForm
-        fileRefs={{ fileInput1, fileInput2 }}
-        handleChangeProfileImage={handleChangeProfileImage}
-        handleChangeBannerImage={handleChangeBannerImage}
-        handleDeleteBannerImage={handleDeleteBannerImage}
-        handleDeleteProfileImage={handleDeleteProfileImage}
-        profileImage={profileImage}
-        bannerImage={bannerImage}
-        dates={{ birthDate, deathDate }}
-        handleChangeBirthDate={handleChangeBirthDate}
-        handleChangeDeathDate={handleChangeDeathDate}
-      />
-    </SidebarLayout>
+    <AddAuthorForm
+      fileRefs={{ fileInput1, fileInput2 }}
+      handleChangeProfileImage={handleChangeProfileImage}
+      handleChangeBannerImage={handleChangeBannerImage}
+      handleDeleteBannerImage={handleDeleteBannerImage}
+      handleDeleteProfileImage={handleDeleteProfileImage}
+      profileImage={profileImage}
+      bannerImage={bannerImage}
+      dates={{ birthDate, deathDate }}
+      handleChangeBirthDate={handleChangeBirthDate}
+      handleChangeDeathDate={handleChangeDeathDate}
+    />
   );
 };
 

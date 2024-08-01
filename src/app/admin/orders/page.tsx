@@ -1,5 +1,5 @@
 "use client";
-import { AdminOrderManagement, SidebarLayout } from "@/components";
+import { AdminOrderManagement } from "@/components/Admin";
 import React, { useState } from "react";
 
 const tabs = [
@@ -27,13 +27,11 @@ const OrderManagement = () => {
     setCurrentPage(currentPage);
   };
   return (
-    <SidebarLayout>
-      <AdminOrderManagement
-        orderTab={{ tabs, handleSetActiveTabOption, activeTab }}
-        datePicker={{ startDate, endDate, setStartDate, setEndDate }}
-        pagination={{ currentPage, totalPages: 10, handleChangeCurrentPage }}
-      />
-    </SidebarLayout>
+    <AdminOrderManagement
+      orderTab={{ tabs, handleSetActiveTabOption, activeTab }}
+      datePicker={{ startDate, endDate, setStartDate, setEndDate }}
+      pagination={{ currentPage, totalPages: 10, handleChangeCurrentPage }}
+    />
   );
 };
 

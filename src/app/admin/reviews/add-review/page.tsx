@@ -1,5 +1,5 @@
 "use client";
-import { AddReviewForm, SidebarLayout } from "@/components";
+import AddReviewForm from "@/components/Admin/AdminReviews/AddReviewForm";
 import React, { useRef, useState } from "react";
 
 export type Image = { id: number; file: File; previewUrl: string };
@@ -54,16 +54,14 @@ const AddReview = () => {
     });
   };
   return (
-    <SidebarLayout>
-      <AddReviewForm
-        fileRefs={{ fileInput1, fileInput2, fileInput3, fileInput4 }}
-        ratings={{ productRating, timeRating, websiteRating, deliveryRating }}
-        handleChangeImage={handleChangeImage}
-        handleDeleteImage={handleDeleteImage}
-        handleRatingChange={handleRatingChange}
-        images={images}
-      />
-    </SidebarLayout>
+    <AddReviewForm
+      fileRefs={{ fileInput1, fileInput2, fileInput3, fileInput4 }}
+      ratings={{ productRating, timeRating, websiteRating, deliveryRating }}
+      handleChangeImage={handleChangeImage}
+      handleDeleteImage={handleDeleteImage}
+      handleRatingChange={handleRatingChange}
+      images={images}
+    />
   );
 };
 

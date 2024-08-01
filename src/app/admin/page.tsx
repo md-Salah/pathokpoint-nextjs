@@ -1,13 +1,7 @@
-import { Sidebar } from "@/components";
-import React from "react";
+import { AdminDashboard } from "@/components/Admin";
 
 const Admin = () => {
-  return (
-    <div>
-      <Sidebar />
-      Admin Content
-    </div>
-  );
+  return <AdminDashboard />;
 };
 
 export default Admin;

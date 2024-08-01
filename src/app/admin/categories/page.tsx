@@ -1,18 +1,19 @@
 "use client";
-import ActivityLogContent from "@/components/Admin/AdminTransaction/ActivityLogContent";
-import React, { useState } from "react";
+import { CategoriesContent } from "@/components/Admin/ProductManagement";
+import { categories } from "@/constants";
+import { useState } from "react";
 
-const TransactionActivityLogs = () => {
+const Categories = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 20;
   const handleChangeCurrentPage = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
   return (
-    <ActivityLogContent
+    <CategoriesContent
       pagination={{ currentPage, totalPages, handleChangeCurrentPage }}
     />
   );
 };
 
-export default TransactionActivityLogs;
+export default Categories;

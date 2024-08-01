@@ -1,5 +1,5 @@
 "use client";
-import { AdminCouriers, SidebarLayout } from "@/components";
+import { AdminCouriers } from "@/components/Admin";
 import React, { useState } from "react";
 
 const Couriers = () => {
@@ -9,11 +9,9 @@ const Couriers = () => {
     setCurrentPage(currentPage);
   };
   return (
-    <SidebarLayout>
-      <AdminCouriers
-        pagination={{ currentPage, handleChangeCurrentPage, totalPages: 10 }}
-      />
-    </SidebarLayout>
+    <AdminCouriers
+      pagination={{ currentPage, handleChangeCurrentPage, totalPages: 10 }}
+    />
   );
 };
 

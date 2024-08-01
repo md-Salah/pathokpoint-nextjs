@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useParams } from "next/navigation";
-import { OrderDetailsContent, SidebarLayout } from "@/components";
+import OrderDetailsContent from "@/components/Admin/AdminOrderManagement/OrderDetailsContent";
 
 const OrderDetails = () => {
   const params = useParams();
@@ -46,17 +46,15 @@ const OrderDetails = () => {
     modalElement?.close();
   };
   return (
-    <SidebarLayout>
-      <OrderDetailsContent
-        orderId={params.order_id as string}
-        handleRestockModalClose={handleRestockModalClose}
-        handleRestockModalOpen={handleRestockModalOpen}
-        handleChangeStatusModalClose={handleChangeStatusModalClose}
-        handleChangeStatusModalOpen={handleChangeStatusModalOpen}
-        handleRefundModalClose={handleRefundModalClose}
-        handleRefundModalOpen={handleRefundModalOpen}
-      />
-    </SidebarLayout>
+    <OrderDetailsContent
+      orderId={params.order_id as string}
+      handleRestockModalClose={handleRestockModalClose}
+      handleRestockModalOpen={handleRestockModalOpen}
+      handleChangeStatusModalClose={handleChangeStatusModalClose}
+      handleChangeStatusModalOpen={handleChangeStatusModalOpen}
+      handleRefundModalClose={handleRefundModalClose}
+      handleRefundModalOpen={handleRefundModalOpen}
+    />
   );
 };
 

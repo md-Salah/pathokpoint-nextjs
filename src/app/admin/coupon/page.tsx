@@ -1,5 +1,5 @@
 "use client";
-import { AdminCoupon, SidebarLayout } from "@/components";
+import { AdminCoupon } from "@/components";
 import React, { useState } from "react";
 
 const tabOptions = [
@@ -27,14 +27,12 @@ const Coupon = () => {
     setActiveTab(id);
   };
   return (
-    <SidebarLayout>
-      <AdminCoupon
-        tabOptions={tabOptions}
-        activeTab={activeTab}
-        handleSetActiveTabOption={handleSetActiveTabOption}
-        pagination={{ currentPage, totalPages, handleChangeCurrentPage }}
-      />
-    </SidebarLayout>
+    <AdminCoupon
+      tabOptions={tabOptions}
+      activeTab={activeTab}
+      handleSetActiveTabOption={handleSetActiveTabOption}
+      pagination={{ currentPage, totalPages, handleChangeCurrentPage }}
+    />
   );
 };
 

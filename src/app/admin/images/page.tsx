@@ -1,5 +1,5 @@
 "use client";
-import { AdminImages, SidebarLayout } from "@/components";
+import { AdminImages } from "@/components/Admin";
 import React, { useState } from "react";
 
 const Images = () => {
@@ -14,13 +14,11 @@ const Images = () => {
     setCurrentFolder(currentFolder);
   };
   return (
-    <SidebarLayout>
-      <AdminImages
-        pagination={{ currentPage, totalPages: 10, handleChangeCurrentPage }}
-        currentFolder={currentFolder}
-        handleFolderChange={handleFolderChange}
-      />
-    </SidebarLayout>
+    <AdminImages
+      pagination={{ currentPage, totalPages: 10, handleChangeCurrentPage }}
+      currentFolder={currentFolder}
+      handleFolderChange={handleFolderChange}
+    />
   );
 };
 

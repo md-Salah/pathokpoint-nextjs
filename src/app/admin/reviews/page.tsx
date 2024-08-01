@@ -1,5 +1,5 @@
 "use client";
-import { AdminReviews, SidebarLayout } from "@/components";
+import { AdminReviews } from "@/components/Admin";
 import React, { useState } from "react";
 
 const tabOptions = [
@@ -53,19 +53,17 @@ const Reviews = () => {
     setIsCarouselModalOpen(false);
   };
   return (
-    <SidebarLayout>
-      <AdminReviews
-        tabOptions={tabOptions}
-        activeTab={activeTab}
-        handleSetActiveTabOption={handleSetActiveOption}
-        pagination={{ currentPage, totalPages: 10, handleChangeCurrentPage }}
-        handleOpenReviewModal={handleOpenReviewModal}
-        handleCloseReviewModal={handleCloseReviewModal}
-        handleOpenCarouselModal={handleOpenCarouselModal}
-        handleCloseCarouselModal={handleCloseCarouselModal}
-        isCarouselModalOpen={isCarouselModalOpen}
-      />
-    </SidebarLayout>
+    <AdminReviews
+      tabOptions={tabOptions}
+      activeTab={activeTab}
+      handleSetActiveTabOption={handleSetActiveOption}
+      pagination={{ currentPage, totalPages: 10, handleChangeCurrentPage }}
+      handleOpenReviewModal={handleOpenReviewModal}
+      handleCloseReviewModal={handleCloseReviewModal}
+      handleOpenCarouselModal={handleOpenCarouselModal}
+      handleCloseCarouselModal={handleCloseCarouselModal}
+      isCarouselModalOpen={isCarouselModalOpen}
+    />
   );
 };
 

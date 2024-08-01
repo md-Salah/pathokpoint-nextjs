@@ -1,5 +1,5 @@
 "use client";
-import { AdminUsers, SidebarLayout } from "@/components";
+import AdminUsers from "@/components/Admin/AdminUsers";
 import React, { useState } from "react";
 
 const tabOptions = [
@@ -28,14 +28,12 @@ const Users = () => {
     setCurrentPage(pageNumber);
   };
   return (
-    <SidebarLayout>
-      <AdminUsers
-        pagination={{ currentPage, handleChangeCurrentPage, totalPages }}
-        tabOptions={tabOptions}
-        activeTab={activeTab}
-        handleSetActiveTabOption={handleSetActiveTabOption}
-      />
-    </SidebarLayout>
+    <AdminUsers
+      pagination={{ currentPage, handleChangeCurrentPage, totalPages }}
+      tabOptions={tabOptions}
+      activeTab={activeTab}
+      handleSetActiveTabOption={handleSetActiveTabOption}
+    />
   );
 };
 

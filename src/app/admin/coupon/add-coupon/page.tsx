@@ -1,6 +1,6 @@
 "use client";
 
-import { AddCouponForm, SidebarLayout } from "@/components";
+import AddCouponForm from "@/components/Admin/AdminCoupon/AddCouponForm";
 import { SuggestionOpitonType } from "@/components/MultipleItemSelector";
 import React, { useState } from "react";
 
@@ -164,41 +164,39 @@ const AddCoupon = () => {
   const [allowedUsers, setAllowedUsers] = useState<SuggestionOpitonType[]>([]);
 
   return (
-    <SidebarLayout>
-      <AddCouponForm
-        includedConditions={includedConditions}
-        setIncludedConditions={setIncludedConditions}
-        includedBooks={includedBooks}
-        setIncludedBooks={setIncludedBooks}
-        includedAuthors={includedAuthors}
-        setIncludedAuthors={setIncludedAuthors}
-        includedCategories={includedCategories}
-        setIncludedCategories={setIncludedCategories}
-        includedPublishers={includedPublishers}
-        setIncludedPublishers={setIncludedPublishers}
-        includedTags={includedTags}
-        setIncludedTags={setIncludedTags}
-        excludedBooks={excludedBooks}
-        setExcludedBooks={setExcludedBooks}
-        excludedAuthors={excludedAuthors}
-        setExcludedAuthors={setExcludedAuthors}
-        excludedCategories={excludedCategories}
-        setExcludedCategories={setExcludedCategories}
-        excludedPublishers={excludedPublishers}
-        setExcludedPublishers={setExcludedPublishers}
-        excludedTags={excludedTags}
-        setExcludedTags={setExcludedTags}
-        allowedUsers={allowedUsers}
-        setAllowedUsers={setAllowedUsers}
-        conditionSuggestions={conditionSuggestions}
-        bookSuggestions={bookSuggestions}
-        authorSuggestions={authorSuggestions}
-        categorySuggestions={categorySuggestions}
-        publisherSuggestions={publisherSuggestions}
-        tagSuggestions={tagSuggestions}
-        userSuggestions={userSuggestions}
-      />
-    </SidebarLayout>
+    <AddCouponForm
+      includedConditions={includedConditions}
+      setIncludedConditions={setIncludedConditions}
+      includedBooks={includedBooks}
+      setIncludedBooks={setIncludedBooks}
+      includedAuthors={includedAuthors}
+      setIncludedAuthors={setIncludedAuthors}
+      includedCategories={includedCategories}
+      setIncludedCategories={setIncludedCategories}
+      includedPublishers={includedPublishers}
+      setIncludedPublishers={setIncludedPublishers}
+      includedTags={includedTags}
+      setIncludedTags={setIncludedTags}
+      excludedBooks={excludedBooks}
+      setExcludedBooks={setExcludedBooks}
+      excludedAuthors={excludedAuthors}
+      setExcludedAuthors={setExcludedAuthors}
+      excludedCategories={excludedCategories}
+      setExcludedCategories={setExcludedCategories}
+      excludedPublishers={excludedPublishers}
+      setExcludedPublishers={setExcludedPublishers}
+      excludedTags={excludedTags}
+      setExcludedTags={setExcludedTags}
+      allowedUsers={allowedUsers}
+      setAllowedUsers={setAllowedUsers}
+      conditionSuggestions={conditionSuggestions}
+      bookSuggestions={bookSuggestions}
+      authorSuggestions={authorSuggestions}
+      categorySuggestions={categorySuggestions}
+      publisherSuggestions={publisherSuggestions}
+      tagSuggestions={tagSuggestions}
+      userSuggestions={userSuggestions}
+    />
   );
 };
 

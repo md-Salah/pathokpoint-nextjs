@@ -1,8 +1,6 @@
 "use client";
-import { AddCategoryForm, Sidebar, SidebarLayout } from "@/components";
+import { AddCategoryForm } from "@/components/Admin/ProductManagement";
 import React, { useRef, useState } from "react";
-import { MdOutlineFileUpload } from "react-icons/md";
-import { RxCross2 } from "react-icons/rx";
 
 export type Image = {
   file: File;
@@ -39,17 +37,15 @@ const AddCategory = () => {
   };
 
   return (
-    <SidebarLayout>
-      <AddCategoryForm
-        fileRefs={{ fileInput1, fileInput2 }}
-        handleChangeProfileImage={handleChangeProfileImage}
-        handleChangeBannerImage={handleChangeBannerImage}
-        handleDeleteBannerImage={handleDeleteBannerImage}
-        handleDeleteProfileImage={handleDeleteProfileImage}
-        profileImage={profileImage}
-        bannerImage={bannerImage}
-      />
-    </SidebarLayout>
+    <AddCategoryForm
+      fileRefs={{ fileInput1, fileInput2 }}
+      handleChangeProfileImage={handleChangeProfileImage}
+      handleChangeBannerImage={handleChangeBannerImage}
+      handleDeleteBannerImage={handleDeleteBannerImage}
+      handleDeleteProfileImage={handleDeleteProfileImage}
+      profileImage={profileImage}
+      bannerImage={bannerImage}
+    />
   );
 };
 

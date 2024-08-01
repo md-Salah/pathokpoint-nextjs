@@ -1,11 +1,7 @@
-import { AddActivityLogForm, SidebarLayout } from "@/components";
+import AddActivityLogForm from "@/components/Admin/AdminTransaction/AddActivityLogForm";
 
 const AddTransactionActivityLog = () => {
-  return (
-    <SidebarLayout>
-      <AddActivityLogForm />
-    </SidebarLayout>
-  );
+  return <AddActivityLogForm />;
 };
 
 export default AddTransactionActivityLog;

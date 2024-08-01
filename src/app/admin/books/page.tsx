@@ -1,5 +1,5 @@
 "use client";
-import { BooksContent, SidebarLayout } from "@/components";
+import { BooksContent } from "@/components/Admin/ProductManagement";
 import { useState } from "react";
 
 const Books = () => {
@@ -9,11 +9,9 @@ const Books = () => {
     setCurrentPage(pageNumber);
   };
   return (
-    <SidebarLayout>
-      <BooksContent
-        pagination={{ currentPage, handleChangeCurrentPage, totalPages }}
-      />
-    </SidebarLayout>
+    <BooksContent
+      pagination={{ currentPage, handleChangeCurrentPage, totalPages }}
+    />
   );
 };
 

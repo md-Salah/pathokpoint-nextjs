@@ -1,10 +1,8 @@
 "use client";
-import { AddBookForm, Sidebar, SidebarLayout } from "@/components";
+import { AddBookForm } from "@/components/Admin/ProductManagement";
 import { SuggestionOpitonType } from "@/components/MultipleItemSelector";
 import Image from "next/image";
-import React, { Ref, useEffect, useRef, useState } from "react";
-import { GoPlus } from "react-icons/go";
-import { RxCross2 } from "react-icons/rx";
+import React, { useRef, useState } from "react";
 
 export type Image = { id: number; file: File; previewUrl: string };
 
@@ -100,23 +98,21 @@ const AddBook = () => {
   };
 
   return (
-    <SidebarLayout>
-      <AddBookForm
-        fileRefs={{ fileInput1, fileInput2, fileInput3, fileInput4 }}
-        handleDeleteImage={handleDeleteImage}
-        handleChangeImage={handleChangeImage}
-        images={images}
-        includedAuthors={includedAuthors}
-        setIncludedAuthors={setIncludedAuthors}
-        includedCategories={includedCategories}
-        setIncludedCategories={setIncludedCategories}
-        includedTags={includedTags}
-        setIncludedTags={setIncludedTags}
-        authorSuggestions={authorSuggestions}
-        categorySuggestions={categorySuggestions}
-        tagSuggestions={tagSuggestions}
-      />
-    </SidebarLayout>
+    <AddBookForm
+      fileRefs={{ fileInput1, fileInput2, fileInput3, fileInput4 }}
+      handleDeleteImage={handleDeleteImage}
+      handleChangeImage={handleChangeImage}
+      images={images}
+      includedAuthors={includedAuthors}
+      setIncludedAuthors={setIncludedAuthors}
+      includedCategories={includedCategories}
+      setIncludedCategories={setIncludedCategories}
+      includedTags={includedTags}
+      setIncludedTags={setIncludedTags}
+      authorSuggestions={authorSuggestions}
+      categorySuggestions={categorySuggestions}
+      tagSuggestions={tagSuggestions}
+    />
   );
 };
 

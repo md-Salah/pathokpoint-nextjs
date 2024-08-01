@@ -1,13 +1,7 @@
-"use client";
-import DashboardContent from "@/components/Admin/AdminDashboard";
-import SidebarLayout from "@/components/Admin/SidebarLayout";
+import { AdminDashboard } from "@/components/Admin";
 
 const Dashboard = () => {
-  return (
-    <SidebarLayout>
-      <DashboardContent />
-    </SidebarLayout>
-  );
+  return <AdminDashboard />;
 };
 
 export default Dashboard;

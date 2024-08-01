@@ -1,5 +1,5 @@
 "use client";
-import { PublishersContent, SidebarLayout } from "@/components";
+import { PublishersContent } from "@/components/Admin/ProductManagement";
 import React, { useState } from "react";
 
 const Publishers = () => {
@@ -9,11 +9,9 @@ const Publishers = () => {
     setCurrentPage(pageNumber);
   };
   return (
-    <SidebarLayout>
-      <PublishersContent
-        pagination={{ currentPage, totalPages, handleChangeCurrentPage }}
-      />
-    </SidebarLayout>
+    <PublishersContent
+      pagination={{ currentPage, totalPages, handleChangeCurrentPage }}
+    />
   );
 };
 

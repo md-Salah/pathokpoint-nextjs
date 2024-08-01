@@ -1,5 +1,5 @@
 "use client";
-import { AddPublisherForm, Sidebar, SidebarLayout } from "@/components";
+import { AddPublisherForm } from "@/components/Admin/ProductManagement";
 import React, { useRef, useState } from "react";
 
 export type Image = {
@@ -37,17 +37,15 @@ const AddPublisher = () => {
   };
 
   return (
-    <SidebarLayout>
-      <AddPublisherForm
-        fileRefs={{ fileInput1, fileInput2 }}
-        handleChangeProfileImage={handleChangeProfileImage}
-        handleChangeBannerImage={handleChangeBannerImage}
-        handleDeleteBannerImage={handleDeleteBannerImage}
-        handleDeleteProfileImage={handleDeleteProfileImage}
-        profileImage={profileImage}
-        bannerImage={bannerImage}
-      />
-    </SidebarLayout>
+    <AddPublisherForm
+      fileRefs={{ fileInput1, fileInput2 }}
+      handleChangeProfileImage={handleChangeProfileImage}
+      handleChangeBannerImage={handleChangeBannerImage}
+      handleDeleteBannerImage={handleDeleteBannerImage}
+      handleDeleteProfileImage={handleDeleteProfileImage}
+      profileImage={profileImage}
+      bannerImage={bannerImage}
+    />
   );
 };
 
