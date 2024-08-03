@@ -1,9 +1,9 @@
-import { categories } from "@/constants";
-import { Category } from "@/interface";
-import { isEnglish } from "@/utils";
 import Link from "next/link";
 
-export const CategoryExpand = () => {
+import { Category } from "@/interface";
+import { isEnglish } from "@/utils";
+
+export const CategoryExpand = ({ categories }: { categories: Category[] }) => {
   return (
     <aside className="h-96 w-full p-10 min-w-0 bg-white shadow-sm text-sm overflow-hidden">
       <div className="flex h-full">

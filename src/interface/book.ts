@@ -5,7 +5,7 @@ import { Image } from "./image";
 
 export interface Book {
   id: string;
-  public_id?: string;
+  public_id: number;
   name: string;
   slug: string;
   authors: Array<Author>;
@@ -18,7 +18,8 @@ export interface Book {
   condition: string;
   short_description: string | null;
   images: Array<Image>;
-
+  
+  is_used?: boolean;
   edition?: string;
   cover?: string;
   translators?: Array<Author>;
@@ -30,7 +31,7 @@ export interface Book {
 
 export interface CartItem {
   id: string;
-  public_id?: string;
+  public_id?: number;
   name: string;
   slug: string;
   authors: Array<Author>;

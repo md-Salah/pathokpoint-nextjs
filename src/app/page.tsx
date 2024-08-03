@@ -10,30 +10,47 @@ import {
   Genre,
 } from "@/components";
 
-import { books, publishers, reviews } from "@/constants";
+import { reviews } from "@/constants";
+import { Author, Book, Category, Publisher } from "@/interface";
+import {
+  getAuthors,
+  getBooks,
+  getCategories,
+  getPublishers,
+} from "@/utils/api";
 
-const Home = () => {
-  const authors = books.map((book) => book.authors[0]);
-  const categories = books.map((book) => book.categories[0]);
+const Home = async () => {
+  const authors: Author[] = await getAuthors("");
+  const categories: Category[] = await getCategories("");
+  const publishers: Publisher[] = await getPublishers("");
+
+  const featuredBooks: Book[] = await getBooks("is_featured=true");
+  const recentlyAddedBooks: Book[] = await getBooks("order_by=-created_at");
+  const mustReadBooks: Book[] = await getBooks("is_must_read=true");
+  const islamicBooks: Book[] = await getBooks("is_islamic=true");
+  const englishBooks: Book[] = await getBooks("language=english");
+  const translatedBooks: Book[] = await getBooks("is_translated=true");
+  const sebaBooks: Book[] = await getBooks("publisher__name__in=সেবা প্রকাশনী");
+  const bigSaleBooks: Book[] = await getBooks("is_big_sale=true");
 
   return (
     <div className="min-h-screen">
-      <HeroSection />
+      <HeroSection categories={categories} />
 
-      <Genre />
+      <Genre categories={categories} />
 
-      <BigSale />
+      <BigSale books={bigSaleBooks} />
 
       {/* Featured Books */}
       <Carousel title="Featured Books">
-        {books.map((book) => (
+        {featuredBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* Recently Added Books */}
       <Carousel title="Recently Added Books">
-        {books.map((book) => (
+        {recentlyAddedBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
@@ -42,100 +59,100 @@ const Home = () => {
 
       {/* মাস্ট রিড কালেকশন */}
       <Carousel title="মাস্ট রিড কালেকশন">
-        {books.map((book) => (
+        {mustReadBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* ইসলামিক কালেকশন */}
       <Carousel title="ইসলামিক কালেকশন">
-        {books.map((book) => (
+        {islamicBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* ইংরেজি ভাষার বিদেশি বই */}
       <Carousel title="ইংরেজি ভাষার বিদেশি বই">
-        {books.map((book) => (
+        {englishBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* কোলকাতার বই */}
-      <Carousel title="কোলকাতার বই">
+      {/* <Carousel title="কোলকাতার বই">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       {/* কবিতা কালেকশন */}
-      <Carousel title="কবিতা কালেকশন">
+      {/* <Carousel title="কবিতা কালেকশন">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       {/* অনুবাদ কালেকশন */}
       <Carousel title="অনুবাদ কালেকশন">
-        {books.map((book) => (
+        {translatedBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* ভৌতিক ও থ্রিলার */}
-      <Carousel title="ভৌতিক ও থ্রিলার">
+      {/* <Carousel title="ভৌতিক ও থ্রিলার">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       {/* গল্প ও উপন্যাস */}
-      <Carousel title="গল্প ও উপন্যাস">
+      {/* <Carousel title="গল্প ও উপন্যাস">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       {/* রাজনীতি, দর্শন, জীবনী ও আত্মজীবনী */}
-      <Carousel title="রাজনীতি, দর্শন, জীবনী ও আত্মজীবনী">
+      {/* <Carousel title="রাজনীতি, দর্শন, জীবনী ও আত্মজীবনী">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       {/* আত্ম-উন্নয়ন */}
-      <Carousel title="আত্ম-উন্নয়ন">
+      {/* <Carousel title="আত্ম-উন্নয়ন">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       {/* সেবা প্রকাশনীর বই */}
       <Carousel title="সেবা প্রকাশনীর বই">
-        {books.map((book) => (
+        {sebaBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই */}
-      <Carousel title="পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই">
+      {/* <Carousel title="পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       {/* চাকরির বই */}
-      <Carousel title="চাকরির বই">
+      {/* <Carousel title="চাকরির বই">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
-      <Carousel title="ইসলামিক ক্যাটাগরি">
+      {/* <Carousel title="ইসলামিক ক্যাটাগরি">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       <Carousel title="জনপ্রিয় ইংরেজি ক্যাটাগরি">
         {categories.map((category) => (
@@ -161,17 +178,18 @@ const Home = () => {
         ))}
       </Carousel>
 
-      <Carousel title="সেবা প্রকাশনীর ক্যাটাগরি">
+      {/* <Carousel title="সেবা প্রকাশনীর ক্যাটাগরি">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
+      {/* 
       <Carousel title="চাকরির ক্যাটাগরি">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
-      </Carousel>
+      </Carousel> */}
 
       <Carousel title="Customer Reviews">
         {reviews.map((review) => (

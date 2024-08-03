@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { IoMdShare } from "react-icons/io";
+import { VscCopy } from "react-icons/vsc";
 
 const ShareThisBook = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);
@@ -14,13 +14,13 @@ const ShareThisBook = ({ text }: { text: string }) => {
 
   return (
     <button
-      className="btn btn-sm bg-[#F1F2F4] border-none h-full w-full"
+      className="btn btn-sm bg-[#F1F2F4] text-black04 border-none h-full w-full"
       onClick={copyToClipboard}
     >
       {copied ? (
-        "Copied!"
+        <span className="text-xs">Link Copied!</span>
       ) : (
-        <IoMdShare className="inline-block w-full h-full" />
+        <VscCopy className="inline-block w-full h-full" />
       )}
     </button>
   );

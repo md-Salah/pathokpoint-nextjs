@@ -1,13 +1,16 @@
 "use client";
 import { NextArrow, PrevArrow } from "@/micro-components";
 import { isEnglish } from "@/utils";
+import Link from "next/link";
 import React, { useRef } from "react";
 
 const Carousel = ({
   title,
+  href,
   children,
 }: {
   title?: string | null;
+  href?: string;
   children: React.ReactNode[];
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -41,7 +44,7 @@ const Carousel = ({
         title ? "layout-container bg-white layout-p layout-mt" : "container"
       }`}
     >
-      {title && <Title title={title} />}
+      {title && <Title title={title} href={href} />}
       <div className="block relative">
         <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
           {children.map((child, index) => {
@@ -64,7 +67,7 @@ const Carousel = ({
 
 export default Carousel;
 
-const Title = ({ title }: { title: string }) => {
+const Title = ({ title, href }: { title: string; href?: string }) => {
   return (
     <div className="flex items-baseline justify-between font-semibold">
       <h2
@@ -74,9 +77,14 @@ const Title = ({ title }: { title: string }) => {
       >
         {title}
       </h2>
-      <div className="text-primary text-sm sm:text-base cursor-pointer half-underline">
-        See more
-      </div>
+      {href && (
+        <Link
+          href={href}
+          className="text-primary text-sm sm:text-base cursor-pointer half-underline"
+        >
+          See more
+        </Link>
+      )}
     </div>
   );
 };

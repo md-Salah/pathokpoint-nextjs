@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import { books } from "@/constants";
 import { BookCard, Carousel } from "@/components";
 import Timer from "./Timer";
+import { Book } from "@/interface";
 
-const BigSale = () => {
+const BigSale = ({ books }: { books: Book[] }) => {
   return (
     <div
       className={`layout-container layout-mt layout-p lg:pt-[1.625rem] lg:pb-6 bg-[url('/default/big-sale-bg.png')] bg-cover bg-center border-none`}

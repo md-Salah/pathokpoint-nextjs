@@ -4,44 +4,53 @@ import Link from "next/link";
 import { ConditionBadge } from "@/micro-components";
 import { Book as BookInterface } from "@/interface";
 import { isEnglish } from "@/utils";
+import { getBooks } from "@/utils/api";
+import { defaultSrc } from "@/constants";
 
 interface Props {
-  books: BookInterface[];
+  book: BookInterface;
 }
 
-const VariationSlider = ({ books }: Props) => {
+const Variation = async ({ book }: Props) => {
+  let books: BookInterface[] = await getBooks(`q=${book.name}`);
+  books = books.filter((b) => b.id !== book.id);
+
   return (
     <div className="sm:ml-3 h-full">
       <div className="bg-white h-full">
         <h1 className="p-4 font-semibold border-b">Variation</h1>
-        <div className="carousel carousel-vertical">
-          {books.map((book, index) => (
-            <Book key={index} book={book} />
-          ))}
-        </div>
+        {books.length > 0 ? (
+          <div className="carousel carousel-vertical">
+            {books.map((book, index) => (
+              <Book key={index} book={book} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center text-sm my-10 text-black04">
+            Oh no!
+            <br />
+            No other condition available
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default VariationSlider;
+export default Variation;
 
 const Book = ({ book }: { book: BookInterface }) => {
-  const defaultSrc = "/default/book.png";
-
   return (
     <div className="w-full group carousel-item px-4 py-2 border-b">
-      <Link href={`/books/${book.slug}`} className="w-full">
+      <Link href={`/books/${book.public_id}/${book.slug}`} className="w-full">
         <div className="flex w-full overflow-hidden">
           <figure className="min-w-16 w-16 h-[74px] sm:h-24 relative group-hover:opacity-80 rounded">
             <Image
-              src={book.images[0].src || defaultSrc}
+              src={book.images[0]?.src || defaultSrc.book}
               alt={book.name}
               fill
               sizes="10vw"
               className="object-cover object-top rounded"
-              placeholder="blur"
-              blurDataURL={defaultSrc}
             />
           </figure>
 

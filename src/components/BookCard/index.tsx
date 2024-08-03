@@ -1,14 +1,16 @@
 import Image from "next/image";
-import { ConditionBadge, WishlistButton } from "@/micro-components";
 import Link from "next/link";
+
+import { ConditionBadge, WishlistButton } from "@/micro-components";
 import { Book } from "@/interface";
 import { isEnglish } from "@/utils";
 import AddToCart from "./AddToCart";
+import { defaultSrc } from "@/constants";
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
     <div className="flex flex-grow">
-      <div className="card relative w-full min-w-[163px] md:min-w-[236px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
+      <div className="card relative w-full min-w-[163px] md:min-w-[236px] max-w-52 md:max-w-80 bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
         <Frame book={book} />
         <Discount
           regular_price={book.regular_price}
@@ -16,8 +18,14 @@ const BookCard = ({ book }: { book: Book }) => {
         />
 
         <div className="card-body px-3 pb-3 md:px-5 pt-3 gap-1 justify-between bg-white">
-          <Title name={book.name} slug={book.slug} />
-          <Author name={book.authors[0].name} slug={book.authors[0].slug} />
+          <div className="max-w-[137px] md:max-w-48">
+            <Title
+              name={book.name}
+              public_id={book.public_id}
+              slug={book.slug}
+            />
+            <Author name={book.authors[0].name} slug={book.authors[0].slug} />
+          </div>
           <ConditionBadge condition={book.condition} />
           <Price
             regular_price={book.regular_price}
@@ -26,7 +34,7 @@ const BookCard = ({ book }: { book: Book }) => {
           {/* Action buttons */}
           <div className="card-actions justify-between mt-1">
             <AddToCart book={book} />
-            <div className="hidden sm:block h-9 w-10">
+            <div className="hidden md:block h-9 w-10">
               <WishlistButton />
             </div>
           </div>
@@ -39,17 +47,15 @@ const BookCard = ({ book }: { book: Book }) => {
 export default BookCard;
 
 const Frame = ({ book }: { book: Book }) => (
-  <Link href={`/books/${book.slug}`} target="_blank">
+  <Link href={`/books/${book.public_id}/${book.slug}`} target="_blank">
     <figure className="relative h-[130px] md:h-[188px] w-full rounded-t bg-[#F1F2F4]">
       <Image
-        src={book.images[0].src}
+        src={book.images[0]?.src || defaultSrc.book}
         alt="Book"
         fill
         className="object-contain object-top"
         sizes="50vw"
         loading="lazy"
-        placeholder="blur"
-        blurDataURL="/default/book.png"
       />
     </figure>
   </Link>
@@ -78,9 +84,21 @@ const Discount = ({
   </>
 );
 
-const Title = ({ name, slug }: { name: string; slug: string }) => {
+const Title = ({
+  name,
+  public_id,
+  slug,
+}: {
+  name: string;
+  public_id: number;
+  slug: string;
+}) => {
   return (
-    <Link href={`/books/${slug}`} target="_blank" className="hover:underline">
+    <Link
+      href={`/books/${public_id}/${slug}`}
+      target="_blank"
+      className="hover:underline"
+    >
       <h2
         className={`card-title text-sm md:text-base font-semibold line-clamp-1 ${
           isEnglish(name) ? "" : "font-bn"

@@ -8,7 +8,7 @@ import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className="bg-neutral">
+    <div className="bg-neutral layout-mt">
       <div className="layout-container layout-px font-bn">
         <footer className="footer footer-center text-white md:footer py-10">
           <aside>

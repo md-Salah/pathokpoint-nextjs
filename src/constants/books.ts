@@ -6,6 +6,7 @@ const category_url = "/categories/";
 export const books = [
   {
     id: "1",
+    public_id: 2,
     description:
       "পথের পাঁচালী হল প্রখ্যাত সাহিত্যিক বিভূতিভূষণ বন্দ্যোপাধ্যায় রচিত একটি বিখ্যাত উপন্যাস।",
     short_description:
@@ -89,6 +90,7 @@ export const books = [
   },
   {
     id: "2",
+    public_id: 2,
     description: "This is a book about a",
     short_description: "This is a book about a",
     name: "অপুর সংকেত",
@@ -124,6 +126,7 @@ export const books = [
   },
   {
     id: "3",
+    public_id: 3,
     description: "A timeless tale of love and war",
     short_description: "Love and war",
     name: "বিষাদ সিন্ধু",
@@ -161,6 +164,7 @@ export const books = [
   },
   {
     id: "4",
+    public_id: 4,
     description: "A journey through the eyes of an adventurer",
     short_description: "Adventurer's journey",
     name: "চাঁদের পাহাড়",
@@ -198,6 +202,7 @@ export const books = [
   },
   {
     id: "5",
+    public_id: 5,
     description: "A deep dive into the realms of science fiction",
     short_description: "Science fiction",
     name: "পৃথিবীর বাইরে",
@@ -237,6 +242,7 @@ export const books = [
   },
   {
     id: "6",
+    public_id: 6,
     description: "Exploring the wonders of human nature",
     short_description: "Human nature",
     name: "মানবিক দৃষ্টিকোণ",
@@ -271,6 +277,7 @@ export const books = [
   },
   {
     id: "7",
+    public_id: 7,
     description: "A collection of heartfelt poems",
     short_description: "Poetry collection",
     name: "কবিতার ভুবন",
@@ -305,6 +312,7 @@ export const books = [
   },
   {
     id: "8",
+    public_id: 8,
     description: "An exploration of philosophical thoughts",
     short_description: "Philosophical thoughts",
     name: "দর্শনের ছায়া",
@@ -341,6 +349,7 @@ export const books = [
   },
   {
     id: "9",
+    public_id: 9,
     description: "The intricate world of politics",
     short_description: "Politics",
     name: "রাজনীতির গতিপথ",
@@ -375,6 +384,7 @@ export const books = [
   },
   {
     id: "10",
+    public_id: 10,
     description: "Memoirs of a legendary figure",
     short_description: "Memoirs",
     name: "স্মৃতির পাতা",
@@ -409,6 +419,7 @@ export const books = [
   },
   {
     id: "11",
+    public_id: 11,
     description: "An in-depth analysis of historical events",
     short_description: "Historical analysis",
     name: "ইতিহাসের ধারাপাত",
@@ -443,6 +454,7 @@ export const books = [
   },
   {
     id: "12",
+    public_id: 12,
     description: "Stories of extraordinary lives",
     short_description: "Biographies",
     name: "জীবনের গল্প",

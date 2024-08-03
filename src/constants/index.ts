@@ -1,4 +1,4 @@
-export { transactions } from './transactions';
+export { transactions } from "./transactions";
 export { banners, menuItems } from "./constants";
 export { books, authors } from "./books";
 export { services } from "./services";
@@ -8,3 +8,4 @@ export { categories } from "./categories";
 export { social } from "./social";
 export { bookSortOptions, bookGlobalOptions } from "./filter";
 export { users } from "./users";
+export { defaultSrc } from "./default";

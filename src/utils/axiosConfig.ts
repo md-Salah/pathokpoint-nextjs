@@ -7,11 +7,19 @@ const axiosInstance = axios.create({
   },
 });
 
+const extractAxiosErr = (error: any) => {
+  const axiosError = error as AxiosError;
+  const msg =
+    axiosError.response?.data.detail.message || "An unknown error occurred";
+  return msg;
+};
+
 interface AxiosError {
   response?: {
-    data: any; 
+    data: any;
   };
 }
 
 export type { AxiosError };
+export { extractAxiosErr };
 export default axiosInstance;

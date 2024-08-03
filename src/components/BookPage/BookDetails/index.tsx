@@ -15,6 +15,10 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { AiFillMinusCircle } from "react-icons/ai";
 import { PiSealPercentFill } from "react-icons/pi";
 import { useState } from "react";
+import { defaultSrc } from "@/constants";
+import { AppDispatch } from "@/redux/store";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "@/redux/features/cart-slice";
 
 interface Props {
   book: Book;
@@ -22,16 +26,26 @@ interface Props {
 
 const BookDetails = ({ book }: Props) => {
   const copyText = `${book.name} (${book.condition}) by ${book.authors[0].name}, ${book.sale_price} Tk`;
-  const defaultSrc = "/default/book.png";
+  const [qty, setQty] = useState<number>(Math.min(1, book.quantity));
+  const [isAdded, setIsAdded] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
 
-  const [qty, setQty] = useState(1);
+  const handleAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        ...book,
+        selectedQuantity: qty,
+      })
+    );
+    setIsAdded(true);
+  };
 
   return (
     <div className="card sm:card-side rounded-none layout-mt pb-6 sm:px-7 sm:py-7 lg:py-12 bg-white">
       {/* Image */}
       <figure className="w-full sm:w-[453px] h-64 sm:h-[568px] relative bg-black07 sm:bg-white">
         <Image
-          src={book.images[0].src || defaultSrc}
+          src={book.images[0]?.src || defaultSrc.book}
           alt="Book Image"
           fill
           className="w-full h-full object-contain object-top"
@@ -149,15 +163,31 @@ const BookDetails = ({ book }: Props) => {
             </span>
           </div>
 
-          <div className="mt-4 sm:mt-6 font-bn text-black04 text-sm">
-            N.B: পুরাতন বই অর্ডার করে কন্ডিশন দেখতে Messenger/WhatsApp এ অর্ডার
-            আইডি ইনবক্স করুন।
-          </div>
+          {book.is_used && (
+            <div className="mt-4 sm:mt-6 font-bn text-black04 text-sm">
+              N.B: পুরাতন বই অর্ডার করে কন্ডিশন দেখতে Messenger/WhatsApp এ
+              অর্ডার আইডি ইনবক্স করুন।
+            </div>
+          )}
 
           <div className="card-actions mt-7 h-[47px] sm:h-[52px]">
-            <button className="btn btn-primary max-w-60 flex-1 h-full">
-              Add to Cart
-            </button>
+            {isAdded ? (
+              <Link
+                href="/cart"
+                className="btn btn-error max-w-60 flex-1 h-full"
+              >
+                View Cart
+              </Link>
+            ) : (
+              <button
+                className={`btn btn-primary max-w-60 flex-1 h-full ${
+                  book.quantity === 0 && "btn-disabled"
+                }`}
+                onClick={handleAddToCart}
+              >
+                Add to Cart
+              </button>
+            )}
             <div className="w-[3.75rem] h-full">
               <WishlistButton />
             </div>
@@ -184,7 +214,7 @@ const LinkButton = ({
 }) => (
   <Link
     href={href}
-    className={`btn btn-link btn-xs text-sm ml-1 text-black02 hover:text-primary ${
+    className={`btn btn-link btn-xs font-normal text-sm ml-1 text-black02 hover:text-primary ${
       isEnglish(name) ? "" : "font-bn"
     }`}
   >

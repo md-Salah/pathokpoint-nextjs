@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lilabotir Mrittu | Pathok Point",
-  description: "Lilabotir mrittu by humayun ahmed",
+  title: "Books | Pathok Point",
+  description: "Available books in Pathok Point",
 };
 
 export default function RootLayout({
@@ -10,9 +10,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <>
-    {children}
-    </>
-  );
+  return <>{children}</>;
 }

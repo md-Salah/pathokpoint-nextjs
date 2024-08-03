@@ -12,7 +12,7 @@ interface Props {
 
 const Profile = ({ name, dp, cover, description, handleFollow }: Props) => {
   return (
-    <section className="bg-white pb-8">
+    <section className="bg-white pb-8 layout-container">
       <figure className="w-full h-24 sm:h-64 relative bg-gray-300">
         {cover && (
           <Image src={cover} alt="Banner" className="object-cover" fill />

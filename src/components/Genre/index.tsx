@@ -1,9 +1,9 @@
-import { categories } from "@/constants";
-import { Category } from "@/interface";
-import { isEnglish } from "@/utils";
 import Link from "next/link";
 
-const Genre = () => {
+import { Category } from "@/interface";
+import { isEnglish } from "@/utils";
+
+const Genre = ({ categories }: { categories: Category[] }) => {
   return (
     <div className="layout-container layout-mt layout-px sm:px-0">
       <ul className="flex overflow-x-scroll no-scrollbar gap-2 sm:gap-3">

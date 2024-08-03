@@ -1,8 +1,14 @@
+import { Books } from "@/components";
+import { Book } from "@/interface";
+import { getBooks } from "@/utils/api";
 
-const Books = () => {
+const BooksPage = async () => {
+  const books: Book[] = await getBooks();
   return (
-    <div>Books</div>
-  )
-}
+    <div>
+      <Books books={books} />
+    </div>
+  );
+};
 
-export default Books
+export default BooksPage;

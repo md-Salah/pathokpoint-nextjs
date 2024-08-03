@@ -4,9 +4,9 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'daisyui.com',
+                hostname: 'res.cloudinary.com',
                 port: '',
-                pathname: '/images/stock/**'
+                pathname: '/dtxh6e0wv/image/upload/**'
             },
             {
                 protocol: 'http',

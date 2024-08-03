@@ -1,6 +1,7 @@
+import Link from "next/link";
+
 import { Book as BookInterface } from "@/interface";
 import { isEnglish } from "@/utils";
-import Link from "next/link";
 
 const BookInfo = ({
   book,
@@ -94,7 +95,9 @@ const BookInfo = ({
               <td>
                 <Link
                   href={"/publishers/" + book.publisher.slug}
-                  className="hover:underline hover:text-primary"
+                  className={`hover:underline hover:text-primary ${
+                    !isEnglish(book.publisher.name) && "font-bn"
+                  }`}
                 >
                   {book.publisher.name}
                 </Link>
@@ -174,7 +177,7 @@ const LinkButton = ({
 }) => (
   <Link
     href={href}
-    className={`btn btn-link btn-xs text-sm mr-1 text-black02 hover:text-primary ${
+    className={`btn btn-link btn-xs text-sm mr-1 text-black02 hover:text-primary font-normal ${
       isEnglish(name) ? "" : "font-bn"
     }`}
   >

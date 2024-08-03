@@ -30,7 +30,7 @@ const NumberInput = ({
       <button
         onClick={handleDecrement}
         className={`btn btn-xs bg-black07 rounded ${
-          value == min && "btn-disabled"
+          value <= min && "btn-disabled"
         } ${size === "xxs" ? "w-6 h-6" : "w-[30px] h-[30px]"} `}
       >
         <HiMinus className="min-w-3 min-h-3" />
@@ -48,7 +48,7 @@ const NumberInput = ({
       <button
         onClick={handleIncrement}
         className={`btn btn-xs bg-black07 rounded ${
-          value == max && "btn-disabled"
+          value >= max && "btn-disabled"
         } ${size === "xxs" ? "w-6 h-6" : "w-[30px] h-[30px]"} `}
       >
         <HiPlus className="min-w-3 min-h-3" />

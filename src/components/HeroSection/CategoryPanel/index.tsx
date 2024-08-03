@@ -1,4 +1,3 @@
-import { categories } from "@/constants";
 import { Category } from "@/interface";
 import { isEnglish } from "@/utils";
 import { MdOutlineNavigateNext } from "react-icons/md";
@@ -6,9 +5,10 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 interface Props {
   selected: string | null;
   setSelected: (val: string | null) => void;
+  categories: Category[];
 }
 
-const CategoryPanel = ({ selected, setSelected }: Props) => {
+const CategoryPanel = ({ selected, setSelected, categories }: Props) => {
   return (
     <div className="w-52 min-w-44 py-2 bg-white shadow-sm overflow-y-scroll h-96">
       <ul className="">

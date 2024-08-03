@@ -37,7 +37,7 @@ export const initializeAuth = createAsyncThunk(
       }
       return { token: null, user: null };
     } catch (error) {
-      console.error("Failed to initialize auth", error);
+      // console.error("Failed to initialize auth", error);
       return rejectWithValue("Failed to initialize auth");
     }
   }

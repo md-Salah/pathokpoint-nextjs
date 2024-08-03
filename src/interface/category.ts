@@ -5,5 +5,5 @@ export interface Category {
   image: {
     src: string;
   } | null;
+  description?: string;
 }
-

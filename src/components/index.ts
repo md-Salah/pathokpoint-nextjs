@@ -3,7 +3,9 @@ export { default as TopBanner } from "./TopBanner";
 export { default as Navbar } from "./Navbar";
 export { Footer } from "./Footer";
 
+// Common
 export { default as Drawer } from "./Drawer";
+export { default as NotFound } from "./NotFound";
 
 // Home
 export { default as Carousel } from "./Carousel";
@@ -12,8 +14,6 @@ export { default as Genre } from "./Genre";
 
 // HeroSection
 export { HeroSection } from "./HeroSection";
-export { default as CategoryPanel } from "./CategoryPanel";
-export { CategoryExpand } from "./CategoryPanel/CategoryExpand";
 export { default as HeroBanner } from "./HeroBanner";
 
 // Cards
@@ -26,10 +26,11 @@ export { default as PublisherCard } from "./PublisherCard";
 // Search
 export { default as Search } from "./Search";
 
-// BookDetails
-export { default as AdditionalInfo } from "./AdditionalInfo";
-export { default as BookDetails } from "./BookDetails";
-export { default as Variation } from "./Variation";
+// BookPage
+export { default as BookPage } from "./BookPage";
+
+// Books Page
+export { default as Books } from "./Books";
 
 //User Profile
 export { default as PersonalInformationContent } from "./UserProfile/MyProfile/PersonalInformationContent";

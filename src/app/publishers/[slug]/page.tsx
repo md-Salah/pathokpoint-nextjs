@@ -1,70 +1,37 @@
-import { books, publishers } from "@/constants";
-import { BookCard, Filter, FilterInMobile, Profile } from "@/components";
+import { defaultSrc } from "@/constants";
+import { Books, NotFound, Profile } from "@/components";
+import { Book, Publisher } from "@/interface";
+import { getBooks, getPublisherBySlug } from "@/utils/api";
 
 interface Params {
   slug: string;
 }
 
-const Publisher = ({ params }: { params: Params }) => {
-  const publisher = publishers.find(
-    (publisher) => publisher.slug === params.slug
-  );
-  const defaultSrc = "/default/publisher.png";
+const PublisherPage = async ({ params }: { params: Params }) => {
+  const publisher: Publisher = await getPublisherBySlug(params.slug);
+  const books: Book[] = publisher
+    ? await getBooks("publisher__id__in=" + publisher.id)
+    : [];
 
   if (!publisher)
     return (
-      <div className="layout-container py-10">
-        <h1 className="text-center text-3xl">Publisher not found</h1>
-      </div>
+      <NotFound>
+        দুঃখিত! <br />
+        প্রকাশনী খুঁজে পাওয়া যায়নি
+      </NotFound>
     );
 
   return (
-    <div className="layout-container layout-px">
+    <div>
       <Profile
         name={publisher.name}
-        dp={publisher.image?.src || defaultSrc}
+        dp={publisher.image?.src || defaultSrc.publisher}
         cover="/banner/b (2).png"
       />
 
-      <div className="flex sm:hidden mt-3 justify-end">
-        <FilterInMobile />
-      </div>
-
-      <section className="grid grid-cols-12 gap-3 mt-3">
-        <aside className="hidden sm:block sm:col-span-4 lg:col-span-3 xl:col-span-2">
-          <Filter />
-        </aside>
-        <div className="bg-white p-3 col-span-12 sm:col-span-8 lg:col-span-9 xl:col-span-10">
-          <div className="flex justify-between gap-2.5">
-            <input
-              type="text"
-              placeholder={`Search in ${publisher.name}...`}
-              className="input input-bordered input-xs sm:input-sm font-bn min-w-0"
-            />
-            <select className="select select-bordered select-xs sm:select-sm min-w-0">
-              {[
-                "Default",
-                "Bestseller",
-                "Price low to high",
-                "Price high to low",
-                "Discount high to low",
-                "Recently published",
-                "Rating",
-              ].map((option) => (
-                <option key={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-          <div className="flex flex-wrap justify-between gap-2.5 my-3">
-            {books.map((book) => (
-              <BookCard key={book.id} book={book} />
-            ))}
-          </div>
-          <div className="text-right my-6">pagination</div>
-        </div>
-      </section>
+      <Books books={books} />
     </div>
   );
 };
 
-export default Publisher;
+export default PublisherPage;
