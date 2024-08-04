@@ -45,7 +45,7 @@ const Carousel = ({
       }`}
     >
       {title && <Title title={title} href={href} />}
-      <div className="block relative">
+      <div className="block relative border-r">
         <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
           {children.map((child, index) => {
             return (

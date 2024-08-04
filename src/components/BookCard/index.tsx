@@ -10,7 +10,7 @@ import { defaultSrc } from "@/constants";
 const BookCard = ({ book }: { book: Book }) => {
   return (
 
-    // Standard: w-163px md:w-236px
+    // Standard: w-163px md:w-236px md:min-w-[212px]
     <div className="">
       <div className="card relative w-full min-w-[163px] lg:max-w-[236px] md:min-w-[212px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
         <Frame book={book} />

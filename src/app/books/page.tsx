@@ -1,12 +1,20 @@
 import { Books } from "@/components";
-import { Book } from "@/interface";
-import { getBooks } from "@/utils/api";
 
-const BooksPage = async () => {
-  const books: Book[] = await getBooks();
+interface Props {
+  searchParams?: {
+    category__slug__in?: string;
+    category_q?: string;
+    page?: string;
+  };
+}
+
+const BooksPage = async ({ searchParams }: Props) => {
+  const params = new URLSearchParams(searchParams);
+  const query = params.toString();
+
   return (
     <div>
-      <Books books={books} />
+      <Books query={query} category_q={params.get("category_q") || ""} />
     </div>
   );
 };

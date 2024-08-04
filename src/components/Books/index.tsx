@@ -1,24 +1,22 @@
-"use client";
+import { FilterInMobile, Filter, BookCard } from "@/components";
+import { Book, Category } from "@/interface";
+import PaginationHandler from "./PaginationHandler";
+import { getBooks, getCategories } from "@/utils/api";
+import { Suspense } from "react";
 
-import { FilterInMobile, Filter, BookCard, Pagination } from "@/components";
-import { Book } from "@/interface";
-import { useState } from "react";
-
-const Books = ({ books }: { books: Book[] }) => {
-  const [page, setPage] = useState<number>(1);
-  const handlePageChange = (page: number) => {
-    setPage(page);
-  };
+const Books = async ({ query, category_q }: { query: string, category_q: string }) => {
+  const books: Book[] = await getBooks(query);
+  const categories: Category[] = await getCategories(`q=${category_q}`);
 
   return (
     <>
       <div className="flex sm:hidden mt-3 justify-end layout-container layout-px">
-        <FilterInMobile />
+        <FilterInMobile categories={categories} />
       </div>
 
       <section className="layout-container flex gap-3 mt-3">
         <aside className="hidden sm:flex flex-1 min-w-[190px]">
-          <Filter />
+          <Filter categories={categories} />
         </aside>
         <div className="layout-p sm:p-4 bg-white w-full sm:w-fit">
           <div className="flex justify-between gap-2.5">
@@ -41,20 +39,18 @@ const Books = ({ books }: { books: Book[] }) => {
               ))}
             </select>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 my-3 w-full sm:w-fit">
-            {books.map((book) => (
-              <BookCard key={book.id} book={book} />
-            ))}
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 my-3 w-full sm:w-fit">
+              {books.map((book) => (
+                <BookCard key={book.id} book={book} />
+              ))}
+            </div>
+          </Suspense>
           {books.length === 0 && (
-            <div className="py-20 text-center text-black04">No books found</div>
+            <div className="py-20 text-center text-black04 w-10/12">No books found</div>
           )}
           <div className="text-right my-6">
-            <Pagination
-              currentPage={page}
-              totalPages={20}
-              handleChangeCurrentPage={handlePageChange}
-            />
+            <PaginationHandler totalPages={20} />
           </div>
         </div>
       </section>
