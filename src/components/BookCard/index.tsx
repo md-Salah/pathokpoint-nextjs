@@ -9,8 +9,10 @@ import { defaultSrc } from "@/constants";
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
-    <div className="flex flex-grow">
-      <div className="card relative w-full min-w-[163px] md:min-w-[236px] max-w-52 md:max-w-80 bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
+
+    // Standard: w-163px md:w-236px
+    <div className="">
+      <div className="card relative w-full min-w-[163px] lg:max-w-[236px] md:min-w-[212px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
         <Frame book={book} />
         <Discount
           regular_price={book.regular_price}

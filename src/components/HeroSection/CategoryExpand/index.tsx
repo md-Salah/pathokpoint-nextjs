@@ -63,7 +63,7 @@ export default CategoryExpand;
 const SubCat = ({ subCat }: { subCat: Category }) => {
   return (
     <Link
-      href={"/category/" + subCat.slug}
+      href={"/categories/" + subCat.slug}
       className={`block py-[5px] truncate text-black02 ${
         isEnglish(subCat.name) ? "" : "font-bn"
       } hover:cursor-pointer hover:text-primary hover:underline visited:text-black05`}

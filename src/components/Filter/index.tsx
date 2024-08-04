@@ -7,7 +7,7 @@ import { isEnglish } from "@/utils";
 
 const Filter = () => {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 w-full">
       <CategoryFilter categories={categories} />
       <PublisherFilter publishers={publishers} />
       <ConditionFilter />
