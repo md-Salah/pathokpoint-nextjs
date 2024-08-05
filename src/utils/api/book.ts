@@ -24,6 +24,31 @@ export const getBooks = async (
   }
 };
 
+export const getPagination = async (
+  query: string = "",
+  page: number = 1,
+  per_page: number = 20
+) => {
+  try {
+    const res = await axiosInstance.get(
+      `/book/all?page=${page}&per_page=${per_page}&${query}`
+    );
+    return {
+      currentPage: res.headers["x-current-page"],
+      perPage: res.headers["x-per-page"],
+      totalCount: res.headers["x-total-count"],
+      totalPages: res.headers["x-total-pages"],
+    };
+  } catch (error) {
+    return {
+      currentPage: 1,
+      perPage: 20,
+      totalCount: 0,
+      totalPages: 0,
+    };
+  }
+};
+
 export const getCategories = async (
   query: string = "",
   page: number = 1,

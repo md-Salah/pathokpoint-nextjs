@@ -7,10 +7,14 @@ import { isEnglish } from "@/utils";
 import AddToCart from "./AddToCart";
 import { defaultSrc } from "@/constants";
 
-const BookCard = ({ book }: { book: Book }) => {
+const BookCard = ({ book, fixW = true }: { book: Book; fixW?: boolean }) => {
   return (
-    // Standard: w-163px md:w-236px md:min-w-[212px]
-    <div className="card relative w-full min-w-[163px] lg:max-w-[236px] md:min-w-[212px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
+    // Standard: w-[163px] md:w-[236px] md:min-w-[212px]
+    <div
+      className={`card relative bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer ${
+        fixW ? "w-[163px] md:w-[237px]" : "w-full"
+      }`}
+    >
       <Frame book={book} />
       <Discount
         regular_price={book.regular_price}
@@ -18,7 +22,7 @@ const BookCard = ({ book }: { book: Book }) => {
       />
 
       <div className="card-body px-3 pb-3 md:px-5 pt-3 gap-1 justify-between bg-white">
-        <div className="max-w-[137px] md:max-w-48">
+        <div className="">
           <Title name={book.name} public_id={book.public_id} slug={book.slug} />
           <Author name={book.authors[0].name} slug={book.authors[0].slug} />
         </div>

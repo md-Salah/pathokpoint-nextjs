@@ -1,6 +1,7 @@
 export {
   getBookByPublicId,
   getBooks,
+  getPagination,
   getAuthors,
   getAuthorBySlug,
   getCategories,

@@ -59,7 +59,12 @@ const Filter = ({ categories }: { categories: Category[] }) => {
     600
   );
 
-  const handlePriceRange = () => {};
+  const handlePriceRange = useDebouncedCallback((min: number, max: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("sale_price__gte", min.toString());
+    params.set("sale_price__lte", max.toString());
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }, 300);
 
   const handleCondition = (condition: string) => {};
 
@@ -106,7 +111,13 @@ const Filter = ({ categories }: { categories: Category[] }) => {
         handleInStockChange={handleInStockChange}
         checked={inStock}
       />
-      <PriceRangeFilter />
+      <PriceRangeFilter
+        handlePriceRange={handlePriceRange}
+        value={[
+          parseInt(searchParams.get("sale_price__gte") || "0"),
+          parseInt(searchParams.get("sale_price__lte") || "10000"),
+        ]}
+      />
     </div>
   );
 };

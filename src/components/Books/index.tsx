@@ -1,8 +1,10 @@
+import { Suspense } from "react";
+
 import { FilterInMobile, Filter, BookCard } from "@/components";
 import { Book, Category } from "@/interface";
 import PaginationHandler from "./PaginationHandler";
 import { getBooks, getCategories } from "@/utils/api";
-import { Suspense } from "react";
+import { getPagination } from "@/utils/api";
 
 const Books = async ({
   query,
@@ -12,6 +14,7 @@ const Books = async ({
   category_q: string;
 }) => {
   const books: Book[] = await getBooks(query);
+  const { totalPages }: { totalPages: number } = await getPagination(query);
   const categories: Category[] = await getCategories(`q=${category_q}`);
 
   return (
@@ -20,12 +23,12 @@ const Books = async ({
         <FilterInMobile categories={categories} />
       </div>
 
-      <section className="layout-container flex gap-3 mt-3">
-        <aside className="hidden sm:flex flex-1 min-w-[190px]">
+      <section className="layout-container grid grid-cols-12 gap-3 mt-3">
+        <aside className="hidden sm:block sm:col-span-4 lg:col-span-3 xl:col-span-2">
           <Filter categories={categories} />
         </aside>
-        <div className="layout-p sm:p-4 bg-white w-full sm:w-fit flex flex-col justify-between">
-          <div>
+        <div className="layout-p sm:p-4 bg-white flex flex-col justify-between col-span-12 sm:col-span-8 lg:col-span-9 xl:col-span-10">
+          <div className="w-full overflow-hidden">
             <div className="flex justify-between gap-2.5">
               <input
                 type="text"
@@ -47,20 +50,20 @@ const Books = async ({
               </select>
             </div>
             <Suspense fallback={<div>Loading...</div>}>
-              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 my-3 w-full sm:w-fit">
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 my-3">
                 {books.map((book) => (
-                  <BookCard key={book.id} book={book} />
+                  <BookCard key={book.id} book={book} fixW={false} />
                 ))}
               </div>
             </Suspense>
             {books.length === 0 && (
-              <div className="py-20 text-center text-black04 lg:w-[600px] xl:w-[800px] 2xl:w-[1000px]">
+              <div className="py-20 text-center text-black04">
                 No books found
               </div>
             )}
           </div>
           <div className="mt-6">
-            <PaginationHandler totalPages={20} />
+            <PaginationHandler totalPages={totalPages} />
           </div>
         </div>
       </section>
