@@ -1,42 +1,45 @@
-import { Category } from "@/interface";
+import { Author, Category, Publisher } from "@/interface";
 import { isEnglish } from "@/utils";
-import { useSearchParams } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
 
 interface Props {
-  categories: Category[];
-  handleCategoryChange: (slug: string) => void;
-  resetFilter: () => void;
-  handleSearch: (q: string) => void;
+  title: string;
+  filterBy: string;
+  options: Category[] | Author[] | Publisher[];
+  selectedSlug: string[];
+  handleChange: (filterBy: string, slug: string) => void;
+  resetFilter: (filterBy: string) => void;
+  searchKey: string;
+  searchValue: string;
+  handleSearch: (searchKey: string, q: string) => void;
 }
 
-const CategoryFilter = ({
-  categories,
-  handleCategoryChange,
+const MultiSelect = ({
+  title,
+  filterBy,
+  options,
+  handleChange,
   resetFilter,
+  searchKey,
+  searchValue,
   handleSearch,
+  selectedSlug,
 }: Props) => {
-  const searchParams = useSearchParams();
-
-  const selectedCategories = new Set(
-    searchParams.get("category__slug__in")?.split(",") || []
-  );
-
-  const sortedCategories = categories.sort((a, b) => {
-    const aSelected = selectedCategories.has(a.slug) ? 1 : 0;
-    const bSelected = selectedCategories.has(b.slug) ? 1 : 0;
+  const sortedItems = options.sort((a, b) => {
+    const aSelected = selectedSlug.includes(a.slug) ? 1 : 0;
+    const bSelected = selectedSlug.includes(b.slug) ? 1 : 0;
     return bSelected - aSelected;
   });
 
   return (
     <div className="bg-white">
       <div className="flex justify-between items-center py-3 px-5 border-b">
-        <h4 className="font-semibold text-black02 text-base">Category</h4>
+        <h4 className="font-semibold text-black02 text-base">{title}</h4>
         <span
           className="font-semibold text-xs text-[#1A97D6] btn btn-xs btn-link"
-          onClick={resetFilter}
+          onClick={() => resetFilter(filterBy)}
         >
-          Reset filter
+          Reset filter {selectedSlug.length > 0 && ` (${selectedSlug.length})`}
         </span>
       </div>
       <div className="px-5 pt-3 pb-5">
@@ -45,30 +48,28 @@ const CategoryFilter = ({
             <input
               type="text"
               className="input-ghost min-w-0 flex-1"
-              defaultValue={searchParams.get("category_q")?.toString()}
-              onChange={(e) => handleSearch(e.target.value)}
+              defaultValue={searchValue}
+              onChange={(e) => handleSearch(searchKey, e.target.value)}
             />
             <FiSearch className="text-primary h-6 w-6" />
           </label>
         </div>
         <div className="mt-3 form-control h-48 overflow-y-scroll">
-          {sortedCategories.map((category) => (
+          {sortedItems.map((item) => (
             <label
-              key={category.id}
+              key={item.id}
               className="label py-1 pl-0 cursor-pointer justify-start gap-2 hover:underline"
             >
               <input
                 type="checkbox"
                 className="checkbox checkbox-xs checkbox-primary"
-                checked={selectedCategories.has(category.slug)}
-                onChange={() => handleCategoryChange(category.slug)}
+                checked={selectedSlug.includes(item.slug)}
+                onChange={() => handleChange(filterBy, item.slug)}
               />
               <span
-                className={`label-text ${
-                  !isEnglish(category.name) && "font-bn"
-                }`}
+                className={`label-text ${!isEnglish(item.name) && "font-bn"}`}
               >
-                {category.name}
+                {item.name}
               </span>
             </label>
           ))}
@@ -78,4 +79,4 @@ const CategoryFilter = ({
   );
 };
 
-export default CategoryFilter;
+export default MultiSelect;

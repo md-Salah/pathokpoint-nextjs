@@ -9,36 +9,29 @@ import { defaultSrc } from "@/constants";
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
-
     // Standard: w-163px md:w-236px md:min-w-[212px]
-    <div className="">
-      <div className="card relative w-full min-w-[163px] lg:max-w-[236px] md:min-w-[212px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
-        <Frame book={book} />
-        <Discount
+    <div className="card relative w-full min-w-[163px] lg:max-w-[236px] md:min-w-[212px] bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer">
+      <Frame book={book} />
+      <Discount
+        regular_price={book.regular_price}
+        sale_price={book.sale_price}
+      />
+
+      <div className="card-body px-3 pb-3 md:px-5 pt-3 gap-1 justify-between bg-white">
+        <div className="max-w-[137px] md:max-w-48">
+          <Title name={book.name} public_id={book.public_id} slug={book.slug} />
+          <Author name={book.authors[0].name} slug={book.authors[0].slug} />
+        </div>
+        <ConditionBadge condition={book.condition} />
+        <Price
           regular_price={book.regular_price}
           sale_price={book.sale_price}
         />
-
-        <div className="card-body px-3 pb-3 md:px-5 pt-3 gap-1 justify-between bg-white">
-          <div className="max-w-[137px] md:max-w-48">
-            <Title
-              name={book.name}
-              public_id={book.public_id}
-              slug={book.slug}
-            />
-            <Author name={book.authors[0].name} slug={book.authors[0].slug} />
-          </div>
-          <ConditionBadge condition={book.condition} />
-          <Price
-            regular_price={book.regular_price}
-            sale_price={book.sale_price}
-          />
-          {/* Action buttons */}
-          <div className="card-actions justify-between mt-1">
-            <AddToCart book={book} />
-            <div className="hidden md:block h-9 w-10">
-              <WishlistButton />
-            </div>
+        {/* Action buttons */}
+        <div className="card-actions justify-between mt-1">
+          <AddToCart book={book} />
+          <div className="hidden md:block h-9 w-10">
+            <WishlistButton />
           </div>
         </div>
       </div>

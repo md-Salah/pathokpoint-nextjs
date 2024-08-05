@@ -26,9 +26,9 @@ const AddToCart = ({ book }: { book: Book }) => {
         <button
           className="btn btn-primary btn-sm flex-1 text-xs md:text-sm lg:text-base font-bold h-8 md:h-9"
           onClick={handleAddToCart}
-          disabled={book.quantity === 0}
+          disabled={!book.in_stock}
         >
-          {book.quantity === 0 ? "Out of stock" : "Add to cart"}
+          {book.in_stock ? "Add to cart" : "Out of stock"}
         </button>
       ) : (
         <Link

@@ -1,15 +1,17 @@
 "use client";
 
-import { FiSearch } from "react-icons/fi";
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { publishers } from "@/constants";
-import { Category, Publisher } from "@/interface";
+import { authors, publishers } from "@/constants";
+import { Category } from "@/interface";
 import { PriceRangeFilter } from "@/components";
-import { isEnglish } from "@/utils";
 import CategoryFilter from "./CategoryFilter";
 import InStockFilter from "./InStockFilter";
+import PublisherFilter from "./PublisherFilter";
+import ConditionFilter from "./ConditionFilter";
+import LanguageFilter from "./LanguageFilter";
+import AuthorFilter from "./AuthorFilter";
 
 const Filter = ({ categories }: { categories: Category[] }) => {
   const router = useRouter();
@@ -17,43 +19,56 @@ const Filter = ({ categories }: { categories: Category[] }) => {
   const searchParams = useSearchParams();
   const inStock = searchParams.get("in_stock") === "true";
 
-  const handleCategoryChange = (slug: string) => {
-    const queryParams = new URLSearchParams(searchParams.toString());
-
-    let selectedCategories =
-      queryParams.get("category__slug__in")?.split(",") || [];
-    if (selectedCategories.includes(slug)) {
-      selectedCategories = selectedCategories.filter(
-        (category) => category !== slug
-      );
-    } else {
-      selectedCategories.push(slug);
-    }
-
-    if (selectedCategories.length === 0)
-      queryParams.delete("category__slug__in");
-    else queryParams.set("category__slug__in", selectedCategories.join(","));
-
-    router.replace(`${pathname}?${queryParams.toString()}`, { scroll: false });
-  };
-
-  const handleResetFilter = () => {
-    router.replace(pathname, { scroll: false });
-  };
-
-  const handleCategorySearch = useDebouncedCallback((q: string) => {
-    const queryParams = new URLSearchParams(searchParams.toString());
-    if (q) queryParams.set("category_q", q);
-    else queryParams.delete("category_q");
-
-    router.replace(`${pathname}?${queryParams.toString()}`, { scroll: false });
-  }, 600);
-
   const handleInStockChange = () => {
     const queryParams = new URLSearchParams(searchParams.toString());
     const inStock = queryParams.get("in_stock");
-    queryParams.set("in_stock", inStock === "true" ? "false" : "true");
+    if (inStock === "true") queryParams.delete("in_stock");
+    else queryParams.set("in_stock", "true");
     router.replace(`${pathname}?${queryParams.toString()}`, { scroll: false });
+  };
+
+  const handleChange = (filterBy: string, slug: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    let selected = params.get(filterBy)?.split(",") || [];
+    if (selected.includes(slug)) {
+      selected = selected.filter((category) => category !== slug);
+    } else {
+      selected.push(slug);
+    }
+
+    if (selected.length === 0) params.delete(filterBy);
+    else params.set(filterBy, selected.join(","));
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const resetFilter = (filterBy: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete(filterBy);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleSearch = useDebouncedCallback(
+    (searchKey: string, searchVal: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (searchVal) params.set(searchKey, searchVal);
+      else params.delete(searchKey);
+
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    600
+  );
+
+  const handlePriceRange = () => {};
+
+  const handleCondition = (condition: string) => {};
+
+  const handleLanguage = (ln: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    const language = params.get("language");
+    if (language && language === ln) params.delete("language");
+    else params.set("language", ln);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   return (
@@ -61,13 +76,32 @@ const Filter = ({ categories }: { categories: Category[] }) => {
       {categories.length > 0 && (
         <CategoryFilter
           categories={categories}
-          handleCategoryChange={handleCategoryChange}
-          resetFilter={handleResetFilter}
-          handleSearch={handleCategorySearch}
+          handleChange={handleChange}
+          resetFilter={resetFilter}
+          handleSearch={handleSearch}
         />
       )}
-      <PublisherFilter publishers={publishers} />
-      <ConditionFilter />
+      {authors.length > 0 && (
+        <AuthorFilter
+          authors={authors}
+          handleChange={handleChange}
+          resetFilter={resetFilter}
+          handleSearch={handleSearch}
+        />
+      )}
+      {publishers.length > 0 && (
+        <PublisherFilter
+          publishers={publishers}
+          handleChange={handleChange}
+          resetFilter={resetFilter}
+          handleSearch={handleSearch}
+        />
+      )}
+      <ConditionFilter handleCondition={handleCondition} />
+      <LanguageFilter
+        handleLanguage={handleLanguage}
+        ln={searchParams.get("language") || ""}
+      />
       <InStockFilter
         handleInStockChange={handleInStockChange}
         checked={inStock}
@@ -78,90 +112,3 @@ const Filter = ({ categories }: { categories: Category[] }) => {
 };
 
 export default Filter;
-
-const PublisherFilter = ({ publishers }: { publishers: Publisher[] }) => (
-  <div className="bg-white">
-    <div className="flex justify-between items-center py-3 px-5 border-b">
-      <h4 className="font-semibold text-black02 text-base">Publisher</h4>
-      <span className="font-semibold text-xs text-[#1A97D6] btn btn-xs btn-link">
-        Reset filter
-      </span>
-    </div>
-    <div className="px-5 pt-3 pb-5">
-      <div className="form-control">
-        <label className="input input-bordered input-sm flex items-center justify-between gap-2 bg-white overflow-hidden rounded-2xl">
-          <input type="text" className="input-ghost min-w-0 flex-1" />
-          <FiSearch className="text-primary h-6 w-6" />
-        </label>
-      </div>
-      <div className="mt-3 form-control h-44 overflow-y-scroll">
-        {/* Sort checked items first */}
-        {publishers.map((publisher) => (
-          <label
-            key={publisher.id}
-            className="label py-1 pl-0 cursor-pointer justify-start gap-2"
-          >
-            <input
-              type="checkbox"
-              className="checkbox checkbox-xs checkbox-primary"
-            />
-            <span
-              className={`label-text ${
-                !isEnglish(publisher.name) && "font-bn"
-              }`}
-            >
-              {publisher.name}
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const ConditionFilter = () => (
-  <div className="bg-white">
-    <div className="flex justify-between items-center py-3 px-5 border-b">
-      <h4 className="font-semibold text-black02 text-base">Condition</h4>
-    </div>
-    <div className="px-5 pt-3 pb-5 form-control">
-      <label className="label py-1 pl-0 cursor-pointer justify-start gap-2">
-        <input
-          type="checkbox"
-          className="checkbox checkbox-xs checkbox-primary"
-        />
-        <span className={`label-text`}>New</span>
-      </label>
-      <label className="label py-1 pl-0 cursor-pointer justify-start gap-2">
-        <input
-          type="checkbox"
-          className="checkbox checkbox-xs checkbox-primary"
-        />
-        <span className={`label-text`}>Old</span>
-      </label>
-      <div className="ml-4">
-        <label className="label py-1 pl-0 cursor-pointer justify-start gap-2">
-          <input
-            type="checkbox"
-            className="checkbox checkbox-xs checkbox-primary"
-          />
-          <span className={`label-text`}>Old like new</span>
-        </label>
-        <label className="label py-1 pl-0 cursor-pointer justify-start gap-2">
-          <input
-            type="checkbox"
-            className="checkbox checkbox-xs checkbox-primary"
-          />
-          <span className={`label-text`}>Old good enough</span>
-        </label>
-        <label className="label py-1 pl-0 cursor-pointer justify-start gap-2">
-          <input
-            type="checkbox"
-            className="checkbox checkbox-xs checkbox-primary"
-          />
-          <span className={`label-text`}>Old acceptable</span>
-        </label>
-      </div>
-    </div>
-  </div>
-);

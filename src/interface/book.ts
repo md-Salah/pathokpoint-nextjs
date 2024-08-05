@@ -19,6 +19,7 @@ export interface Book {
   short_description: string | null;
   images: Array<Image>;
   
+  in_stock?: boolean;
   is_used?: boolean;
   edition?: string;
   cover?: string;
