@@ -7,21 +7,17 @@ import "./style.css";
 import { useEffect, useState } from "react";
 
 const PriceRangeFilter = ({
-  value,
+  initialValue,
   handlePriceRange,
 }: {
-  value: number[];
+  initialValue: number[];
   handlePriceRange: (min: number, max: number) => void;
 }) => {
-  // const [value, setValue] = useState<number[]>(initialValue);
+  const [value, setValue] = useState<number[]>(initialValue);
 
-  // useEffect(() => {
-  //   handlePriceRange(value[0], value[1]);
-  // }, [value]);
-
-  const setValue = (value: number[]) => {
+  useEffect(() => {
     handlePriceRange(value[0], value[1]);
-  };
+  }, [value, handlePriceRange]);
 
   return (
     <div className="bg-white">

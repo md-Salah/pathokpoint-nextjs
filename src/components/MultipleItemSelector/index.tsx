@@ -77,7 +77,7 @@ const MultipleItemSelector: React.FC<InputWrapperProps> = ({
       setFilteredSuggestions(remainingSuggestions);
     }
     filterItems();
-  }, [searchTerm]);
+  }, [searchTerm, suggestions]);
 
   return (
     <div className="dropdown w-full relative">

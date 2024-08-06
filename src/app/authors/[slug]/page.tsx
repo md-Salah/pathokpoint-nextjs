@@ -1,17 +1,17 @@
 import { defaultSrc } from "@/constants";
 import { Books, NotFound, Profile } from "@/components";
-import { getAuthorBySlug, getBooks } from "@/utils/api";
-import { Author, Book } from "@/interface";
+import { getAuthorBySlug } from "@/utils/api";
+import { Author } from "@/interface";
 
-interface Params {
-  slug: string;
+interface Props {
+  searchParams?: any;
+  params: {
+    slug: string;
+  };
 }
 
-const AuthorPage = async ({ params }: { params: Params }) => {
+const AuthorPage = async ({ searchParams, params }: Props) => {
   const author: Author = await getAuthorBySlug(params.slug);
-  const books: Book[] = author
-    ? await getBooks("author__id__in=" + author.id)
-    : [];
 
   if (!author)
     return (
@@ -31,7 +31,7 @@ const AuthorPage = async ({ params }: { params: Params }) => {
         handleFollow={() => {}}
       />
 
-      <Books books={books} />
+      <Books searchParams={searchParams} authorSlug={params.slug} />
     </div>
   );
 };

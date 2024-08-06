@@ -29,8 +29,9 @@ export { default as Search } from "./Search";
 // BookPage
 export { default as BookPage } from "./BookPage";
 
-// Books Page
+// Books/Author/Publisher/Category Page
 export { default as Books } from "./Books";
+export { default as Profile } from "./Profile";
 
 //User Profile
 export { default as PersonalInformationContent } from "./UserProfile/MyProfile/PersonalInformationContent";
@@ -42,13 +43,9 @@ export { default as SidebarDesktop } from "./UserProfile/SidebarDesktop";
 export { default as LogoutModal } from "./UserProfile/LogoutModal";
 // export { default as Pagination } from "./Pagination";
 
-// Books/authors/publishers/categories
-export { default as Profile } from "./Profile";
-
 // Filters
-export { default as Filter } from "./Filter";
+export { Filter } from "./Filter";
 export { default as FilterInMobile } from "./FilterInMobile";
-export { default as PriceRangeFilter } from "./PriceRangeFilter";
 
 // Cart & Checkout
 export { default as ShippingAddress } from "./ShippingAddress";

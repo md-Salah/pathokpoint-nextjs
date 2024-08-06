@@ -9,12 +9,9 @@ interface Props {
 }
 
 const BooksPage = async ({ searchParams }: Props) => {
-  const params = new URLSearchParams(searchParams);
-  const query = params.toString();
-
   return (
     <div>
-      <Books query={query} category_q={params.get("category_q") || ""} />
+      <Books searchParams={searchParams} />
     </div>
   );
 };

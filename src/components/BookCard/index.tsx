@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,7 +26,9 @@ const BookCard = ({ book, fixW = true }: { book: Book; fixW?: boolean }) => {
       <div className="card-body px-3 pb-3 md:px-5 pt-3 gap-1 justify-between bg-white">
         <div className="">
           <Title name={book.name} public_id={book.public_id} slug={book.slug} />
-          <Author name={book.authors[0].name} slug={book.authors[0].slug} />
+          {book.authors.length > 0 && (
+            <Author name={book.authors[0].name} slug={book.authors[0].slug} />
+          )}
         </div>
         <ConditionBadge condition={book.condition} />
         <Price

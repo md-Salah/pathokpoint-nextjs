@@ -1,3 +1,4 @@
+"use client";
 import { Publisher } from "@/interface";
 import MultiSelect from "../MultiSelect";
 import { useSearchParams } from "next/navigation";

@@ -3,9 +3,15 @@ import { useState } from "react";
 import { SlEqualizer } from "react-icons/sl";
 
 import { Drawer, Filter } from "@/components";
-import { Category } from "@/interface";
+import { Author, Category, Publisher } from "@/interface";
 
-const FilterInMobile = ({ categories }: { categories: Category[] }) => {
+interface Props {
+  categories: Category[];
+  publishers: Publisher[];
+  authors: Author[];
+}
+
+const FilterInMobile = ({ categories, publishers, authors }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleDrawer = () => setIsOpen(!isOpen);
 
@@ -17,7 +23,11 @@ const FilterInMobile = ({ categories }: { categories: Category[] }) => {
       </button>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen} right={true}>
         <div className="bg-base-200 pb-8">
-          <Filter categories={categories} />
+          <Filter
+            categories={categories}
+            publishers={publishers}
+            authors={authors}
+          />
         </div>
       </Drawer>
     </div>

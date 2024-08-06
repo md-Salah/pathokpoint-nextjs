@@ -1,5 +1,5 @@
 export { AvatarPlaceholder } from "./AvatarPlaceholder";
-export { ConditionBadge } from "./ConditionBadge";
+export { default as ConditionBadge } from "./ConditionBadge";
 export { InStockBadge } from "./InStockBadge";
 export { default as WishlistButton } from "./WishlistButton";
 export { default as Description } from "./Description";
@@ -23,4 +23,4 @@ export { default as ForgotPassSVG } from "./ForgotPassSVG";
 
 //Admin
 export { default as OrderStatusBadge } from "./OrderStatusBadge";
-export {default as ProductShipmentStatusBadge} from './ProductShipmentStatusBadge';
+export { default as ProductShipmentStatusBadge } from "./ProductShipmentStatusBadge";

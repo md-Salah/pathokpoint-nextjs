@@ -1,17 +1,17 @@
 import { defaultSrc } from "@/constants";
 import { Books, NotFound, Profile } from "@/components";
-import { Book, Publisher } from "@/interface";
-import { getBooks, getPublisherBySlug } from "@/utils/api";
+import { Publisher } from "@/interface";
+import { getPublisherBySlug } from "@/utils/api";
 
-interface Params {
-  slug: string;
+interface Props {
+  searchParams?: any;
+  params: {
+    slug: string;
+  };
 }
 
-const PublisherPage = async ({ params }: { params: Params }) => {
+const PublisherPage = async ({ searchParams, params }: Props) => {
   const publisher: Publisher = await getPublisherBySlug(params.slug);
-  const books: Book[] = publisher
-    ? await getBooks("publisher__id__in=" + publisher.id)
-    : [];
 
   if (!publisher)
     return (
@@ -29,7 +29,7 @@ const PublisherPage = async ({ params }: { params: Params }) => {
         cover="/banner/b (2).png"
       />
 
-      <Books books={books} />
+      <Books searchParams={searchParams} publisherSlug={params.slug} />
     </div>
   );
 };

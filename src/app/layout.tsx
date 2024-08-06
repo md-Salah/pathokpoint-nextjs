@@ -12,9 +12,13 @@ const anek = Anek_Bangla({
 });
 
 export const metadata: Metadata = {
-  title: "Pathok Point",
-  description: "Best old & new bookshop",
-  icons: ["favicon.ico"],
+  title: "Home | Pathok Point",
+  description: "Best bookshop in bangladesh with cheap price",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
