@@ -4,20 +4,35 @@
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import "./style.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 const PriceRangeFilter = ({
-  initialValue,
-  handlePriceRange,
+  updateSearchParams,
 }: {
-  initialValue: number[];
-  handlePriceRange: (min: number, max: number) => void;
+  updateSearchParams: (params: URLSearchParams) => void;
 }) => {
-  const [value, setValue] = useState<number[]>(initialValue);
+  const searchParams = useSearchParams();
+  const [value, setValue] = useState<number[]>([
+    parseInt(searchParams.get("sale_price__gte") || "0"),
+    parseInt(searchParams.get("sale_price__lte") || "10000"),
+  ]);
 
-  useEffect(() => {
-    handlePriceRange(value[0], value[1]);
-  }, [value, handlePriceRange]);
+  const handlePriceRangeDebounced = useDebouncedCallback(
+    (min: number, max: number) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("sale_price__gte", min.toString());
+      params.set("sale_price__lte", max.toString());
+      updateSearchParams(params);
+    },
+    300
+  );
+
+  const handlePriceRange = (range: number[]) => {
+    setValue(range);
+    handlePriceRangeDebounced(range[0], range[1]);
+  };
 
   return (
     <div className="bg-white">
@@ -30,7 +45,7 @@ const PriceRangeFilter = ({
           value={value}
           min={0}
           max={10000}
-          onInput={setValue}
+          onInput={handlePriceRange}
           step={10}
         />
         <div className="font-bn mt-5 flex justify-between text-sm">

@@ -1,3 +1,4 @@
+import { books } from "@/constants";
 import axiosInstance from "@/utils/axiosConfig";
 
 export const getBookByPublicId = async (public_id: string | number) => {
@@ -24,7 +25,7 @@ export const getBooks = async (
   }
 };
 
-export const getPagination = async (
+export const getBooksAndPagination = async (
   query: string = "",
   page: number = 1,
   per_page: number = 20
@@ -34,6 +35,7 @@ export const getPagination = async (
       `/book/all?page=${page}&per_page=${per_page}&${query}`
     );
     return {
+      books: res.data,
       currentPage: res.headers["x-current-page"],
       perPage: res.headers["x-per-page"],
       totalCount: res.headers["x-total-count"],
@@ -41,6 +43,7 @@ export const getPagination = async (
     };
   } catch (error) {
     return {
+      books: [],
       currentPage: 1,
       perPage: 20,
       totalCount: 0,

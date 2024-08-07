@@ -1,10 +1,27 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+
 const InStockFilter = ({
-  handleInStockChange,
-  checked,
+  updateSearchParams,
 }: {
-  checked: boolean;
-  handleInStockChange: () => void;
+  updateSearchParams: (params: URLSearchParams) => void;
 }) => {
+  const searchParams = useSearchParams();
+  const [checked, setChecked] = useState<boolean>(
+    searchParams.get("in_stock") === "true"
+  );
+
+  const handleInStockChange = () => {
+    setChecked(!checked);
+    const params = new URLSearchParams(searchParams.toString());
+    const inStock = params.get("in_stock");
+    if (inStock === "true") params.delete("in_stock");
+    else params.set("in_stock", "true");
+    updateSearchParams(params);
+  };
+
   return (
     <div className="bg-white form-control">
       <div className="flex justify-between items-center py-4 px-5">

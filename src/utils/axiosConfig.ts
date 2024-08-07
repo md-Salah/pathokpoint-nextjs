@@ -11,6 +11,9 @@ const extractAxiosErr = (error: any) => {
   const axiosError = error as AxiosError;
   const msg =
     axiosError.response?.data.detail.message || "An unknown error occurred";
+  if (msg === "An unknown error occurred") {
+    console.error("Unknown error details:", error);
+  }
   return msg;
 };
 
@@ -20,6 +23,15 @@ interface AxiosError {
   };
 }
 
+const fetcher = async (url: string) => {
+  try {
+    const res = await axiosInstance.get(url);
+    return res.data;
+  } catch (error) {
+    throw extractAxiosErr(error);
+  }
+};
+
 export type { AxiosError };
-export { extractAxiosErr };
+export { extractAxiosErr, fetcher };
 export default axiosInstance;

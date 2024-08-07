@@ -13,7 +13,7 @@ const PaginationHandler = ({ totalPages }: { totalPages: number }) => {
   const handlePageChange = (page: number) => {
     const queryParams = new URLSearchParams(searchParams.toString());
     queryParams.set("page", page.toString());
-    router.replace(`${pathname}?${queryParams.toString()}`, { scroll: false });
+    router.push(`${pathname}?${queryParams.toString()}`, { scroll: false });
   };
 
   return (

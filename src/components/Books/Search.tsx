@@ -11,7 +11,7 @@ const Search = () => {
   const [value, setValue] = useState(searchParams.get("q") || "");
 
   const updateSearchParams = (params: URLSearchParams) => {
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const handleSearch = useDebouncedCallback((value) => {

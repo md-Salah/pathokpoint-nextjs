@@ -1,21 +1,48 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+
 const LanguageFilter = ({
-  ln,
-  handleLanguage,
+  updateSearchParams,
 }: {
-  ln: string;
-  handleLanguage: (ln: string) => void;
-}) => (
-  <div className="bg-white">
-    <div className="flex justify-between items-center py-3 px-5 border-b">
-      <h4 className="font-semibold text-black02 text-base">Language</h4>
+  updateSearchParams: (params: URLSearchParams) => void;
+}) => {
+  const searchParams = useSearchParams();
+  const [language, setLanguage] = useState<string>(
+    searchParams.get("language") || ""
+  );
+
+  const handleLanguage = (ln: string) => {
+    setLanguage(ln);
+    const params = new URLSearchParams(searchParams.toString());
+    const language = params.get("language");
+    if (language && language === ln) params.delete("language");
+    else params.set("language", ln);
+    updateSearchParams(params);
+  };
+
+  return (
+    <div className="bg-white">
+      <div className="flex justify-between items-center py-3 px-5 border-b">
+        <h4 className="font-semibold text-black02 text-base">Language</h4>
+      </div>
+      <div className="px-5 pt-3 pb-5 form-control">
+        <CheckBox
+          label="Bangla"
+          handleLanguage={handleLanguage}
+          ln={language}
+        />
+        <CheckBox
+          label="English"
+          handleLanguage={handleLanguage}
+          ln={language}
+        />
+        <CheckBox label="Other" handleLanguage={handleLanguage} ln={language} />
+      </div>
     </div>
-    <div className="px-5 pt-3 pb-5 form-control">
-      <CheckBox label="Bangla" handleLanguage={handleLanguage} ln={ln} />
-      <CheckBox label="English" handleLanguage={handleLanguage} ln={ln} />
-      <CheckBox label="Other" handleLanguage={handleLanguage} ln={ln} />
-    </div>
-  </div>
-);
+  );
+};
 
 export default LanguageFilter;
 
