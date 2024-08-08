@@ -42,7 +42,7 @@ const Books = async ({
   } = await getBooksAndPagination(query);
 
   const startingAt = (currentPage - 1) * perPage + 1;
-  const endingAt = startingAt + perPage - 1;
+  const endingAt = Math.min(startingAt + perPage - 1, totalCount);
 
   return (
     <>

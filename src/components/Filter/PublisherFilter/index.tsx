@@ -102,7 +102,7 @@ const PublisherFilter = ({ updateParams }: Props) => {
   return (
     <MultiSelect
       title="Publisher"
-      options={data}
+      options={publishers}
       resetFilter={resetFilter}
       handleChange={handlePublisherChange}
       search={search}
