@@ -36,10 +36,10 @@ export const getBooksAndPagination = async (
     );
     return {
       books: res.data,
-      currentPage: res.headers["x-current-page"],
-      perPage: res.headers["x-per-page"],
-      totalCount: res.headers["x-total-count"],
-      totalPages: res.headers["x-total-pages"],
+      currentPage: parseInt(res.headers["x-current-page"]),
+      perPage: parseInt(res.headers["x-per-page"]),
+      totalCount: parseInt(res.headers["x-total-count"]),
+      totalPages: parseInt(res.headers["x-total-pages"]),
     };
   } catch (error) {
     return {

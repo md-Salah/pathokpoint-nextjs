@@ -7,7 +7,7 @@ const CategoryCard = ({ category }: { category: Category }) => {
   return (
     <Link
       href={`categories/${category.slug}`}
-      className="card w-[140px] sm:w-[236px] h-[146px] sm:h-[247px] bg-secondary text-white shadow-sm hover:shadow-lg group"
+      className="card w-[140px] sm:w-[237px] h-[146px] sm:h-[247px] bg-secondary text-white shadow-sm hover:shadow-lg group"
     >
       <Frame name={category.name} src={category.image?.src || null} />
 

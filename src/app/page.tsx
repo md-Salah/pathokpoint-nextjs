@@ -42,14 +42,14 @@ const Home = async () => {
       <BigSale books={bigSaleBooks} />
 
       {/* Featured Books */}
-      <Carousel title="Featured Books">
+      <Carousel title="Featured Books" href="/books?is_featured=true">
         {featuredBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* Recently Added Books */}
-      <Carousel title="Recently Added Books">
+      <Carousel title="Recently Added Books" href="/books?order_by=-created_at">
         {recentlyAddedBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
@@ -58,21 +58,21 @@ const Home = async () => {
       {/* <ServiceBanner /> */}
 
       {/* মাস্ট রিড কালেকশন */}
-      <Carousel title="মাস্ট রিড কালেকশন">
+      <Carousel title="মাস্ট রিড কালেকশন" href="/books?is_must_read=true">
         {mustReadBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* ইসলামিক কালেকশন */}
-      <Carousel title="ইসলামিক কালেকশন">
+      <Carousel title="ইসলামিক কালেকশন" href="/books?is_islamic=true">
         {islamicBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
 
       {/* ইংরেজি ভাষার বিদেশি বই */}
-      <Carousel title="ইংরেজি ভাষার বিদেশি বই">
+      <Carousel title="ইংরেজি ভাষার বিদেশি বই" href="/books?language=english">
         {englishBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
@@ -93,7 +93,7 @@ const Home = async () => {
       </Carousel> */}
 
       {/* অনুবাদ কালেকশন */}
-      <Carousel title="অনুবাদ কালেকশন">
+      <Carousel title="অনুবাদ কালেকশন" href="/books?is_translated=true">
         {translatedBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
@@ -128,7 +128,10 @@ const Home = async () => {
       </Carousel> */}
 
       {/* সেবা প্রকাশনীর বই */}
-      <Carousel title="সেবা প্রকাশনীর বই">
+      <Carousel
+        title="সেবা প্রকাশনীর বই"
+        href="/books?publisher__name__in=সেবা প্রকাশনী"
+      >
         {sebaBooks.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
@@ -154,25 +157,25 @@ const Home = async () => {
         ))}
       </Carousel> */}
 
-      <Carousel title="জনপ্রিয় ইংরেজি ক্যাটাগরি">
+      <Carousel title="জনপ্রিয় ইংরেজি ক্যাটাগরি" href="/categories">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
       </Carousel>
 
-      <Carousel title="জনপ্রিয় বাংলা ক্যাটাগরি">
+      <Carousel title="জনপ্রিয় বাংলা ক্যাটাগরি" href="/categories">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
       </Carousel>
 
-      <Carousel title="জনপ্রিয় লেখক">
+      <Carousel title="জনপ্রিয় লেখক" href="/authors">
         {authors.map((author) => (
           <AuthorCard key={author.id} author={author} />
         ))}
       </Carousel>
 
-      <Carousel title="জনপ্রিয় প্রকাশনী">
+      <Carousel title="জনপ্রিয় প্রকাশনী" href="/publishers">
         {publishers.map((publisher) => (
           <PublisherCard key={publisher.id} publisher={publisher} />
         ))}

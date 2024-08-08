@@ -27,8 +27,22 @@ const Books = async ({
   else if (publisherSlug) params.set("publisher__slug__in", publisherSlug);
   const query = params.toString();
 
-  const { books, totalPages }: { books: Book[]; totalPages: number } =
-    await getBooksAndPagination(query);
+  const {
+    books,
+    currentPage,
+    perPage,
+    totalCount,
+    totalPages,
+  }: {
+    books: Book[];
+    totalPages: number;
+    currentPage: number;
+    perPage: number;
+    totalCount: number;
+  } = await getBooksAndPagination(query);
+
+  const startingAt = (currentPage - 1) * perPage + 1;
+  const endingAt = startingAt + perPage - 1;
 
   return (
     <>
@@ -42,6 +56,9 @@ const Books = async ({
         </aside>
         <div className="layout-p sm:p-4 bg-white flex flex-col justify-between col-span-12 sm:col-span-8 lg:col-span-9 xl:col-span-10">
           <div className="w-full overflow-hidden">
+            <div className="text-black04 text-sm mb-3">
+              {`Showing ${startingAt} to ${endingAt} of ${totalCount} books`}
+            </div>
             <div className="flex justify-between gap-2.5">
               <Search />
               <Sort />

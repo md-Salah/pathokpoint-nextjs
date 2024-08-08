@@ -7,7 +7,7 @@ const PublisherCard = ({ publisher }: { publisher: Publisher }) => {
   return (
     <Link
       href={`publishers/${publisher.slug}`}
-      className="card w-[140px] sm:w-[236px] h-[146px] sm:h-[247px] bg-white text-black02 border border-black06 hover:shadow-lg group"
+      className="card w-[140px] sm:w-[237px] h-[146px] sm:h-[247px] bg-white text-black02 border border-black06 hover:shadow-lg group"
     >
       <Frame name={publisher.name} src={publisher.image?.src || null} />
 

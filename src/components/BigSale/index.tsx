@@ -1,17 +1,22 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { BookCard, Carousel } from "@/components";
 import Timer from "./Timer";
 import { Book } from "@/interface";
 
 const BigSale = ({ books }: { books: Book[] }) => {
+  // bg-[url('/default/big-sale-bg.png')] bg-cover bg-center
   return (
     <div
-      className={`layout-container layout-mt layout-p lg:pt-[1.625rem] lg:pb-6 bg-[url('/default/big-sale-bg.png')] bg-cover bg-center border-none`}
+      className={`layout-container layout-mt layout-p lg:pt-[1.625rem] lg:pb-6 bg-[#32012F] border-none`}
     >
       <div className="flex flex-col lg:flex-row items-center">
         {/* Big Sale */}
-        <div className="max-w-[512px] pr-0 lg:pr-10 mb-10 lg:mb-0 flex flex-col items-center justify-center ">
+        <Link
+          href="/books?is_big_sale=true"
+          className="max-w-[512px] pr-0 lg:pr-10 mb-10 lg:mb-0 flex flex-col items-center justify-center "
+        >
           <Image
             src={"/default/discount-75.png"}
             alt="Big Sale"
@@ -20,7 +25,7 @@ const BigSale = ({ books }: { books: Book[] }) => {
             height="288"
           />
           <Timer />
-        </div>
+        </Link>
 
         <Carousel>
           {books.map((book, index) => (
