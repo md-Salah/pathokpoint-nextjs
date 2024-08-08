@@ -1,6 +1,6 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 const Search = () => {
@@ -14,24 +14,25 @@ const Search = () => {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const handleSearch = useDebouncedCallback((value) => {
+  const handleSearchDebounced = useDebouncedCallback((value) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value) params.set("q", value);
     else params.delete("q");
     updateSearchParams(params);
   }, 400);
 
-  useEffect(() => {
-    handleSearch(value.trim());
-  }, [value, handleSearch]);
+  const handleSearch = (value: string) => {
+    setValue(value);
+    handleSearchDebounced(value);
+  };
 
   return (
     <input
       type="text"
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => handleSearch(e.target.value)}
       placeholder={`Search in this page...`}
-      className="input input-bordered input-sm font-bn max-w-44 md:max-w-60"
+      className="input input-bordered input-sm font-bn max-w-44 md:max-w-60 bg-white"
     />
   );
 };
