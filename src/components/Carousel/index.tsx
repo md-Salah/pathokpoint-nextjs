@@ -1,16 +1,19 @@
 "use client";
-import { NextArrow, PrevArrow } from "@/micro-components";
-import { isEnglish } from "@/utils";
 import Link from "next/link";
 import React, { useRef } from "react";
+
+import { NextArrow, PrevArrow } from "@/micro-components";
+import { isEnglish } from "@/utils";
 
 const Carousel = ({
   title,
   href,
+  isLoading = false,
   children,
 }: {
   title?: string | null;
   href?: string;
+  isLoading?: boolean;
   children: React.ReactNode[];
 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -45,22 +48,25 @@ const Carousel = ({
       }`}
     >
       {title && <Title title={title} href={href} />}
-      <div className="block relative border-r">
-        <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
-          {children.map((child, index) => {
-            return (
-              <div key={index} className="carousel-item">
-                {child}
-              </div>
-            );
-          })}
+      {isLoading ? (
+        <div className="skeleton h-44 sm:h-52 md:h-64"></div>
+      ) : (
+        <div className="block relative border-r">
+          <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
+            {children.map((child, index) => {
+              return (
+                <div key={index} className="carousel-item">
+                  {child}
+                </div>
+              );
+            })}
+          </div>
+          <div className="hidden sm:block">
+            <PrevArrow handlePrev={handlePrev} positionClass="-left-4" />
+            <NextArrow handleNext={handleNext} positionClass="-right-4" />
+          </div>
         </div>
-        {/* -left-4 */}
-        <div className="hidden sm:block">
-          <PrevArrow handlePrev={handlePrev} positionClass="-left-4" />
-          <NextArrow handleNext={handleNext} positionClass="-right-4" />
-        </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -72,7 +78,7 @@ const Title = ({ title, href }: { title: string; href?: string }) => {
     <div className="flex items-baseline justify-between font-semibold">
       <h2
         className={`text-base sm:text-xl text-black02 mb-4 sm:mb-5 ${
-          isEnglish(title) ? "" : "font-bn"
+          !isEnglish(title) && "font-bn"
         }`}
       >
         {title}

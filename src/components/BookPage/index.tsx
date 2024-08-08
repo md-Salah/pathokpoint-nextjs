@@ -1,9 +1,9 @@
-import { BookCard, Carousel, CategoryCard, NotFound } from "@/components";
+import { NotFound } from "@/components";
+import { Book } from "@/interface";
 import BookDetails from "./BookDetails";
 import AdditionalInfo from "./AdditionalInfo";
 import Variation from "./Variation";
-import { Book, Category } from "@/interface";
-import { getBooks, getCategories } from "@/utils/api";
+import Suggestion from "./Suggestion";
 
 const BookPage = async ({ book }: { book: Book | null }) => {
   if (!book)
@@ -13,12 +13,6 @@ const BookPage = async ({ book }: { book: Book | null }) => {
         বইটি পাওয়া যায়নি
       </NotFound>
     );
-
-  const author_ids = book.authors.map((author) => author.id);
-  const books: Book[] = await getBooks(
-    `author__id__in=${author_ids.join(",")}`
-  );
-  const categories: Category[] = await getCategories("");
 
   return (
     <div>
@@ -33,21 +27,7 @@ const BookPage = async ({ book }: { book: Book | null }) => {
           <Variation book={book} />
         </div>
       </div>
-      <div className="layout-mt">
-        <Carousel
-          title="Books by same author"
-          href={`/authors/${book.authors[0]?.slug}`}
-        >
-          {books.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
-        </Carousel>
-      </div>
-      <Carousel title="Related Categories">
-        {categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
-      </Carousel>
+      <Suggestion book={book} />
     </div>
   );
 };

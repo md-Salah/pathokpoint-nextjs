@@ -19,9 +19,11 @@ const CartItem = ({ book }: { book: CartItemType }) => {
         <div className="flex flex-col lg:flex-row md:justify-between gap-4">
           <div className="flex lg:flex-col items-baseline justify-end lg:justify-center gap-1">
             <span className="block text-sm">৳{book.sale_price}</span>
-            <span className="line-through text-xs text-black04">
-              ৳{book.regular_price}
-            </span>
+            {book.sale_price < book.regular_price && (
+              <span className="line-through text-xs text-black04">
+                ৳{book.regular_price}
+              </span>
+            )}
           </div>
           <div className="flex flex-col gap-4">
             <NumberInput book={book} />

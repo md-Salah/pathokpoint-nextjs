@@ -1,19 +1,34 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 import { ConditionBadge } from "@/micro-components";
 import { Book as BookInterface } from "@/interface";
 import { isEnglish } from "@/utils";
-import { getBooks } from "@/utils/api";
 import { defaultSrc } from "@/constants";
+import { fetcher } from "@/utils/axiosConfig";
 
 interface Props {
   book: BookInterface;
 }
 
-const Variation = async ({ book }: Props) => {
-  let books: BookInterface[] = await getBooks(`q=${book.name}`);
-  books = books.filter((b) => b.id !== book.id);
+const Variation = ({ book }: Props) => {
+  const [books, setBooks] = useState<BookInterface[]>([]);
+
+  const authorIds = book.authors.map((athr) => athr.id).join(",");
+  const { data, isLoading } = useSWR(
+    `/book/all?q=${book.name}&author__id__in=${authorIds}`,
+    fetcher
+  );
+  useEffect(() => {
+    if (data) {
+      setBooks(data.filter((b: BookInterface) => b.id !== book.id));
+    }
+  }, [data]);
+
+  if (isLoading) return <div className="skeleton h-full sm:ml-3"></div>;
 
   return (
     <div className="sm:ml-3 h-full">

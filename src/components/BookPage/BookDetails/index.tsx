@@ -25,7 +25,7 @@ interface Props {
 }
 
 const BookDetails = ({ book }: Props) => {
-  const copyText = `${book.name} (${book.condition}) by ${book.authors[0].name}, ${book.sale_price} Tk`;
+  const copyText = `${book.name} (${book.condition}) by ${book.authors[0]?.name}, ${book.sale_price} Tk`;
   const [qty, setQty] = useState<number>(Math.min(1, book.quantity));
   const [isAdded, setIsAdded] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
