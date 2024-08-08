@@ -19,12 +19,12 @@ const Genre = ({ categories }: { categories: Category[] }) => {
 
 const Cat = ({ cat }: { cat: Category }) => (
   <Link
-    href={"category/" + cat.slug}
+    href={`/categories/${cat.slug}`}
     className="flex items-center bg-[#FF820014] border-[0.5px] border-primary rounded h-8 sm:h-12 text-nowrap"
   >
     <h4
       className={`text-black02 mx-6 text-sm sm:text-base ${
-        isEnglish(cat.name) ? "" : "font-bn"
+        !isEnglish(cat.name) && "font-bn"
       } hover:text-primary hover:underline`}
     >
       {cat.name}
