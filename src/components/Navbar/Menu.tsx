@@ -1,10 +1,8 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
 
 import { HambugerIcon } from "@/micro-components";
 import { Drawer } from "@/components";
-import { categories, publishers, authors } from "@/constants";
 import { usePathname } from "next/navigation";
 import { adminMenuItems, frontendMenuItems } from "@/constants/constants";
 import MenuContent from "./MenuContent";
@@ -16,7 +14,7 @@ const Menu = () => {
 
   return (
     <div>
-      <div onClick={() => setIsOpen(true)}>
+      <div onClick={() => setIsOpen(true)} className="hover:cursor-pointer">
         <HambugerIcon />
       </div>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>

@@ -3,24 +3,32 @@
 import Link from "next/link";
 import Image from "next/image";
 import { IoIosLogOut, IoIosStarOutline, IoMdHeartEmpty } from "react-icons/io";
-import { BiShoppingBag } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/redux/store";
-import { initializeAuth, logout } from "@/redux/features/auth-slice";
-import { useEffect } from "react";
+import { AppDispatch } from "@/redux/store";
+import { logout } from "@/redux/features/auth-slice";
+import { useUser } from "@/hooks";
+import { defaultSrc } from "@/constants";
+import { PiBagLight } from "react-icons/pi";
 
 const Profile = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { user } = useSelector((state: RootState) => state.auth);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { user } = useUser("/user/me");
 
-  const defaultSrc = "/default/user.avif";
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
-    dispatch(initializeAuth());
-  }, [dispatch]);
+    if (!isOpen) return;
+    const closeDropdown = () => setIsOpen(false);
+    document.addEventListener("click", closeDropdown);
+    return () => document.removeEventListener("click", closeDropdown);
+  }, [isOpen]);
 
   if (!user)
     return (
@@ -41,64 +49,64 @@ const Profile = () => {
     );
 
   return (
-    <div className="dropdown dropdown-end">
+    <div className="dropdown dropdown-end dropdown-open">
       <div
         tabIndex={0}
-        role="button"
         className="btn btn-ghost btn-circle avatar btn-sm sm:btn-md text-black02 hover:bg-primary hover:text-white"
+        onClick={toggleDropdown}
       >
         <Image
           alt="Profile"
-          src={user.src || defaultSrc}
+          src={user.src || defaultSrc.user}
           width={36}
           height={36}
           className="rounded-full"
-          blurDataURL={defaultSrc}
-          placeholder="blur"
         />
       </div>
 
       {/* Dropdown content */}
-      <ul
-        tabIndex={0}
-        className="menu dropdown-content shadow bg-white text-black02 text-sm rounded-box w-52"
-      >
-        <li>
-          <Link href="/user/me" className="gap-2">
-            <BsPerson className="inline-block w-5 h-5" />
-            My Profile
-          </Link>
-        </li>
-        <li>
-          <Link href="/user/my-order" className="gap-2">
-            <BiShoppingBag className="inline-block w-5 h-5" />
-            My Orders
-          </Link>
-        </li>
-        <li>
-          <Link href="/user/wishlist" className="gap-2">
-            <IoMdHeartEmpty className="inline-block w-5 h-5" />
-            Wishlist
-          </Link>
-        </li>
-        <li>
-          <Link href="/user/my-reviews" className="gap-2">
-            <IoIosStarOutline className="inline-block w-5 h-5" />
-            My Reviews
-          </Link>
-        </li>
-        <li>
-          <div
-            className="flex gap-2"
-            onClick={() => {
-              dispatch(logout());
-            }}
-          >
-            <IoIosLogOut className="inline-block w-5 h-5" />
-            Logout
-          </div>
-        </li>
-      </ul>
+      {isOpen && (
+        <ul
+          tabIndex={0}
+          className="menu dropdown-content shadow bg-white text-black02 text-sm rounded-box w-52"
+        >
+          <li>
+            <Link href="/user/me" className="gap-2">
+              <BsPerson className="inline-block" size={20} />
+              My Profile
+            </Link>
+          </li>
+          <li>
+            <Link href="/user/my-order" className="gap-2">
+              <PiBagLight className="inline-block" size={20} />
+              My Orders
+            </Link>
+          </li>
+          <li>
+            <Link href="/user/wishlist" className="gap-2">
+              <IoMdHeartEmpty className="inline-block" size={20} />
+              Wishlist
+            </Link>
+          </li>
+          <li>
+            <Link href="/user/my-reviews" className="gap-2">
+              <IoIosStarOutline className="inline-block" size={20} />
+              My Reviews
+            </Link>
+          </li>
+          <li>
+            <div
+              className="flex gap-2"
+              onClick={() => {
+                dispatch(logout());
+              }}
+            >
+              <IoIosLogOut className="inline-block" size={20} />
+              Logout
+            </div>
+          </li>
+        </ul>
+      )}
     </div>
   );
 };
