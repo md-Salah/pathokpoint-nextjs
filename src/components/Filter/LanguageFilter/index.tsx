@@ -14,7 +14,7 @@ const LanguageFilter = ({
   );
 
   const handleLanguage = (ln: string) => {
-    setLanguage(ln);
+    setLanguage((prev) => (prev === ln ? "" : ln));
     const params = new URLSearchParams(searchParams.toString());
     const language = params.get("language");
     if (language && language === ln) params.delete("language");

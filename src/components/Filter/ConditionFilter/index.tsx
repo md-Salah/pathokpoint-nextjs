@@ -14,7 +14,10 @@ const ConditionFilter = ({
   );
 
   const handleCondition = (condition: string) => {
-    setValue(condition);
+    setValue((prev) => {
+      if (prev === condition) return "";
+      return condition;
+    });
     const params = new URLSearchParams(searchParams.toString());
     const currentCondition = params.get("condition__in");
     if (currentCondition && currentCondition === condition)
