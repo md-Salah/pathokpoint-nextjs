@@ -51,7 +51,7 @@ const ProductDetails = ({ book }: { book: CartItemType }) => {
         <Link href={`/books/${book.slug}`}>
           <figure className="h-full w-16 sm:min-w-24 sm:w-24 hover:opacity-80 relative rounded">
             <Image
-              src={book.images[0].src || defaultSrc}
+              src={book.images[0]?.src || defaultSrc}
               alt={book.name}
               fill
               sizes="(min-width: 640px) 24rem, 16rem"
@@ -78,13 +78,15 @@ const ProductDetails = ({ book }: { book: CartItemType }) => {
               )}
             </h1>
           </Link>
-          <h3
-            className={`mt-1.5 text-xs text-black04 ${
-              !isEnglish(book.authors[0].name) && "font-bn"
-            }`}
-          >
-            {"by " + book.authors[0].name}
-          </h3>
+          {book.authors.length > 0 && (
+            <h3
+              className={`mt-1.5 text-xs text-black04 ${
+                !isEnglish(book.authors[0].name) && "font-bn"
+              }`}
+            >
+              {"by " + book.authors[0].name}
+            </h3>
+          )}
 
           <div className="mt-2">
             <ConditionBadge condition={book.condition} />

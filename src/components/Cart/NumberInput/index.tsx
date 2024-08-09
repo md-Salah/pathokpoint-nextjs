@@ -1,10 +1,10 @@
 "use client";
-import { AppDispatch } from "@/redux/store";
-import { HiMinus, HiPlus } from "react-icons/hi2";
-import { useDispatch } from "react-redux";
+import { HiMinus, HiPlus } from 'react-icons/hi2';
+import { useDispatch } from 'react-redux';
 
-import { CartItem } from "@/interface";
-import { addItemToCart } from "@/redux/features/cart-slice";
+import { CartItem } from '@/interface';
+import { addItemToCart } from '@/redux/features/cart-slice';
+import { AppDispatch } from '@/redux/store';
 
 const NumberInput = ({ book }: { book: CartItem }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +21,7 @@ const NumberInput = ({ book }: { book: CartItem }) => {
       <button
         onClick={handleDecrement}
         className={`btn btn-xs bg-black07 rounded ${
-          book.selectedQuantity === 0 && "btn-disabled"
+          book.selectedQuantity === 1 && "btn-disabled"
         } w-[30px] h-[30px] `}
       >
         <HiMinus className="min-w-3 min-h-3" />

@@ -6,3 +6,4 @@ export type { Review } from "./review";
 export type { User } from "./user";
 export type { MenuItem, SubMenuItem } from "./menu";
 export type { IPagination } from "./pagination";
+export type { Coupon } from "./coupon";

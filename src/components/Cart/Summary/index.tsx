@@ -1,10 +1,11 @@
 "use client";
 
-import { RootState } from "@/redux/store";
-import { IoInformationCircleOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { IoInformationCircleOutline } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
 
-const CartSummary = () => {
+import { RootState } from '@/redux/store';
+
+const Summary = () => {
   const cart = useSelector((state: RootState) => state.cart);
 
   return (
@@ -51,4 +52,4 @@ const CartSummary = () => {
   );
 };
 
-export default CartSummary;
+export default Summary;

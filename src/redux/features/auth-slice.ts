@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import axios, { AxiosError } from "@/utils/axiosConfig";
+import axios, { AxiosError, extractAxiosErr } from "@/utils/axiosConfig";
 import { User } from "@/interface";
 
 interface InitialState {
@@ -65,10 +65,7 @@ export const login = createAsyncThunk(
       });
       return { token, user: userResponse.data };
     } catch (error) {
-      const axiosError = error as AxiosError;
-      const errorMessage =
-        axiosError.response?.data.detail.message || "An unknown error occurred";
-      return rejectWithValue(errorMessage);
+      return rejectWithValue(extractAxiosErr(error));
     }
   }
 );

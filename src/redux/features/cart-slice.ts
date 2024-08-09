@@ -1,5 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { CartItem } from "@/interface";
+import { CartItem } from '@/interface';
+import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const cartStateFromLocalStorage = () => {
   if (
@@ -11,14 +12,17 @@ const cartStateFromLocalStorage = () => {
   return initialState;
 };
 
+const initialDeliveryCharge = 60;
+
 const initialState: CartState = {
   cartItems: [],
-  deliveryCharge: 0,
+  deliveryCharge: initialDeliveryCharge,
   weightCharge: 0,
   coupon: null,
   discount: 0,
   subTotal: 0,
   grandTotal: 0,
+  isLoading: false,
 };
 
 const calculateSubTotal = (cartItems: CartItem[]): number => {
@@ -42,7 +46,30 @@ interface CartState {
   discount: number;
   subTotal: number;
   grandTotal: number;
+  isLoading: boolean;
 }
+
+export const applyCoupon = createAsyncThunk(
+  "cart/applyCoupon",
+  async (coupon: string, { getState, rejectWithValue }) => {
+    try {
+      const state = getState() as { cart: CartState };
+      const response = await axiosInstance.post("/cart/apply-coupon", {
+        coupon_code: coupon,
+        order_items: state.cart.cartItems.map((item: CartItem) => ({
+          book_id: item.id,
+          quantity: item.selectedQuantity,
+        })),
+      });
+      return {
+        coupon: coupon,
+        ...response.data,
+      };
+    } catch (error) {
+      return rejectWithValue(extractAxiosErr(error));
+    }
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -83,19 +110,40 @@ const cartSlice = createSlice({
       Object.assign(state, initialState);
       localStorage.removeItem("cartState");
     },
-    applyCoupon: (state, action: PayloadAction<{ coupon: string }>) => {
-      const coupon = action.payload.coupon;
-      state.coupon = coupon;
-      state.discount = 150;
-      state.grandTotal = calculateGrandTotal(state);
-      localStorage.setItem("cartState", JSON.stringify(state));
-    },
     removeCoupon: (state) => {
       state.coupon = null;
       state.discount = 0;
+      state.deliveryCharge = initialDeliveryCharge;
+      state.isLoading = false;
       state.grandTotal = calculateGrandTotal(state);
       localStorage.setItem("cartState", JSON.stringify(state));
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(
+      applyCoupon.fulfilled,
+      (
+        state,
+        action: PayloadAction<{
+          coupon: string;
+          discount: number;
+          shipping_charge: number;
+        }>
+      ) => {
+        state.coupon = action.payload.coupon;
+        state.discount = action.payload.discount;
+        if (action.payload.shipping_charge !== -1)
+          state.deliveryCharge = action.payload.shipping_charge;
+        state.grandTotal = calculateGrandTotal(state);
+        localStorage.setItem("cartState", JSON.stringify(state));
+      }
+    );
+    builder.addCase(applyCoupon.rejected, (state, action) => {
+      state.isLoading = false;
+    });
+    builder.addCase(applyCoupon.pending, (state) => {
+      state.isLoading = true;
+    });
   },
 });
 
@@ -103,7 +151,6 @@ export const {
   addItemToCart,
   removeItemFromCart,
   clearCart,
-  applyCoupon,
   removeCoupon,
   initCartState,
 } = cartSlice.actions;
