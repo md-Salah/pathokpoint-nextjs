@@ -1,23 +1,23 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { IoIosLogOut, IoIosStarOutline, IoMdHeartEmpty } from "react-icons/io";
-import { BsPerson } from "react-icons/bs";
-import { IoPersonCircleOutline } from "react-icons/io5";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { BsPerson } from 'react-icons/bs';
+import { IoIosLogOut, IoIosStarOutline, IoMdHeartEmpty } from 'react-icons/io';
+import { IoPersonCircleOutline } from 'react-icons/io5';
+import { PiBagLight } from 'react-icons/pi';
+import { useDispatch } from 'react-redux';
 
-import { AppDispatch } from "@/redux/store";
-import { logout } from "@/redux/features/auth-slice";
-import { useUser } from "@/hooks";
-import { defaultSrc } from "@/constants";
-import { PiBagLight } from "react-icons/pi";
+import { defaultSrc } from '@/constants';
+import { useUser } from '@/hooks';
+import { logout } from '@/redux/features/auth-slice';
+import { AppDispatch } from '@/redux/store';
 
 const Profile = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { user } = useUser("/user/me");
+  const { user } = useUser();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

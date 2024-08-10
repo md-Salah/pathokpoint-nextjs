@@ -49,10 +49,6 @@ export { default as FilterInMobile } from "./FilterInMobile";
 
 // Cart & Checkout
 export { default as Cart } from "./Cart";
-export { default as ShippingAddress } from "./ShippingAddress";
-export { default as PaymentMethod } from "./PaymentMethod";
-export { default as ShippingMethod } from "./ShippingMethod";
-export { default as OrderSummary } from "./OrderSummary";
 
 // On Boarding
 export { default as SignUpForm } from "./SignUpForm";

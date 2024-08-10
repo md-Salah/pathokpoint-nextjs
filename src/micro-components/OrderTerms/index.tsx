@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { social } from "@/constants";
+import { social } from '@/constants';
 
 const OrderTerms = () => {
   return (
-    <div className="font-bn">
+    <div className="font-bn max-w-lg">
       <h4 className="font-semibold sm:text-lg md:text-xl">শর্তাবলী</h4>
       <p className="mt-4 text-justify text-xs">
         নতুন বই আমাদের স্টকে না থাকলে প্রকাশনী থেকে সংগ্রহ করা হবে। কোন বই

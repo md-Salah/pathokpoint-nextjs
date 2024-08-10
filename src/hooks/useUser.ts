@@ -1,15 +1,19 @@
-import axiosInstance, { extractAxiosErr } from "@/utils/axiosConfig";
-import useSWR from "swr";
+import useSWR from 'swr';
 
-const useUser = (url: string) => {
-  const fetcher = async (url: string) => {
+import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
+
+const useUser = () => {
+  const token =
+    typeof window !== "undefined" &&
+    localStorage &&
+    localStorage.getItem("access_token")
+      ? localStorage.getItem("access_token")
+      : null;
+
+  const fetcher = async (token: string | null) => {
     try {
-      const token =
-        localStorage && localStorage.getItem("access_token")
-          ? localStorage.getItem("access_token")
-          : null;
       if (token) {
-        const userResponse = await axiosInstance.get(url, {
+        const userResponse = await axiosInstance.get("/user/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -24,7 +28,7 @@ const useUser = (url: string) => {
     }
   };
 
-  const { data, error, isLoading } = useSWR(url, fetcher);
+  const { data, error, isLoading } = useSWR(token, fetcher);
 
   return {
     user: data,

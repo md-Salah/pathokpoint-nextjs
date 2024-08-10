@@ -1,14 +1,14 @@
 "use client";
-import Link from "next/link";
-import { FormEvent, useState } from "react";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { FormEvent, useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { FacebookSVG, GoogleSVG } from "@/micro-components";
-import { login } from "@/redux/features/auth-slice";
-import { AppDispatch, RootState } from "@/redux/store";
-import { isEmail } from "@/utils";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { FacebookSVG, GoogleSVG } from '@/micro-components';
+import { login } from '@/redux/features/auth-slice';
+import { AppDispatch, RootState } from '@/redux/store';
+import { isEmail } from '@/utils';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -48,7 +48,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    router.push("/");
+    router.back();
   }
 
   return (

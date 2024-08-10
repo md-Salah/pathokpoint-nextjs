@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import axios, { AxiosError, extractAxiosErr } from "@/utils/axiosConfig";
-import { User } from "@/interface";
+import { User } from '@/interface';
+import axios, { extractAxiosErr } from '@/utils/axiosConfig';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface InitialState {
   user: User | null;
@@ -16,32 +16,32 @@ const initialState: InitialState = {
   isStaff: false,
 };
 
-export const initializeAuth = createAsyncThunk(
-  "auth/initializeAuth",
-  async (_, { rejectWithValue }) => {
-    try {
-      const token =
-        localStorage && localStorage.getItem("access_token")
-          ? localStorage.getItem("access_token")
-          : null;
-      if (token) {
-        const userResponse = await axios.get("/user/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        return {
-          token,
-          user: userResponse.data,
-        };
-      }
-      return { token: null, user: null };
-    } catch (error) {
-      // console.error("Failed to initialize auth", error);
-      return rejectWithValue("Failed to initialize auth");
-    }
-  }
-);
+// export const initializeAuth = createAsyncThunk(
+//   "auth/initializeAuth",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const token =
+//         localStorage && localStorage.getItem("access_token")
+//           ? localStorage.getItem("access_token")
+//           : null;
+//       if (token) {
+//         const userResponse = await axios.get("/user/me", {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         });
+//         return {
+//           token,
+//           user: userResponse.data,
+//         };
+//       }
+//       return { token: null, user: null };
+//     } catch (error) {
+//       // console.error("Failed to initialize auth", error);
+//       return rejectWithValue("Failed to initialize auth");
+//     }
+//   }
+// );
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -99,22 +99,22 @@ export const authSlice = createSlice({
       .addCase(login.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
       })
-      .addCase(
-        initializeAuth.fulfilled,
-        (
-          state,
-          action: PayloadAction<{
-            token: string | null;
-            user: User | null;
-          }>
-        ) => {
-          state.token = action.payload.token;
-          state.user = action.payload.user;
-          state.isStaff = action.payload.user
-            ? isStaff(action.payload.user.role)
-            : false;
-        }
-      );
+      // .addCase(
+      //   initializeAuth.fulfilled,
+      //   (
+      //     state,
+      //     action: PayloadAction<{
+      //       token: string | null;
+      //       user: User | null;
+      //     }>
+      //   ) => {
+      //     state.token = action.payload.token;
+      //     state.user = action.payload.user;
+      //     state.isStaff = action.payload.user
+      //       ? isStaff(action.payload.user.role)
+      //       : false;
+      //   }
+      // );
   },
 });
 

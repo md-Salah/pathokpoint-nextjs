@@ -9,3 +9,4 @@ export { social } from "./social";
 export { bookSortOptions, bookGlobalOptions } from "./filter";
 export { users } from "./users";
 export { defaultSrc } from "./default";
+export { paymentMethods } from "./paymentMethods";

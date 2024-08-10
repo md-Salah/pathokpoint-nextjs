@@ -1,12 +1,11 @@
-import { IoInformationCircleOutline } from "react-icons/io5";
+import { IoInformationCircleOutline } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
+
+import { RootState } from '@/redux/store';
 
 const OrderSummary = () => {
-  const totalItems = 5;
-  const totalSum = 500;
-  const discount = 200;
-  const deliveryCharge = 100;
-  const weightCharge = 50;
-  const grandTotal = totalSum + 100 - discount;
+  const { cartItems, grandTotal, deliveryCharge, weightCharge, discount } =
+    useSelector((state: RootState) => state.cart);
 
   return (
     <div>
@@ -14,9 +13,9 @@ const OrderSummary = () => {
       <table className="mt-4 table text-sm table-px-0 table-no-border dropdown text-black02">
         <tbody>
           <tr>
-            <td className="pl-0">Sub total ({totalItems} items)</td>
+            <td className="pl-0">Sub total ({cartItems.length} items)</td>
             <td></td>
-            <td className="w-10">৳{totalSum}</td>
+            <td className="w-10">৳{grandTotal}</td>
           </tr>
           <tr>
             <td>

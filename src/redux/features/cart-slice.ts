@@ -1,42 +1,8 @@
-import { CartItem } from '@/interface';
+import { Address, CartItem } from '@/interface';
 import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const cartStateFromLocalStorage = () => {
-  if (
-    typeof localStorage !== "undefined" &&
-    localStorage.getItem("cartState")
-  ) {
-    return JSON.parse(localStorage.getItem("cartState") as string);
-  }
-  return initialState;
-};
-
 const initialDeliveryCharge = 60;
-
-const initialState: CartState = {
-  cartItems: [],
-  deliveryCharge: initialDeliveryCharge,
-  weightCharge: 0,
-  coupon: null,
-  discount: 0,
-  subTotal: 0,
-  grandTotal: 0,
-  isLoading: false,
-};
-
-const calculateSubTotal = (cartItems: CartItem[]): number => {
-  return cartItems.reduce(
-    (acc, item) => acc + item.sale_price * item.selectedQuantity,
-    0
-  );
-};
-
-const calculateGrandTotal = (state: CartState): number => {
-  return (
-    state.subTotal + state.deliveryCharge + state.weightCharge - state.discount
-  );
-};
 
 interface CartState {
   cartItems: CartItem[];
@@ -47,7 +13,39 @@ interface CartState {
   subTotal: number;
   grandTotal: number;
   isLoading: boolean;
+  termsAggreed: boolean;
+  address: Address;
+  customerNote: string;
+  isCashOnDelivery: boolean;
+  paymentMethod: string | null;
+  courierId: string | null;
 }
+
+const initialState: CartState = {
+  cartItems: [],
+  deliveryCharge: initialDeliveryCharge,
+  weightCharge: 0,
+  coupon: null,
+  discount: 0,
+  subTotal: 0,
+  grandTotal: 0,
+  isLoading: false,
+  termsAggreed: false,
+  address: {
+    id: "",
+    name: "",
+    phone_number: "",
+    alternative_phone_number: null,
+    address: "",
+    thana: "",
+    city: "",
+    country: "Bangladesh",
+  },
+  customerNote: "",
+  isCashOnDelivery: false,
+  paymentMethod: null,
+  courierId: null,
+};
 
 export const applyCoupon = createAsyncThunk(
   "cart/applyCoupon",
@@ -65,6 +63,31 @@ export const applyCoupon = createAsyncThunk(
         coupon: coupon,
         ...response.data,
       };
+    } catch (error) {
+      return rejectWithValue(extractAxiosErr(error));
+    }
+  }
+);
+
+export const placeOrder = createAsyncThunk(
+  "cart/placeOrder",
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { cart } = getState() as { cart: CartState };
+      const payload = {
+        order_items: cart.cartItems.map((item: CartItem) => ({
+          book_id: item.id,
+          quantity: item.selectedQuantity,
+        })),
+        address: cart.address,
+        customer_note: cart.customerNote,
+        is_full_paid: !cart.isCashOnDelivery,
+        courier_id: cart.courierId,
+        coupon_code: cart.coupon,
+      };
+      console.log("Order payload:", payload);
+      // const response = await axiosInstance.post("/cart/place-order", payload);
+      // return response.data;
     } catch (error) {
       return rejectWithValue(extractAxiosErr(error));
     }
@@ -118,6 +141,24 @@ const cartSlice = createSlice({
       state.grandTotal = calculateGrandTotal(state);
       localStorage.setItem("cartState", JSON.stringify(state));
     },
+    updateAddress: (state, action: PayloadAction<Address>) => {
+      state.address = action.payload;
+    },
+    updateCustomerNote: (state, action: PayloadAction<string>) => {
+      state.customerNote = action.payload;
+    },
+    selectCourier: (state, action: PayloadAction<string>) => {
+      state.courierId = action.payload;
+    },
+    toggleTermsAggreed: (state) => {
+      state.termsAggreed = !state.termsAggreed;
+    },
+    toggleCashOnDelivery: (state) => {
+      state.isCashOnDelivery = !state.isCashOnDelivery;
+    },
+    selectPaymentMethod: (state, action: PayloadAction<string>) => {
+      state.paymentMethod = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -144,6 +185,9 @@ const cartSlice = createSlice({
     builder.addCase(applyCoupon.pending, (state) => {
       state.isLoading = true;
     });
+    builder.addCase(placeOrder.fulfilled, (state) => {
+      state.isLoading = false;
+    });
   },
 });
 
@@ -153,5 +197,34 @@ export const {
   clearCart,
   removeCoupon,
   initCartState,
+  updateAddress,
+  updateCustomerNote,
+  selectCourier,
+  toggleTermsAggreed,
+  toggleCashOnDelivery,
+  selectPaymentMethod,
 } = cartSlice.actions;
 export default cartSlice.reducer;
+
+const calculateSubTotal = (cartItems: CartItem[]): number => {
+  return cartItems.reduce(
+    (acc, item) => acc + item.sale_price * item.selectedQuantity,
+    0
+  );
+};
+
+const calculateGrandTotal = (state: CartState): number => {
+  return (
+    state.subTotal + state.deliveryCharge + state.weightCharge - state.discount
+  );
+};
+
+const cartStateFromLocalStorage = () => {
+  if (
+    typeof localStorage !== "undefined" &&
+    localStorage.getItem("cartState")
+  ) {
+    return JSON.parse(localStorage.getItem("cartState") as string);
+  }
+  return initialState;
+};
