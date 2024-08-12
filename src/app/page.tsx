@@ -1,23 +1,10 @@
 import {
-  AuthorCard,
-  BookCard,
-  Carousel,
-  CategoryCard,
-  BigSale,
-  HeroSection,
-  PublisherCard,
-  ReviewCard,
-  Genre,
-} from "@/components";
-
-import { reviews } from "@/constants";
-import { Author, Book, Category, Publisher } from "@/interface";
-import {
-  getAuthors,
-  getBooks,
-  getCategories,
-  getPublishers,
-} from "@/utils/api";
+    AuthorCard, BigSale, BookCard, Carousel, CategoryCard, Genre, HeroSection, PublisherCard,
+    ReviewCard
+} from '@/components';
+import { reviews } from '@/constants';
+import { Author, Book, Category, Publisher } from '@/interface';
+import { getAuthors, getBooks, getCategories, getPublishers } from '@/utils/api';
 
 const Home = async () => {
   const authors: Author[] = await getAuthors("");
@@ -37,7 +24,9 @@ const Home = async () => {
     <div className="min-h-screen">
       <HeroSection categories={categories} />
 
-      <Genre categories={categories} />
+      <div className="md:hidden">
+        <Genre categories={categories} />
+      </div>
 
       <BigSale books={bigSaleBooks} />
 

@@ -1,11 +1,11 @@
 "use client";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { CiShoppingCart } from "react-icons/ci";
-import { useDispatch, useSelector } from "react-redux";
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import { CiShoppingCart } from 'react-icons/ci';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { AppDispatch, RootState } from "@/redux/store";
-import { initCartState } from "@/redux/features/cart-slice";
+import { initCartState } from '@/redux/features/cart-slice';
+import { AppDispatch, RootState } from '@/redux/store';
 
 const Cart = () => {
   const dispatch = useDispatch<AppDispatch>();

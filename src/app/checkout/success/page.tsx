@@ -1,18 +1,22 @@
-"use client";
-import { social } from "@/constants";
-import {
-  MessengerSVG,
-  PaymentSuccessSVG,
-  WhatsAppSVG,
-} from "@/micro-components";
-import Link from "next/link";
-import { FaRegCopy } from "react-icons/fa";
+import Link from 'next/link';
 
-const Success = () => {
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText("ID#87452");
+import { NotFound } from '@/components';
+import { social } from '@/constants';
+import { MessengerSVG, PaymentSuccessSVG, WhatsAppSVG } from '@/micro-components';
+
+import CopyInvoice from './CopyInvoice';
+
+interface Props {
+  searchParams?: {
+    invoice?: string;
   };
+}
 
+const Success = ({ searchParams }: Props) => {
+  const params = new URLSearchParams(searchParams);
+  const invoice = params.get("invoice") || null;
+
+  if (!invoice) return <NotFound>Empty!</NotFound>;
   return (
     <div className="layout-container layout-mt layout-p bg-white">
       <div className="mx-auto my-4 max-w-3xl flex flex-col items-center">
@@ -21,17 +25,12 @@ const Success = () => {
           <PaymentSuccessSVG />
         </div>
         <p className="mt-6 text-xs sm:text-sm">Order placed successfully.</p>
-        <div className="text-xs sm:text-sm flex items-center gap-1">
+        <div className="mt-2 text-xs sm:text-sm flex items-center gap-1">
           <p>
-            Track your order&nbsp;
-            <span className="text-primary font-semibold">ID#87452</span>
+            Track your order with invoice&nbsp;
+            <span className="text-primary font-semibold">#{invoice}</span>
           </p>
-          <button className="btn btn-link">
-            <FaRegCopy
-              className="inline-block text-black04 w-4 sm:w-5 h-4 sm:h-5"
-              onClick={copyToClipboard}
-            />
-          </button>
+          <CopyInvoice invoice={invoice} />
         </div>
 
         <div className="mt-6 flex gap-2">
@@ -57,9 +56,12 @@ const Success = () => {
         </p>
 
         <div className="mt-6 flex gap-2">
-          <button className="btn btn-primary btn-sm w-36 md:w-40 h-10 md:h-11">
+          <Link
+            href={`/user/my-order/${invoice}`}
+            className="btn btn-primary btn-sm w-36 md:w-40 h-10 md:h-11"
+          >
             Track Order
-          </button>
+          </Link>
           <button className="btn btn-primary btn-sm btn-outline w-36 md:w-40 h-10 md:h-11">
             Invoice
           </button>

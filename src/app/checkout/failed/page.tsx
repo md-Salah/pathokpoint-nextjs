@@ -1,5 +1,7 @@
-import { PaymentCanceledSVG } from "@/micro-components";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
+
+import { PaymentCanceledSVG } from '@/micro-components';
 
 const Failed = () => {
   return (
@@ -10,9 +12,12 @@ const Failed = () => {
           <PaymentCanceledSVG />
         </div>
         <p className="mt-6 text-xs sm:text-sm">Your order has been canceled.</p>
-        <button className="mt-8 btn btn-primary btn-sm h-11 w-72">
+        <Link
+          href="/checkout"
+          className="mt-8 btn btn-primary btn-sm h-11 w-72"
+        >
           Back to checkout
-        </button>
+        </Link>
       </div>
     </div>
   );

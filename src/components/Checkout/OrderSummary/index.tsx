@@ -4,8 +4,14 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 
 const OrderSummary = () => {
-  const { cartItems, grandTotal, deliveryCharge, weightCharge, discount } =
-    useSelector((state: RootState) => state.cart);
+  const {
+    cartItems,
+    subTotal,
+    grandTotal,
+    deliveryCharge,
+    weightCharge,
+    discount,
+  } = useSelector((state: RootState) => state.cart);
 
   return (
     <div>
@@ -15,7 +21,7 @@ const OrderSummary = () => {
           <tr>
             <td className="pl-0">Sub total ({cartItems.length} items)</td>
             <td></td>
-            <td className="w-10">৳{grandTotal}</td>
+            <td className="w-10">৳{subTotal}</td>
           </tr>
           <tr>
             <td>
@@ -34,7 +40,7 @@ const OrderSummary = () => {
               </div>
             </td>
             <td></td>
-            <td>৳{deliveryCharge}</td>
+            <td>৳{deliveryCharge + weightCharge}</td>
           </tr>
           {discount > 0 && (
             <tr>

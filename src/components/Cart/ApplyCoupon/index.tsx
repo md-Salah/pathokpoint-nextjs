@@ -25,7 +25,7 @@ const ApplyCoupon = ({ handleCoupon, isLoading }: Props) => {
       {coupons && coupons.length > 0 && (
         <div className="mt-10 rounded border border-primary">
           {coupons.map((coupon: Coupon, index: number) => (
-            <>
+            <div key={coupon.code}>
               <Voucher
                 code={coupon.code}
                 description={coupon.short_description || ""}
@@ -34,7 +34,7 @@ const ApplyCoupon = ({ handleCoupon, isLoading }: Props) => {
               {index !== coupons.length - 1 && (
                 <div className="border-b border-dashed border-b-black05"></div>
               )}
-            </>
+            </div>
           ))}
         </div>
       )}

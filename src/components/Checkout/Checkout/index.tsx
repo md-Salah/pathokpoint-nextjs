@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import AcceptTerms, {
@@ -10,20 +11,39 @@ import { useUser } from '@/hooks';
 import { OrderTerms } from '@/micro-components';
 import { placeOrder } from '@/redux/features/cart-slice';
 import { AppDispatch, RootState } from '@/redux/store';
+import axiosInstance from '@/utils/axiosConfig';
 
 const Checkout = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const { termsAggreed } = useSelector((state: RootState) => state.cart);
+  const [err, setErr] = useState<string | null>(null);
 
   const { user } = useUser();
 
+  const handlePayment = async (orderId: string) => {
+    try {
+      const res = await axiosInstance.get("/payment/bkash", {
+        params: { order_id: orderId },
+      });
+      router.push(res.data);
+    } catch (error) {
+      setErr("Failed with payment gateway. Please try again.");
+    }
+  };
+
   const handleCheckout = async () => {
-    if (!termsAggreed) return;
-    // if (!user) {
-    //   router.push("/auth/login");
-    // }
-    dispatch(placeOrder());
+    if (!user) {
+      router.push("/auth/login");
+    }
+    setErr(null);
+    const action = await dispatch(placeOrder());
+    if (placeOrder.rejected.match(action)) {
+      setErr(action.payload as string);
+    } else if (placeOrder.fulfilled.match(action)) {
+      await handlePayment(action.payload.id);
+    }
+    // await handlePayment("00071f7e-f6e4-45f1-b611-a2a3a334d1c5");
   };
 
   return (
@@ -60,6 +80,7 @@ const Checkout = () => {
             </div>
             <div className="mt-8">
               <AcceptTerms />
+              {err && <p className="text-highlight text-sm mt-8">{err}</p>}
               <button
                 className={`mt-4 btn btn-primary w-full ${
                   !termsAggreed && "btn-disabled"

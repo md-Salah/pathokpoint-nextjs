@@ -7,7 +7,7 @@ const WhatsAppSVG = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1227_6452)">
+      <g clipPath="url(#clip0_1227_6452)">
         <path
           d="M0.895547 20.7486C0.894562 24.2775 1.82381 27.7231 3.59077 30.7601L0.726562 41.1367L11.4287 38.3523C14.3888 39.9513 17.7053 40.7891 21.0756 40.7893H21.0844C32.2103 40.7893 41.2671 31.806 41.2718 20.7644C41.274 15.414 39.1759 10.3828 35.3641 6.59757C31.5529 2.81269 26.4842 0.727173 21.0836 0.724731C9.95639 0.724731 0.900305 9.70752 0.895711 20.7486"
           fill="url(#paint0_linear_1227_6452)"
@@ -30,8 +30,8 @@ const WhatsAppSVG = () => {
           y2="0.724731"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#1FAF38" />
-          <stop offset="1" stop-color="#60D669" />
+          <stop stopColor="#1FAF38" />
+          <stop offset="1" stopColor="#60D669" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_1227_6452"
@@ -41,8 +41,8 @@ const WhatsAppSVG = () => {
           y2="0"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F9F9F9" />
-          <stop offset="1" stop-color="white" />
+          <stop stopColor="#F9F9F9" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
         <clipPath id="clip0_1227_6452">
           <rect width="42" height="42" fill="white" />

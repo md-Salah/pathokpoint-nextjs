@@ -1,6 +1,9 @@
 import { Address, CartItem } from '@/interface';
+import { isEmail, isPhoneNumber } from '@/utils';
 import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { AuthState } from './auth-slice';
 
 const initialDeliveryCharge = 60;
 
@@ -34,12 +37,13 @@ const initialState: CartState = {
   address: {
     id: "",
     name: "",
+    email: "",
     phone_number: "",
     alternative_phone_number: null,
     address: "",
     thana: "",
     city: "",
-    country: "Bangladesh",
+    country: "BD",
   },
   customerNote: "",
   isCashOnDelivery: false,
@@ -73,21 +77,55 @@ export const placeOrder = createAsyncThunk(
   "cart/placeOrder",
   async (_, { getState, rejectWithValue }) => {
     try {
-      const { cart } = getState() as { cart: CartState };
+      const { cart, auth } = getState() as { cart: CartState; auth: AuthState };
+      // validation
+      if (!cart.termsAggreed) {
+        return rejectWithValue({
+          message: "Please accept the terms and conditions",
+        });
+      } else if (!cart.address.name.trim()) {
+        return rejectWithValue("Please provide your name");
+      } else if (!cart.address.phone_number.trim()) {
+        return rejectWithValue("Please provide your phone number");
+      } else if (!isPhoneNumber(cart.address.phone_number)) {
+        return rejectWithValue("Invalid phone number");
+      } else if (cart.address.email && !isEmail(cart.address.email)) {
+        return rejectWithValue("Invalid email address");
+      } else if (!cart.address.address.trim()) {
+        return rejectWithValue("Please provide shipping address");
+      } else if (!cart.address.thana.trim()) {
+        return rejectWithValue("Please provide your thana");
+      } else if (!cart.address.city.trim()) {
+        return rejectWithValue("Please select your district");
+      } else if (!cart.paymentMethod) {
+        return rejectWithValue("Please select a payment method");
+      } else if (!cart.courierId) {
+        return rejectWithValue("Please select a shipping method");
+      } else if (cart.cartItems.length === 0) {
+        return rejectWithValue("Your cart is empty, please add some items");
+      }
       const payload = {
         order_items: cart.cartItems.map((item: CartItem) => ({
           book_id: item.id,
           quantity: item.selectedQuantity,
         })),
-        address: cart.address,
+        address: {
+          ...cart.address,
+          email: cart.address.email?.trim() || null,
+          phone_number: `+88${cart.address.phone_number}`,
+        },
         customer_note: cart.customerNote,
         is_full_paid: !cart.isCashOnDelivery,
         courier_id: cart.courierId,
         coupon_code: cart.coupon,
+        payment_method: cart.paymentMethod,
       };
-      console.log("Order payload:", payload);
-      // const response = await axiosInstance.post("/cart/place-order", payload);
-      // return response.data;
+      const response = await axiosInstance.post("/order/new", payload, {
+        headers: {
+          Authorization: `Bearer ${auth.token ? auth.token : ""}`,
+        },
+      });
+      return response.data;
     } catch (error) {
       return rejectWithValue(extractAxiosErr(error));
     }
@@ -147,8 +185,11 @@ const cartSlice = createSlice({
     updateCustomerNote: (state, action: PayloadAction<string>) => {
       state.customerNote = action.payload;
     },
-    selectCourier: (state, action: PayloadAction<string>) => {
-      state.courierId = action.payload;
+    selectCourier: (state, action) => {
+      state.courierId = action.payload.id;
+      state.deliveryCharge = action.payload.baseCharge;
+      state.weightCharge = action.payload.weightChargePerKg;
+      state.grandTotal = calculateGrandTotal(state);
     },
     toggleTermsAggreed: (state) => {
       state.termsAggreed = !state.termsAggreed;
@@ -185,7 +226,13 @@ const cartSlice = createSlice({
     builder.addCase(applyCoupon.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(placeOrder.fulfilled, (state) => {
+    builder.addCase(placeOrder.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(placeOrder.fulfilled, (state, action) => {
+      state.isLoading = false;
+    });
+    builder.addCase(placeOrder.rejected, (state) => {
       state.isLoading = false;
     });
   },

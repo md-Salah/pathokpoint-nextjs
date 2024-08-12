@@ -9,19 +9,30 @@ interface Props {
   id: string;
   title: string;
   by?: string;
-  charge: string;
+  baseCharge: number;
+  weightChargePerKg: number;
   duration: string;
   qoute?: string;
 }
 
-const ShippingMethod = ({ id, title, by, charge, duration, qoute }: Props) => {
+const ShippingMethod = ({
+  id,
+  title,
+  by,
+  baseCharge,
+  weightChargePerKg,
+  duration,
+  qoute,
+}: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const { courierId } = useSelector((state: RootState) => state.cart);
 
   return (
     <div
       className="flex flex-row items-center p-2 pl-5 gap-x-5 min-w-72 min-h-20 grow cursor-pointer border rounded border-black05"
-      onClick={() => dispatch(selectCourier(id))}
+      onClick={() =>
+        dispatch(selectCourier({ id, baseCharge, weightChargePerKg }))
+      }
     >
       <input
         type="radio"
@@ -36,7 +47,7 @@ const ShippingMethod = ({ id, title, by, charge, duration, qoute }: Props) => {
         )}
         <div className="flex items-center">
           <TbCoinTaka className="inline-block mr-1 min-w-4 min-h-4" />
-          <span>{charge + ","}</span>
+          <span>{baseCharge + " Tk,"}</span>
           <TbClock className="inline-block mr-1 ml-2 min-w-4 min-h-4" />
           <span>{duration}</span>
         </div>

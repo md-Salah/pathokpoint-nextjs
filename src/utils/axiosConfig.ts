@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BACKEND_BASE_URL,
@@ -12,7 +12,7 @@ const extractAxiosErr = (error: any) => {
   const msg =
     axiosError.response?.data.detail.message || "An unknown error occurred";
   if (msg === "An unknown error occurred") {
-    console.error("Unknown error details:", error);
+    console.error("Unknown error details:", error.response);
   }
   return msg;
 };
