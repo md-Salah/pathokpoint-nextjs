@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,9 +34,9 @@ const Checkout = () => {
   };
 
   const handleCheckout = async () => {
-    if (!user) {
-      router.push("/auth/login");
-    }
+    // if (!user) {
+    //   router.push("/auth/login");
+    // }
     setErr(null);
     const action = await dispatch(placeOrder());
     if (placeOrder.rejected.match(action)) {
@@ -48,13 +49,13 @@ const Checkout = () => {
 
   return (
     <div className="layout-container">
-      {/* {!user && (
+      {!user && (
         <div className="flex items-center justify-center layout-mt bg-white h-10 text-sm text-primary">
           <Link href="/auth/login" className="hover:underline">
             CLICK HERE TO LOGIN
           </Link>
         </div>
-      )} */}
+      )}
 
       <div className="grid grid-cols-12 md:gap-3">
         <section className="layout-p layout-mt bg-white col-span-12 md:col-span-5 xl:col-span-4">
