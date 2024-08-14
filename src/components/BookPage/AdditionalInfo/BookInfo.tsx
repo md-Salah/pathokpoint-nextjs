@@ -1,7 +1,7 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Book as BookInterface } from "@/interface";
-import { isEnglish } from "@/utils";
+import { Book as BookInterface } from '@/interface';
+import { isEnglish } from '@/utils';
 
 const BookInfo = ({
   book,
@@ -19,23 +19,27 @@ const BookInfo = ({
       >
         {book.name}
       </h1>
-      <h3
-        className="mt-2 text-xs md:text-sm half-underline before:w-9 group w-fit hover:cursor-pointer pb-2"
-        onClick={() => setTab("Author")}
-      >
-        by
-        <span
-          className={`ml-1 group-hover:text-primary ${
-            !isEnglish(book.authors[0].name) && "font-bn"
-          }`}
+      {book.authors.length > 0 && (
+        <h3
+          className="mt-2 text-xs md:text-sm half-underline before:w-9 group w-fit hover:cursor-pointer pb-2"
+          onClick={() => setTab("Author")}
         >
-          {book.authors[0].name}
-        </span>
-      </h3>
+          by
+          <span
+            className={`ml-1 group-hover:text-primary ${
+              !isEnglish(book.authors[0].name) && "font-bn"
+            }`}
+          >
+            {book.authors[0].name}
+          </span>
+        </h3>
+      )}
 
-      <p className="text-justify mt-4 md:mt-10 font-bn w-full text-sm md:text-base">
+      <p className="text-justify mt-4 md:mt-10 w-full text-sm md:text-base">
         {book.description ? (
-          book.description
+          <span className={`${!isEnglish(book.name) && "font-bn"}`}>
+            {book.description}
+          </span>
         ) : (
           <span className="text-black04">No description available</span>
         )}

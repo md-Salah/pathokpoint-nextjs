@@ -1,34 +1,30 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import { AiFillMinusCircle } from 'react-icons/ai';
+import { IoIosCheckmarkCircle } from 'react-icons/io';
+import { PiSealPercentFill } from 'react-icons/pi';
+import { useDispatch } from 'react-redux';
 
-import { Book } from "@/interface";
+import { defaultSrc } from '@/constants';
+import { Book } from '@/interface';
 import {
-  ConditionBadge,
-  ConditionExplain,
-  WishlistButton,
-  NumberInput,
-  Share,
-} from "@/micro-components";
-import { isEnglish } from "@/utils";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { AiFillMinusCircle } from "react-icons/ai";
-import { PiSealPercentFill } from "react-icons/pi";
-import { useState } from "react";
-import { defaultSrc } from "@/constants";
-import { AppDispatch } from "@/redux/store";
-import { useDispatch } from "react-redux";
-import { addItemToCart } from "@/redux/features/cart-slice";
+    ConditionBadge, ConditionExplain, NumberInput, Share, WishlistButton
+} from '@/micro-components';
+import { addItemToCart } from '@/redux/features/cart-slice';
+import { AppDispatch } from '@/redux/store';
+import { isEnglish } from '@/utils';
 
 interface Props {
   book: Book;
 }
 
 const BookDetails = ({ book }: Props) => {
-  const copyText = `${book.name} (${book.condition}) by ${book.authors[0]?.name}, ${book.sale_price} Tk`;
+  const dispatch = useDispatch<AppDispatch>();
   const [qty, setQty] = useState<number>(Math.min(1, book.quantity));
   const [isAdded, setIsAdded] = useState<boolean>(false);
-  const dispatch = useDispatch<AppDispatch>();
+  const copyText = `${book.name} (${book.condition}) by ${book.authors[0]?.name}, ${book.sale_price} Tk`;
 
   const handleAddToCart = () => {
     dispatch(
