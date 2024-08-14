@@ -1,9 +1,11 @@
-import { MobileHeader } from "@/components/UserProfile";
-import BookItem from "./BookItem";
+import { MobileHeader } from '@/components/UserProfile';
+import { Book } from '@/interface';
+import { getBooks } from '@/utils/api';
 
-import { books } from "@/constants";
+import BookItem from './BookItem';
 
-const Wishlist = () => {
+const Wishlist = async () => {
+  const books: Book[] = await getBooks();
   return (
     <div className="bg-white">
       <MobileHeader title="Wishlist" />

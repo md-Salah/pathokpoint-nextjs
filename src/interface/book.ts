@@ -13,27 +13,36 @@ export interface Book {
   publisher: Publisher;
   regular_price: number;
   sale_price: number;
+  manage_stock: boolean;
   quantity: number;
+  in_stock: boolean;
+  pre_order: boolean;
+  shipping_required: boolean;
   description: string | null;
-  condition: string;
   short_description: string | null;
   images: Array<Image>;
-  
-  in_stock?: boolean;
-  is_used?: boolean;
-  edition?: string;
-  cover?: string;
+
+  is_used: boolean;
+  condition: string;
+  edition: string | null;
+  notes?: string | null;
+  cover: string | null;
   translators?: Array<Author>;
-  language?: string;
-  isbn?: string;
-  no_of_pages?: number;
-  tags?: Array<{ id: string; name: string; slug: string }>;
-  weight_in_gm?: number;
+  language: string | null;
+  isbn: string | null;
+  no_of_pages: number | null;
+  country: string | null;
+  tags: Array<{ id: string; name: string; slug: string }>;
+  bar_code: string | null;
+  weight_in_gm: number;
+
+  created_at: string;
+  updated_at: string;
 }
 
 export interface CartItem {
   id: string;
-  public_id?: number;
+  public_id: number;
   name: string;
   slug: string;
   authors: Array<Author>;
@@ -42,7 +51,7 @@ export interface CartItem {
   quantity: number;
   condition: string;
   images: Array<Image>;
-  cover?: string;
+  cover: string | null;
   selectedQuantity: number;
   weight_in_gm: number;
 }

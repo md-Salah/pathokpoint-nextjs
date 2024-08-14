@@ -1,13 +1,16 @@
-import BooksTable from "./BooksTable";
-import DeliveryDetailsSummary from "./DeliveryDetailsSummary";
-import TransactionsTable from "./TransactionsTable";
-import ProgressTracker from "./ProgressTracker";
-import BookItemMobile from "./BookItemMobile";
-import PaymentItem from "./PaymentItem";
+import { Book } from '@/interface';
+import { getBooks } from '@/utils/api';
 
-import { books } from "@/constants";
+import BookItemMobile from './BookItemMobile';
+import BooksTable from './BooksTable';
+import DeliveryDetailsSummary from './DeliveryDetailsSummary';
+import PaymentItem from './PaymentItem';
+import ProgressTracker from './ProgressTracker';
+import TransactionsTable from './TransactionsTable';
 
-const OrderDetails = () => {
+const OrderDetails = async () => {
+  const books: Book[] = await getBooks();
+
   return (
     <div className="">
       <div className="bg-white">
@@ -48,7 +51,6 @@ const OrderDetails = () => {
 
       <DeliveryDetailsSummary />
 
-      
       <div className="bg-white lg:hidden p-4 mt-4 flex flex-col space-y-4">
         <div className="font-bold">
           <h2>Payment Info</h2>

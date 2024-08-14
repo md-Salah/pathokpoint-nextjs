@@ -1,26 +1,22 @@
-import Image from "next/image";
+import Image from 'next/image';
+import { BsTrash } from 'react-icons/bs';
+import { MdOutlineAddShoppingCart } from 'react-icons/md';
 
-import { ConditionBadge } from "@/micro-components";
-import { BsTrash } from "react-icons/bs";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
-
-import { Book } from "@/interface";
-import { isEnglish } from "@/utils";
+import { defaultSrc } from '@/constants';
+import { Book } from '@/interface';
+import { ConditionBadge } from '@/micro-components';
+import { isEnglish } from '@/utils';
 
 const BookItem = ({ book }: { book: Book }) => {
-  const defaultSrc = "/default/book.png";
-
   return (
     <div className="flex justify-between pb-4 border-b border-b-black06">
       <div className="flex items-start space-x-3">
         <figure className="h-full w-16 sm:min-w-20 sm:w-20 relative group-hover:opacity-80">
           <Image
-            src={book.images[0].src || defaultSrc}
+            src={book.images[0]?.src || defaultSrc.book}
             alt={book.name}
             fill
             className="object-contain object-left"
-            placeholder="blur"
-            blurDataURL={defaultSrc}
           />
         </figure>
         <div className="flex flex-col space-y-1 h-full justify-between">
