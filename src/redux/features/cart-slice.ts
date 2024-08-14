@@ -132,6 +132,37 @@ export const placeOrder = createAsyncThunk(
   }
 );
 
+export const selectCourier = createAsyncThunk(
+  "cart/selectCourier",
+  async (courierId: string, { getState, rejectWithValue }) => {
+    const { cart } = getState() as { cart: CartState };
+
+    const payload = {
+      order_items: cart.cartItems.map((item: CartItem) => ({
+        book_id: item.id,
+        quantity: item.selectedQuantity,
+      })),
+      address: {
+        ...cart.address,
+        email: cart.address.email?.trim() || null,
+        phone_number: `+88${cart.address.phone_number}`,
+      },
+      customer_note: cart.customerNote,
+      is_full_paid: !cart.isCashOnDelivery,
+      courier_id: courierId,
+      coupon_code: cart.coupon,
+      payment_method: cart.paymentMethod,
+    };
+
+    try {
+      const response = await axiosInstance.post("/checkout/summary", payload);
+      return { ...response.data, courier_id: courierId };
+    } catch (error) {
+      return rejectWithValue(extractAxiosErr(error));
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -185,12 +216,6 @@ const cartSlice = createSlice({
     updateCustomerNote: (state, action: PayloadAction<string>) => {
       state.customerNote = action.payload;
     },
-    selectCourier: (state, action) => {
-      state.courierId = action.payload.id;
-      state.deliveryCharge = action.payload.baseCharge;
-      state.weightCharge = action.payload.weightChargePerKg;
-      state.grandTotal = calculateGrandTotal(state);
-    },
     toggleTermsAggreed: (state) => {
       state.termsAggreed = !state.termsAggreed;
     },
@@ -199,6 +224,9 @@ const cartSlice = createSlice({
     },
     selectPaymentMethod: (state, action: PayloadAction<string>) => {
       state.paymentMethod = action.payload;
+      if (state.grandTotal < 100) {
+        state.isCashOnDelivery = false;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -235,6 +263,14 @@ const cartSlice = createSlice({
     builder.addCase(placeOrder.rejected, (state) => {
       state.isLoading = false;
     });
+    builder.addCase(selectCourier.fulfilled, (state, action) => {
+      state.courierId = action.payload.courier_id;
+      state.deliveryCharge = action.payload.shipping_charge;
+      state.weightCharge = action.payload.weight_charge;
+      state.subTotal = action.payload.sub_total;
+      state.grandTotal = calculateGrandTotal(state);
+      localStorage.setItem("cartState", JSON.stringify(state));
+    });
   },
 });
 
@@ -246,7 +282,6 @@ export const {
   initCartState,
   updateAddress,
   updateCustomerNote,
-  selectCourier,
   toggleTermsAggreed,
   toggleCashOnDelivery,
   selectPaymentMethod,

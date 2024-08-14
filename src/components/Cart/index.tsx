@@ -26,19 +26,24 @@ const Cart = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleCoupon = async (code: string) => {
-    if (code.trim() === "") return;
+    if (code.trim() === "") return true;
     setErr(null);
     const action = await dispatch(applyCoupon(code.trim()));
     if (applyCoupon.rejected.match(action)) {
       setErr(action.payload as string);
+      return false;
     }
+    return true;
   };
 
   const handleCheckout = async () => {
     if (cartItems.length === 0) return;
-    setLoading(true);
-    coupon && (await handleCoupon(coupon));
-    setLoading(false);
+    if (coupon) {
+      setLoading(true);
+      const isValid = await handleCoupon(coupon);
+      setLoading(false);
+      if (!isValid) return;
+    }
     router.push("/checkout");
   };
 

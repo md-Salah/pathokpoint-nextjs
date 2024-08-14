@@ -11,14 +11,14 @@ const Home = async () => {
   const categories: Category[] = await getCategories("");
   const publishers: Publisher[] = await getPublishers("");
 
-  const featuredBooks: Book[] = await getBooks("is_featured=true");
-  const recentlyAddedBooks: Book[] = await getBooks("order_by=-created_at");
-  const mustReadBooks: Book[] = await getBooks("is_must_read=true");
-  const islamicBooks: Book[] = await getBooks("is_islamic=true");
-  const englishBooks: Book[] = await getBooks("language=english");
-  const translatedBooks: Book[] = await getBooks("is_translated=true");
-  const sebaBooks: Book[] = await getBooks("publisher__name__in=সেবা প্রকাশনী");
-  const bigSaleBooks: Book[] = await getBooks("is_big_sale=true");
+  const featuredBooks: Book[] = await getBooks("is_featured=true&in_stock=true");
+  const recentlyAddedBooks: Book[] = await getBooks("order_by=-created_at&in_stock=true");
+  const mustReadBooks: Book[] = await getBooks("is_must_read=true&in_stock=true");
+  const islamicBooks: Book[] = await getBooks("is_islamic=true&in_stock=true");
+  const englishBooks: Book[] = await getBooks("language=english&in_stock=true");
+  const translatedBooks: Book[] = await getBooks("is_translated=true&in_stock=true");
+  const sebaBooks: Book[] = await getBooks("publisher__name__in=সেবা প্রকাশনী&in_stock=true");
+  const bigSaleBooks: Book[] = await getBooks("is_big_sale=true&in_stock=true");
 
   return (
     <div className="min-h-screen">

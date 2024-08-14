@@ -1,57 +1,38 @@
 import { TbClock, TbCoinTaka } from 'react-icons/tb';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { selectCourier } from '@/redux/features/cart-slice';
-import { AppDispatch, RootState } from '@/redux/store';
+import { Courier } from '@/interface';
+import { RootState } from '@/redux/store';
 import { isEnglish } from '@/utils';
 
 interface Props {
-  id: string;
-  title: string;
-  by?: string;
-  baseCharge: number;
-  weightChargePerKg: number;
-  duration: string;
-  qoute?: string;
+  courier: Courier;
+  handleSelect: (id: string) => void;
 }
 
-const ShippingMethod = ({
-  id,
-  title,
-  by,
-  baseCharge,
-  weightChargePerKg,
-  duration,
-  qoute,
-}: Props) => {
-  const dispatch = useDispatch<AppDispatch>();
+const ShippingMethod = ({ courier, handleSelect }: Props) => {
   const { courierId } = useSelector((state: RootState) => state.cart);
 
   return (
     <div
       className="flex flex-row items-center p-2 pl-5 gap-x-5 min-w-72 min-h-20 grow cursor-pointer border rounded border-black05"
-      onClick={() =>
-        dispatch(selectCourier({ id, baseCharge, weightChargePerKg }))
-      }
+      onClick={() => handleSelect(courier.id)}
     >
       <input
         type="radio"
         className="radio radio-sm radio-primary"
-        checked={id === courierId}
+        checked={courier.id === courierId}
         readOnly
       />
       <div className="flex flex-col gap-1.5 text-xs text-black04">
-        <h3 className="label-text font-medium">{title}</h3>
-        {by && (
-          <h4 className={`${!isEnglish(by) && "font-bn"}`}>{"by " + by}</h4>
-        )}
+        <h3 className="label-text font-medium">{courier.method_name}</h3>
         <div className="flex items-center">
           <TbCoinTaka className="inline-block mr-1 min-w-4 min-h-4" />
-          <span>{baseCharge + " Tk,"}</span>
+          <span>{courier.base_charge + " Tk,"}</span>
           <TbClock className="inline-block mr-1 ml-2 min-w-4 min-h-4" />
-          <span>{duration}</span>
+          <span>{courier.delivery_time || "unspecified"}</span>
         </div>
-        {qoute && <h4 className="font-bn">{qoute}</h4>}
+        {courier.note && <h4 className="font-bn">{courier.note}</h4>}
       </div>
     </div>
   );

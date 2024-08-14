@@ -1,7 +1,7 @@
-import { Category } from "./category";
-import { Author } from "./author";
-import { Publisher } from "./publisher";
-import { Image } from "./image";
+import { Author } from './author';
+import { Category } from './category';
+import { Image } from './image';
+import { Publisher } from './publisher';
 
 export interface Book {
   id: string;
@@ -28,6 +28,7 @@ export interface Book {
   isbn?: string;
   no_of_pages?: number;
   tags?: Array<{ id: string; name: string; slug: string }>;
+  weight_in_gm?: number;
 }
 
 export interface CartItem {
@@ -43,4 +44,5 @@ export interface CartItem {
   images: Array<Image>;
   cover?: string;
   selectedQuantity: number;
+  weight_in_gm: number;
 }

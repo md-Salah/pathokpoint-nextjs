@@ -1,16 +1,19 @@
 import { IoInformationCircleOutline } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
 
+import { settings } from '@/constants';
 import { RootState } from '@/redux/store';
 
 const OrderSummary = () => {
   const {
+    coupon,
     cartItems,
     subTotal,
     grandTotal,
     deliveryCharge,
     weightCharge,
     discount,
+    isCashOnDelivery,
   } = useSelector((state: RootState) => state.cart);
 
   return (
@@ -35,16 +38,18 @@ const OrderSummary = () => {
                 tabIndex={0}
                 className="dropdown-content dropdown-open font-bn left-0 right-0 z-[1] bg-white shadow-lg py-4 px-4 mt-4"
               >
-                <p>{"Base charge: " + deliveryCharge + " Tk"}</p>
-                <p>{"Weight charge: " + weightCharge + " Tk"}</p>
+                <p>{`Delivery charge: ${deliveryCharge} Tk`}</p>
+                <p>{`Weight charge: ${weightCharge} Tk`}</p>
               </div>
             </td>
             <td></td>
             <td>৳{deliveryCharge + weightCharge}</td>
           </tr>
-          {discount > 0 && (
+          {coupon && (
             <tr>
-              <td>Voucher</td>
+              <td>
+                Voucher (<span className="text-xs">{coupon}</span>)
+              </td>
               <td>-</td>
               <td>৳{discount}</td>
             </tr>
@@ -57,13 +62,17 @@ const OrderSummary = () => {
           <tr>
             <td>Pay now</td>
             <td></td>
-            <td>৳{100}</td>
+            <td>
+              ৳{isCashOnDelivery ? settings.minAdvancePayment : grandTotal}
+            </td>
           </tr>
-          <tr>
-            <td>Cash on delivery</td>
-            <td></td>
-            <td>৳{grandTotal - 100}</td>
-          </tr>
+          {isCashOnDelivery && (
+            <tr>
+              <td>Cash on delivery</td>
+              <td></td>
+              <td>৳{grandTotal - 100}</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

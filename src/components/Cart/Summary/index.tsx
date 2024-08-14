@@ -33,9 +33,9 @@ const Summary = () => {
             </div>
           </td>
           <td></td>
-          <td>৳{cart.deliveryCharge + cart.weightCharge}</td>
+          <td>৳{cart.deliveryCharge}</td>
         </tr>
-        {cart.discount > 0 && (
+        {cart.coupon && (
           <tr>
             <td>Voucher</td>
             <td>-</td>

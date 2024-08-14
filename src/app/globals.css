@@ -22,6 +22,10 @@
   font-family: var(--font-anek-bangla);
 }
 
+.font-en {
+  font-family: var(--font-inter);
+}
+
 .layout-container {
   @apply mx-auto container sm:w-[1328px] sm:max-w-[90%];
 }
