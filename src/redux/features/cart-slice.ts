@@ -297,7 +297,8 @@ const cartSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(placeOrder.fulfilled, (state, action) => {
-      state.isLoading = false;
+      Object.assign(state, initialState);
+      localStorage.removeItem("cartState");
     });
     builder.addCase(placeOrder.rejected, (state) => {
       state.isLoading = false;
