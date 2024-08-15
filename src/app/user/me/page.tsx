@@ -1,11 +1,7 @@
-import { MyProfile } from "@/components";
+import { MyProfile } from '@/components/UserProfile';
 
 const MyProfilePage = () => {
-  return (
-    <>
-      <MyProfile />
-    </>
-  );
+  return <MyProfile />;
 };
 
 export default MyProfilePage;

@@ -37,7 +37,6 @@ export { default as Profile } from "./Profile";
 export { default as PersonalInformationContent } from "./UserProfile/MyProfile/PersonalInformationContent";
 export { default as AddressContent } from "./UserProfile/MyProfile/AddressContent";
 export { default as PasswordContent } from "./UserProfile/MyProfile/PasswordContent";
-export { default as MyProfile } from "./UserProfile/MyProfile";
 export { default as SidebarMobile } from "./UserProfile/SidebarMobile";
 export { default as SidebarDesktop } from "./UserProfile/SidebarDesktop";
 export { default as LogoutModal } from "./UserProfile/LogoutModal";

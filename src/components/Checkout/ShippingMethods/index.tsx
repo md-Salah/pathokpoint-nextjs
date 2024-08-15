@@ -21,9 +21,9 @@ const ShippingMethods = () => {
     isLoading: dataLoading,
     error: dataErr,
   }: { data: CourierInterface[]; isLoading: boolean; error: any } = useSWR(
-    `/courier/all?city=${address.city}${
-      isCashOnDelivery ? "&allow_cash_on_delivery=true" : ""
-    }`,
+    `/courier/all?${
+      address.city.trim() != "" ? `city=${address.city.trim()}` : ""
+    }${isCashOnDelivery ? "&allow_cash_on_delivery=true" : ""}`,
     fetcher
   );
 
