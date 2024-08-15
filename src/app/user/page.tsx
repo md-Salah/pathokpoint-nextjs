@@ -1,4 +1,5 @@
-import { SidebarMobile, MyProfile } from "@/components";
+import { SidebarMobile } from '@/components';
+import { MyProfile } from '@/components/UserProfile';
 
 const User = () => {
   return (
