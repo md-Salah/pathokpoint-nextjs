@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CartItem as CartItemType } from '@/interface';
 import { applyCoupon, removeCoupon } from '@/redux/features/cart-slice';
 import { AppDispatch, RootState } from '@/redux/store';
+import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
 
 import ApplyCoupon from './ApplyCoupon';
 import CartItem from './CartItem';
@@ -25,25 +26,47 @@ const Cart = () => {
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleCoupon = async (code: string) => {
-    if (code.trim() === "") return true;
+  const handleCoupon = async (code: string): Promise<void> => {
+    const trimmedCode = code.trim();
+    if (trimmedCode === "") return;
+
     setErr(null);
-    const action = await dispatch(applyCoupon(code.trim()));
+    const action = await dispatch(applyCoupon(trimmedCode));
     if (applyCoupon.rejected.match(action)) {
       setErr(action.payload as string);
-      return false;
     }
-    return true;
   };
 
-  const handleCheckout = async () => {
-    if (cartItems.length === 0) return;
-    if (coupon) {
-      setLoading(true);
-      const isValid = await handleCoupon(coupon);
-      setLoading(false);
-      if (!isValid) return;
+  const verifyStock = async (): Promise<boolean> => {
+    try {
+      await axiosInstance.post("/cart/verify-stock", {
+        order_items: cartItems.map(({ id, selectedQuantity }) => ({
+          book_id: id,
+          selectedQuantity,
+        })),
+      });
+      return true;
+    } catch (error) {
+      setErr(extractAxiosErr(error));
     }
+    return false;
+  };
+
+  const handleCheckout = async (): Promise<void> => {
+    if (cartItems.length === 0) return;
+
+    setLoading(true);
+
+    if (!(await verifyStock())) {
+      setLoading(false);
+      return;
+    }
+
+    if (coupon) {
+      await handleCoupon(coupon);
+    }
+
+    setLoading(false);
     router.push("/checkout");
   };
 

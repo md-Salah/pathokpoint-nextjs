@@ -137,6 +137,26 @@ export const selectCourier = createAsyncThunk(
   async (courierId: string, { getState, rejectWithValue }) => {
     const { cart } = getState() as { cart: CartState };
 
+    if (!cart.address.name.trim()) {
+      return rejectWithValue("Please provide your name");
+    } else if (!cart.address.phone_number.trim()) {
+      return rejectWithValue("Please provide your phone number");
+    } else if (!isPhoneNumber(cart.address.phone_number)) {
+      return rejectWithValue("Invalid phone number");
+    } else if (cart.address.email && !isEmail(cart.address.email)) {
+      return rejectWithValue("Invalid email address");
+    } else if (!cart.address.address.trim()) {
+      return rejectWithValue("Please provide shipping address");
+    } else if (!cart.address.thana.trim()) {
+      return rejectWithValue("Please provide your thana");
+    } else if (!cart.address.city.trim()) {
+      return rejectWithValue("Please select your district");
+    } else if (!cart.paymentMethod) {
+      return rejectWithValue("Please select a payment method");
+    } else if (cart.cartItems.length === 0) {
+      return rejectWithValue("Your cart is empty, please add some items");
+    }
+
     const payload = {
       order_items: cart.cartItems.map((item: CartItem) => ({
         book_id: item.id,
@@ -163,14 +183,33 @@ export const selectCourier = createAsyncThunk(
   }
 );
 
+export const initCartState = createAsyncThunk(
+  "cart/initCartState",
+  async () => {
+    const cartState = cartStateFromLocalStorage();
+    const { cartItems } = cartState;
+    try {
+      const ids = cartItems.map((item: CartItem) => item.id).join(",");
+      const response = await axiosInstance.get(`/book/all?id__in=${ids}`);
+      const books = response.data;
+      const updatedCartItems = cartItems.map((item: CartItem) => {
+        const book = books.find((b: any) => b.id === item.id);
+        return {
+          ...item,
+          ...book,
+        };
+      });
+      return { ...cartState, cartItems: updatedCartItems };
+    } catch (error) {
+      return cartState;
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    initCartState: (state) => {
-      const cartState = cartStateFromLocalStorage();
-      return { ...state, ...cartState };
-    },
     addItemToCart: (state, action: PayloadAction<CartItem>) => {
       const newItem = action.payload;
       const existingItem = state.cartItems.find(
@@ -271,6 +310,9 @@ const cartSlice = createSlice({
       state.grandTotal = calculateGrandTotal(state);
       localStorage.setItem("cartState", JSON.stringify(state));
     });
+    builder.addCase(initCartState.fulfilled, (state, action) => {
+      Object.assign(state, action.payload);
+    });
   },
 });
 
@@ -279,7 +321,6 @@ export const {
   removeItemFromCart,
   clearCart,
   removeCoupon,
-  initCartState,
   updateAddress,
   updateCustomerNote,
   toggleTermsAggreed,

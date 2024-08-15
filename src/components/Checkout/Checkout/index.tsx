@@ -34,9 +34,6 @@ const Checkout = () => {
   };
 
   const handleCheckout = async () => {
-    // if (!user) {
-    //   router.push("/auth/login");
-    // }
     setErr(null);
     const action = await dispatch(placeOrder());
     if (placeOrder.rejected.match(action)) {

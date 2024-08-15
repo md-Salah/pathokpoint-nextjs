@@ -14,7 +14,7 @@ const CouponApplied = ({ handleRemoveCoupon }: Props) => {
 
   return (
     <div className="mt-5">
-      <h3 className="font-medium text-sm">Voucher for your order</h3>
+      {/* <h3 className="font-medium text-sm">Voucher for your order</h3> */}
       <div className="mt-4 border border-black06 rounded px-2 py-3">
         <div className="flex items-center gap-2">
           <RiDiscountPercentFill className="w-6 h-6 text-primary" />

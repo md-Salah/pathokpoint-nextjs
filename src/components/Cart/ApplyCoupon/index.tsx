@@ -7,7 +7,7 @@ import { fetcher } from '@/utils/axiosConfig';
 import Voucher from './Voucher';
 
 interface Props {
-  handleCoupon: (code: string) => void;
+  handleCoupon: (code: string) => Promise<void>;
   isLoading: boolean;
 }
 

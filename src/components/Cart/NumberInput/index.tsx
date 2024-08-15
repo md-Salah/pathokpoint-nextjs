@@ -35,7 +35,7 @@ const NumberInput = ({ book }: { book: CartItem }) => {
       <button
         onClick={handleIncrement}
         className={`btn btn-xs bg-black07 rounded ${
-          book.selectedQuantity === book.quantity && "btn-disabled"
+          book.selectedQuantity >= book.quantity && "btn-disabled"
         } w-[30px] h-[30px] `}
       >
         <HiPlus className="min-w-3 min-h-3" />

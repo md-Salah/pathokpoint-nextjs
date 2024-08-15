@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 import { Courier } from '@/interface';
 import { RootState } from '@/redux/store';
-import { isEnglish } from '@/utils';
 
 interface Props {
   courier: Courier;
