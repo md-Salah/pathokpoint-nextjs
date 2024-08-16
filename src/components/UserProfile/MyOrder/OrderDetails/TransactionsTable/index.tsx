@@ -1,6 +1,13 @@
-const TransactionsTable = () => {
+import { Transaction } from '@/interface';
+import { dateTime } from '@/utils';
+
+const TransactionsTable = ({
+  transactions,
+}: {
+  transactions: Transaction[];
+}) => {
   return (
-    <div className="bg-white overflow-x-auto p-4 lg:p-7 hidden lg:block">
+    <div className="bg-white overflow-x-auto p-4 lg:p-7">
       <table className="table table-px-0 w-full text-xs md:text-sm text-center">
         <thead className="bg-base-200">
           <tr>
@@ -11,18 +18,14 @@ const TransactionsTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>23 August, 2023</td>
-            <td>PP10789560</td>
-            <td>৳1300</td>
-            <td>Master Card</td>
-          </tr>
-          <tr>
-            <td>23 August, 2023</td>
-            <td>PP10789560</td>
-            <td>৳1300</td>
-            <td>Master Card</td>
-          </tr>
+          {transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{dateTime(transaction.created_at).datetime}</td>
+              <td>{transaction.transaction_id}</td>
+              <td>৳{transaction.amount}</td>
+              <td>{transaction.gateway.name}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

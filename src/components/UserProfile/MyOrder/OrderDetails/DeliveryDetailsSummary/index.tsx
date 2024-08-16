@@ -1,24 +1,36 @@
-const DeliveryDetailsSummary = () => {
+import { Order } from '@/interface';
+
+const DeliveryDetailsSummary = ({ order }: { order: Order }) => {
   return (
     <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 mt-4 lg:mt-0 lg:p-7 lg:bg-white">
       {/* Address */}
       <div className="space-y-4 bg-white p-4 lg:p-0 text-[#2B2B2B]">
         <div className="flex flex-col gap-4 pb-4 border-b-[2px] border-b-[#F4F4F4]">
-          <h2 className="font-semibold">Delivery Details</h2>
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold">Sarder Arif Ahmed</span>
-            <span className="text-xs">rayhantanvir 03@gmail.com</span>
-          </div>
+          <h2 className="font-semibold">Customer Details</h2>
+          {order.address && (
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-semibold">
+                {order.address.name}
+              </span>
+              {order.address.email && (
+                <span className="text-xs">{order.address.email}</span>
+              )}
+            </div>
+          )}
         </div>
         <div className="flex flex-col gap-2 text-xs pb-4 border-b-[2px] border-b-[#F4F4F4]">
           <span className="font-semibold">Address</span>
           <span className="font-light">
-            Matikata 72/A Dhaka cantonment Dhaka-1216, Bangladesh
+            {order.address
+              ? `${order.address.address}, ${order.address.thana}, ${order.address.city}`
+              : "N/A"}
           </span>
         </div>
         <div className="flex flex-col gap-2 text-xs w-[20%]">
           <span className="font-semibold">Contact</span>
-          <span className="font-light">01686256267</span>
+          <span className="font-light">
+            {order.address ? order.address.phone_number : "N/A"}
+          </span>
         </div>
       </div>
 
@@ -29,27 +41,31 @@ const DeliveryDetailsSummary = () => {
           <ul className="space-y-4 w-full">
             <li className="flex items-center justify-between">
               <span>Sub Total:</span>
-              <span className="w-20">৳1300</span>
+              <span className="w-14">
+                ৳{order.old_book_total + order.new_book_total}
+              </span>
             </li>
             <li className="flex items-center justify-between">
-              <span>Discount(10%):</span>
-              <span className="w-20">-৳200</span>
+              <span>Shipping Cost:</span>
+              <span className="w-14">
+                ৳{order.shipping_charge + order.weight_charge}
+              </span>
             </li>
             <li className="flex items-center justify-between border-b-[2px] border-b-[#F4F4F4] pb-4">
-              <span>Shipping Cost:</span>
-              <span className="w-20">৳100</span>
+              <span>Discount{order.coupon && ` (${order.coupon.code})`}:</span>
+              <span className="w-14">-৳{order.discount}</span>
             </li>
             <li className="flex items-center justify-between text-[#2B2B2B]">
               <span className="font-semibold ">Grand Total:</span>
-              <span className="w-20">৳1200</span>
+              <span className="w-14">৳{order.net_amount}</span>
             </li>
             <li className="flex items-center justify-between">
               <span>Paid:</span>
-              <span className="w-20">৳1200</span>
+              <span className="w-14">৳{order.paid}</span>
             </li>
             <li className="flex items-center justify-between">
-              <span>Due:</span>
-              <span className="w-20">৳0</span>
+              <span>{order.is_full_paid ? "Due" : "Cash On Delivery"}:</span>
+              <span className="w-14">৳{order.due}</span>
             </li>
           </ul>
         </div>

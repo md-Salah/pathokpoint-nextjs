@@ -9,3 +9,5 @@ export type { IPagination } from "./pagination";
 export type { Coupon } from "./coupon";
 export type { Courier } from "./courier";
 export type { Address } from "./address";
+export type { Order, OrderItem, OrderStatus, Transaction } from "./order";
+export type { Image } from "./image";

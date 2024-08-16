@@ -1,13 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { CartItem as CartItemType } from "@/interface";
-import { ConditionBadge } from "@/micro-components";
-import NumberInput from "../NumberInput";
-import { isEnglish } from "@/utils";
-import RemoveItem from "./RemoveItem";
+import { defaultSrc } from '@/constants';
+import { CartItem as CartItemType } from '@/interface';
+import { ConditionBadge } from '@/micro-components';
+import { isEnglish } from '@/utils';
+
+import NumberInput from '../NumberInput';
+import RemoveItem from './RemoveItem';
 
 const CartItem = ({ book }: { book: CartItemType }) => {
   return (
@@ -43,28 +45,27 @@ const CartItem = ({ book }: { book: CartItemType }) => {
 export default CartItem;
 
 const ProductDetails = ({ book }: { book: CartItemType }) => {
-  const defaultSrc = "/default/book.png";
-
   return (
     <div className="w-full">
       <div className="flex w-full overflow-hidden">
-        <Link href={`/books/${book.slug}`}>
+        <Link href={`/books/${book.public_id}/${book.slug}`}>
           <figure className="h-full w-16 sm:min-w-24 sm:w-24 hover:opacity-80 relative rounded">
             <Image
-              src={book.images[0]?.src || defaultSrc}
+              src={book.images[0]?.src || defaultSrc.book}
               alt={book.name}
               fill
               sizes="(min-width: 640px) 24rem, 16rem"
               className="object-contain rounded"
-              placeholder="blur"
-              blurDataURL={defaultSrc}
             />
           </figure>
         </Link>
 
         {/* Name, Publisher & Price */}
         <div className="flex flex-col ml-3">
-          <Link href={`/books/${book.slug}`} className="w-full">
+          <Link
+            href={`/books/${book.public_id}/${book.slug}`}
+            className="w-full"
+          >
             <h1
               className={`font-semibold hover:underline ${
                 !isEnglish(book.name) && "font-bn"
@@ -84,7 +85,7 @@ const ProductDetails = ({ book }: { book: CartItemType }) => {
                 !isEnglish(book.authors[0].name) && "font-bn"
               }`}
             >
-              {"by " + book.authors[0].name}
+              {"by " + book.authors[0]?.name}
             </h3>
           )}
 
@@ -93,7 +94,7 @@ const ProductDetails = ({ book }: { book: CartItemType }) => {
           </div>
 
           <h3 className="mt-1.5 text-highlight text-xs">
-            {book.quantity > 0
+            {book.in_stock && book.quantity > 0
               ? book.quantity + " Items in stock"
               : "Out of stock"}
           </h3>

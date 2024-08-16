@@ -1,17 +1,17 @@
 export const isEnglish = (str: string) => {
   return /^[A-Za-z0-9 -,.]*$/.test(str);
-}
+};
 
 export const truncateWithEllipsis = (str: string, maxLength: number) => {
   if (str.length <= maxLength) {
     return str;
   }
-  return str.substring(0, maxLength) + '...';
-}
+  return str.substring(0, maxLength) + "...";
+};
 
 export const capitalize = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
-}
+};
 
 export const getSubmenuItemPath = (subMenuItem: any, menuType: any) => {
   switch (menuType) {
@@ -32,7 +32,6 @@ export const isEmail = (email: string) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
-
 export const isPhoneNumber = (phone: string) => {
   return /^[0-9]{11}$/.test(phone);
 };
@@ -49,4 +48,27 @@ export const truncateString = (str: string, num: number) => {
     return str;
   }
   return str.slice(0, num) + "...";
-}
+};
+
+export const dateTime = (timestamp: string) => {
+  const dt = new Date(timestamp);
+
+  const date = dt.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+  const time = dt.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
+  const datetime = `${date}, ${time}`;
+
+  return {
+    date,
+    time,
+    datetime,
+  };
+};

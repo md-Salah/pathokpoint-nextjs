@@ -1,5 +1,5 @@
-import { books } from "@/constants";
-import axiosInstance from "@/utils/axiosConfig";
+import { books } from '@/constants';
+import axiosInstance from '@/utils/axiosConfig';
 
 export const getBookByPublicId = async (public_id: string | number) => {
   try {
@@ -123,3 +123,4 @@ export const getPublisherBySlug = async (slug: string) => {
     return null;
   }
 };
+

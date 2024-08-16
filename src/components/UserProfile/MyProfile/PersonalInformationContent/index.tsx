@@ -1,19 +1,31 @@
 "use client";
-import Image from "next/image";
-import React, { useRef, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { BsGenderFemale, BsGenderMale, BsGenderTrans } from "react-icons/bs";
-import { RiPencilFill } from "react-icons/ri";
+import 'react-datepicker/dist/react-datepicker.css';
+
+import Image from 'next/image';
+import React, { useRef, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import { BsGenderFemale, BsGenderMale, BsGenderTrans } from 'react-icons/bs';
+import { RiPencilFill } from 'react-icons/ri';
+
+import { defaultSrc } from '@/constants';
+import { useUser } from '@/hooks';
+import { User } from '@/interface';
 
 type Image = { file: File; previewUrl: string };
 
-const PersonalInformationContent = () => {
+const PersonalInformationContent = ({user}: {user: User}) => {
   const fileInput = useRef<HTMLInputElement>(null);
-  const [dateofBirth, setDateofBirth] = useState<Date | null>(null);
+  // const [dateofBirth, setDateofBirth] = useState<Date | null>(null);
   const [profileImage, setProfileImage] = useState<Image | null>(null);
 
-  const defaultSrc = "/default/avatar.png";
+  const [userData, setUserData] = useState(user);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserData({
+      ...userData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const handleChangeProfileImage = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -25,13 +37,16 @@ const PersonalInformationContent = () => {
 
     setProfileImage(newImage);
   };
+
+  if(!user) return null;
+
   return (
     <div className="w-full bg-white p-4 md:p-6 lg:p-10">
       <div className="w-full flex justify-center md:block">
         <div className="avatar w-28 md:w-32">
           <div className="ring-primary relative w-full rounded-full ring-[1px] ring-offset-4 group cursor-pointer">
             <Image
-              src={profileImage?.previewUrl || defaultSrc}
+              src={profileImage?.previewUrl || defaultSrc.user}
               alt="Profile Image"
               width={100}
               height={100}
@@ -41,7 +56,11 @@ const PersonalInformationContent = () => {
               className="absolute -bottom-2 h-[40%] bg-primary bg-opacity-50 w-full hidden group-hover:block"
               onClick={() => fileInput.current?.click()}
             >
-              <RiPencilFill color="#ffffff" size={28} className="mx-auto my-2" />
+              <RiPencilFill
+                color="#ffffff"
+                size={28}
+                className="mx-auto my-2"
+              />
             </div>
             <input
               type="file"
@@ -58,24 +77,20 @@ const PersonalInformationContent = () => {
           <label className="text-sm font-medium text-black03">First Name</label>
           <input
             type="text"
-            value={"Tanvir Rayhan"}
+            name="first_name"
+            value={userData.first_name}
             placeholder="Enter First Name"
             className="input input-bordered text-base text-black02"
-            onChange={() => {}}
-          />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="text-sm font-medium text-black03">User Name</label>
-          <input
-            type="text"
-            placeholder="Enter User Name"
-            className="input input-bordered text-base text-black02"
+            onChange={handleChange}
           />
         </div>
         <div className="flex flex-col space-y-2">
           <label className="text-sm font-medium text-black03">Last Name</label>
           <input
             type="text"
+            name="last_name"
+            value={userData.last_name}
+            onChange={handleChange}
             placeholder="Enter Last Name"
             className="input input-bordered text-base text-black02"
           />
@@ -86,6 +101,9 @@ const PersonalInformationContent = () => {
           </label>
           <input
             type="text"
+            name = "email"
+            value = {userData.email}
+            onChange={handleChange}
             placeholder="Enter Email Address"
             className="input input-bordered text-base text-black02"
           />
@@ -95,8 +113,8 @@ const PersonalInformationContent = () => {
             Date of Birth
           </label>
           <DatePicker
-            selected={dateofBirth}
-            onChange={(date: Date | null) => setDateofBirth(date as Date)}
+            selected={new Date(userData.date_of_birth || "")}
+            // onChange={(date: Date | null) => handleChange}
             placeholderText="Enter Date of Birth"
             className="input input-bordered w-full outline-none text-sm sm:text-base"
           />
@@ -107,6 +125,9 @@ const PersonalInformationContent = () => {
           </label>
           <input
             type="text"
+            value={userData.phone_number || ""}
+            name="phone_number"
+            onChange={handleChange}
             placeholder="Enter Phone Number"
             className="input input-bordered text-base text-black02"
           />

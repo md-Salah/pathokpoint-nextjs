@@ -1,10 +1,8 @@
-import { Book } from '@/interface';
-import { getBooks } from '@/utils/api';
+import { OrderItem } from '@/interface';
 
 import TableRow from './TableRow';
 
-const BooksTable = async () => {
-  const books: Book[] = await getBooks();
+const BooksTable = ({ order_items }: { order_items: OrderItem[] }) => {
   return (
     <div className="overflow-x-auto bg-white rounded-lg p-7">
       <table className="table table-px-0">
@@ -18,8 +16,8 @@ const BooksTable = async () => {
           </tr>
         </thead>
         <tbody>
-          {books.slice(0, 5).map((book) => (
-            <TableRow key={book.id} book={book} />
+          {order_items.map((item: OrderItem, index: number) => (
+            <TableRow key={index} item={item} />
           ))}
         </tbody>
       </table>

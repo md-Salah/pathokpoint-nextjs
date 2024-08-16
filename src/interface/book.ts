@@ -48,6 +48,7 @@ export interface CartItem {
   authors: Array<Author>;
   regular_price: number;
   sale_price: number;
+  in_stock: boolean;
   quantity: number;
   condition: string;
   images: Array<Image>;

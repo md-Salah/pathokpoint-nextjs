@@ -1,12 +1,9 @@
-const Step = ({
-  status,
-  datetime,
-  isSuccess = false,
-}: {
-  status: string;
-  datetime?: string | null;
-  isSuccess?: boolean;
-}) => {
+import { OrderStatus } from '@/interface';
+import { capitalize, dateTime } from '@/utils';
+
+const Step = ({ status }: { status: OrderStatus }) => {
+  const { datetime } = dateTime(status.created_at ? status.created_at : "");
+  const isSuccess = status.created_at ? true : false;
   return (
     <li
       className={`step ${isSuccess && "step-success"}`}
@@ -14,9 +11,11 @@ const Step = ({
     >
       <div className="flex flex-col items-start lg:items-center gap-1 px-2">
         <span className={`text-xs font-medium ${!isSuccess && "text-black04"}`}>
-          {status}
+          {capitalize(status.status.replace(/-/g, " "))}
         </span>
-        {datetime && <span className="text-black04 text-xxs">{datetime}</span>}
+        {status.created_at && (
+          <span className="text-black04 text-xxs">{datetime}</span>
+        )}
       </div>
     </li>
   );
