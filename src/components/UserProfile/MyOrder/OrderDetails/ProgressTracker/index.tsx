@@ -1,20 +1,32 @@
-import { upcomingStatus } from '@/constants';
+import { orderStatus } from '@/constants';
 import { OrderStatus } from '@/interface';
 
 import Step from './Step';
 
 const ProgressTracker = ({ order_status }: { order_status: OrderStatus[] }) => {
-  const upcoming = upcomingStatus.filter(
-    (status) => !order_status.find((s) => s.status === status.status)
-  );
+  const getStatus = () => {
+    let successIndex = -1;
+    let upcoming = orderStatus.map((status, index) => {
+      const st = order_status.find((s) => s.status === status.status);
+      if (st) successIndex = index;
+      return st ? { ...st, status: status.status, isSuccess: true } : status;
+    });
+    upcoming = upcoming.map((status, index) => {
+      if (index <= successIndex) return { ...status, isSuccess: true };
+      return status;
+    });
+    const lastStatus = order_status[order_status.length - 1];
+    if (lastStatus.status === "cancelled") {
+      upcoming[upcoming.length] = { ...lastStatus, isSuccess: true };
+    }
+    return upcoming;
+  };
+  const upcoming = getStatus();
 
   return (
     <div className="w-full p-4 lg:p-7 lg:mt-4">
       <div className="mx-auto w-fit">
         <ul className="steps steps-vertical lg:steps-horizontal">
-          {order_status.map((status, index) => (
-            <Step key={index} status={status} />
-          ))}
           {upcoming.map((status, index) => (
             <Step key={index} status={status} />
           ))}

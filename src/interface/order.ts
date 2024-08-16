@@ -55,6 +55,7 @@ export interface OrderItem {
 export interface OrderStatus {
   id: string;
   status: string;
+  isSuccess?: boolean;
   created_at: string | null;
   note: string | null;
   updated_by?: {

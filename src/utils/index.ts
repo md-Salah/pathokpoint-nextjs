@@ -43,6 +43,13 @@ export const capitalizeFirstLetterOfEachWord = (str: string) => {
     .join(" ");
 };
 
+export const title = (str: string) => {
+  return str
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
 export const truncateString = (str: string, num: number) => {
   if (str.length <= num) {
     return str;
