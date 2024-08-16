@@ -1,7 +1,13 @@
 import { MyOrder } from '@/components/UserProfile';
 
-const MyOrderPage = () => {
-  return <MyOrder />;
+interface Props {
+  searchParams?: {
+    order_status__status?: string;
+  };
+}
+
+const MyOrderPage = ({ searchParams }: Props) => {
+  return <MyOrder searchParams={searchParams} />;
 };
 
 export default MyOrderPage;
