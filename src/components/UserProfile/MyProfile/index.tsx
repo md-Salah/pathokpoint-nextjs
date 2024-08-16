@@ -1,13 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import PersonalInformationContent from "./PersonalInformationContent";
-import AddressContent from "./AddressContent";
-import PasswordContent from "./PasswordContent";
-import { MobileHeader, TabOptions } from "@/components/UserProfile";
+import { MobileHeader, TabOptions } from '@/components/UserProfile';
+import { useUser } from '@/hooks';
+
+import AddressContent from './AddressContent';
+import PasswordContent from './PasswordContent';
+import PersonalInformationContent from './PersonalInformationContent';
 
 const MyProfile = () => {
   const [tab, setTab] = useState<string>("Personal Information");
+  const { user } = useUser();
 
   return (
     <div>
@@ -26,7 +29,7 @@ const MyProfile = () => {
 
       {/* Tab Content */}
       <div>
-        {tab === "Personal Information" && <PersonalInformationContent />}
+        {tab === "Personal Information" && <PersonalInformationContent user={user} />}
         {tab === "Address" && <AddressContent />}
         {tab === "Password" && <PasswordContent />}
       </div>

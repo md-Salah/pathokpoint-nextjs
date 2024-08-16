@@ -1,7 +1,13 @@
-import { MobileHeader } from "@/components/UserProfile";
-import { OrderDetails } from "@/components/UserProfile/MyOrder";
+import { MobileHeader } from '@/components/UserProfile';
+import { OrderDetails } from '@/components/UserProfile/MyOrder';
 
-const OrderDetailsPage = () => {
+interface Props {
+  params: {
+    order_id: string;
+  };
+}
+
+const OrderDetailsPage = ({ params }: Props) => {
   return (
     <div>
       <MobileHeader title="Order Details" href="/user/my-order" />

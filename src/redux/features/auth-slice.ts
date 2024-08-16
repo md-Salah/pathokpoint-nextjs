@@ -81,6 +81,18 @@ export const authSlice = createSlice({
       localStorage.removeItem("access_token");
       return initialState;
     },
+    tokenFromLocalStorage: (state) => {
+      state.token =
+        typeof window !== "undefined" &&
+        localStorage &&
+        localStorage.getItem("access_token")
+          ? localStorage.getItem("access_token")
+          : null;
+    },
+    updateUser: (state, action: PayloadAction<User>) => {
+      state.user = action.payload;
+      state.isStaff = isStaff(action.payload.role);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -98,26 +110,26 @@ export const authSlice = createSlice({
       )
       .addCase(login.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
-      })
-      // .addCase(
-      //   initializeAuth.fulfilled,
-      //   (
-      //     state,
-      //     action: PayloadAction<{
-      //       token: string | null;
-      //       user: User | null;
-      //     }>
-      //   ) => {
-      //     state.token = action.payload.token;
-      //     state.user = action.payload.user;
-      //     state.isStaff = action.payload.user
-      //       ? isStaff(action.payload.user.role)
-      //       : false;
-      //   }
-      // );
+      });
+    // .addCase(
+    //   initializeAuth.fulfilled,
+    //   (
+    //     state,
+    //     action: PayloadAction<{
+    //       token: string | null;
+    //       user: User | null;
+    //     }>
+    //   ) => {
+    //     state.token = action.payload.token;
+    //     state.user = action.payload.user;
+    //     state.isStaff = action.payload.user
+    //       ? isStaff(action.payload.user.role)
+    //       : false;
+    //   }
+    // );
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, tokenFromLocalStorage, updateUser } = authSlice.actions;
 export default authSlice.reducer;
 export type { InitialState as AuthState };

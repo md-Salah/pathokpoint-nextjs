@@ -32,6 +32,22 @@ const fetcher = async (url: string) => {
   }
 };
 
+const fetchWithToken = async (url: string, token: string | null) => {
+  if (!token) {
+    throw "Please login first";
+  }
+  try {
+    const res = await axiosInstance.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw extractAxiosErr(error);
+  }
+};
+
 export type { AxiosError };
-export { extractAxiosErr, fetcher };
+export { extractAxiosErr, fetcher, fetchWithToken };
 export default axiosInstance;
