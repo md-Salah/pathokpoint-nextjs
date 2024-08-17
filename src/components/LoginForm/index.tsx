@@ -18,7 +18,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState<string>("");
 
   const [err, setErr] = useState<string | null>(null);
-  const { loading, user } = useSelector((state: RootState) => state.auth);
+  const { loading } = useSelector((state: RootState) => state.auth);
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,14 +43,11 @@ const LoginForm = () => {
       );
       if (login.rejected.match(action)) {
         setErr(action.payload as string);
+      } else if (login.fulfilled.match(action)) {
+        router.back();
       }
     }
   };
-
-  if (user) {
-    router.back();
-  }
-
   return (
     <div className="bg-white">
       <form onSubmit={handleLogin}>

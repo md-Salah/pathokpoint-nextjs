@@ -6,6 +6,7 @@ export { Footer } from "./Footer";
 // Common
 export { default as Drawer } from "./Drawer";
 export { default as NotFound } from "./NotFound";
+export { default as AuthorizedUser } from "./AuthorizedUser";
 
 // Home
 export { default as Carousel } from "./Carousel";
@@ -34,7 +35,7 @@ export { default as Books } from "./Books";
 export { default as Profile } from "./Profile";
 
 //User Profile
-export { default as PersonalInformationContent } from "./UserProfile/MyProfile/PersonalInformationContent";
+export { default as PersonalInformationContent } from "./UserProfile/MyProfile/PersonalInfo";
 export { default as AddressContent } from "./UserProfile/MyProfile/AddressContent";
 export { default as PasswordContent } from "./UserProfile/MyProfile/PasswordContent";
 export { default as SidebarMobile } from "./UserProfile/SidebarMobile";

@@ -1,7 +1,4 @@
-import { SidebarDesktop } from "@/components";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {};
+import { SidebarDesktop } from '@/components';
 
 export default function RootLayout({
   children,

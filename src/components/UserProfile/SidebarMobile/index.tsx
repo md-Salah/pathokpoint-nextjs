@@ -1,18 +1,23 @@
 "use client";
 
-import Link from "next/link";
-import { IoPersonSharp, IoDocumentText } from "react-icons/io5";
-import { BsFillPersonPlusFill } from "react-icons/bs";
-import { BiSolidLogOut } from "react-icons/bi";
-import { FaHeart } from "react-icons/fa";
-import { MdReviews } from "react-icons/md";
-import { HiChevronRight } from "react-icons/hi2";
-import { useRef } from "react";
+import { useRef } from 'react';
+import { BiSolidLogOut } from 'react-icons/bi';
+import { BsFillPersonPlusFill } from 'react-icons/bs';
+import { FaHeart } from 'react-icons/fa';
+import { HiChevronRight } from 'react-icons/hi2';
+import { IoDocumentText, IoPersonSharp } from 'react-icons/io5';
+import { MdReviews } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 
-import { ProfileAvatar } from "@/components/UserProfile";
-import { LogoutModal } from "@/components";
+import { LogoutModal } from '@/components';
+import { ProfileAvatar } from '@/components/UserProfile';
+import { logout } from '@/redux/features/auth-slice';
+import { AppDispatch } from '@/redux/store';
+
+import MenuItem from './MenuItem';
 
 const SidebarMobile = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const ref = useRef<HTMLDialogElement>(null);
 
   return (
@@ -70,6 +75,7 @@ const SidebarMobile = () => {
       <dialog ref={ref} className="modal">
         <LogoutModal
           handleYes={() => {
+            dispatch(logout());
             ref.current?.close();
           }}
           handleNo={() => {
@@ -82,28 +88,3 @@ const SidebarMobile = () => {
 };
 
 export default SidebarMobile;
-
-const MenuItem = ({
-  icon,
-  text,
-  href,
-}: {
-  icon: React.ReactNode;
-  text: string;
-  href: string;
-}) => {
-  return (
-    <Link
-      href={href}
-      className="w-full flex item-end justify-between border-b border-b-black06 py-3"
-    >
-      <div className="flex items-center space-x-4">
-        <div className="bg-primary bg-opacity-10 p-2 rounded-full">{icon}</div>
-        <span className="text-black0 text-sm">{text}</span>
-      </div>
-      <div className="pt-2">
-        <HiChevronRight size={20} />
-      </div>
-    </Link>
-  );
-};
