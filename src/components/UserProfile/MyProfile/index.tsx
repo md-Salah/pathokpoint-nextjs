@@ -6,7 +6,7 @@ import { useUser } from '@/hooks';
 
 import AddressContent from './AddressContent';
 import PasswordContent from './PasswordContent';
-import PersonalInformationContent from './PersonalInformationContent';
+import PersonalInfo from './PersonalInfo';
 
 const MyProfile = () => {
   const [tab, setTab] = useState<string>("Personal Information");
@@ -22,17 +22,23 @@ const MyProfile = () => {
         setTab={setTab}
         tabOptions={[
           { name: "Personal Information" },
-          { name: "Address" },
+          // { name: "Address" },
           { name: "Password" },
         ]}
       />
 
       {/* Tab Content */}
-      <div>
-        {tab === "Personal Information" && <PersonalInformationContent user={user} />}
-        {tab === "Address" && <AddressContent />}
-        {tab === "Password" && <PasswordContent />}
-      </div>
+      {user ? (
+        <div>
+          {tab === "Personal Information" && (
+            <PersonalInfo user={user} />
+          )}
+          {/* {tab === "Address" && <AddressContent />} */}
+          {tab === "Password" && <PasswordContent />}
+        </div>
+      ): (
+        <div className='skeleton w-full h-96'></div>
+      )}
     </div>
   );
 };

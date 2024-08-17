@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+interface AxiosError {
+  response?: {
+    data: any;
+    status: number;
+  };
+}
+
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BACKEND_BASE_URL,
   headers: {
@@ -9,19 +16,14 @@ const axiosInstance = axios.create({
 
 const extractAxiosErr = (error: any) => {
   const axiosError = error as AxiosError;
-  const msg =
-    axiosError.response?.data.detail.message || "An unknown error occurred";
-  if (msg === "An unknown error occurred") {
-    console.error("Unknown error details:", error.response);
-  }
-  return msg;
-};
+  if (!axiosError.response) return "An unknown error occurred";
+  else if (axiosError.response.status === 422)
+    return `${axiosError.response.data.detail[0].loc[1]} - ${axiosError.response.data.detail[0].msg}`;
+  else if (axiosError.response.status === 401)
+    return "Unauthorized, Please login first";
 
-interface AxiosError {
-  response?: {
-    data: any;
-  };
-}
+  return axiosError.response.data.detail.message;
+};
 
 const fetcher = async (url: string) => {
   try {
@@ -34,7 +36,7 @@ const fetcher = async (url: string) => {
 
 const fetchWithToken = async (url: string, token: string | null) => {
   if (!token) {
-    throw "Please login first";
+    throw "Unauthorized, Please login first";
   }
   try {
     const res = await axiosInstance.get(url, {

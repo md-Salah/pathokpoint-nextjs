@@ -6,6 +6,9 @@ export { default as Description } from "./Description";
 export { default as ConditionExplain } from "./ConditionExplain";
 export { default as Share } from "./Share";
 export { default as NumberInput } from "./NumberInput";
+export { default as Toast } from "./Toast";
+export { default as DateInput } from "./DateInput";
+export { default as Gender } from "./Gender";
 
 // Icons
 export { default as HambugerIcon } from "./HamburgerIcon";

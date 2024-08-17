@@ -57,7 +57,7 @@ const Profile = () => {
       >
         <Image
           alt="Profile"
-          src={user.src || defaultSrc.user}
+          src={user && user.src || defaultSrc.user}
           width={36}
           height={36}
           className="rounded-full"

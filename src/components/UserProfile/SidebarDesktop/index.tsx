@@ -1,16 +1,22 @@
 "use client";
-import Link from "next/link";
-import { IoDocumentText, IoPersonSharp } from "react-icons/io5";
-import { BsFillPersonPlusFill } from "react-icons/bs";
-import { BiSolidLogOut } from "react-icons/bi";
-import { FaHeart } from "react-icons/fa";
-import { MdReviews } from "react-icons/md";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ReactNode, useRef } from 'react';
+import { BiSolidLogOut } from 'react-icons/bi';
+import { BsFillPersonPlusFill } from 'react-icons/bs';
+import { FaHeart } from 'react-icons/fa';
+import { IoDocumentText, IoPersonSharp } from 'react-icons/io5';
+import { MdReviews } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 
-import { ProfileAvatar, LogoutModal } from "@/components/UserProfile";
-import { ReactNode, useRef } from "react";
+import { LogoutModal, ProfileAvatar } from '@/components/UserProfile';
+import { logout } from '@/redux/features/auth-slice';
+import { AppDispatch } from '@/redux/store';
+
+import MenuItem from './MenuItem';
 
 const SidebarDesktop = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const pathname = usePathname();
   const ref = useRef<HTMLDialogElement>(null);
 
@@ -64,6 +70,7 @@ const SidebarDesktop = () => {
         <dialog ref={ref} className="modal">
           <LogoutModal
             handleYes={() => {
+              dispatch(logout());
               ref.current?.close();
             }}
             handleNo={() => {
@@ -77,27 +84,3 @@ const SidebarDesktop = () => {
 };
 
 export default SidebarDesktop;
-
-const MenuItem = ({
-  Icon,
-  isSelected,
-  text,
-  href,
-}: {
-  Icon: ReactNode;
-  isSelected: boolean;
-  text: string;
-  href: string;
-}) => {
-  return (
-    <Link
-      className={`flex items-center space-x-2 cursor-pointer py-3 pl-6 ${
-        isSelected && "bg-primary bg-opacity-10 border-r-[6px] border-r-primary"
-      } hover:bg-primary hover:bg-opacity-10 hover:border-r-[6px] hover:border-r-primary w-full`}
-      href={href}
-    >
-      {Icon}
-      <span className="text-black04 text-sm font-semibold">{text}</span>
-    </Link>
-  );
-};

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import useSWR from 'swr';
 
+import { User } from '@/interface';
 import { tokenFromLocalStorage, updateUser } from '@/redux/features/auth-slice';
 import { AppDispatch, RootState } from '@/redux/store';
 import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
@@ -31,7 +32,7 @@ const useUser = () => {
     }
   };
 
-  const { data, error, isLoading } = useSWR(token, fetcher);
+  const { data, error, isLoading } = useSWR<User, string>(token, fetcher);
 
   return {
     user: data,

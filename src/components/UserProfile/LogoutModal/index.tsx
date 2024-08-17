@@ -1,4 +1,4 @@
-import { PiWarningCircleBold } from "react-icons/pi";
+import { PiWarningCircle } from 'react-icons/pi';
 
 type Props = {
   handleYes: () => void;
@@ -7,12 +7,14 @@ type Props = {
 
 const LogoutModal = ({ handleYes, handleNo }: Props) => {
   return (
-    <div className="modal-box rounded-lg bg-[#F3F5F6] flex flex-col items-center space-y-5 py-10">
-      <div className="bg-primary bg-opacity-20 rounded-full p-2 w-fit">
-        <PiWarningCircleBold color="#FF8200" size={36} />
+    <div className="modal-box rounded-lg bg-white flex flex-col items-center">
+      <div className="w-20 h-20 bg-[#EE485C1A] rounded-full flex items-center justify-center">
+        <PiWarningCircle className="text-primary" size="36" />
       </div>
-      <span className="text-2xl text-[#363739] font-bold">Are you sure ?</span>
-      <div className="flex items-center space-x-4">
+      <span className="mt-3 text-2xl text-black02 font-semibold">
+        Are you sure?
+      </span>
+      <div className="mt-8 flex items-center gap-4">
         <button
           className="btn btn-secondary btn-sm  text-white w-36"
           onClick={handleYes}
