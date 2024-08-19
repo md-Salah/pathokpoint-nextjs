@@ -8,7 +8,7 @@ import { setFocus } from '@/redux/features/search-slice';
 import { AppDispatch, RootState } from '@/redux/store';
 
 const SearchBar = () => {
-  const searchRef = useRef<HTMLLIElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<AppDispatch>();
   const { focus } = useSelector((state: RootState) => state.search);
 
@@ -27,7 +27,7 @@ const SearchBar = () => {
   }, [searchRef]);
 
   return (
-    <li
+    <div
       className={`bg-white h-full flex flex-1 items-center transition-all duration-500 ease-in-out 
                   ${focus ? "z-[31] absolute sm:relative right-0 left-0" : ""}
                   ${focus ? "max-w-full" : "max-w-56"}
@@ -38,7 +38,7 @@ const SearchBar = () => {
       ref={searchRef}
     >
       <Search />
-    </li>
+    </div>
   );
 };
 

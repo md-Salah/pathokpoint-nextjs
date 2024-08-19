@@ -32,8 +32,7 @@ const Profile = () => {
 
   if (isLoading)
     return <div className="loading loading-spinner text-black04"></div>;
-
-  if (!user)
+  else if (!user)
     return (
       <>
         <Link

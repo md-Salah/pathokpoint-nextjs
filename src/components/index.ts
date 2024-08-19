@@ -5,9 +5,9 @@ export { Footer } from "./Footer";
 
 // Common
 export { default as Drawer } from "./Drawer";
-export { default as AuthorizedUser } from "./AuthorizedUser";
 
 // Home
+export { Home } from "./Home";
 export { default as Carousel } from "./Carousel";
 export { default as BigSale } from "./BigSale";
 export { default as Genre } from "./Genre";

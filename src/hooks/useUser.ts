@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useSWR from 'swr';
 
@@ -10,9 +11,12 @@ import axiosInstance from '@/utils/axiosConfig';
 const useUser = () => {
   const dispatch = useDispatch<AppDispatch>();
   let { token } = useSelector((state: RootState) => state.auth);
-  if (!token) {
-    dispatch(tokenFromLocalStorage());
-  }
+
+  useEffect(() => {
+    if (!token) {
+      dispatch(tokenFromLocalStorage());
+    }
+  }, []);
 
   const fetcher = async (token: string | null) => {
     try {

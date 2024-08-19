@@ -17,15 +17,11 @@ const Navbar = () => {
             <Logo />
           </div>
 
-          <ul className="flex gap-1 sm:gap-3 items-center justify-end sm:w-8/12 md:w-8/12 lg:w-9/12">
+          <div className="flex gap-1 sm:gap-3 items-center justify-end sm:w-8/12 md:w-8/12 lg:w-9/12">
             <SearchBar />
-            <li>
-              <Cart />
-            </li>
-            <li>
-              <Profile />
-            </li>
-          </ul>
+            <Cart />
+            <Profile />
+          </div>
         </div>
       </div>
     </div>

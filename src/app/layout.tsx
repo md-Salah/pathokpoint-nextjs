@@ -3,9 +3,6 @@ import './globals.css';
 
 import { Anek_Bangla, Inter } from 'next/font/google';
 
-import { Footer, Navbar, TopBanner } from '@/components';
-import { ReduxProvider } from '@/redux/provider';
-
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const anek = Anek_Bangla({
   subsets: ["bengali"],
@@ -14,7 +11,7 @@ const anek = Anek_Bangla({
 
 export const metadata: Metadata = {
   title: "Home | Pathok Point",
-  description: "Best bookshop in bangladesh with cheap price",
+  description: "Best bookshop in Bangladesh",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -30,14 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${inter.variable}`}>
-        <ReduxProvider>
-          <main className={anek.variable}>
-            <TopBanner />
-            <Navbar />
-            {children}
-            <Footer />
-          </main>
-        </ReduxProvider>
+        <main className={anek.variable}>
+          {children}
+        </main>
       </body>
     </html>
   );
