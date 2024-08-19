@@ -1,13 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { ConditionBadge, WishlistButton } from "@/micro-components";
-import { Book } from "@/interface";
-import { isEnglish } from "@/utils";
-import AddToCart from "./AddToCart";
-import { defaultSrc } from "@/constants";
+import { defaultSrc } from '@/constants';
+import { Book } from '@/interface';
+import { ConditionBadge, WishlistButton } from '@/micro-components';
+import { isEnglish } from '@/utils';
+
+import AddToCart from './AddToCart';
 
 const BookCard = ({ book, fixW = true }: { book: Book; fixW?: boolean }) => {
   return (
@@ -117,7 +118,7 @@ const Author = ({ name, slug }: { name: string; slug: string }) => {
   return (
     <Link href={`/authors/${slug}`} target="_blank">
       <p
-        className={`truncate text-xs leading-tight text-secondary-content hover:underline mb-1 ${
+        className={`truncate text-xs leading-tight text-black04 hover:underline mb-1 ${
           isEnglish(name) ? "" : "font-bn"
         }`}
       >
