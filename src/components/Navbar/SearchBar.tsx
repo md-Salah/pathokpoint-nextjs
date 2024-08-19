@@ -29,11 +29,7 @@ const SearchBar = () => {
   return (
     <li
       className={`bg-white h-full flex flex-1 items-center transition-all duration-500 ease-in-out 
-                  ${
-                    focus
-                      ? "z-[31] absolute sm:relative left-0 right-0 mx-4 sm:mx-0"
-                      : ""
-                  }
+                  ${focus ? "z-[31] absolute sm:relative right-0 left-0" : ""}
                   ${focus ? "max-w-full" : "max-w-56"}
                   ${focus ? "sm:max-w-72" : "sm:max-w-56"}
                   ${focus ? "md:max-w-96" : "md:max-w-64"}

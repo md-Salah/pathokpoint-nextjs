@@ -35,7 +35,7 @@ const SearchBar = ({ handleSearch }: Props) => {
   }, []);
 
   return (
-    <div className="w-full flex justify-between items-center">
+    <div className={`w-full flex justify-between items-center ${focus && "layout-px"}`}>
       {focus && (
         <GoArrowLeft
           size="24"
