@@ -9,6 +9,7 @@ export { default as NumberInput } from "./NumberInput";
 export { default as Toast } from "./Toast";
 export { default as DateInput } from "./DateInput";
 export { default as Gender } from "./Gender";
+export { default as NotFound } from "./NotFound";
 
 // Icons
 export { default as HambugerIcon } from "./HamburgerIcon";
@@ -27,3 +28,4 @@ export { default as ForgotPassSVG } from "./ForgotPassSVG";
 //Admin
 export { default as OrderStatusBadge } from "./OrderStatusBadge";
 export { default as ProductShipmentStatusBadge } from "./ProductShipmentStatusBadge";
+export { default as Unauthorized } from "./Unauthorized";

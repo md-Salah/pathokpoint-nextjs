@@ -1,13 +1,14 @@
 "use client";
-import useSWR from "swr";
-import { useState, useEffect, useCallback } from "react";
-import { useDebouncedCallback } from "use-debounce";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
+import useSWR from 'swr';
+import { useDebouncedCallback } from 'use-debounce';
 
-import MultiSelect from "../MultiSelect";
-import { getCategories } from "@/utils/api";
-import { Category } from "@/interface";
-import { fetcher } from "@/utils/axiosConfig";
+import { Category } from '@/interface';
+import { getCategories } from '@/utils/api';
+import { fetcher } from '@/utils/axiosConfig';
+
+import MultiSelect from '../MultiSelect';
 
 interface Props {
   updateParams: (key: string, val: string) => void;

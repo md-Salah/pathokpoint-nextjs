@@ -20,8 +20,7 @@ const extractAxiosErr = (error: any) => {
   else if (axiosError.response.status === 422)
     return `${axiosError.response.data.detail[0].loc[1]} - ${axiosError.response.data.detail[0].msg}`;
   else if (axiosError.response.status === 401)
-    return "Unauthorized, Please login first";
-
+    return axiosError.response.data.detail.message;
   return axiosError.response.data.detail.message;
 };
 

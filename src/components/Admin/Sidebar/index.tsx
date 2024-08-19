@@ -1,23 +1,23 @@
 "use client";
 
-import Image from "next/image";
-import React, { useState } from "react";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsCartCheck, BsGraphUpArrow } from "react-icons/bs";
-import { CiUser } from "react-icons/ci";
-import { GoImage } from "react-icons/go";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoPricetagsOutline } from "react-icons/io5";
-import { LiaHashtagSolid } from "react-icons/lia";
-import { LuPenLine } from "react-icons/lu";
-import { MdOutlineReviews, MdOutlineStorefront } from "react-icons/md";
-import { PiBookLight, PiPackage } from "react-icons/pi";
-import { RiFileList3Line } from "react-icons/ri";
-import { RxDashboard } from "react-icons/rx";
-import { SlPrinter } from "react-icons/sl";
-import { TbCategory2, TbLocationDollar } from "react-icons/tb";
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { AiOutlineMail } from 'react-icons/ai';
+import { BsCartCheck, BsGraphUpArrow } from 'react-icons/bs';
+import { CiUser } from 'react-icons/ci';
+import { GoImage } from 'react-icons/go';
+import { IoIosArrowBack } from 'react-icons/io';
+import { IoPricetagsOutline } from 'react-icons/io5';
+import { LiaHashtagSolid } from 'react-icons/lia';
+import { LuPenLine } from 'react-icons/lu';
+import { MdOutlineReviews, MdOutlineStorefront } from 'react-icons/md';
+import { PiBookLight, PiPackage } from 'react-icons/pi';
+import { RiFileList3Line } from 'react-icons/ri';
+import { RxDashboard } from 'react-icons/rx';
+import { SlPrinter } from 'react-icons/sl';
+import { TbCategory2, TbLocationDollar } from 'react-icons/tb';
 
-import MenuItem from "./MenuItem";
+import MenuItem from './MenuItem';
 
 const Sidebar = () => {
   const [collapse, setCollapse] = useState<boolean>(false);
@@ -40,8 +40,8 @@ const Sidebar = () => {
               <Image
                 src={"/default/user.avif"}
                 alt="Image"
-                width="48"
-                height="48"
+                width={48}
+                height={48}
                 blurDataURL="/default/avatar.png"
                 placeholder="blur"
               />

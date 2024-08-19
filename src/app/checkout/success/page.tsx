@@ -1,8 +1,7 @@
 import Link from 'next/link';
 
-import { NotFound } from '@/components';
 import { social } from '@/constants';
-import { MessengerSVG, PaymentSuccessSVG, WhatsAppSVG } from '@/micro-components';
+import { MessengerSVG, NotFound, PaymentSuccessSVG, WhatsAppSVG } from '@/micro-components';
 
 import CopyInvoice from './CopyInvoice';
 

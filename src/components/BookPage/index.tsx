@@ -1,9 +1,10 @@
-import { NotFound } from "@/components";
-import { Book } from "@/interface";
-import BookDetails from "./BookDetails";
-import AdditionalInfo from "./AdditionalInfo";
-import Variation from "./Variation";
-import Suggestion from "./Suggestion";
+import { Book } from '@/interface';
+import { NotFound } from '@/micro-components';
+
+import AdditionalInfo from './AdditionalInfo';
+import BookDetails from './BookDetails';
+import Suggestion from './Suggestion';
+import Variation from './Variation';
 
 const BookPage = async ({ book }: { book: Book | null }) => {
   if (!book)

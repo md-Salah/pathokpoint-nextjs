@@ -17,7 +17,7 @@ import { AppDispatch } from '@/redux/store';
 const Profile = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -29,6 +29,9 @@ const Profile = () => {
     document.addEventListener("click", closeDropdown);
     return () => document.removeEventListener("click", closeDropdown);
   }, [isOpen]);
+
+  if (isLoading)
+    return <div className="loading loading-spinner text-black04"></div>;
 
   if (!user)
     return (
@@ -57,7 +60,7 @@ const Profile = () => {
       >
         <Image
           alt="Profile"
-          src={user && user.src || defaultSrc.user}
+          src={(user && user.src) || defaultSrc.user}
           width={36}
           height={36}
           className="rounded-full"

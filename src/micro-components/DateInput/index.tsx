@@ -16,6 +16,7 @@ const DateInput = ({ currentDate, handleChange }: Props) => {
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
+    console.log(event.target.name, event.target.value);
     const newDate = { ...date, [event.target.name]: event.target.value };
     setDate(newDate);
     handleChange(`${newDate.year}-${newDate.month}-${newDate.day}`);
@@ -31,7 +32,7 @@ const DateInput = ({ currentDate, handleChange }: Props) => {
       >
         <option value="">Day</option>
         {Array.from({ length: 31 }, (_, i) => (
-          <option key={i + 1} value={i + 1}>
+          <option key={i + 1} value={(i + 1).toString().padStart(2, "0")}>
             {i + 1}
           </option>
         ))}
@@ -44,7 +45,7 @@ const DateInput = ({ currentDate, handleChange }: Props) => {
       >
         <option value="">Month</option>
         {Array.from({ length: 12 }, (_, i) => (
-          <option key={i + 1} value={i + 1}>
+          <option key={i + 1} value={(i + 1).toString().padStart(2, "0")}>
             {new Date(0, i).toLocaleString("default", {
               month: "short",
             })}
@@ -58,7 +59,7 @@ const DateInput = ({ currentDate, handleChange }: Props) => {
         className="select select-bordered bg-white w-1/3 focus:outline-none focus:border-primary"
       >
         <option value="">Year</option>
-        {Array.from({ length: 100 }, (_, i) => (
+        {Array.from({ length: 70 }, (_, i) => (
           <option key={2024 - i} value={2024 - i}>
             {2024 - i}
           </option>

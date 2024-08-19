@@ -1,14 +1,12 @@
 "use client";
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { RiNotification4Fill } from 'react-icons/ri';
+
 import {
-  ProfitSummary,
-  DeliverySummary,
-  StatisticBarChart,
-  DashboardOrderSummary,
-} from "@/components";
-import { RiNotification4Fill } from "react-icons/ri";
-import React, { useState } from "react";
-import { dashboardDateOptions } from "@/constants/constants";
-import Image from "next/image";
+    DashboardOrderSummary, DeliverySummary, ProfitSummary, StatisticBarChart
+} from '@/components';
+import { dashboardDateOptions } from '@/constants/constants';
 
 const DashboardContent = () => {
   const [selectDate, onChange] = useState<Date | null>(null);
@@ -48,7 +46,7 @@ const DashboardContent = () => {
             <div className="flex items-center space-x-3">
               <div className="avatar online">
                 <div className="w-8 rounded-full">
-                  <Image src="/default/user.avif" alt="" />
+                  <Image src="/default/user.avif" width="48" height="48" alt="" />
                 </div>
               </div>
               <div className="flex flex-col items-start">

@@ -79,3 +79,6 @@ export const dateTime = (timestamp: string) => {
     datetime,
   };
 };
+
+export const isStaff = (role: string) =>
+  ["admin", "staff", "super-admin"].includes(role);

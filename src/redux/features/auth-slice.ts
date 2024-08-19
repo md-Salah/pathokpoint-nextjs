@@ -1,4 +1,5 @@
 import { User } from '@/interface';
+import { isStaff } from '@/utils';
 import axios, { extractAxiosErr } from '@/utils/axiosConfig';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -69,9 +70,6 @@ export const login = createAsyncThunk(
     }
   }
 );
-
-const isStaff = (role: string) =>
-  ["admin", "staff", "super-admin"].includes(role);
 
 export const authSlice = createSlice({
   name: "auth",

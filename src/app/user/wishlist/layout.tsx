@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Admin | Pathok Point",
-  description: "Admin dashboard of Pathok Point",
+  title: "Wishlist | Pathok Point",
+  description: "Wishlist on Pathok Point",
 };
 
 export default function RootLayout({

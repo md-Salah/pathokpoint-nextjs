@@ -5,7 +5,6 @@ export { Footer } from "./Footer";
 
 // Common
 export { default as Drawer } from "./Drawer";
-export { default as NotFound } from "./NotFound";
 export { default as AuthorizedUser } from "./AuthorizedUser";
 
 // Home

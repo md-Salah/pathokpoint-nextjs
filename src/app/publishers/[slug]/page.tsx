@@ -1,7 +1,8 @@
-import { defaultSrc } from "@/constants";
-import { Books, NotFound, Profile } from "@/components";
-import { Publisher } from "@/interface";
-import { getPublisherBySlug } from "@/utils/api";
+import { Books, Profile } from '@/components';
+import { defaultSrc } from '@/constants';
+import { Publisher } from '@/interface';
+import { NotFound } from '@/micro-components';
+import { getPublisherBySlug } from '@/utils/api';
 
 interface Props {
   searchParams?: any;
