@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { User } from '@/interface';
 import { tokenFromLocalStorage, updateUser } from '@/redux/features/auth-slice';
 import { AppDispatch, RootState } from '@/redux/store';
-import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
+import axiosInstance from '@/utils/axiosConfig';
 
 const useUser = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,20 +24,18 @@ const useUser = () => {
         dispatch(updateUser(userResponse.data));
         return userResponse.data;
       } else {
-        throw new Error("User not found. Please login again.");
+        return null;
       }
     } catch (error) {
-      const msg = extractAxiosErr(error);
-      throw new Error(msg);
+      return null;
     }
   };
 
-  const { data, error, isLoading } = useSWR<User, string>(token, fetcher);
+  const { data, isLoading } = useSWR<User | null, string>(token, fetcher);
 
   return {
     user: data,
     isLoading,
-    error,
   };
 };
 
