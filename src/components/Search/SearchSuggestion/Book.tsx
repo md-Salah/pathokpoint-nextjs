@@ -1,51 +1,51 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { ConditionBadge, InStockBadge } from "@/micro-components";
-import { Book as BookInterface } from "@/interface";
+import { defaultSrc } from '@/constants';
+import { Book as BookInterface } from '@/interface';
+import { ConditionBadge, InStockBadge } from '@/micro-components';
+import { isEnglish } from '@/utils';
 
 const Book = ({ book }: { book: BookInterface }) => {
-  const PriceAndDiscountPercent = () => (
-    <div className="flex flex-col w-20 items-end">
-      <span className="text-primary font-bold text-base">{`${book.sale_price} ৳`}</span>
-      <span className="text-sm text-secondary-content -mt-1">{`(${Math.round(
-        (book.sale_price / book.regular_price) * 100
-      )}% off)`}</span>
-    </div>
-  );
-
   return (
-    <div className="w-full group border-b border-base-300 bg-base-200">
-      <Link href={`/books/${book.slug}`} className="w-full">
-        <div className="flex flex-row p-2">
+    <div className="w-full bg-white hover:bg-gray-100 border-b border-black06">
+      <Link href={`/books/${book.public_id}/${book.slug}`} className="w-full">
+        <div className="flex px-4 py-3 gap-3">
           {/* Image */}
-          <div className="h-full min-h-16 min-w-14 w-16 relative rounded-md group-hover:opacity-80">
+          <div className="h-[68px] min-w-14 relative">
             <Image
-              src={book.images[0].src}
+              src={book.images[0]?.src || defaultSrc.book}
               alt={book.name[0]}
               fill
               sizes="10vw"
-              className="object-cover object-top rounded-md"
+              className="object-cover object-top"
             />
           </div>
 
           {/* Name, Author & Price */}
-          <div className="mx-2 w-full flex-1 ">
-            <div className="flex flex-row justify-between">
-              <div className="">
-                <h1 className="text-base line-clamp-2 group-hover:underline leading-4">
+          <div className="flex flex-col w-full justify-between">
+            <div className="flex justify-between w-full">
+              <div className={`${!isEnglish(book.name) && "font-bn"}`}>
+                <h1 className="text-sm font-semibold line-clamp-1">
                   {book.name}
                 </h1>
-                <p className="text-sm line-clamp-1 text-secondary-content">
-                  {book.authors[0].name}
-                </p>
+                {book.authors.length > 0 && (
+                  <p className="mt-0.5 text-xs text-black04 line-clamp-1">
+                    {book.authors[0].name}
+                  </p>
+                )}
               </div>
-              <PriceAndDiscountPercent />
+              <div className="flex flex-col w-20 items-end">
+                <span className="text-primary font-bold text-sm">{`${book.sale_price}৳`}</span>
+                {book.regular_price > book.sale_price && (
+                  <span className="mt-1 text-black04 font-medium text-xs line-through">{`${book.regular_price}৳`}</span>
+                )}
+              </div>
             </div>
 
-            <div className="flex justify-between items-end mt-1">
+            <div className="flex justify-between items-end mt-1 w-full">
               <ConditionBadge condition={book.condition} />
-              <InStockBadge inStock={book.quantity > 0} />
+              <InStockBadge inStock={book.in_stock && book.quantity > 0} />
             </div>
           </div>
         </div>

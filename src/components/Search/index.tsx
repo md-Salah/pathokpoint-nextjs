@@ -1,81 +1,58 @@
 "use client";
-import { useState } from "react";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useDebouncedCallback } from 'use-debounce';
 
-import { books } from "@/constants";
-import SearchBar from "./SearchBar";
-import SearchSuggestion from "./SearchSuggestion";
+import {
+    setAuthors, setBooks, setCategories, setLoading, setQuery
+} from '@/redux/features/search-slice';
+import { AppDispatch, RootState } from '@/redux/store';
+import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
+
+import SearchBar from './SearchBar';
+import SearchSuggestion from './SearchSuggestion';
 
 const Search = () => {
-  const [focus, setFocus] = useState<boolean>(false);
-  const [query, setQuery] = useState<string>("");
-  const [suggestions, setSuggestions] = useState({
-    books: [],
-    authors: [],
-    categories: [],
-    isEmpty: true,
-  });
+  const dispatch = useDispatch<AppDispatch>();
+  const { focus, tab, query } = useSelector((state: RootState) => state.search);
+
+  const handleSearchDebounced = useDebouncedCallback(async (val: string) => {
+    try {
+      dispatch(setLoading(true));
+      if (tab === "book") {
+        const res = await axiosInstance.get(`/book/all?q=${val.trim()}`);
+        dispatch(setBooks(res.data));
+      } else if (tab === "author") {
+        const res = await axiosInstance.get(`/author/all?q=${val.trim()}`);
+        dispatch(setAuthors(res.data));
+      } else {
+        const res = await axiosInstance.get(`/category/all?q=${val.trim()}`);
+        dispatch(setCategories(res.data));
+      }
+    } catch (error) {
+      console.error(extractAxiosErr(error));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  }, 500);
 
   const handleSearch = (val: string) => {
-    setQuery(val);
-
-    const results = {
-      books: [],
-      authors: [],
-      categories: [],
-      isEmpty: true,
-    };
-
-    const value = val.trim();
-    if (value.length === 0) return setSuggestions(results);
-
-    console.log("searching...");
-    // Dummy searching on Constant data
-    const regex = new RegExp(value, "gi");
-    books.forEach((book) => {
-      if (book.name.match(regex)) {
-        // @ts-ignore
-        results.books.push(book);
-      }
-
-      book.authors.forEach((author) => {
-        if (author.name.match(regex)) {
-          // @ts-ignore
-          results.authors.push(author);
-        }
-      });
-
-      book.categories.forEach((category) => {
-        if (category.name.match(regex)) {
-          // @ts-ignore
-          results.categories.push(category);
-        }
-      });
-    });
-
-    if (
-      results.books.length > 0 &&
-      results.authors.length > 0 &&
-      results.categories.length > 0
-    )
-      results.isEmpty = false;
-
-    setSuggestions(results);
+    dispatch(setQuery(val));
+    handleSearchDebounced(val);
   };
 
+  useEffect(() => {
+    handleSearchDebounced(query);
+  }, [tab]);
+
   return (
-    <div
-      className="w-full dropdown dropdown-end"
-      onFocus={() => setFocus(true)}
-      onBlur={() => setFocus(false)}
-    >
-      <SearchBar query={query} handleSearch={handleSearch} focus={focus} />
+    <div className="w-full dropdown dropdown-open dropdown-end" tabIndex={0}>
+      <SearchBar handleSearch={handleSearch} />
       <div
         className="dropdown-content bg-white shadow-lg rounded-b-lg min-w-full"
         tabIndex={0}
       >
-        {query.trim().length > 0 && (
-          <SearchSuggestion suggestions={suggestions} />
-        )}
+        {focus && query.trim().length > 0 && <SearchSuggestion />}
       </div>
     </div>
   );

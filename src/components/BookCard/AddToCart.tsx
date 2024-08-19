@@ -1,15 +1,19 @@
 "use client";
 
-import { Book } from "@/interface";
-import { AppDispatch } from "@/redux/store";
-import { useDispatch } from "react-redux";
-import { addItemToCart } from "@/redux/features/cart-slice";
-import { useState } from "react";
-import Link from "next/link";
+import Link from 'next/link';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Book } from '@/interface';
+import { addItemToCart } from '@/redux/features/cart-slice';
+import { AppDispatch, RootState } from '@/redux/store';
 
 const AddToCart = ({ book }: { book: Book }) => {
-  const [isAdded, setIsAdded] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
+  const { cartItems } = useSelector((state: RootState) => state.cart);
+  const [isAdded, setIsAdded] = useState<boolean>(
+    cartItems.some((item) => item.id === book.id)
+  );
 
   const handleAddToCart = () => {
     dispatch(
