@@ -1,32 +1,27 @@
-import {
-    AuthorCard, BigSale, BookCard, Carousel, CategoryCard, Genre, HeroSection, PublisherCard,
-    ReviewCard
-} from '@/components';
-import { reviews } from '@/constants';
-import { Author, Book, Category, Publisher } from '@/interface';
-import { getAuthors, getBooks, getCategories, getPublishers } from '@/utils/api';
+import { BookCard, Carousel, Genre } from '@/components';
+import { Book, Category } from '@/interface';
+import { getBooks, getCategories } from '@/utils/api';
+
+import BigSale from './BigSale';
+import CustomerReviews from './CustomerReviews';
+import EnglishBooks from './EnglishBooks';
+import HeroSection from './HeroSection';
+import IslamicBooks from './IslamicBooks';
+import MustReadBooks from './MustReadBooks';
+import PopularAuthors from './PopularAuthors';
+import PopularCategoriesBn from './PopularCategoriesBn';
+import PopularCategoriesEn from './PopularCategoriesEn';
+import PopularPublisher from './PopularPublisher';
+import SebaBooks from './SebaBooks';
+import TranslatedBooks from './TranslatedBooks';
 
 const Home = async () => {
-  const authors: Author[] = await getAuthors("");
   const categories: Category[] = await getCategories("");
-  const publishers: Publisher[] = await getPublishers("");
-
   const featuredBooks: Book[] = await getBooks(
     "is_featured=true&in_stock=true"
   );
   const recentlyAddedBooks: Book[] = await getBooks(
     "order_by=-created_at&in_stock=true"
-  );
-  const mustReadBooks: Book[] = await getBooks(
-    "is_must_read=true&in_stock=true"
-  );
-  const islamicBooks: Book[] = await getBooks("is_islamic=true&in_stock=true");
-  const englishBooks: Book[] = await getBooks("language=english&in_stock=true");
-  const translatedBooks: Book[] = await getBooks(
-    "is_translated=true&in_stock=true"
-  );
-  const sebaBooks: Book[] = await getBooks(
-    "publisher__name__in=সেবা প্রকাশনী&in_stock=true"
   );
   const bigSaleBooks: Book[] = await getBooks("is_big_sale=true&in_stock=true");
 
@@ -38,11 +33,9 @@ const Home = async () => {
         <Genre categories={categories} />
       </div>
 
-      <BigSale books={bigSaleBooks} />
-
       {/* Featured Books */}
       <Carousel title="Featured Books" href="/books?is_featured=true">
-        {featuredBooks.map((book) => (
+        {featuredBooks.map((book: Book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </Carousel>
@@ -54,28 +47,15 @@ const Home = async () => {
         ))}
       </Carousel>
 
+      <BigSale books={bigSaleBooks} />
+
       {/* <ServiceBanner /> */}
 
-      {/* মাস্ট রিড কালেকশন */}
-      <Carousel title="মাস্ট রিড কালেকশন" href="/books?is_must_read=true">
-        {mustReadBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <MustReadBooks />
 
-      {/* ইসলামিক কালেকশন */}
-      <Carousel title="ইসলামিক কালেকশন" href="/books?is_islamic=true">
-        {islamicBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <IslamicBooks />
 
-      {/* ইংরেজি ভাষার বিদেশি বই */}
-      <Carousel title="ইংরেজি ভাষার বিদেশি বই" href="/books?language=english">
-        {englishBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <EnglishBooks />
 
       {/* কোলকাতার বই */}
       {/* <Carousel title="কোলকাতার বই">
@@ -91,12 +71,7 @@ const Home = async () => {
         ))}
       </Carousel> */}
 
-      {/* অনুবাদ কালেকশন */}
-      <Carousel title="অনুবাদ কালেকশন" href="/books?is_translated=true">
-        {translatedBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <TranslatedBooks />
 
       {/* ভৌতিক ও থ্রিলার */}
       {/* <Carousel title="ভৌতিক ও থ্রিলার">
@@ -126,15 +101,7 @@ const Home = async () => {
         ))}
       </Carousel> */}
 
-      {/* সেবা প্রকাশনীর বই */}
-      <Carousel
-        title="সেবা প্রকাশনীর বই"
-        href="/books?publisher__name__in=সেবা প্রকাশনী"
-      >
-        {sebaBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <SebaBooks />
 
       {/* পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই */}
       {/* <Carousel title="পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই">
@@ -156,29 +123,13 @@ const Home = async () => {
         ))}
       </Carousel> */}
 
-      <Carousel title="জনপ্রিয় ইংরেজি ক্যাটাগরি" href="/categories">
-        {categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
-      </Carousel>
+      <PopularCategoriesEn />
 
-      <Carousel title="জনপ্রিয় বাংলা ক্যাটাগরি" href="/categories">
-        {categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
-      </Carousel>
+      <PopularCategoriesBn />
 
-      <Carousel title="জনপ্রিয় লেখক" href="/authors">
-        {authors.map((author) => (
-          <AuthorCard key={author.id} author={author} />
-        ))}
-      </Carousel>
+      <PopularAuthors />
 
-      <Carousel title="জনপ্রিয় প্রকাশনী" href="/publishers">
-        {publishers.map((publisher) => (
-          <PublisherCard key={publisher.id} publisher={publisher} />
-        ))}
-      </Carousel>
+      <PopularPublisher />
 
       {/* <Carousel title="সেবা প্রকাশনীর ক্যাটাগরি">
         {categories.map((category) => (
@@ -193,11 +144,7 @@ const Home = async () => {
         ))}
       </Carousel> */}
 
-      <Carousel title="Customer Reviews">
-        {reviews.map((review) => (
-          <ReviewCard key={review.id} review={review} />
-        ))}
-      </Carousel>
+      <CustomerReviews />
     </div>
   );
 };

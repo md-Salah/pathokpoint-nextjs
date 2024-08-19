@@ -5,16 +5,17 @@ export { Footer } from "./Footer";
 
 // Common
 export { default as Drawer } from "./Drawer";
-
-// Home
-export { Home } from "./Home";
 export { default as Carousel } from "./Carousel";
-export { default as BigSale } from "./BigSale";
 export { default as Genre } from "./Genre";
+export { default as Search } from "./Search";
+export { Filter } from "./Filter";
+export { default as FilterInMobile } from "./FilterInMobile";
 
-// HeroSection
-export { HeroSection } from "./HeroSection";
-export { default as HeroBanner } from "./HeroBanner";
+// Pages
+export { default as Home } from "./Home";
+export { default as BookPage } from "./BookPage";
+export { default as Books } from "./Books";
+export { default as Cart } from "./Cart";
 
 // Cards
 export { default as BookCard } from "./BookCard";
@@ -22,15 +23,6 @@ export { default as ReviewCard } from "./ReviewCard";
 export { default as CategoryCard } from "./CategoryCard";
 export { default as AuthorCard } from "./AuthorCard";
 export { default as PublisherCard } from "./PublisherCard";
-
-// Search
-export { default as Search } from "./Search";
-
-// BookPage
-export { default as BookPage } from "./BookPage";
-
-// Books/Author/Publisher/Category Page
-export { default as Books } from "./Books";
 export { default as Profile } from "./Profile";
 
 //User Profile
@@ -41,13 +33,6 @@ export { default as SidebarMobile } from "./UserProfile/SidebarMobile";
 export { default as SidebarDesktop } from "./UserProfile/SidebarDesktop";
 export { default as LogoutModal } from "./UserProfile/LogoutModal";
 // export { default as Pagination } from "./Pagination";
-
-// Filters
-export { Filter } from "./Filter";
-export { default as FilterInMobile } from "./FilterInMobile";
-
-// Cart & Checkout
-export { default as Cart } from "./Cart";
 
 // On Boarding
 export { default as SignUpForm } from "./SignUpForm";
@@ -68,5 +53,4 @@ export { default as ReviewDetailsModal } from "./Admin/AdminReviews/ReviewDetail
 export { default as StarRating } from "./Admin/AdminReviews/StarRating";
 export { default as MultipleItemSelector } from "./MultipleItemSelector";
 
-// Temporary
 export { default as OrderSummary } from "./Checkout/OrderSummary";

@@ -1,8 +1,11 @@
 "use client";
-import { HeroBanner } from "@/components";
-import { CategoryExpand, CategoryPanel } from "@/components/HeroSection";
-import { Category } from "@/interface";
-import { useState } from "react";
+import { useState } from 'react';
+
+import { Category } from '@/interface';
+
+import CategoryExpand from './CategoryExpand';
+import CategoryPanel from './CategoryPanel';
+import HeroBanner from './HeroBanner';
 
 const HeroSection = ({ categories }: { categories: Category[] }) => {
   const [selected, setSelected] = useState<string | null>(null);

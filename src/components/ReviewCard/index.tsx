@@ -1,14 +1,16 @@
-import Image from "next/image";
-import Rating from "./Rating";
-import { Description } from "@/micro-components";
-import { Review } from "@/interface";
-import { isEnglish } from "@/utils";
+import Image from 'next/image';
+
+import { Review } from '@/interface';
+import { Description } from '@/micro-components';
+import { isEnglish } from '@/utils';
+
+import Rating from './Rating';
 
 const ReviewCard = ({ review }: { review: Review }) => {
   const customer_name = review.user.first_name + " " + review.user.last_name;
 
   return (
-    <div className="card w-[203px] sm:w-[298px] h-[271px] sm:h-[397px] overflow-y-scroll bg-white border border-black06 text-black02">
+    <div className="card w-[264px] sm:w-[298px] h-[280px] sm:h-[397px] overflow-y-scroll bg-white border border-black06 text-black02">
       <div className="card-body p-[18px] sm:p-7 pt-[22px] sm:pt-8">
         <div className="card-title mb-4 gap-0">
           <Avatar name={customer_name} src={review.images[0]?.src || null} />
