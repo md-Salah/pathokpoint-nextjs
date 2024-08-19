@@ -1,32 +1,18 @@
 "use client";
-import Link from 'next/link';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {
-    Author as AuthorInterface, Book as BookInterface, Category as CategoryInterface
-} from '@/interface';
+import { setTab } from '@/redux/features/search-slice';
+import { AppDispatch, RootState } from '@/redux/store';
 
 import Author from './Author';
 import Book from './Book';
 import Category from './Category';
 
-interface Props {
-  loading: boolean;
-  books: BookInterface[];
-  authors: AuthorInterface[];
-  categories: CategoryInterface[];
-  tab: string;
-  setTab: (tab: string) => void;
-}
-
-const SearchSuggestion = ({
-  loading,
-  books,
-  authors,
-  categories,
-  tab,
-  setTab,
-}: Props) => {
+const SearchSuggestion = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { tab, books, authors, categories, loading } = useSelector(
+    (state: RootState) => state.search
+  );
   return (
     <div role="tablist" className="min-w-80">
       {/* Tab */}
@@ -34,21 +20,21 @@ const SearchSuggestion = ({
         <div
           role="tab"
           className={`tab ${tab === "book" && "tab-active"}`}
-          onClick={() => setTab("book")}
+          onClick={() => dispatch(setTab("book"))}
         >
           বই
         </div>
         <div
           role="tab"
           className={`tab ${tab === "author" && "tab-active"}`}
-          onClick={() => setTab("author")}
+          onClick={() => dispatch(setTab("author"))}
         >
           লেখক
         </div>
         <div
           role="tab"
           className={`tab ${tab === "category" && "tab-active"}`}
-          onClick={() => setTab("category")}
+          onClick={() => dispatch(setTab("category"))}
         >
           বিষয়
         </div>

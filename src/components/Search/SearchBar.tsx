@@ -4,15 +4,18 @@ import { useEffect, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { GoArrowLeft } from 'react-icons/go';
 import { RxCross2 } from 'react-icons/rx';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setFocus } from '@/redux/features/search-slice';
+import { AppDispatch, RootState } from '@/redux/store';
 
 interface Props {
-  query: string;
   handleSearch: (val: string) => void;
-  focus: boolean;
-  setFocus: (val: boolean) => void;
 }
 
-const SearchBar = ({ query, handleSearch, focus, setFocus }: Props) => {
+const SearchBar = ({ handleSearch }: Props) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { focus, query } = useSelector((state: RootState) => state.search);
   const text = "বই, লেখক, অথবা বিষয় লিখুন";
   const [placeholder, setPlaceholder] = useState<string>("");
 
@@ -37,13 +40,14 @@ const SearchBar = ({ query, handleSearch, focus, setFocus }: Props) => {
         <GoArrowLeft
           size="24"
           className="sm:hidden mr-2 cursor-pointer text-black04"
-          onClick={() => setFocus(false)}
+          onClick={() => dispatch(setFocus(false))}
         />
       )}
       <label
         className={`w-full h-10 input input-bordered flex items-center gap-2 rounded-3xl pr-1 bg-white font-bn
                             focus-within:border-primary focus-within:outline-none
                             `}
+        onClick={() => dispatch(setFocus(true))}
       >
         <input
           type="text"

@@ -1,43 +1,43 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useDebouncedCallback } from 'use-debounce';
 
+import {
+    setAuthors, setBooks, setCategories, setLoading, setQuery
+} from '@/redux/features/search-slice';
+import { AppDispatch, RootState } from '@/redux/store';
 import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
 
 import SearchBar from './SearchBar';
 import SearchSuggestion from './SearchSuggestion';
 
 const Search = () => {
-  const [tab, setTab] = useState<string>("book");
-  const [focus, setFocus] = useState<boolean>(false);
-  const [query, setQuery] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
-  const [books, setBooks] = useState([]);
-  const [authors, setAuthors] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const { focus, tab, query } = useSelector((state: RootState) => state.search);
 
   const handleSearchDebounced = useDebouncedCallback(async (val: string) => {
     try {
-      setLoading(true);
+      dispatch(setLoading(true));
       if (tab === "book") {
         const res = await axiosInstance.get(`/book/all?q=${val.trim()}`);
-        setBooks(res.data);
+        dispatch(setBooks(res.data));
       } else if (tab === "author") {
         const res = await axiosInstance.get(`/author/all?q=${val.trim()}`);
-        setAuthors(res.data);
+        dispatch(setAuthors(res.data));
       } else {
         const res = await axiosInstance.get(`/category/all?q=${val.trim()}`);
-        setCategories(res.data);
+        dispatch(setCategories(res.data));
       }
     } catch (error) {
       console.error(extractAxiosErr(error));
     } finally {
-      setLoading(false);
+      dispatch(setLoading(false));
     }
   }, 500);
 
   const handleSearch = (val: string) => {
-    setQuery(val);
+    dispatch(setQuery(val));
     handleSearchDebounced(val);
   };
 
@@ -46,26 +46,13 @@ const Search = () => {
   }, [tab]);
 
   return (
-    <div
-      className="w-full dropdown dropdown-end"
-      onFocus={() => setFocus(true)}
-      onBlur={() => setFocus(false)}
-    >
-      <SearchBar query={query} handleSearch={handleSearch} focus={focus} setFocus={setFocus} />
+    <div className="w-full dropdown dropdown-open dropdown-end" tabIndex={0}>
+      <SearchBar handleSearch={handleSearch} />
       <div
         className="dropdown-content bg-white shadow-lg rounded-b-lg min-w-full"
         tabIndex={0}
       >
-        {focus && query.trim().length > 0 && (
-          <SearchSuggestion
-            loading={loading}
-            books={books}
-            authors={authors}
-            categories={categories}
-            tab={tab}
-            setTab={setTab}
-          />
-        )}
+        {focus && query.trim().length > 0 && <SearchSuggestion />}
       </div>
     </div>
   );
