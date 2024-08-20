@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { BsPerson } from 'react-icons/bs';
 import { IoIosLogOut, IoIosStarOutline, IoMdHeartEmpty } from 'react-icons/io';
-import { IoPersonCircleOutline } from 'react-icons/io5';
+import { IoPersonCircleOutline, IoSettingsOutline } from 'react-icons/io5';
 import { PiBagLight } from 'react-icons/pi';
 import { useDispatch } from 'react-redux';
 
@@ -13,6 +13,7 @@ import { defaultSrc } from '@/constants';
 import { useUser } from '@/hooks';
 import { logout } from '@/redux/features/auth-slice';
 import { AppDispatch } from '@/redux/store';
+import { isStaff } from '@/utils';
 
 const Profile = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -72,6 +73,14 @@ const Profile = () => {
           tabIndex={0}
           className="menu dropdown-content shadow bg-white text-black02 text-sm rounded-box w-52"
         >
+          {user && isStaff(user.role) && (
+            <li>
+              <Link href="/admin" className="gap-2">
+                <IoSettingsOutline className="inline-block" size={20} />
+                Admin Panel
+              </Link>
+            </li>
+          )}
           <li>
             <Link href="/user/me" className="gap-2">
               <BsPerson className="inline-block" size={20} />

@@ -1,7 +1,7 @@
 "use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { Pagination } from "@/components";
+import { Pagination } from '@/components';
 
 const PaginationHandler = ({ totalPages }: { totalPages: number }) => {
   const router = useRouter();

@@ -11,4 +11,5 @@ export { users } from "./users";
 export { defaultSrc } from "./default";
 export { paymentMethods } from "./paymentMethods";
 export { settings } from "./settings";
-export { orderStatus } from "./order_status";
+export { orderStatus } from "./orderStatus";
+export { orderStatusAdmin } from "./orderStatusAdmin";

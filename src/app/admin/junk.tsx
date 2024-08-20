@@ -10,13 +10,13 @@ import { isStaff } from '@/utils';
 
 const Template = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
-    if (!isLoading && !user) {
+    if (user === null) {
       router.push("/auth/login");
     }
-  }, [user, isLoading, router]);
+  }, [user]);
 
   if (user && isStaff(user.role))
     return (

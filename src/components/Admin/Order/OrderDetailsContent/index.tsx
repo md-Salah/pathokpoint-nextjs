@@ -1,10 +1,12 @@
-import { OrderSummary } from "@/components";
-import OrderedBookItem from "@/components/Admin/AdminOrderManagement/OrderedBookItem";
-import { ConditionBadge } from "@/micro-components";
-import { GoKebabHorizontal } from "react-icons/go";
-import OrderDetailsRestockModal from "./OrderDetailsRestockModal";
-import OrderDetailsChangeStatusModal from "./OrderDetailsChangeStatusModal";
-import OrderDetailsRefundModal from "./OrderDetailsRefundModal";
+import { GoKebabHorizontal } from 'react-icons/go';
+
+import { OrderSummary } from '@/components';
+import OrderedBookItem from '@/components/Admin/Order/OrderedBookItem';
+import { ConditionBadge } from '@/micro-components';
+
+import OrderDetailsChangeStatusModal from './OrderDetailsChangeStatusModal';
+import OrderDetailsRefundModal from './OrderDetailsRefundModal';
+import OrderDetailsRestockModal from './OrderDetailsRestockModal';
 
 type Props = {
   orderId: string;

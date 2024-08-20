@@ -30,6 +30,10 @@
   @apply mx-auto container sm:w-[1328px] sm:max-w-[90%];
 }
 
+.admin-container {
+  @apply m-4 p-4 min-h-96;
+}
+
 .layout-mt {
   @apply mt-4 sm:mt-5 md:mt-6 lg:mt-8;
 }

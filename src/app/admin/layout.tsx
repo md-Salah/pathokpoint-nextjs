@@ -1,3 +1,5 @@
+import { Sidebar } from '@/components/Admin';
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,5 +12,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  // return <>{children}</>;
+  return (
+    <div className="flex">
+      <aside>
+        <Sidebar />
+      </aside>
+      <div className="w-full overflow-hidden">{children}</div>
+    </div>
+  );
 }

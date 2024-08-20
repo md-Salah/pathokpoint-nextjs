@@ -10,6 +10,8 @@ export { default as Genre } from "./Genre";
 export { default as Search } from "./Search";
 export { Filter } from "./Filter";
 export { default as FilterInMobile } from "./FilterInMobile";
+export { default as Pagination } from "./Pagination";
+export { default as PaginationHandler } from "./PaginationHandler";
 
 // Pages
 export { default as Home } from "./Home";
@@ -40,13 +42,12 @@ export { default as LoginForm } from "./LoginForm";
 export { default as VerifyOTP } from "./VerifyOTP";
 
 //Admin
-export { default as Pagination } from "./Pagination";
 export { default as DashboardSummaryBox } from "./Admin/AdminDashboard/DashboardSummaryBox";
 export { default as ProfitSummary } from "./Admin/AdminDashboard/ProfitSummary";
 export { default as DashboardOrderSummary } from "./Admin/AdminDashboard/DashboardOrderSummary";
 export { default as DeliverySummary } from "./Admin/AdminDashboard/DeliverySummary";
 export { default as StatisticBarChart } from "./Admin/AdminDashboard/StatisticBarChart";
-export { default as OrderTabOptions } from "./Admin/AdminOrderManagement/OrderTabOptions";
+export { default as OrderTabOptions } from "./Admin/Order/OrderTabOptions";
 export { default as ImageContainer } from "./Admin/AdminImages/ImageContainer";
 export { default as CarouselModal } from "./Admin/AdminReviews/CarouselModal";
 export { default as ReviewDetailsModal } from "./Admin/AdminReviews/ReviewDetailsModal";

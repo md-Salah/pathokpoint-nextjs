@@ -10,6 +10,7 @@ export { default as Toast } from "./Toast";
 export { default as DateInput } from "./DateInput";
 export { default as Gender } from "./Gender";
 export { default as NotFound } from "./NotFound";
+export { default as DataCount } from "./DataCount";
 
 // Icons
 export { default as HambugerIcon } from "./HamburgerIcon";

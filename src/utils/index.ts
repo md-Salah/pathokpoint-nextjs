@@ -71,7 +71,7 @@ export const dateTime = (timestamp: string) => {
     hour12: true,
   });
 
-  const datetime = `${date}, ${time}`;
+  const datetime = `${date} - ${time}`;
 
   return {
     date,

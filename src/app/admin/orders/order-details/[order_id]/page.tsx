@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
-import { useParams } from "next/navigation";
-import OrderDetailsContent from "@/components/Admin/AdminOrderManagement/OrderDetailsContent";
+import { useParams } from 'next/navigation';
+import React, { useState } from 'react';
+
+import OrderDetailsContent from '@/components/Admin/Order/OrderDetailsContent';
 
 const OrderDetails = () => {
   const params = useParams();

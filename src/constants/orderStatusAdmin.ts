@@ -1,0 +1,15 @@
+export const orderStatusAdmin = [
+  "pending-payment",
+  "delivered",
+  "on-delivery",
+  "cancelled",
+  "order-confirmed",
+  "processing",
+  "pending-condition-confirmation",
+  "customer-confirmed",
+  "packaging-completed",
+  "completed",
+  "returned",
+  "on-hold",
+  "trash",
+];

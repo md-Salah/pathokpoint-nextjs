@@ -1,12 +1,11 @@
-import { Suspense } from "react";
+import { Suspense } from 'react';
 
-import { FilterInMobile, Filter, BookCard } from "@/components";
-import { Book } from "@/interface";
-import PaginationHandler from "./PaginationHandler";
-import Search from "./Search";
-import Sort from "./Sort";
+import { BookCard, Filter, FilterInMobile, PaginationHandler } from '@/components';
+import { Book } from '@/interface';
+import { getBooksAndPagination } from '@/utils/api';
 
-import { getBooksAndPagination } from "@/utils/api";
+import Search from './Search';
+import Sort from './Sort';
 
 interface Props {
   searchParams?: any;
