@@ -10,7 +10,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
   const customer_name = review.user.first_name + " " + review.user.last_name;
 
   return (
-    <div className="card w-[264px] sm:w-[298px] h-[280px] sm:h-[397px] overflow-y-scroll bg-white border border-black06 text-black02">
+    <div className="card w-80 sm:w-[300px] h-[300px] sm:h-[397px] overflow-y-scroll bg-white border border-black06 text-black02">
       <div className="card-body p-[18px] sm:p-7 pt-[22px] sm:pt-8">
         <div className="card-title mb-4 gap-0">
           <Avatar name={customer_name} src={review.images[0]?.src || null} />

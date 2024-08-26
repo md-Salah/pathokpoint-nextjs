@@ -1,4 +1,4 @@
-import { Orders } from '@/components/Admin';
+import { Orders } from '@/components/Admin/Order';
 
 type Props = {
   searchParams?: any;

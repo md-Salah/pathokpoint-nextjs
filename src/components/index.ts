@@ -47,7 +47,6 @@ export { default as ProfitSummary } from "./Admin/AdminDashboard/ProfitSummary";
 export { default as DashboardOrderSummary } from "./Admin/AdminDashboard/DashboardOrderSummary";
 export { default as DeliverySummary } from "./Admin/AdminDashboard/DeliverySummary";
 export { default as StatisticBarChart } from "./Admin/AdminDashboard/StatisticBarChart";
-export { default as OrderTabOptions } from "./Admin/Order/OrderTabOptions";
 export { default as ImageContainer } from "./Admin/AdminImages/ImageContainer";
 export { default as CarouselModal } from "./Admin/AdminReviews/CarouselModal";
 export { default as ReviewDetailsModal } from "./Admin/AdminReviews/ReviewDetailsModal";

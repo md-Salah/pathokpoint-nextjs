@@ -31,7 +31,15 @@
 }
 
 .admin-container {
-  @apply m-4 p-4 min-h-96;
+  @apply sm:m-4 p-4 mx-auto;
+}
+
+.admin-mt {
+  @apply mt-4;
+}
+
+.admin-p {
+  @apply p-4 sm:p-6 md:p-7 lg:p-10;
 }
 
 .layout-mt {
@@ -78,9 +86,12 @@ input[type="text"] {
 }
 
 /* Step */
-.steps .step::before {
-  @apply w-[3px] lg:w-full;
-  @apply lg:max-h-[3px];
+.steps.steps-vertical .step::before {
+  @apply w-[3px];
+}
+
+.steps.lg\:steps-horizontal .step::before {
+  @apply lg:max-h-[3px] lg:w-full;
 }
 
 

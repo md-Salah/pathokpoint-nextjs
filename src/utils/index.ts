@@ -59,12 +59,32 @@ export const truncateString = (str: string, num: number) => {
 
 export const dateTime = (timestamp: string) => {
   const dt = new Date(timestamp);
+  const now = new Date();
 
-  const date = dt.toLocaleDateString("en-US", {
+  const isToday =
+    dt.getDate() === now.getDate() &&
+    dt.getMonth() === now.getMonth() &&
+    dt.getFullYear() === now.getFullYear();
+
+  const isYesterday =
+    dt.getDate() === now.getDate() - 1 &&
+    dt.getMonth() === now.getMonth() &&
+    dt.getFullYear() === now.getFullYear();
+
+  const showYear = dt.getFullYear() !== now.getFullYear();
+
+  let date = dt.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
-    year: "numeric",
+    ...(showYear ? { year: "numeric" } : {}),
   });
+
+  if (isToday) {
+    date = "Today";
+  } else if (isYesterday) {
+    date = "Yesterday";
+  }
+
   const time = dt.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "numeric",

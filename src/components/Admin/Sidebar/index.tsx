@@ -17,10 +17,14 @@ import { RxDashboard } from 'react-icons/rx';
 import { SlPrinter } from 'react-icons/sl';
 import { TbCategory2, TbLocationDollar } from 'react-icons/tb';
 
+import { defaultSrc } from '@/constants';
+import { useUser } from '@/hooks';
+
 import MenuItem from './MenuItem';
 
 const Sidebar = () => {
   const [collapse, setCollapse] = useState<boolean>(false);
+  const { user } = useUser();
 
   return (
     <div
@@ -38,12 +42,10 @@ const Sidebar = () => {
           <div className="avatar justify-center">
             <div className="mask mask-squircle h-12 w-12">
               <Image
-                src={"/default/user.avif"}
-                alt="Image"
+                src={user?.src || defaultSrc.user}
+                alt="Photo"
                 width={48}
                 height={48}
-                blurDataURL="/default/avatar.png"
-                placeholder="blur"
               />
             </div>
           </div>
@@ -51,10 +53,10 @@ const Sidebar = () => {
             <h2
               className={`font-semibold text-sm ${collapse && "text-center"}`}
             >
-              Nayem Ahmed Nimmi
+              {user? `${user.first_name} ${user.last_name}` : "Anonymous"}
             </h2>
             <h6 className={`text-xs opacity-50 ${collapse && "text-center"}`}>
-              Admin
+              {user?.role || "Guest"}
             </h6>
           </div>
         </div>

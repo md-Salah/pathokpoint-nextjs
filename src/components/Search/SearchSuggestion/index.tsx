@@ -1,7 +1,7 @@
 "use client";
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setTab } from '@/redux/features/search-slice';
+import { setFocus, setTab } from '@/redux/features/search-slice';
 import { AppDispatch, RootState } from '@/redux/store';
 
 import Author from './Author';
@@ -41,7 +41,7 @@ const SearchSuggestion = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="w-full max-h-96 min-h-80 overflow-y-scroll rounded-b">
+      <div className="w-full max-h-96 min-h-80 overflow-y-scroll rounded-b" onClick={()=> dispatch(setFocus(false))}>
         {tab === "book" && (
           <div>
             {loading ? (

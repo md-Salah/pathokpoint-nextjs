@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import adminCartSlice from './features/admin-cart-slice';
 import authSlice from './features/auth-slice';
 import cartSlice from './features/cart-slice';
 import searchSlice from './features/search-slice';
@@ -9,6 +10,7 @@ export const store = configureStore({
     auth: authSlice,
     cart: cartSlice,
     search: searchSlice,
+    adminCart: adminCartSlice,
   },
 });
 

@@ -1,4 +1,4 @@
-import { Address, Image } from '@/interface';
+import { Address, Author, Image } from '@/interface';
 
 export interface Order {
   id: string;
@@ -33,19 +33,26 @@ export interface Order {
     username: string;
   } | null;
   address: Address | null;
-  courier: {
-    id: string;
-    method_name: string;
-  } | null;
+  courier: Courier | null;
+}
+
+export interface Courier {
+  id: string;
+  method_name: string;
+  company_name: string;
 }
 
 export interface OrderItem {
   id: string;
   book: {
     id: string;
+    public_id: string;
     name: string;
     slug: string;
     condition: string;
+    cover: string;
+    images: Image[];
+    authors: Author[];
   };
   quantity: number;
   regular_price: number;
@@ -72,6 +79,16 @@ export interface Transaction {
   amount: number;
   transaction_id: string;
   account_number: string;
+  reference: string | null;
+  is_manual: boolean;
+  is_refund: boolean;
+  refunded_by?: {
+    id: string;
+    first_name: string | null;
+    last_name: string | null;
+    username: string;
+  } | null;
+  refund_reason: string | null;
   gateway: {
     id: string;
     name: string;

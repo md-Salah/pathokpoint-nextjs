@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { FormEvent } from "react";
+import Link from 'next/link';
+import { FormEvent } from 'react';
 
-import { isEmail } from "@/utils";
+import { isEmail } from '@/utils';
 
 interface Props {
   email: string;
@@ -49,7 +49,7 @@ const ForgotPassword = ({
           <input
             type="text"
             placeholder="Email"
-            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            className="input input-sm h-11 input-bordered bg-white focus:border-primary focus:outline-none w-full"
             name="email"
             value={email}
             onChange={handleChange}

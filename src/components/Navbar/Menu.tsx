@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
-import { HambugerIcon } from "@/micro-components";
-import { Drawer } from "@/components";
-import { usePathname } from "next/navigation";
-import { adminMenuItems, frontendMenuItems } from "@/constants/constants";
-import MenuContent from "./MenuContent";
+import { Drawer } from '@/components';
+import { adminMenuItems, menuItems } from '@/constants';
+import { HambugerIcon } from '@/micro-components';
+
+import MenuContent from './MenuContent';
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -23,7 +24,7 @@ const Menu = () => {
           menuItems={
             pathname.split("/").includes("admin")
               ? adminMenuItems
-              : frontendMenuItems
+              : menuItems
           }
         />
       </Drawer>

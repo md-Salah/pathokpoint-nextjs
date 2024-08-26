@@ -22,7 +22,7 @@ const OrderDetails = () => {
     data: order,
     error,
     isLoading,
-  } = useSWR<Order, string>(`/order/id/${params.order_id}`, (url: string) =>
+  } = useSWR([`/order/id/${params.order_id}`, token], ([url, token]) =>
     fetchWithToken(url, token)
   );
 

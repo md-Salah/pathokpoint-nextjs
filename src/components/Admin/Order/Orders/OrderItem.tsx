@@ -1,24 +1,28 @@
-import { GoKebabHorizontal } from 'react-icons/go';
+import Link from 'next/link';
 
 import { Order } from '@/interface';
 import { OrderStatusBadge } from '@/micro-components';
 import { dateTime } from '@/utils';
 
-const OrderItem = ({
-  order,
-  dropdownTop = false,
-}: {
+interface Props {
   order: Order;
-  dropdownTop?: boolean;
-}) => {
+}
+
+const OrderItem = ({ order }: Props) => {
   return (
-    <tr className="hover">
+    <tr className="hover h-12">
       <td className="text-black04 min-w-24">
-        {dateTime(order.created_at).date}
-        <br />
-        {dateTime(order.created_at).time}
+        {dateTime(order.created_at).datetime}
       </td>
-      <td>{order.invoice}</td>
+      <td>
+        <Link
+          href={`/admin/orders/view/${order.invoice}`}
+          target="_blank"
+          className="hover:underline block w-full"
+        >
+          {order.invoice}
+        </Link>
+      </td>
       <td>{order.address ? order.address.name : "-"}</td>
       <td className="text-black04">x{order.order_items.length}</td>
       <td>
@@ -30,48 +34,16 @@ const OrderItem = ({
         )}
       </td>
       <td>{order.paid}৳</td>
-      <td>{order.due}৳</td>
+      <td>{order.is_full_paid ? order.due : 0}</td>
+      <td>{order.is_full_paid ? 0 : order.due}</td>
       <td>
         {order.transactions.length > 0 && order.transactions[0].gateway.name}
       </td>
-      <td>{order.is_full_paid ? "Yes" : "COD"}</td>
+      <td>{order.courier ? order.courier.method_name : "-"}</td>
       <td>
         <OrderStatusBadge
           status={order.order_status[order.order_status.length - 1].status}
         />
-      </td>
-      <td>
-        <div
-          className={`dropdown dropdown-end ${
-            dropdownTop ? "dropdown-top" : "dropdown-bottom"
-          }`}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle btn-sm"
-          >
-            <GoKebabHorizontal
-              color="#363739"
-              size={18}
-              className="text-center rotate-90"
-            />
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 z-[1]"
-          >
-            <li>
-              <h6>View</h6>
-            </li>
-            <li>
-              <h6>Delete</h6>
-            </li>
-            <li>
-              <h6>Mark as Confirmed</h6>
-            </li>
-          </ul>
-        </div>
       </td>
     </tr>
   );

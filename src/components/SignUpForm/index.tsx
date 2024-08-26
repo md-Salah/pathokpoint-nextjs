@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { FormEvent, useState } from "react";
+import Link from 'next/link';
+import { FormEvent, useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-import { FacebookSVG, GoogleSVG } from "@/micro-components";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { isEmail } from "@/utils";
+import { FacebookSVG, GoogleSVG } from '@/micro-components';
+import { isEmail } from '@/utils';
 
 interface UserSignup {
   first_name: string;
@@ -77,7 +77,7 @@ const SignUpForm = ({
           <input
             type="text"
             placeholder="First name"
-            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            className="input input-sm h-11 input-bordered bg-white focus:border-primary focus:outline-none w-full"
             name="first_name"
             value={user.first_name}
             onChange={handleInputChange}
@@ -85,20 +85,20 @@ const SignUpForm = ({
           <input
             type="text"
             placeholder="Last name"
-            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            className="input input-sm h-11 input-bordered bg-white focus:border-primary focus:outline-none w-full"
             name="last_name"
             value={user.last_name}
             onChange={handleInputChange}
           />
           <input
             type="text"
-            placeholder="Email or phone"
-            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            placeholder="Email"
+            className="input input-sm h-11 input-bordered bg-white focus:border-primary focus:outline-none w-full"
             name="email"
             value={user.email}
             onChange={handleInputChange}
           />
-          <label className="input input-sm flex items-center gap-2 h-11 input-bordered focus-within:outline-none focus-within:border-primary">
+          <label className="input input-sm flex items-center gap-2 h-11 input-bordered bg-white focus-within:outline-none focus-within:border-primary">
             <input
               type={showPass ? "text" : "password"}
               placeholder="Password"
@@ -118,6 +118,14 @@ const SignUpForm = ({
               )}
             </div>
           </label>
+          <div className="flex justify-end">
+            <Link
+              href="/auth/reset-password"
+              className="btn btn-link btn-sm text-primary min-h-0 h-4"
+            >
+              Forgot Password?
+            </Link>
+          </div>
         </div>
         <p className="text-highlight text-sm mt-4">{error}</p>
         <button
@@ -132,11 +140,17 @@ const SignUpForm = ({
       <div className="text-center lg:text-left">
         <p className="mt-6 text-sm text-black04">Or, sign up with</p>
         <div className="grid grid-cols-2 gap-2 mt-6">
-          <button className="btn btn-sm btn-outline h-12 text-black04 border-black05">
+          <button
+            className="btn btn-sm btn-outline h-12 text-black04 border-black05"
+            onClick={() => setError("SignUp with Google is disabled")}
+          >
             <GoogleSVG className="w-8 h-8" />
             Google
           </button>
-          <button className="btn btn-sm btn-outline h-12 text-black04 border-black05">
+          <button
+            className="btn btn-sm btn-outline h-12 text-black04 border-black05"
+            onClick={() => setError("SignUp with Facebook is disabled")}
+          >
             <FacebookSVG className="h-6 -mr-1" />
             Facebook
           </button>

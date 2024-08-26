@@ -16,7 +16,8 @@ const axiosInstance = axios.create({
 
 const extractAxiosErr = (error: any) => {
   const axiosError = error as AxiosError;
-  if (!axiosError.response) return "An unknown error occurred";
+  if (typeof axiosError === "string") return axiosError;
+  else if (!axiosError.response) return "An unknown error occurred";
   else if (axiosError.response.status === 422)
     return `${axiosError.response.data.detail[0].loc[1]} - ${axiosError.response.data.detail[0].msg}`;
   else if (axiosError.response.status === 401) {

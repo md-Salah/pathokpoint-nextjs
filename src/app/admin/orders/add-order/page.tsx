@@ -1,9 +1,7 @@
-import React from 'react';
+import { AddOrder } from '@/components/Admin/Order';
 
-import AddOrderForm from '@/components/Admin/Order/AddOrderForm';
-
-const AddOrder = () => {
-  return <AddOrderForm />;
+const AddOrderPage = () => {
+  return <AddOrder />;
 };
 
-export default AddOrder;
+export default AddOrderPage;

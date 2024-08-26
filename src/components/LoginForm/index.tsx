@@ -58,12 +58,12 @@ const LoginForm = () => {
           <input
             type="text"
             placeholder="Email"
-            className="input input-sm h-11 input-bordered focus:border-primary focus:outline-none w-full"
+            className="input input-sm h-11 input-bordered bg-white focus:border-primary focus:outline-none w-full"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label className="input input-sm flex items-center gap-2 h-11 input-bordered focus-within:outline-none focus-within:border-primary">
+          <label className="input input-sm flex items-center gap-2 h-11 input-bordered bg-white focus-within:outline-none focus-within:border-primary">
             <input
               type={showPass ? "text" : "password"}
               placeholder="Password"
@@ -105,11 +105,11 @@ const LoginForm = () => {
       <div className="text-center lg:text-left">
         <p className="mt-6 text-sm text-black04">Or, login with</p>
         <div className="grid grid-cols-2 gap-2 mt-6">
-          <button className="btn btn-sm btn-outline h-12 text-black04 border-black05">
+          <button className="btn btn-sm btn-outline h-12 text-black04 border-black05" onClick={()=> setErr("Login with Google is disabled")}>
             <GoogleSVG className="w-8 h-8" />
             Google
           </button>
-          <button className="btn btn-sm btn-outline h-12 text-black04 border-black05">
+          <button className="btn btn-sm btn-outline h-12 text-black04 border-black05" onClick={()=> setErr("Login with Facebook is disabled")}>
             <FacebookSVG className="h-6 -mr-1" />
             Facebook
           </button>

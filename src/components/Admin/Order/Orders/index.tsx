@@ -7,6 +7,7 @@ import useSWR from 'swr';
 import { PaginationHandler } from '@/components';
 import { Order } from '@/interface';
 import { DataCount } from '@/micro-components';
+import { Error, Skeleton } from '@/micro-components/Admin';
 import { RootState } from '@/redux/store';
 import { fetchWithTokenAndHeader } from '@/utils/axiosConfig';
 
@@ -29,11 +30,8 @@ const Orders = ({ searchParams }: Props) => {
     ([url, token]) => fetchWithTokenAndHeader(url, token)
   );
 
-  if (isLoading) return <div className="admin-container skeleton"></div>;
-  if (error)
-    return (
-      <div className="admin-container bg-white text-highlight">{error}</div>
-    );
+  if (isLoading) return <Skeleton />;
+  if (error) return <Error err={error} />;
   return (
     <div className="admin-container bg-white">
       <div className="flex justify-between">
@@ -47,7 +45,10 @@ const Orders = ({ searchParams }: Props) => {
             />
           )}
         </div>
-        <Link href="/admin/add-order" className="btn btn-secondary btn-sm h-11">
+        <Link
+          href="/admin/orders/add-order"
+          className="btn btn-secondary btn-sm h-11"
+        >
           <FiPlus size={20} className="inline-block" />
           Add Order
         </Link>
@@ -67,20 +68,16 @@ const Orders = ({ searchParams }: Props) => {
               <th>Total</th>
               <th>Paid</th>
               <th>Due</th>
+              <th>COD</th>
               <th>Payment</th>
-              <th>Full Paid</th>
+              <th>Shipping</th>
               <th>Order Status</th>
-              <th>More</th>
             </tr>
           </thead>
           <tbody>
             {data &&
-              data.data.map((order: Order, index: number) => (
-                <OrderItem
-                  order={order}
-                  key={order.id}
-                  dropdownTop={index > 4 && index > data.data.length - 4}
-                />
+              data.data.map((order: Order) => (
+                <OrderItem key={order.id} order={order} />
               ))}
           </tbody>
         </table>

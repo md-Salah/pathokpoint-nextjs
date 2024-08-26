@@ -1,7 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Category } from "@/interface";
-import { isEnglish } from "@/utils";
+import { Category } from '@/interface';
+import { Divider } from '@/micro-components';
+import { isEnglish } from '@/utils';
 
 export const CategoryExpand = ({ categories }: { categories: Category[] }) => {
   return (
@@ -72,9 +73,3 @@ const SubCat = ({ subCat }: { subCat: Category }) => {
     </Link>
   );
 };
-
-const Divider = ({ className }: { className?: string }) => (
-  <div
-    className={`border-l border-black06 mx-16 h-4/5 my-auto ${className}`}
-  ></div>
-);

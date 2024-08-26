@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useRef, useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 interface Props {
   user: any;
@@ -83,7 +83,7 @@ const SetPassword = ({
           <p className="text-black04 text-xs md:text-sm text-center lg:text-left">
             Password must be at least 8 characters long.
           </p>
-          <label className="mt-2 input input-sm flex items-center gap-2 h-11 input-bordered focus-within:outline-none focus-within:border-primary">
+          <label className="mt-2 input input-sm flex items-center gap-2 h-11 input-bordered bg-white focus-within:outline-none focus-within:border-primary">
             <input
               type={showPass ? "text" : "password"}
               placeholder="New Password"
@@ -102,7 +102,7 @@ const SetPassword = ({
               )}
             </div>
           </label>
-          <label className="input input-sm flex items-center gap-2 h-11 input-bordered focus-within:outline-none focus-within:border-primary">
+          <label className="input input-sm flex items-center gap-2 h-11 input-bordered bg-white focus-within:outline-none focus-within:border-primary">
             <input
               type={showConfirmPass ? "text" : "password"}
               placeholder="Confirm Password"

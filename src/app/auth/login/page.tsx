@@ -1,5 +1,5 @@
-import { LoginForm } from "@/components";
-import { SignUpSVG } from "@/micro-components";
+import { LoginForm } from '@/components';
+import { SignUpSVG } from '@/micro-components';
 
 const Login = () => {
   return (

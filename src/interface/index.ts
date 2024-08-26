@@ -9,5 +9,7 @@ export type { IPagination } from "./pagination";
 export type { Coupon } from "./coupon";
 export type { Courier } from "./courier";
 export type { Address } from "./address";
-export type { Order, OrderItem, OrderStatus, Transaction } from "./order";
+export type { Order, OrderItem, OrderStatus, Transaction, Courier as CourierInOrder } from "./order";
 export type { Image } from "./image";
+export type { paymentGateway } from "./paymentGateway";
+export type { TransactionForRequest, TransactionInput } from "./transaction";

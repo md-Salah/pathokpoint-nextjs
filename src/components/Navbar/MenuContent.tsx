@@ -1,8 +1,9 @@
-import { authors, categories, publishers } from "@/constants";
-import { MenuItem, SubMenuItem } from "@/interface";
-import { getSubmenuItemPath } from "@/utils";
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
+
+import { authors, categories, publishers } from '@/constants';
+import { MenuItem, SubMenuItem } from '@/interface';
+import { getSubmenuItemPath } from '@/utils';
 
 const MenuContent = ({
   menuItems,
@@ -27,7 +28,7 @@ const MenuContent = ({
                       <Item
                         key={index}
                         name={subMenuItem.name}
-                        slug={subMenuItem.slug}
+                        href={subMenuItem.href}
                         handleClose={handleClose}
                       />
                     ))}
@@ -40,7 +41,7 @@ const MenuContent = ({
           return (
             <li className="menu-item" key={index}>
               <Link
-                href={menuItem.slug}
+                href={menuItem.href}
                 onClick={handleClose}
                 className="w-full hover:bg-[#FF82001A]"
               >
@@ -56,18 +57,18 @@ const MenuContent = ({
 
 const Item = ({
   name,
-  slug,
+  href,
   handleClose,
 }: {
   name: SubMenuItem["name"];
-  slug: SubMenuItem["slug"];
+  href: SubMenuItem["href"];
   handleClose: () => void;
 }) => (
   <li
     className={`font-bn hover:bg-[#FF82001A] hover:text-primary hover:opacity-100`}
     onClick={handleClose}
   >
-    <Link href={slug} className="hover:bg-[#FF82001A]">
+    <Link href={href} className="hover:bg-[#FF82001A]">
       {name}
     </Link>
   </li>
