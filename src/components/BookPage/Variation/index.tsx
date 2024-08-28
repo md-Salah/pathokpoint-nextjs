@@ -1,14 +1,14 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import useSWR from "swr";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
-import { ConditionBadge } from "@/micro-components";
-import { Book as BookInterface } from "@/interface";
-import { isEnglish } from "@/utils";
-import { defaultSrc } from "@/constants";
-import { fetcher } from "@/utils/axiosConfig";
+import { defaultSrc } from '@/constants';
+import { Book as BookInterface } from '@/interface';
+import { ConditionBadge } from '@/micro-components';
+import { isEnglish } from '@/utils';
+import { fetcher } from '@/utils/axiosConfig';
 
 interface Props {
   book: BookInterface;
@@ -19,7 +19,7 @@ const Variation = ({ book }: Props) => {
 
   const authorIds = book.authors.map((athr) => athr.id).join(",");
   const { data, isLoading } = useSWR(
-    `/book/all?q=${book.name}&author__id__in=${authorIds}`,
+    `/book/all?slug=${book.slug}&author__id__in=${authorIds}`,
     fetcher
   );
   useEffect(() => {

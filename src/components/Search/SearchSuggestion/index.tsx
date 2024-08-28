@@ -1,5 +1,6 @@
 "use client";
 import { useDispatch, useSelector } from 'react-redux';
+import { useDebouncedCallback } from 'use-debounce';
 
 import { setFocus, setTab } from '@/redux/features/search-slice';
 import { AppDispatch, RootState } from '@/redux/store';
@@ -13,6 +14,11 @@ const SearchSuggestion = () => {
   const { tab, books, authors, categories, loading } = useSelector(
     (state: RootState) => state.search
   );
+
+  const handleSuggestionClick = useDebouncedCallback(() => {
+    dispatch(setFocus(false));
+  }, 500);
+
   return (
     <div role="tablist" className="min-w-80">
       {/* Tab */}
@@ -41,7 +47,10 @@ const SearchSuggestion = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="w-full max-h-96 min-h-80 overflow-y-scroll rounded-b" onClick={()=> dispatch(setFocus(false))}>
+      <div
+        className="w-full max-h-96 min-h-80 overflow-y-scroll rounded-b"
+        onClick={handleSuggestionClick}
+      >
         {tab === "book" && (
           <div>
             {loading ? (

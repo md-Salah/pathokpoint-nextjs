@@ -56,7 +56,7 @@ export const verifyStock = async (
     await axiosInstance.post("/cart/verify-stock", {
       order_items: cartItems.map(({ id, selectedQuantity }) => ({
         book_id: id,
-        selectedQuantity,
+        quantity: selectedQuantity,
       })),
     });
     return null;

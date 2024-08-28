@@ -1,13 +1,14 @@
 "use client";
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { CartItem as CartItemType } from '@/interface';
-import { applyCoupon, removeCoupon } from '@/redux/features/cart-slice';
+import {
+    applyCoupon, refreshCartItems, removeCoupon, verifyStock
+} from '@/redux/features/cart-slice';
 import { AppDispatch, RootState } from '@/redux/store';
-import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
 
 import ApplyCoupon from './ApplyCoupon';
 import CartItem from './CartItem';
@@ -19,51 +20,46 @@ import Summary from './Summary';
 const Cart = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const { cartItems, coupon, isLoading } = useSelector(
-    (state: RootState) => state.cart
-  );
+  const { cartItems, coupon } = useSelector((state: RootState) => state.cart);
 
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [couponLoading, setCouponLoading] = useState<boolean>(false);
 
   const handleCoupon = async (code: string): Promise<void> => {
-    const trimmedCode = code.trim();
-    if (trimmedCode === "") return;
+    if (code.trim() === "") return;
 
     setErr(null);
-    const action = await dispatch(applyCoupon(trimmedCode));
+    setCouponLoading(true);
+    const action = await dispatch(applyCoupon(code));
     if (applyCoupon.rejected.match(action)) {
       setErr(action.payload as string);
     }
-  };
-
-  const verifyStock = async (): Promise<boolean> => {
-    try {
-      await axiosInstance.post("/cart/verify-stock", {
-        order_items: cartItems.map(({ id, selectedQuantity }) => ({
-          book_id: id,
-          selectedQuantity,
-        })),
-      });
-      return true;
-    } catch (error) {
-      setErr(extractAxiosErr(error));
-    }
-    return false;
+    setCouponLoading(false);
   };
 
   const handleCheckout = async (): Promise<void> => {
-    if (cartItems.length === 0) return;
+    setErr(null);
+    if (cartItems.length === 0) {
+      setErr("Cart is empty");
+      return;
+    }
 
     setLoading(true);
-
-    if (!(await verifyStock())) {
+    const action = await dispatch(verifyStock(cartItems));
+    if (verifyStock.rejected.match(action)) {
+      setErr(action.payload as string);
       setLoading(false);
       return;
     }
 
     if (coupon) {
-      await handleCoupon(coupon);
+      const action = await dispatch(applyCoupon(coupon));
+      if (applyCoupon.rejected.match(action)) {
+        setErr(action.payload as string);
+        setLoading(false);
+        return;
+      }
     }
 
     setLoading(false);
@@ -73,6 +69,10 @@ const Cart = () => {
   const handleRemoveCoupon = () => {
     dispatch(removeCoupon());
   };
+
+  useEffect(() => {
+    dispatch(refreshCartItems());
+  }, []);
 
   if (cartItems.length === 0) return <EmptyCart />;
   return (
@@ -95,7 +95,7 @@ const Cart = () => {
           </div>
 
           {/* Cart Summary */}
-          <div className="bg-white w-full md:w-64 lg:w-80 layout-p">
+          <div className="bg-white w-full md:w-64 lg:w-96 layout-p">
             <h1 className="font-semibold sm:text-lg md:text-xl">
               Order summary
             </h1>
@@ -103,12 +103,16 @@ const Cart = () => {
             {coupon ? (
               <CouponApplied handleRemoveCoupon={handleRemoveCoupon} />
             ) : (
-              <ApplyCoupon handleCoupon={handleCoupon} isLoading={isLoading} />
+              <ApplyCoupon
+                handleCoupon={handleCoupon}
+                isLoading={couponLoading}
+              />
             )}
             <p className="text-highlight text-sm mt-8">{err}</p>
             <button
               className="mt-4 btn btn-primary w-full"
               onClick={handleCheckout}
+              disabled={loading}
             >
               {loading && <span className="loading loading-spinner"></span>}
               Checkout

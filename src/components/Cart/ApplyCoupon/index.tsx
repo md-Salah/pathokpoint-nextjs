@@ -52,6 +52,7 @@ const ApplyCoupon = ({ handleCoupon, isLoading }: Props) => {
           <button
             className="btn btn-sm h-11 btn-error min-w-20"
             onClick={() => handleCoupon(value)}
+            disabled={isLoading}
           >
             {isLoading ? (
               <span className="loading loading-spinner"></span>

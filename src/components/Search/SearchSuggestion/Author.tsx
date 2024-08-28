@@ -8,7 +8,7 @@ import { isEnglish } from '@/utils';
 const Author = ({ author }: { author: AuthorInterface }) => {
   return (
     <Link href={`/authors/${author.slug}`}>
-      <div className="flex items-center gap-3 border-b border-black06 p-2 bg-white hover:bg-gray-100">
+      <div className="flex items-center gap-3 border-b border-black06 p-2 bg-white hover:bg-gray-100 group">
         <div className="avatar">
           <div className="mask mask-squircle w-12 h-12 text-2xl text-center">
             <Image
@@ -16,11 +16,12 @@ const Author = ({ author }: { author: AuthorInterface }) => {
               alt={author.name[0]}
               width={48}
               height={48}
+              className='group-hover:opacity-90'
             />
           </div>
         </div>
         <h1
-          className={`text-sm font-semibold line-clamp-2 ${
+          className={`text-sm font-semibold line-clamp-2 group-hover:underline ${
             !isEnglish(author.name) && "font-bn"
           }`}
         >

@@ -59,14 +59,25 @@ export const applyCoupon = createAsyncThunk(
   "admin-cart/applyCoupon",
   async (coupon: string, { getState, rejectWithValue }) => {
     try {
-      const state = getState() as { cart: CartState };
-      const response = await axiosInstance.post("/cart/apply-coupon", {
-        coupon_code: coupon,
-        order_items: state.cart.cartItems.map((item: CartItem) => ({
-          book_id: item.id,
-          quantity: item.selectedQuantity,
-        })),
-      });
+      const { adminCart: cart, auth } = getState() as {
+        adminCart: CartState;
+        auth: AuthState;
+      };
+      const response = await axiosInstance.post(
+        "/cart/apply-coupon",
+        {
+          coupon_code: coupon,
+          order_items: cart.cartItems.map((item: CartItem) => ({
+            book_id: item.id,
+            quantity: item.selectedQuantity,
+          })),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
       return {
         coupon: coupon,
         ...response.data,

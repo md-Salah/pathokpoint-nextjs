@@ -28,17 +28,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${inter.variable}`}>
-        <main className={anek.variable}>
-          <ReduxProvider>
+    <ReduxProvider>
+      <html lang="en">
+        <body className={`${inter.className} ${inter.variable}`}>
+          <main className={anek.variable}>
             <TopBanner />
             <Navbar />
             {children}
             <Footer />
-          </ReduxProvider>
-        </main>
-      </body>
-    </html>
+          </main>
+        </body>
+      </html>
+    </ReduxProvider>
   );
 }

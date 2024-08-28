@@ -8,7 +8,7 @@ import { isEnglish } from '@/utils';
 
 const Book = ({ book }: { book: BookInterface }) => {
   return (
-    <div className="w-full bg-white hover:bg-gray-100 border-b border-black06">
+    <div className="w-full bg-white hover:bg-gray-100 border-b border-black06 group">
       <Link href={`/books/${book.public_id}/${book.slug}`} className="w-full">
         <div className="flex px-4 py-3 gap-3">
           {/* Image */}
@@ -18,7 +18,7 @@ const Book = ({ book }: { book: BookInterface }) => {
               alt={book.name[0]}
               fill
               sizes="10vw"
-              className="object-cover object-top"
+              className="object-cover object-center group-hover:opacity-90"
             />
           </div>
 
@@ -26,7 +26,7 @@ const Book = ({ book }: { book: BookInterface }) => {
           <div className="flex flex-col w-full justify-between">
             <div className="flex justify-between w-full">
               <div className={`${!isEnglish(book.name) && "font-bn"}`}>
-                <h1 className="text-sm font-semibold line-clamp-1">
+                <h1 className="text-sm font-semibold line-clamp-1 group-hover:underline">
                   {book.name}
                 </h1>
                 {book.authors.length > 0 && (

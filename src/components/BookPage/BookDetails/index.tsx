@@ -5,36 +5,24 @@ import { useState } from 'react';
 import { AiFillMinusCircle } from 'react-icons/ai';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { PiSealPercentFill } from 'react-icons/pi';
-import { useDispatch } from 'react-redux';
 
 import { defaultSrc } from '@/constants';
 import { Book } from '@/interface';
 import {
     ConditionBadge, ConditionExplain, NumberInput, Share, WishlistButton
 } from '@/micro-components';
-import { addItemToCart } from '@/redux/features/cart-slice';
-import { AppDispatch } from '@/redux/store';
 import { isEnglish } from '@/utils';
+
+import AddToCart from './AddToCart';
 
 interface Props {
   book: Book;
 }
 
 const BookDetails = ({ book }: Props) => {
-  const dispatch = useDispatch<AppDispatch>();
   const [qty, setQty] = useState<number>(Math.min(1, book.quantity));
-  const [isAdded, setIsAdded] = useState<boolean>(false);
-  const copyText = `${book.name} (${book.condition}) by ${book.authors[0]?.name}, ${book.sale_price} Tk`;
 
-  const handleAddToCart = () => {
-    dispatch(
-      addItemToCart({
-        ...book,
-        selectedQuantity: qty,
-      })
-    );
-    setIsAdded(true);
-  };
+  const copyText = `${book.name} (${book.condition}) by ${book.authors[0]?.name}, ${book.sale_price} Tk`;
 
   return (
     <div className="card sm:card-side rounded-none layout-mt pb-6 sm:px-7 sm:py-7 lg:py-12 bg-white">
@@ -167,23 +155,7 @@ const BookDetails = ({ book }: Props) => {
           )}
 
           <div className="card-actions mt-7 h-[47px] sm:h-[52px]">
-            {isAdded ? (
-              <Link
-                href="/cart"
-                className="btn btn-error max-w-60 flex-1 h-full"
-              >
-                View Cart
-              </Link>
-            ) : (
-              <button
-                className={`btn btn-primary max-w-60 flex-1 h-full ${
-                  book.quantity === 0 && "btn-disabled"
-                }`}
-                onClick={handleAddToCart}
-              >
-                Add to Cart
-              </button>
-            )}
+            <AddToCart book={book} qty={qty} />
             <div className="w-[3.75rem] h-full">
               <WishlistButton />
             </div>

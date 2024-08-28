@@ -4,6 +4,7 @@ import { social } from '@/constants';
 import { MessengerSVG, NotFound, PaymentSuccessSVG, WhatsAppSVG } from '@/micro-components';
 
 import CopyInvoice from './CopyInvoice';
+import TrackOrder from './TrackOrder';
 
 interface Props {
   searchParams?: {
@@ -54,17 +55,7 @@ const Success = ({ searchParams }: Props) => {
           অর্ডার আইডি আমাদেরকে ইনবক্স করুন।
         </p>
 
-        <div className="mt-6 flex gap-2">
-          <Link
-            href={`/user/my-order/${invoice}`}
-            className="btn btn-primary btn-sm w-36 md:w-40 h-10 md:h-11"
-          >
-            Track Order
-          </Link>
-          <button className="btn btn-primary btn-sm btn-outline w-36 md:w-40 h-10 md:h-11">
-            Invoice
-          </button>
-        </div>
+        <TrackOrder invoice={invoice} />
       </div>
     </div>
   );

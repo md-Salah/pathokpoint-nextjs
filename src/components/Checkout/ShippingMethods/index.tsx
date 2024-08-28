@@ -16,6 +16,7 @@ const ShippingMethods = () => {
     (state: RootState) => state.cart
   );
   const [err, setErr] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const {
     data,
     isLoading: dataLoading,
@@ -23,25 +24,43 @@ const ShippingMethods = () => {
   }: { data: CourierInterface[]; isLoading: boolean; error: any } = useSWR(
     `/courier/all?${
       address.city.trim() != "" ? `city=${address.city.trim()}` : ""
-    }${isCashOnDelivery ? "&allow_cash_on_delivery=true" : ""}`,
+    }`,
     fetcher
   );
 
-  const handleSelect = async (id: string) => {
+  const handleSelect = async (courier: CourierInterface) => {
+    if (isCashOnDelivery && !courier.allow_cash_on_delivery) {
+      setErr(`"${courier.method_name}" does not support cash on delivery`);
+      return;
+    }
+
     setErr(null);
-    const action = await dispatch(selectCourier(id));
+    setLoading(true);
+    const action = await dispatch(selectCourier(courier.id));
     if (selectCourier.rejected.match(action)) {
       setErr(action.payload as string);
     }
+    setLoading(false);
   };
 
   return (
     <section className="layout-p layout-mt md:mt-3 bg-white">
       <h2 className="font-semibold sm:text-lg md:text-xl">Shipping method</h2>
+      {dataLoading && <div className="mt-3 skeleton h-40"></div>}
+      {dataErr && <div className="mt-3 h-40 text-highlight">{dataErr}</div>}
+      <div
+        className={`transition-all duration-300 ease-in-out ${
+          err || loading ? "h-4 my-2" : "h-0"
+        }`}
+      >
+        {err && <div className="mt-1 text-highlight text-sm">{err}</div>}
+        {loading && (
+          <div className="flex justify-center text-black04">
+            <div className="loading loading-dots"></div>
+          </div>
+        )}
+      </div>
       <div className="mt-6 flex flex-wrap gap-3">
-        {dataLoading && <div className="skeleton h-40 w-full"></div>}
-        {dataErr && <div className="h-40 w-full text-highlight">{dataErr}</div>}
-        {err && <div className="w-full text-highlight">{err}</div>}
         {data &&
           data.length > 0 &&
           data.map((courier) => (
