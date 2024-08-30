@@ -1,9 +1,9 @@
 import { Address, CartItem } from '@/interface';
-import { isEmail, isPhoneNumber } from '@/utils';
 import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
 import { validateAddress } from '@/utils/validate';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { applyCouponAPI, selectCourierAPI } from './action';
 import { AuthState } from './auth-slice';
 
 const initialDeliveryCharge = 0;
@@ -72,29 +72,15 @@ export const verifyStock = createAsyncThunk(
 export const applyCoupon = createAsyncThunk(
   "cart/applyCoupon",
   async (coupon: string, { getState, rejectWithValue }) => {
+    const { auth, cart } = getState() as { auth: AuthState; cart: CartState };
     try {
-      const { auth, cart } = getState() as { auth: AuthState; cart: CartState };
-      const response = await axiosInstance.post(
-        "/cart/apply-coupon",
-        {
-          coupon_code: coupon.trim(),
-          order_items: cart.cartItems.map((item: CartItem) => ({
-            book_id: item.id,
-            quantity: item.selectedQuantity,
-          })),
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${auth.token ? auth.token : ""}`,
-          },
-        }
-      );
-      return {
-        coupon: coupon,
-        ...response.data,
-      };
+      return await applyCouponAPI({
+        coupon,
+        cartItems: cart.cartItems,
+        token: auth.token || "",
+      });
     } catch (error) {
-      return rejectWithValue(extractAxiosErr(error));
+      return rejectWithValue(error);
     }
   }
 );
@@ -149,35 +135,18 @@ export const selectCourier = createAsyncThunk(
   "cart/selectCourier",
   async (courierId: string, { getState, rejectWithValue }) => {
     const { auth, cart } = getState() as { auth: AuthState; cart: CartState };
-    if (cart.cartItems.length === 0)
-      return rejectWithValue("Your cart is empty, please add some items");
-    const addrErr = validateAddress(cart.address);
-    if (addrErr) return rejectWithValue(addrErr);
-
-    const payload = {
-      order_items: cart.cartItems.map((item: CartItem) => ({
-        book_id: item.id,
-        quantity: item.selectedQuantity,
-      })),
-      address: {
-        ...cart.address,
-        email: cart.address.email?.trim() || null,
-        phone_number: `+88${cart.address.phone_number}`,
-      },
-      is_full_paid: !cart.isCashOnDelivery,
-      courier_id: courierId,
-      coupon_code: cart.coupon,
-    };
 
     try {
-      const response = await axiosInstance.post("/checkout/summary", payload, {
-        headers: {
-          Authorization: `Bearer ${auth.token ? auth.token : ""}`,
-        },
+      return await selectCourierAPI({
+        cartItems: cart.cartItems,
+        address: cart.address,
+        isCashOnDelivery: cart.isCashOnDelivery,
+        courierId: courierId,
+        coupon: cart.coupon || "",
+        token: auth.token || "",
       });
-      return { ...response.data, courier_id: courierId };
     } catch (error) {
-      return rejectWithValue(extractAxiosErr(error));
+      return rejectWithValue(error);
     }
   }
 );

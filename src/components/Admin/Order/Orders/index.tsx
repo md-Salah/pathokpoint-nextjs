@@ -36,7 +36,7 @@ const Orders = ({ searchParams }: Props) => {
     <div className="admin-container bg-white">
       <div className="flex justify-between">
         <div>
-          <h1 className="text-lg sm:text-2xl font-medium mb-1">Orders List</h1>
+          <h1 className="text-lg sm:text-2xl font-medium mb-1">Orders</h1>
           {data && (
             <DataCount
               currentPage={parseInt(data.headers["x-current-page"])}
@@ -47,13 +47,13 @@ const Orders = ({ searchParams }: Props) => {
         </div>
         <Link
           href="/admin/orders/add-order"
-          className="btn btn-secondary btn-sm h-11"
+          className="btn btn-secondary btn-sm lg:h-11"
         >
           <FiPlus size={20} className="inline-block" />
           Add Order
         </Link>
       </div>
-      <div className="mt-2 flex justify-between items-center">
+      <div className="mt-4 flex justify-between items-center gap-2">
         <Search />
         <StatusFilter />
       </div>

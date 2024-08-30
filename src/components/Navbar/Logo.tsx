@@ -1,17 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { defaultSrc } from '@/constants';
 
 const Logo = () => {
   return (
-    <Link href="/" className="block relative h-[26px] md:h-[70px] max-w-[128px]">
-      <Image
-        alt="Pathok Point"
-        src="/logo-trans.png"
-        fill
-        priority
-        sizes="(max-width: 640px) 100vw, 128px"
-        className="object-contain object-left text-xl font-bold"
-      />
+    <Link href="/" className='block'>
+      <div className="w-[80px] md:w-[123px]">
+        <Image
+          alt="Pathok Point"
+          src={defaultSrc.logo}
+          priority
+          width={123}
+          height={40}
+          className="text-xl font-bold"
+        />
+      </div>
     </Link>
   );
 };

@@ -11,7 +11,7 @@ interface Props {
 const OrderItem = ({ order }: Props) => {
   return (
     <tr className="hover h-12">
-      <td className="text-black04 min-w-24">
+      <td className="text-black04 min-w-20">
         {dateTime(order.created_at).datetime}
       </td>
       <td>
@@ -23,7 +23,15 @@ const OrderItem = ({ order }: Props) => {
           {order.invoice}
         </Link>
       </td>
-      <td>{order.address ? order.address.name : "-"}</td>
+      <td>
+        <Link
+          href={`/admin/orders/view/${order.invoice}`}
+          target="_blank"
+          className="hover:underline block w-full"
+        >
+          {order.address ? order.address.name : "-"}
+        </Link>
+      </td>
       <td className="text-black04">x{order.order_items.length}</td>
       <td>
         <div>{order.net_amount}৳</div>

@@ -19,7 +19,11 @@ const extractAxiosErr = (error: any) => {
   if (typeof axiosError === "string") return axiosError;
   else if (!axiosError.response) return "An unknown error occurred";
   else if (axiosError.response.status === 422)
-    return `${axiosError.response.data.detail[0].loc[1]} - ${axiosError.response.data.detail[0].msg}`;
+    return `${axiosError.response.data.detail[0].loc
+      .slice(1)
+      .join("->")} ${axiosError.response.data.detail[0].msg
+      .replace(/^\S+\s*/, "")
+      .trim()}`;
   else if (axiosError.response.status === 401) {
     const detail = axiosError.response.data.detail;
     if (typeof detail === "string") return detail;

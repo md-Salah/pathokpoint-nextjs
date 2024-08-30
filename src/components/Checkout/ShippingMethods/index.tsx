@@ -49,9 +49,9 @@ const ShippingMethods = () => {
       {dataLoading && <div className="mt-3 skeleton h-40"></div>}
       {dataErr && <div className="mt-3 h-40 text-highlight">{dataErr}</div>}
       <div
-        className={`transition-all duration-300 ease-in-out ${
-          err || loading ? "h-4 my-2" : "h-0"
-        }`}
+        className={`transition-all duration-300 ease-in-out h-0 ${
+          err && "h-10 my-2"
+        } ${loading && "h-4 my-2"} `}
       >
         {err && <div className="mt-1 text-highlight text-sm">{err}</div>}
         {loading && (
@@ -60,7 +60,7 @@ const ShippingMethods = () => {
           </div>
         )}
       </div>
-      <div className="mt-6 flex flex-wrap gap-3">
+      <div className="mt-4 flex flex-wrap gap-3">
         {data &&
           data.length > 0 &&
           data.map((courier) => (

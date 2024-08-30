@@ -1,8 +1,9 @@
 import useSWR from 'swr';
 
+import { useToken } from '@/hooks';
 import { paymentGateway, TransactionInput } from '@/interface';
 import { capitalize } from '@/utils';
-import { fetcher } from '@/utils/axiosConfig';
+import { fetchWithToken } from '@/utils/axiosConfig';
 
 interface Props {
   handleSubmit: () => void;
@@ -14,6 +15,7 @@ interface Props {
 
 const AddPaymentForm = (props: Props) => {
   const { transaction, setTransaction, handleSubmit, err, loading } = props;
+  const { token } = useToken();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -24,7 +26,10 @@ const AddPaymentForm = (props: Props) => {
     });
   };
 
-  const { data, error } = useSWR("/payment_gateway/all", fetcher);
+  const { data, error } = useSWR(
+    ["/payment_gateway/all?is_disabled=false", token],
+    ([url, token]) => fetchWithToken(url, token)
+  );
 
   return (
     <div className="modal-box bg-white">
@@ -41,7 +46,7 @@ const AddPaymentForm = (props: Props) => {
             {data &&
               data.map((item: paymentGateway) => (
                 <option key={item.id} value={item.name}>
-                  {capitalize(item.name.replace(/-/g, " "))}
+                  {capitalize(item.title.replace(/-/g, " "))}
                 </option>
               ))}
           </select>

@@ -87,6 +87,7 @@ const ShippingAddress = () => {
               onChange={handleAddress}
               value={address.city}
             >
+              <option value="">Select</option>
               {cities?.map((city: string) => (
                 <option key={city} value={city}>
                   {capitalize(city)}

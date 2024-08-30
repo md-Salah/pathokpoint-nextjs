@@ -13,11 +13,11 @@ const Navbar = () => {
             <Menu />
           </div>
 
-          <div className="flex-1 min-w-28">
+          <div>
             <Logo />
           </div>
 
-          <div className="flex gap-1 sm:gap-3 items-center justify-end sm:w-8/12 md:w-8/12 lg:w-9/12">
+          <div className="flex flex-1 ml-9 gap-1 sm:gap-3 items-center justify-end">
             <SearchBar />
             <Cart />
             <Profile />

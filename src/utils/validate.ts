@@ -4,19 +4,19 @@ import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
 
 export const validateAddress = (address: Address): string | null => {
   if (!address.name.trim()) {
-    return "Please provide your name";
+    return "Name is missing, Please provide your name.";
   } else if (!address.phone_number.trim()) {
-    return "Please provide your phone number";
+    return "Phone number is missing.";
   } else if (!isPhoneNumber(address.phone_number)) {
-    return "Invalid phone number";
+    return "Phone number is invalid.";
   } else if (address.email && !isEmail(address.email)) {
-    return "Invalid email address";
+    return "Email is invalid.";
   } else if (!address.address.trim()) {
-    return "Please provide shipping address";
+    return "Address is missing, Please provide your address.";
   } else if (!address.thana.trim()) {
-    return "Please provide your thana";
+    return "Thana is missing, Please provide your thana.";
   } else if (!address.city.trim()) {
-    return "Please select your district";
+    return "District is missing, Please select district.";
   }
   return null;
 };

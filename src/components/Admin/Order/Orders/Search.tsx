@@ -24,12 +24,12 @@ const Search = () => {
   };
 
   return (
-    <label className="input input-bordered input-sm bg-white flex items-center gap-2 focus-within:outline-none focus-within:border-primary">
+    <label className="input input-bordered input-sm min-w-0 bg-white flex items-center gap-2 focus-within:outline-none focus-within:border-primary">
       <CiSearch size="18" className="text-black04" />
       <input
         type="text"
-        className="grow"
-        placeholder="Search by tracking id"
+        className="min-w-0"
+        placeholder="Search"
         value={q}
         onChange={(e) => handleChange(e.target.value)}
       />

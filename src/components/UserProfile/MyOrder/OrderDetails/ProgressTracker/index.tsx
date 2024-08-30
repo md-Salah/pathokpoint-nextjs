@@ -5,29 +5,25 @@ import Step from './Step';
 
 const ProgressTracker = ({ order_status }: { order_status: OrderStatus[] }) => {
   const getStatus = () => {
-    let successIndex = -1;
-    let upcoming = orderStatus.map((status, index) => {
-      const st = order_status.find((s) => s.status === status.status);
-      if (st) successIndex = index;
-      return st ? { ...st, status: status.status, isSuccess: true } : status;
+    const current = order_status[order_status.length - 1];
+    let all = orderStatus.map((sts) => {
+      const st = order_status.find((s) => s.status === sts.status);
+      return st ? { ...st, isSuccess: true } : sts;
     });
-    upcoming = upcoming.map((status, index) => {
-      if (index <= successIndex) return { ...status, isSuccess: true };
-      return status;
-    });
-    const lastStatus = order_status[order_status.length - 1];
-    if (lastStatus.status === "cancelled") {
-      upcoming[upcoming.length] = { ...lastStatus, isSuccess: true };
+
+    if (current.status === "cancelled") {
+      all.pop(); // remove the delivered status
+      all.push({ ...current, isSuccess: true });
     }
-    return upcoming;
+    return all;
   };
-  const upcoming = getStatus();
+  const steps = getStatus();
 
   return (
     <div className="w-full p-4 lg:p-7 lg:mt-4">
       <div className="mx-auto w-fit">
         <ul className="steps steps-vertical lg:steps-horizontal">
-          {upcoming.map((status, index) => (
+          {steps.map((status, index) => (
             <Step key={index} status={status} />
           ))}
         </ul>

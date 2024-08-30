@@ -2,67 +2,35 @@ import { title } from '@/utils';
 
 const bg = (status: string): string => {
   switch (status) {
-    case "pending-payment":
-      return "bg-[#FFF1CE] text-[#FFC327]";
-    case "delivered":
-      return "bg-[#CEFFEA] text-[#02BF6C]";
-    case "on-delivery":
-      return "bg-[#C2E6FF] text-[#157892]";
-    case "cancelled":
-      return "bg-[#FFD3D3] text-[#EE485C]";
-    case "order-confirmed":
-      return "bg-[#E0FFE3] text-[#2A9D32]";
+    case "pending":
+      return "bg-[#FFF3CD] text-[#856404]";
     case "processing":
-      return "bg-[#FFF3E0] text-[#F57C00]";
-    case "pending-condition-confirmation":
-      return "bg-[#FFF0F6] text-[#D81B60]";
-    case "customer-confirmed":
-      return "bg-[#EBF5FF] text-[#007BFF]";
-    case "packaging-completed":
-      return "bg-[#F3F4F6] text-[#374151]";
-    case "completed":
-      return "bg-[#E0FFFD] text-[#00A79D]";
-    case "returned":
-      return "bg-[#FFEDED] text-[#E74C3C]";
-    case "on-hold":
-      return "bg-[#FDF6E3] text-[#B48D00]";
-    case "trash":
-      return "bg-[#F2F2F2] text-[#5A5A5A]";
+      return "bg-[#F5C6CB] text-[#721C24]";
+    case "on-delivery":
+      return "bg-[#C2DFFF] text-[#157892]";
+    case "delivered":
+      return "bg-[#DFF5E3] text-[#28A745]";
+    case "cancelled":
+      return "bg-[#FFD5D5] text-[#D9534F]";
     default:
-      return "bg-[#FFFFFF] text-[#000000]";
+      return "bg-[#F0F0F0] text-[#6C757D]";
   }
 };
 
-const bgCirle = (status: string): string => {
+const bgCircle = (status: string): string => {
   switch (status) {
-    case "pending-payment":
-      return "bg-[#FFC327]";
-    case "delivered":
-      return "bg-[#02BF6C]";
+    case "pending":
+      return "bg-[#856404]";
+    case "processing":
+      return "bg-[#721C24]";
     case "on-delivery":
       return "bg-[#157892]";
+    case "delivered":
+      return "bg-[#28A745]";
     case "cancelled":
-      return "bg-[#EE485C]";
-    case "order-confirmed":
-      return "bg-[#2A9D32]";
-    case "processing":
-      return "bg-[#F57C00]";
-    case "pending-condition-confirmation":
-      return "bg-[#D81B60]";
-    case "customer-confirmed":
-      return "bg-[#007BFF]";
-    case "packaging-completed":
-      return "bg-[#374151]";
-    case "completed":
-      return "bg-[#00A79D]";
-    case "returned":
-      return "bg-[#E74C3C]";
-    case "on-hold":
-      return "bg-[#B48D00]";
-    case "trash":
-      return "bg-[#5A5A5A]";
+      return "bg-[#D9534F]";
     default:
-      return "bg-[#000000]";
+      return "bg-[#6C757D]";
   }
 };
 
@@ -79,7 +47,7 @@ const OrderStatusBadge = ({ status }: Props) => {
     >
       <div
         className={`rounded-full w-3 h-3
-        ${bgCirle(status)}
+        ${bgCircle(status)}
         `}
       ></div>
       {title(status.replace(/-/g, " "))}
