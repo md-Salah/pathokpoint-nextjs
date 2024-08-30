@@ -1,13 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Publisher } from "@/interface";
-import { isEnglish } from "@/utils";
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Publisher } from '@/interface';
+import { isEnglish } from '@/utils';
 
 const PublisherCard = ({ publisher }: { publisher: Publisher }) => {
   return (
     <Link
       href={`publishers/${publisher.slug}`}
-      className="card w-[140px] sm:w-[237px] h-[146px] sm:h-[247px] bg-white text-black02 border border-black06 hover:shadow-lg group"
+      className="card w-[140px] sm:w-[236px] h-[146px] sm:h-[247px] bg-white text-black02 border border-black06 hover:shadow-lg group"
     >
       <Frame name={publisher.name} src={publisher.image?.src || null} />
 

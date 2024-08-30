@@ -2,22 +2,22 @@ export const shopBy = [
   {
     id: 0,
     title: "বই",
-    link: "#",
+    link: "/books",
   },
   {
     id: 1,
     title: "লেখক",
-    link: "#",
+    link: "/authors",
   },
   {
     id: 2,
     title: "ক্যাটাগরি",
-    link: "#",
+    link: "/categories",
   },
   {
     id: 3,
     title: "প্রকাশনী",
-    link: "#",
+    link: "/publishers",
   },
 ];
 
@@ -25,55 +25,39 @@ export const usefulLinks = [
   {
     id: 0,
     title: "Wishlist",
-    link: "#",
+    link: "/user/wishlist",
   },
   {
     id: 1,
     title: "My Account",
-    link: "#",
+    link: "/user/me",
   },
   {
     id: 2,
     title: "My Orders",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "My Book Request",
-    link: "#",
-  },
-  {
-    id: 4,
-    title: "Newsletter",
-    link: "#",
+    link: "/user/my-order",
   },
 ];
-
 
 export const legal = [
   {
     id: 0,
     title: "Privacy Policy",
-    link: "#",
+    link: "/info/privacy-policy",
   },
   {
     id: 1,
     title: "Terms & Conditions",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Return Policy",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Shipping Policy",
-    link: "#",
+    link: "/info/terms",
   },
   {
     id: 4,
     title: "FAQ",
-    link: "#",
+    link: "/info/faq",
   },
-]
+  {
+    id: 4,
+    title: "About Us",
+    link: "/info/about-us",
+  },
+];

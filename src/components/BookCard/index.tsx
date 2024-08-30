@@ -15,7 +15,7 @@ const BookCard = ({ book, fixW = true }: { book: Book; fixW?: boolean }) => {
     // Standard: w-[163px] md:w-[236px] md:min-w-[212px]
     <div
       className={`card relative bg-base-200 border border-black06 hover:shadow-lg hover:cursor-pointer ${
-        fixW ? "w-[163px] md:w-[237px]" : "w-full"
+        fixW ? "w-[163px] md:w-[236px]" : "w-full"
       }`}
     >
       <Frame book={book} />

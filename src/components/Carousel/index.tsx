@@ -1,9 +1,9 @@
 "use client";
-import Link from "next/link";
-import React, { useRef } from "react";
+import Link from 'next/link';
+import React, { useRef } from 'react';
 
-import { NextArrow, PrevArrow } from "@/micro-components";
-import { isEnglish } from "@/utils";
+import { NextArrow, PrevArrow } from '@/micro-components';
+import { isEnglish } from '@/utils';
 
 const Carousel = ({
   title,
@@ -51,15 +51,21 @@ const Carousel = ({
       {isLoading ? (
         <div className="skeleton h-44 sm:h-52 md:h-64"></div>
       ) : (
-        <div className="block relative border-r">
+        <div className="block relative">
           <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
-            {children.map((child, index) => {
-              return (
-                <div key={index} className="carousel-item">
-                  {child}
-                </div>
-              );
-            })}
+            {children ? (
+              children.map((child, index) => {
+                return (
+                  <div key={index} className="carousel-item">
+                    {child}
+                  </div>
+                );
+              })
+            ) : (
+              <div className="h-44 sm:h-52 md:h-64 w-full flex items-center justify-center border">
+                <h4 className="text-center text-black04">Couldn't load data</h4>
+              </div>
+            )}
           </div>
           <div className="hidden sm:block">
             <PrevArrow handlePrev={handlePrev} positionClass="-left-4" />

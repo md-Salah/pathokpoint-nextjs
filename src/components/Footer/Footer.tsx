@@ -1,10 +1,12 @@
-import Link from "next/link";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { legal, shopBy, usefulLinks } from "@/constants/footer";
-import { LuMail } from "react-icons/lu";
-import { MdOutlineCall } from "react-icons/md";
-import { RiFacebookCircleLine, RiMessengerLine } from "react-icons/ri";
-import { BsInstagram, BsWhatsapp } from "react-icons/bs";
+import Link from 'next/link';
+import { BsInstagram, BsWhatsapp } from 'react-icons/bs';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { LuMail } from 'react-icons/lu';
+import { MdOutlineCall } from 'react-icons/md';
+import { RiFacebookCircleLine, RiMessengerLine } from 'react-icons/ri';
+
+import { social } from '@/constants';
+import { legal, shopBy, usefulLinks } from '@/constants/footer';
 
 const Footer = () => {
   return (
@@ -19,7 +21,9 @@ const Footer = () => {
             </p>
             <p className="max-w-72 md:text-justify tracking-wide uppercase mt-2">
               <FaMapMarkerAlt className="inline-block mr-2 text-primary" />
-              Head office: House-4/7, Av-3, Mirpur-11, Dhaka -1216
+              Head office:
+              <br />
+              House-4/7, Av-3, Mirpur-11, Dhaka -1216
             </p>
           </aside>
           <nav>
@@ -51,51 +55,54 @@ const Footer = () => {
           <nav>
             <div className="grid grid-flow-col gap-4 items-center">
               <Link
-                href="tel:+8801686347168"
+                href={social.Phone.href}
                 className="fill-current tooltip"
-                data-tip="01686 -347 168"
+                data-tip={social.Phone.tooltip}
               >
                 <MdOutlineCall className="w-6 h-6" />
               </Link>
               <Link
-                href="mailto:hello@pathokpoint.com"
+                href={social.Email.href}
                 className="fill-current tooltip"
-                data-tip="hello@pathokpoint.com"
+                data-tip={social.Email.tooltip}
               >
                 <LuMail className="w-6 h-6" />
               </Link>
               <Link
-                href="https://m.me/pathok.point"
+                href={social.Messenger.href}
                 className="fill-current tooltip"
-                data-tip="Messenger"
+                data-tip={social.Messenger.tooltip}
               >
                 <RiMessengerLine className="w-7 h-7" />
               </Link>
               <Link
-                href="https://www.facebook.com/pathok.point"
+                href={social.Facebook.href}
                 className="fill-current tooltip"
-                data-tip="Facebook"
+                data-tip={social.Facebook.tooltip}
               >
                 <RiFacebookCircleLine className="w-7 h-7" />
               </Link>
               <Link
-                href="https://wa.me/8801835963652"
+                href={social.WhatsApp.href}
                 className="fill-current tooltip"
-                data-tip="Whatsapp"
+                data-tip={social.WhatsApp.tooltip}
               >
                 <BsWhatsapp className="w-6 h-6" />
               </Link>
               <Link
-                href="https://www.instagram.com/pathok.point/"
+                href={social.Instagram.href}
                 className="fill-current tooltip"
-                data-tip="Instagram"
+                data-tip={social.Instagram.tooltip}
               >
                 <BsInstagram className="w-6 h-6" />
               </Link>
             </div>
           </nav>
           <aside>
-            <p>Copyright © 2024 - All right reserved by PATHOK POINT</p>
+            <p>
+              Copyright © {new Date().getFullYear()} - All right reserved by
+              PATHOK POINT
+            </p>
           </aside>
         </footer>
       </div>
