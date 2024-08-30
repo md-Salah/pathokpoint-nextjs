@@ -63,7 +63,7 @@ const Carousel = ({
               })
             ) : (
               <div className="h-44 sm:h-52 md:h-64 w-full flex items-center justify-center border">
-                <h4 className="text-center text-black04">Couldn't load data</h4>
+                <h4 className="text-center text-black04">Couldn&apos;t load data</h4>
               </div>
             )}
           </div>
