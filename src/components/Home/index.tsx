@@ -15,6 +15,8 @@ import PopularPublisher from './PopularPublisher';
 import SebaBooks from './SebaBooks';
 import TranslatedBooks from './TranslatedBooks';
 
+export const revalidate = 60;
+
 const Home = async () => {
   const categories: Category[] = await getCategories("");
   const featuredBooks: Book[] = await getBooks(

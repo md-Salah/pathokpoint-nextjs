@@ -48,6 +48,7 @@ const config: Config = {
         },
       },
     ],
+    darkTheme: false,
     styled: true,
   },
 };
