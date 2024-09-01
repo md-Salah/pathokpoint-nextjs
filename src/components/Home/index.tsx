@@ -1,10 +1,11 @@
-import { BookCard, Carousel, Genre } from '@/components';
-import { Book, Category } from '@/interface';
-import { getBooks, getCategories } from '@/utils/api';
+import { Genre } from '@/components';
+import { Category } from '@/interface';
+import { getCategories } from '@/utils/api';
 
 import BigSale from './BigSale';
 import CustomerReviews from './CustomerReviews';
 import EnglishBooks from './EnglishBooks';
+import FeaturedBooks from './FeaturedBooks';
 import HeroSection from './HeroSection';
 import IslamicBooks from './IslamicBooks';
 import MustReadBooks from './MustReadBooks';
@@ -12,20 +13,12 @@ import PopularAuthors from './PopularAuthors';
 import PopularCategoriesBn from './PopularCategoriesBn';
 import PopularCategoriesEn from './PopularCategoriesEn';
 import PopularPublisher from './PopularPublisher';
+import RecentlyAddedBooks from './RecentlyAddedBooks';
 import SebaBooks from './SebaBooks';
 import TranslatedBooks from './TranslatedBooks';
 
-export const revalidate = 60;
-
 const Home = async () => {
   const categories: Category[] = await getCategories("");
-  const featuredBooks: Book[] = await getBooks(
-    "is_featured=true&in_stock=true"
-  );
-  const recentlyAddedBooks: Book[] = await getBooks(
-    "order_by=-created_at&in_stock=true"
-  );
-  const bigSaleBooks: Book[] = await getBooks("is_big_sale=true&in_stock=true");
 
   return (
     <div className="min-h-screen">
@@ -35,21 +28,11 @@ const Home = async () => {
         <Genre categories={categories} />
       </div>
 
-      {/* Featured Books */}
-      <Carousel title="Featured Books" href="/books?is_featured=true">
-        {featuredBooks.map((book: Book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <FeaturedBooks />
 
-      {/* Recently Added Books */}
-      <Carousel title="Recently Added Books" href="/books?order_by=-created_at">
-        {recentlyAddedBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel>
+      <RecentlyAddedBooks />
 
-      <BigSale books={bigSaleBooks} />
+      {/* <BigSale /> */}
 
       {/* <ServiceBanner /> */}
 

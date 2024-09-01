@@ -1,12 +1,20 @@
+"use client";
 import Image from 'next/image';
 import Link from 'next/link';
+import useSWR from 'swr';
 
 import { BookCard, Carousel } from '@/components';
 import { Book } from '@/interface';
+import { fetcher } from '@/utils/axiosConfig';
 
 import Timer from './Timer';
 
-const BigSale = ({ books }: { books: Book[] }) => {
+const BigSale = () => {
+  const { data, isLoading } = useSWR(
+    "book/all?is_featured=true&in_stock=true",
+    fetcher
+  );
+
   return (
     <div
       className={`layout-container layout-mt layout-p lg:pt-[1.625rem] lg:pb-6 bg-[#32012F] border-none`}
@@ -27,12 +35,13 @@ const BigSale = ({ books }: { books: Book[] }) => {
           <Timer />
         </Link>
 
-        <Carousel>
-          {books.map((book, index) => (
-            <div key={index} className="carousel-item">
-              <BookCard book={book} />
-            </div>
-          ))}
+        <Carousel isLoading={isLoading}>
+          {data &&
+            data.map((book: Book) => (
+              <div key={book.id} className="carousel-item">
+                <BookCard book={book} />
+              </div>
+            ))}
         </Carousel>
       </div>
     </div>

@@ -32,7 +32,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.className} ${inter.variable}`}>
           <main className={anek.variable}>
-            <TopBanner />
+            {/* <TopBanner /> */}
             <Navbar />
             {children}
             <Footer />
