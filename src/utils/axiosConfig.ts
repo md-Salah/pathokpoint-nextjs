@@ -41,7 +41,7 @@ const fetcher = async (url: string) => {
   }
 };
 
-const fetchWithToken = async (url: string, token: string | null) => {
+const fetchWithToken = async (url: string, token: string | null | undefined) => {
   if (!token) {
     throw "Unauthorized, Please login first";
   }
@@ -57,7 +57,7 @@ const fetchWithToken = async (url: string, token: string | null) => {
   }
 };
 
-const fetchWithTokenAndHeader = async (url: string, token: string | null) => {
+const fetchWithTokenAndHeader = async (url: string, token: string | null | undefined) => {
   if (!token) {
     throw "Unauthorized, Please login first";
   }
