@@ -15,6 +15,11 @@ export const banners = [
     path: "/",
     src: "/banner/b (3).png",
   },
+  {
+    name: "General banner",
+    path: "/",
+    src: "/banner/banner1.png",
+  },
 ];
 
 export const MIN_DESKTOP_WIDTH = 1025;
