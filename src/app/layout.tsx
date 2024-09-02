@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <ReduxProvider>
-      <html lang="en">
+      <html lang="en" data-theme="light">
         <body className={`${inter.className} ${inter.variable}`}>
           <main className={anek.variable}>
             {/* <TopBanner /> */}

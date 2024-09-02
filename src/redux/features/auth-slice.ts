@@ -6,14 +6,14 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface InitialState {
   user: User | null;
   loading: boolean;
-  token: string | null;
+  token: string | null | undefined;
   isStaff: boolean;
 }
 
 const initialState: InitialState = {
   user: null,
   loading: false,
-  token: null,
+  token: undefined,
   isStaff: false,
 };
 
@@ -28,7 +28,6 @@ export const login = createAsyncThunk(
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        withCredentials: true,
       });
       const token = response.data.access_token;
       localStorage.setItem("access_token", token);

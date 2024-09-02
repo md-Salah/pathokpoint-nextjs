@@ -1,27 +1,21 @@
 "use client";
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import useSWR from 'swr';
 
+import { useToken } from '@/hooks';
 import { User } from '@/interface';
-import { tokenFromLocalStorage, updateUser } from '@/redux/features/auth-slice';
-import { AppDispatch, RootState } from '@/redux/store';
+import { updateUser } from '@/redux/features/auth-slice';
+import { AppDispatch } from '@/redux/store';
 import axiosInstance from '@/utils/axiosConfig';
 
 const useUser = () => {
   const dispatch = useDispatch<AppDispatch>();
-  let { token } = useSelector((state: RootState) => state.auth);
+  const { token } = useToken();
 
-  useEffect(() => {
-    if (!token) {
-      dispatch(tokenFromLocalStorage());
-    }
-  }, []);
-
-  const fetcher = async (token: string | null) => {
+  const fetcher = async (url: string, token: string | null | undefined) => {
     try {
       if (token) {
-        const userResponse = await axiosInstance.get("/user/me", {
+        const userResponse = await axiosInstance.get(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -36,7 +30,10 @@ const useUser = () => {
     }
   };
 
-  const { data, isLoading } = useSWR<User | null, string>(token, fetcher);
+  const { data, isLoading }: { data: User | null; isLoading: boolean } = useSWR(
+    ["/user/me", token],
+    ([url, token]) => fetcher(url, token)
+  );
 
   return {
     user: data,
