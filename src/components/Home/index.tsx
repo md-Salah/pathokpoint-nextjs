@@ -22,7 +22,7 @@ const Home = async () => {
 
   return (
     <div className="min-h-screen">
-      <HeroSection categories={categories} />
+      <HeroSection />
 
       <div className="md:hidden">
         <Genre categories={categories} />

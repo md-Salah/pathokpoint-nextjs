@@ -1,28 +1,32 @@
 "use client";
 import { useState } from 'react';
 
-import { Category } from '@/interface';
+import { menuItems } from '@/constants';
+import { MenuItem } from '@/interface';
 
-import CategoryExpand from './CategoryExpand';
-import CategoryPanel from './CategoryPanel';
 import HeroBanner from './HeroBanner';
+import MenuExpand from './MenuExpand';
+import MenuPanel from './MenuPanel';
 
-const HeroSection = ({ categories }: { categories: Category[] }) => {
-  const [selected, setSelected] = useState<string | null>(null);
+const HeroSection = () => {
+  const [selected, setSelected] = useState<MenuItem | null>(null);
 
   return (
     <div className="layout-container layout-mt h-44 sm:h-96">
       <div className="flex gap-3" onMouseLeave={() => setSelected(null)}>
         <div className="hidden md:block">
-          <CategoryPanel
+          <MenuPanel
+            menuItems={menuItems}
             selected={selected}
             setSelected={setSelected}
-            categories={categories}
           />
         </div>
         <div className="flex-1 shadow-sm bg-white min-w-0 layout-mx sm:mx-0">
           {selected ? (
-            <CategoryExpand categories={categories} />
+            <MenuExpand
+              query={selected.query}
+              hrefPrefix={selected.hrefPrefix}
+            />
           ) : (
             <HeroBanner />
           )}

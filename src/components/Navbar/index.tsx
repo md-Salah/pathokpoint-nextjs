@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="bg-white sticky top-0 z-30 w-full shadow-md">
       <div className="navbar layout-container layout-px h-14 sm:h-[70px] relative">
         <div className="w-full h-full">
-          <div className="hover:cursor-pointer mr-2 md:hidden">
+          <div className="mr-2 md:hidden">
             <Menu />
           </div>
 

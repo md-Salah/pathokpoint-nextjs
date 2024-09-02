@@ -1,5 +1,5 @@
 export const defaultSrc = {
-  logo: "/logo.png",
+  logo: "/logo/beta.png",
   book: "/default/book.png",
   author: "/default/author.png",
   category: "/default/category.png",

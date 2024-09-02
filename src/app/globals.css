@@ -60,7 +60,7 @@
 
 /* Customize daisy UI */
 .menu-item {
-  @apply border-l-4 rounded-none border-white font-bn flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A]
+  @apply border-l-4 rounded-none border-white flex items-center justify-between hover:text-primary hover:border-l-primary hover:bg-[#FF82001A] focus:text-primary focus:border-l-primary focus:bg-[#FF82001A];
 }
 
 .btn-link {

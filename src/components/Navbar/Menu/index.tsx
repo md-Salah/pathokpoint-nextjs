@@ -1,17 +1,19 @@
 "use client";
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Drawer } from '@/components';
-import { adminMenuItems, menuItems } from '@/constants';
 import { HambugerIcon } from '@/micro-components';
+import { RootState } from '@/redux/store';
 
-import MenuContent from './MenuContent';
+import AdminMenu from './AdminMenu';
+import CustomerMenu from './CustomerMenu';
+import User from './User';
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const pathname = usePathname();
   const handleClose = () => setIsOpen(false);
+  const { isStaff } = useSelector((state: RootState) => state.auth);
 
   return (
     <div>
@@ -19,14 +21,12 @@ const Menu = () => {
         <HambugerIcon />
       </div>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-        <MenuContent
-          handleClose={handleClose}
-          menuItems={
-            pathname.split("/").includes("admin")
-              ? adminMenuItems
-              : menuItems
-          }
-        />
+        <User handleClose={handleClose} />
+        {isStaff ? (
+          <AdminMenu handleClose={handleClose} />
+        ) : (
+          <CustomerMenu handleClose={handleClose} />
+        )}
       </Drawer>
     </div>
   );

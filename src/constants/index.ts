@@ -13,4 +13,4 @@ export { defaultSrc } from "./default";
 export { settings } from "./settings";
 export { orderStatus, orderStatusAdmin } from "./orderStatus";
 
-export { adminMenuItems, menuItems } from "./menu";
+export { adminMenuItems, menuItems, importantLinks } from "./menu";

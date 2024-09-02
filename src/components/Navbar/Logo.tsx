@@ -13,7 +13,7 @@ const Logo = () => {
           priority
           width={123}
           height={40}
-          className="text-xl font-bold"
+          className="text-sm md:text-base lg:text-xl font-bold"
         />
       </div>
     </Link>

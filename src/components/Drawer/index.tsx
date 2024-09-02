@@ -10,7 +10,7 @@ const Drawer = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className={`drawer ${right ? "drawer-end" : ""}`}>
+    <div className={`drawer cursor-default ${right ? "drawer-end" : ""}`}>
       <input
         id="drawer-1"
         type="checkbox"
@@ -25,7 +25,7 @@ const Drawer = ({
           className="drawer-overlay"
           onClick={() => setIsOpen(false)}
         ></label>
-        <div className="w-4/5 max-w-96 h-screen bg-white">{children}</div>
+        <div className="w-4/5 max-w-96 min-h-screen bg-white">{children}</div>
       </div>
     </div>
   );
