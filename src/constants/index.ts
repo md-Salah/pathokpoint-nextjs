@@ -1,5 +1,5 @@
 export { transactions } from "./transactions";
-export { banners } from "./constants";
+export { banners } from "./banners";
 // export { services } from "./services";
 export { reviews } from "./reviews";
 export { publishers } from "./publishers";

@@ -1,26 +1,4 @@
 
-export const banners = [
-  {
-    name: "বই মেলা ২০২১",
-    path: "/",
-    src: "/banner/b (1).png",
-  },
-  {
-    name: "বই মেলা ২০২১",
-    path: "/",
-    src: "/banner/b (2).png",
-  },
-  {
-    name: "বই মেলা ২০২১",
-    path: "/",
-    src: "/banner/b (3).png",
-  },
-  {
-    name: "General banner",
-    path: "/",
-    src: "/banner/banner1.png",
-  },
-];
 
 export const MIN_DESKTOP_WIDTH = 1025;
 export const MIN_MOBILE_WIDTH = 480;

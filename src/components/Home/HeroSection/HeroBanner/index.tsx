@@ -1,11 +1,12 @@
 "use client";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
-import Image from "next/image";
-import Link from "next/link";
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
-import { banners } from "@/constants";
-import { NextArrow, PrevArrow } from "@/micro-components";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Carousel } from 'react-responsive-carousel';
+
+import { banners } from '@/constants';
+import { NextArrow, PrevArrow } from '@/micro-components';
 
 const HeroBanner = () => {
   return (
@@ -37,7 +38,7 @@ const HeroBanner = () => {
         {banners.map((banner, index) => (
           <Link
             key={index}
-            href="/offers"
+            href="/info/offers"
             className="cursor-pointer block h-44 sm:h-96"
           >
             <Image
