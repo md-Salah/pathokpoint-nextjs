@@ -1,7 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 const InStockFilter = ({
   updateSearchParams,
@@ -14,11 +14,15 @@ const InStockFilter = ({
   );
 
   const handleInStockChange = () => {
-    setChecked(!checked);
     const params = new URLSearchParams(searchParams.toString());
     const inStock = params.get("in_stock");
-    if (inStock === "true") params.delete("in_stock");
-    else params.set("in_stock", "true");
+    if (inStock === "true") {
+      setChecked(false);
+      params.delete("in_stock");
+    } else {
+      setChecked(true);
+      params.set("in_stock", "true");
+    }
     updateSearchParams(params);
   };
 

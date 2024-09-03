@@ -39,9 +39,9 @@ const BookCard = ({ book, fixW = true }: { book: Book; fixW?: boolean }) => {
         {/* Action buttons */}
         <div className="card-actions justify-between mt-1">
           <AddToCart book={book} />
-          <div className="hidden md:block h-9 w-10">
+          {/* <div className="hidden md:block h-9 w-10">
             <WishlistButton />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

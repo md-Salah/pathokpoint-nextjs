@@ -15,6 +15,7 @@ interface Props {
 const Success = ({ searchParams }: Props) => {
   const params = new URLSearchParams(searchParams);
   const invoice = params.get("invoice") || null;
+  const id = params.get("id") || null;
 
   if (!invoice) return <NotFound>Empty!</NotFound>;
   return (
@@ -55,7 +56,7 @@ const Success = ({ searchParams }: Props) => {
           অর্ডার আইডি আমাদেরকে ইনবক্স করুন।
         </p>
 
-        <TrackOrder invoice={invoice} />
+        {id && <TrackOrder id={id} />}
       </div>
     </div>
   );

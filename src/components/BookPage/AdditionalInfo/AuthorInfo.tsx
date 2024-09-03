@@ -1,7 +1,7 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { Author } from "@/interface";
-import { isEnglish } from "@/utils";
+import { Author } from '@/interface';
+import { isEnglish } from '@/utils';
 
 const AuthorInfo = ({ author }: { author: Author }) => {
   return (
@@ -9,10 +9,10 @@ const AuthorInfo = ({ author }: { author: Author }) => {
       <div className="flex flex-col lg:flex-row mt-10">
         <div className="flex flex-col items-center">
           <Frame name={author.name} src={author.image?.src} />
-          <h4 className="text-center font-medium text-sm mt-6">
+          {/* <h4 className="text-center font-medium text-sm mt-6">
             <span className="font-semibold">128k</span> Follower
           </h4>
-          <button className="btn btn-sm btn-primary w-28 mt-2">Follow</button>
+          <button className="btn btn-sm btn-primary w-28 mt-2">Follow</button> */}
         </div>
 
         <div className="mt-6 lg:mt-0 lg:ml-8">

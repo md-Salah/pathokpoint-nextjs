@@ -19,7 +19,7 @@ const Variation = ({ book }: Props) => {
 
   const authorIds = book.authors.map((athr) => athr.id).join(",");
   const { data, isLoading } = useSWR(
-    `/book/all?slug=${book.slug}&author__id__in=${authorIds}`,
+    `/book/all?name=${book.name}&author__id__in=${authorIds}`,
     fetcher
   );
   useEffect(() => {
@@ -42,8 +42,6 @@ const Variation = ({ book }: Props) => {
           </div>
         ) : (
           <div className="text-center text-sm my-10 text-black04">
-            Oh no!
-            <br />
             No other condition available
           </div>
         )}
@@ -80,7 +78,11 @@ const Book = ({ book }: { book: BookInterface }) => {
             </h1>
             {book.publisher && (
               <div className="flex items-center justify-between">
-                <h3 className="text-xs text-black04 whitespace-nowrap">
+                <h3
+                  className={`text-xs text-black04 whitespace-nowrap ${
+                    !isEnglish(book.publisher.name) && "font-bn"
+                  }`}
+                >
                   {book.publisher.name}
                 </h3>
                 <div className="sm:hidden">

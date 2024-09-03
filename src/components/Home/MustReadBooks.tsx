@@ -15,7 +15,7 @@ const MustReadBooks = () => {
     <Carousel
       title="মাস্ট রিড কালেকশন"
       isLoading={isLoading}
-      href="/books?is_must_read=true"
+      href="/books?is_must_read=true&in_stock=true"
     >
       {data && data.map((book: Book) => <BookCard key={book.id} book={book} />)}
     </Carousel>

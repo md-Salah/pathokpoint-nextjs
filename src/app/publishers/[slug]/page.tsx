@@ -27,7 +27,7 @@ const PublisherPage = async ({ searchParams, params }: Props) => {
       <Profile
         name={publisher.name}
         dp={publisher.image?.src || defaultSrc.publisher}
-        cover="/banner/b (2).png"
+        cover={defaultSrc.publisherCover}
       />
 
       <Books searchParams={searchParams} publisherSlug={params.slug} />

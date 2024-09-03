@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Book as BookInterface } from "@/interface";
-import BookInfo from "./BookInfo";
-import AuthorInfo from "./AuthorInfo";
-import Reviews from "./Reviews";
+import { Book as BookInterface } from '@/interface';
+
+import AuthorInfo from './AuthorInfo';
+import BookInfo from './BookInfo';
+import Reviews from './Reviews';
 
 interface Props {
   book: BookInterface;
@@ -19,7 +20,7 @@ const AdditionalInfo = ({ book }: Props) => {
         <div className="tabs justify-start gap-3">
           <Tab title={"Summary"} tab={tab} setTab={setTab} />
           <Tab title={"Author"} tab={tab} setTab={setTab} />
-          <Tab title={"Reviews"} tab={tab} setTab={setTab} />
+          {/* <Tab title={"Reviews"} tab={tab} setTab={setTab} /> */}
         </div>
         <div className="rounded-b-md">
           {tab === "Summary" && <BookInfo book={book} setTab={setTab} />}
@@ -37,7 +38,7 @@ const AdditionalInfo = ({ book }: Props) => {
               ))}
             </div>
           )}
-          {tab === "Reviews" && <Reviews />}
+          {/* {tab === "Reviews" && <Reviews />} */}
         </div>
       </div>
     </div>

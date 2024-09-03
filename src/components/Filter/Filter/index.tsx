@@ -1,15 +1,10 @@
 "use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import {
-  CategoryFilter,
-  AuthorFilter,
-  PublisherFilter,
-  ConditionFilter,
-  LanguageFilter,
-  InStockFilter,
-  PriceRangeFilter,
-} from "@/components/Filter";
+    AuthorFilter, CategoryFilter, ConditionFilter, InStockFilter, LanguageFilter, PriceRangeFilter,
+    PublisherFilter
+} from '@/components/Filter';
 
 const Filter = () => {
   const router = useRouter();
@@ -20,10 +15,12 @@ const Filter = () => {
     const params = new URLSearchParams(searchParams.toString());
     if (val === "") params.delete(key);
     else params.set(key, val);
+    params.set("page", "1");
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const updateSearchParams = (params: URLSearchParams) => {
+    params.set("page", "1");
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 

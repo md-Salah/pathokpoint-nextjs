@@ -1,6 +1,6 @@
 "use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 const Sort = () => {
   const router = useRouter();
@@ -38,18 +38,23 @@ const Sort = () => {
     // },
   ];
 
-  const handleSort = (value: string) => {
-    setValue(value);
+  const handleSort = (val: string) => {
+    setValue(val);
     const params = new URLSearchParams(searchParams.toString());
-    if (value) params.set("order_by", value);
+    if (val) params.set("order_by", val);
     else params.delete("order_by");
+    params.set("page", "1");
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   return (
-    <select className="select select-bordered select-sm sm:max-w-36 md:max-w-max focus:border-primary focus:outline-none">
+    <select
+      className="select select-bordered select-sm sm:max-w-36 md:max-w-max focus:border-primary focus:outline-none"
+      value={value}
+      onChange={(e) => handleSort(e.target.value)}
+    >
       {options.map((option) => (
-        <option key={option.label} onClick={() => handleSort(option.value)}>
+        <option key={option.label} value={option.value}>
           {option.label}
         </option>
       ))}

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { AiFillMinusCircle } from 'react-icons/ai';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
-import { PiSealPercentFill } from 'react-icons/pi';
 
 import { defaultSrc } from '@/constants';
 import { Book } from '@/interface';
@@ -14,6 +13,7 @@ import {
 import { isEnglish } from '@/utils';
 
 import AddToCart from './AddToCart';
+import SuggestedCoupon from './SuggestedCoupon';
 
 interface Props {
   book: Book;
@@ -135,17 +135,7 @@ const BookDetails = ({ book }: Props) => {
 
         {/* Coupon & Buttons */}
         <div className="mt-8">
-          <div className="flex items-start gap-[6px] text-sm font-medium">
-            <div className="flex items-center gap-[6px] min-w-20">
-              <PiSealPercentFill className="text-primary w-[14px] h-[14px]" />
-              <span className="text-primary capitalize font-medium">
-                FD-OLD:
-              </span>
-            </div>
-            <span className="text-black04 font-bn">
-              ৫৯৯ টাকার পুরাতন বই কিনলে ২৬ টাকায় ডেলিভারি
-            </span>
-          </div>
+          <SuggestedCoupon />
 
           {book.is_used && (
             <div className="mt-4 sm:mt-6 font-bn text-black04 text-sm">
@@ -156,9 +146,9 @@ const BookDetails = ({ book }: Props) => {
 
           <div className="card-actions mt-7 h-[47px] sm:h-[52px]">
             <AddToCart book={book} qty={qty} />
-            <div className="w-[3.75rem] h-full">
+            {/* <div className="w-[3.75rem] h-full">
               <WishlistButton />
-            </div>
+            </div> */}
             <div className="w-[3.75rem] h-full">
               <Share text={copyText} />
             </div>
