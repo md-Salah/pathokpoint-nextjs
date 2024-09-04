@@ -2,13 +2,6 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = "edge";
 
-// Image metadata
-export const alt = "Pathok Point";
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
 export const contentType = "image/png";
 
 function arrayBufferToDataUrl(buffer: ArrayBuffer, mimeType: string): string {
@@ -35,19 +28,8 @@ export default async function Image() {
           justifyContent: 'center',
         }}
       >
-        <img src={dataUrl} height="100" />
+        <img src={dataUrl} height="630" width="1200"  alt='' />
       </div>
-    ),
-    {
-      ...size,
-      //   fonts: [
-      //     {
-      //       name: 'Inter',
-      //       data: await interSemiBold,
-      //       style: 'normal',
-      //       weight: 600, // Set weight to match "SemiBold"
-      //     },
-      //   ],
-    }
+    )
   );
 }
