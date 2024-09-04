@@ -3,7 +3,10 @@ import axiosInstance from '@/utils/axiosConfig';
 export const getBookByPublicId = async (public_id: string | number) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/book/public_id/${public_id}`
+      `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/book/public_id/${public_id}`,
+      {
+        next: { revalidate: 300 },
+      }
     );
     return await res.json();
   } catch (error) {
