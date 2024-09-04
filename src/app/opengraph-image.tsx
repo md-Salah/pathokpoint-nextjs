@@ -12,7 +12,7 @@ function arrayBufferToDataUrl(buffer: ArrayBuffer, mimeType: string): string {
 
 // Image generation
 export default async function Image() {
-    const res = await fetch(new URL('./logo.png', import.meta.url));
+    const res = await fetch(new URL('./opengraph.png', import.meta.url));
     const buffer = await res.arrayBuffer();
     const dataUrl = arrayBufferToDataUrl(buffer, 'image/png');
 
@@ -30,7 +30,7 @@ export default async function Image() {
           backgroundColor: 'white',
         }}
       >
-        <img src={dataUrl} width="1100"  alt='' />
+        <img src={dataUrl} width="1050"  alt='' />
       </div>
     )
   );
