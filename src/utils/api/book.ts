@@ -1,10 +1,11 @@
-import { books } from '@/constants';
 import axiosInstance from '@/utils/axiosConfig';
 
 export const getBookByPublicId = async (public_id: string | number) => {
   try {
-    const res = await axiosInstance.get(`/book/public_id/${public_id}`);
-    return res.data;
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/book/public_id/${public_id}`
+    );
+    return await res.json();
   } catch (error) {
     return null;
   }
@@ -123,4 +124,3 @@ export const getPublisherBySlug = async (slug: string) => {
     return null;
   }
 };
-
