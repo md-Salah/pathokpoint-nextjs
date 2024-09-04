@@ -16,7 +16,7 @@ export const contentType = 'image/png';
 
 // Image generation
 export default async function Image() {
-    console.log('lal')
+    // console.log('lal')
   // Load the font
 //   const interSemiBold = fetch(
 //     new URL('./Inter-SemiBold.ttf', import.meta.url)
@@ -45,7 +45,7 @@ export default async function Image() {
       >
         {/* Logo */}
         <img
-          src={defaultSrc.logo}
+          src={"/public/logo/logo.png"}
           alt="Pathok Point Logo"
           style={{ width: 300, height: 'auto', marginBottom: 20 }}
         />
