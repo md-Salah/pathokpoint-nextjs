@@ -2,9 +2,6 @@ import { ImageResponse } from 'next/og';
 
 import { Book } from '@/interface';
 import { getBookByPublicId } from '@/utils/api';
-import { fetcher } from '@/utils/axiosConfig';
-
-export const runtime = "edge";
 
 export const contentType = "image/png";
 
@@ -34,7 +31,7 @@ export default async function Image({ params }: Props) {
         {book.images.length > 0 ? (
           <img src={book.images[0].src} height="550px" alt={book.name} />
         ) : (
-          <div style={{margin: "50px 25px"}}>
+          <div style={{ margin: "50px 25px" }}>
             <h1>{book.name}</h1>
             {book.short_description && <p>{book.short_description}</p>}
             {!book.short_description && book.authors.length > 0 && (
