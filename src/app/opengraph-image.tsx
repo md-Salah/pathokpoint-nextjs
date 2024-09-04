@@ -22,25 +22,12 @@ export default async function Image() {
       // ImageResponse JSX element
       <div
         style={{
-          fontSize: 64,
-          background: "white",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        <img
-          // @ts-ignore
-          src={logoSrc}
-          alt="Pathok Point Logo"
-          style={{ width: 300, height: "auto", marginBottom: 20 }}
-        />
-        {/* <h1>Kire mama</h1>
-        <div>Pathok Point</div> */}
+        <img src={logoSrc} height="100" />
       </div>
     ),
     {
