@@ -39,8 +39,8 @@ export default async function Image() {
           alt="Pathok Point Logo"
           style={{ width: 300, height: "auto", marginBottom: 20 }}
         />
-        <h1>Kire mama</h1>
-        <div>Pathok Point</div>
+        {/* <h1>Kire mama</h1>
+        <div>Pathok Point</div> */}
       </div>
     ),
     {
