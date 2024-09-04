@@ -9,9 +9,10 @@ import Item from './Item';
 interface Props {
   query: string;
   hrefPrefix: string;
+  filter: string;
 }
 
-export const MenuExpand = ({ query, hrefPrefix }: Props) => {
+export const MenuExpand = ({ query, hrefPrefix, filter }: Props) => {
   const { data, isLoading } = useSWR(query, (url) => fetcher(url));
 
   return (
@@ -27,7 +28,7 @@ export const MenuExpand = ({ query, hrefPrefix }: Props) => {
                   <Item
                     key={item.id}
                     name={item.name}
-                    href={hrefPrefix + item.slug}
+                    href={hrefPrefix + item.slug + filter}
                   />
                 ))}
           </ul>
@@ -40,7 +41,7 @@ export const MenuExpand = ({ query, hrefPrefix }: Props) => {
                   <Item
                     key={item.id}
                     name={item.name}
-                    href={hrefPrefix + item.slug}
+                    href={hrefPrefix + item.slug + filter}
                   />
                 ))}
               </ul>
@@ -55,7 +56,7 @@ export const MenuExpand = ({ query, hrefPrefix }: Props) => {
                   <Item
                     key={item.id}
                     name={item.name}
-                    href={hrefPrefix + item.slug}
+                    href={hrefPrefix + item.slug + filter}
                   />
                 ))}
               </ul>
@@ -70,7 +71,7 @@ export const MenuExpand = ({ query, hrefPrefix }: Props) => {
                   <Item
                     key={item.id}
                     name={item.name}
-                    href={hrefPrefix + item.slug}
+                    href={hrefPrefix + item.slug + filter}
                   />
                 ))}
               </ul>

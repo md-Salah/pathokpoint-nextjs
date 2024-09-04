@@ -11,16 +11,20 @@ interface Props {
 const CustomerMenu = ({ handleClose }: Props) => {
   return (
     <ul className="menu menu-lg px-0">
-      {menuItems.map((item, index) => (
+      {menuItems.map((mainMenu, index) => (
         <li key={index}>
           <details>
             <summary className="menu-item">
-              <h3 className={`${!isEnglish(item.name) && "font-bn"}`}>
-                {item.name}
+              <h3 className={`${!isEnglish(mainMenu.name) && "font-bn"}`}>
+                {mainMenu.name}
               </h3>
             </summary>
             <div className="h-64 overflow-y-scroll" onClick={handleClose}>
-              <SubMenu query={item.query} hrefPrefix={item.hrefPrefix} />
+              <SubMenu
+                query={mainMenu.query}
+                hrefPrefix={mainMenu.hrefPrefix}
+                filter={mainMenu.filter}
+              />
             </div>
           </details>
         </li>

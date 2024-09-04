@@ -26,6 +26,7 @@ const HeroSection = () => {
             <MenuExpand
               query={selected.query}
               hrefPrefix={selected.hrefPrefix}
+              filter={selected.filter}
             />
           ) : (
             <HeroBanner />

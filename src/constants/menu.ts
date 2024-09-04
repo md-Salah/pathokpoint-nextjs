@@ -110,20 +110,24 @@ export const menuItems = [
     name: "বই",
     query: "/tag/all?page=1&per_page=40",
     hrefPrefix: "/books?tag__slug__in=",
+    filter: "&in_stock=true",
   },
   {
     name: "বিষয়",
     query: "/category/all?page=1&per_page=40",
     hrefPrefix: "/categories/",
+    filter: "?in_stock=true",
   },
   {
     name: "লেখক",
     query: "/author/all?page=1&per_page=40",
     hrefPrefix: "/authors/",
+    filter: "?in_stock=true",
   },
   {
     name: "প্রকাশনী",
     query: "/publisher/all?page=1&per_page=40",
     hrefPrefix: "/publishers/",
+    filter: "?in_stock=true",
   },
 ];

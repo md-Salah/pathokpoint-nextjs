@@ -2,6 +2,7 @@ export interface MenuItem {
   name: string;
   query: string;
   hrefPrefix: string;
+  filter: string;
 }
 
 

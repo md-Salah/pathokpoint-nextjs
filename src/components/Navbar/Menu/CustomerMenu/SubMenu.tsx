@@ -8,9 +8,10 @@ import Item from '../Item';
 interface Props {
   query: string;
   hrefPrefix: string;
+  filter: string;
 }
 
-const SubMenu = ({ query, hrefPrefix }: Props) => {
+const SubMenu = ({ query, hrefPrefix, filter }: Props) => {
   const { data, isLoading } = useSWR(query, (url) => fetcher(url));
 
   return (
@@ -22,7 +23,7 @@ const SubMenu = ({ query, hrefPrefix }: Props) => {
       )}
       {data &&
         data.map((item: SubMenuItem) => (
-          <Item key={item.id} name={item.name} href={hrefPrefix + item.slug} />
+          <Item key={item.id} name={item.name} href={hrefPrefix + item.slug + filter} />
         ))}
     </ul>
   );
