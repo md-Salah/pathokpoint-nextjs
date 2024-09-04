@@ -4,8 +4,8 @@ export const defaultSrc = {
   author: "/default/author.png",
   category: "/default/category.png",
   publisher: "/default/publisher.png",
-  authorCover: "/banner/banner-1.jpg",
-  categoryCover: "/banner/banner-1.jpg",
-  publisherCover: "/banner/banner-1.jpg",
+  authorCover: "/default/author-cover.jpg",
+  categoryCover: "/default/category-cover.jpg",
+  publisherCover: "/default/publisher-cover.jpg",
   user: "/default/avatar.png",
 };
