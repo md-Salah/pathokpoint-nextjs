@@ -16,7 +16,7 @@ export default async function Image() {
 //   const logoSrc = await fetch(new URL("./logo/logo.png", import.meta.url)).then(
 //     (res) => res.arrayBuffer()
 //   );
- const   logoSrc = '/logo/logo.png';
+ const   logoSrc = "https://test.pathokpoint.com/logo/logo.png";
 
   return new ImageResponse(
     (
