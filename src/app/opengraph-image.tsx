@@ -45,7 +45,7 @@ export default async function Image() {
       >
         {/* Logo */}
         <img
-          src={"/public/logo/logo.png"}
+          src={"/logo/logo.png"}
           alt="Pathok Point Logo"
           style={{ width: 300, height: 'auto', marginBottom: 20 }}
         />
