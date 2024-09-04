@@ -13,10 +13,9 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image() {
-//   const logoSrc = await fetch(new URL("./logo/logo.png", import.meta.url)).then(
-//     (res) => res.arrayBuffer()
-//   );
- const   logoSrc = "https://test.pathokpoint.com/logo/logo.png";
+  const logoSrc = await fetch(new URL("https://test.pathokpoint.com/logo/logo.png", import.meta.url)).then(
+    (res) => res.arrayBuffer()
+  );
 
   return new ImageResponse(
     (
