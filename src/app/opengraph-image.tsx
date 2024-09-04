@@ -11,11 +11,19 @@ export const size = {
 
 export const contentType = "image/png";
 
+function arrayBufferToDataUrl(buffer: ArrayBuffer, mimeType: string): string {
+    const uint8Array = new Uint8Array(buffer);
+    const base64 = Buffer.from(uint8Array).toString('base64');
+    return `data:${mimeType};base64,${base64}`;
+  }
+
 // Image generation
 export default async function Image() {
-  const logoSrc = await fetch(new URL("./logo.png", import.meta.url)).then(
-    (res) => res.arrayBuffer()
-  );
+    const res = await fetch(new URL('./logo.png', import.meta.url));
+    const buffer = await res.arrayBuffer();
+    
+    // Convert ArrayBuffer to Data URL
+    const dataUrl = arrayBufferToDataUrl(buffer, 'image/png');
 
   return new ImageResponse(
     (
@@ -27,7 +35,7 @@ export default async function Image() {
           justifyContent: 'center',
         }}
       >
-        <img src={logoSrc} height="100" />
+        <img src={dataUrl} height="100" />
       </div>
     ),
     {
