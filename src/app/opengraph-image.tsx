@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-import { defaultSrc } from '@/constants';
-
 export const runtime = "edge";
 
 // Image metadata
@@ -15,9 +13,10 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image() {
-  const logoSrc = await fetch(new URL("/logo/logo.png", import.meta.url)).then(
-    (res) => res.arrayBuffer()
-  );
+//   const logoSrc = await fetch(new URL("./logo/logo.png", import.meta.url)).then(
+//     (res) => res.arrayBuffer()
+//   );
+ const   logoSrc = '/logo/logo.png';
 
   return new ImageResponse(
     (
