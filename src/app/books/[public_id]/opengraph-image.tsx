@@ -1,17 +1,12 @@
 import { ImageResponse } from 'next/og';
 
 import { Book } from '@/interface';
-import axiosInstance, { fetcher } from '@/utils/axiosConfig';
+import { getBookByPublicId } from '@/utils/api';
+import { fetcher } from '@/utils/axiosConfig';
 
 export const runtime = "edge";
 
 export const contentType = "image/png";
-
-function arrayBufferToDataUrl(buffer: ArrayBuffer, mimeType: string): string {
-  const uint8Array = new Uint8Array(buffer);
-  const base64 = Buffer.from(uint8Array).toString("base64");
-  return `data:${mimeType};base64,${base64}`;
-}
 
 interface Props {
   params: {
@@ -21,11 +16,7 @@ interface Props {
 
 // Image generation
 export default async function Image({ params }: Props) {
-  // const res = await fetch(new URL('./opengraph.png', import.meta.url));
-  // const buffer = await res.arrayBuffer();
-  // const dataUrl = arrayBufferToDataUrl(buffer, 'image/png');
-
-  const book: Book = await fetcher(`/book/public_id/${params.public_id}`);
+  const book: Book = await getBookByPublicId(params.public_id);
 
   return new ImageResponse(
     (
@@ -40,7 +31,17 @@ export default async function Image({ params }: Props) {
           backgroundColor: "white",
         }}
       >
-        <img src={book.images[0].src} width="1050" alt="" />
+        {book.images.length > 0 ? (
+          <img src={book.images[0].src} height="550px" alt={book.name} />
+        ) : (
+          <div style={{margin: "50px 25px"}}>
+            <h1>{book.name}</h1>
+            {book.short_description && <p>{book.short_description}</p>}
+            {!book.short_description && book.authors.length > 0 && (
+              <>by {book.authors.map((author) => author.name).join(", ")}</>
+            )}
+          </div>
+        )}
       </div>
     )
   );
