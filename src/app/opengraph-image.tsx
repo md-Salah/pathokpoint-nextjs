@@ -14,9 +14,8 @@ function arrayBufferToDataUrl(buffer: ArrayBuffer, mimeType: string): string {
 export default async function Image() {
     const res = await fetch(new URL('./logo.png', import.meta.url));
     const buffer = await res.arrayBuffer();
-    
-    // Convert ArrayBuffer to Data URL
     const dataUrl = arrayBufferToDataUrl(buffer, 'image/png');
+
 
   return new ImageResponse(
     (
@@ -26,9 +25,12 @@ export default async function Image() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          width: '1200px',
+          height: '630px',
+          backgroundColor: 'white',
         }}
       >
-        <img src={dataUrl} height="630" width="1200"  alt='' />
+        <img src={dataUrl} width="1100"  alt='' />
       </div>
     )
   );
