@@ -2,11 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { defaultSrc } from '@/constants';
-import { Author, OrderItem } from '@/interface';
+import { OrderItem } from '@/interface';
 import { ConditionBadge } from '@/micro-components';
 import { isEnglish } from '@/utils';
 
-const BookItemMobile = ({ item }: { item: OrderItem }) => {
+const ItemInMobile = ({ item }: { item: OrderItem }) => {
   return (
     <div className="flex items-center justify-between w-full py-3 border-b border-b-black06">
       <div className="flex items-start h-fit gap-3">
@@ -29,6 +29,7 @@ const BookItemMobile = ({ item }: { item: OrderItem }) => {
           <Link
             href={`/books/${item.book.public_id}/${item.book.slug}`}
             className="w-full hover:underline"
+            target="_blank"
           >
             <span
               className={`text-sm md:text-base font-semibold text-black02 ${
@@ -44,10 +45,7 @@ const BookItemMobile = ({ item }: { item: OrderItem }) => {
                 !isEnglish(item.book.name) && "font-bn"
               }`}
             >
-              by{" "}
-              {item.book.authors
-                .map((author: Author) => author.name)
-                .join(", ")}
+              by {item.book.authors.map((author) => author.name).join(", ")}
             </span>
           )}
           <div className="flex items-center space-x-1">
@@ -78,4 +76,4 @@ const BookItemMobile = ({ item }: { item: OrderItem }) => {
   );
 };
 
-export default BookItemMobile;
+export default ItemInMobile;

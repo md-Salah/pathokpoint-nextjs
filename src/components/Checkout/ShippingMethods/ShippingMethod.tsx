@@ -29,8 +29,6 @@ const ShippingMethod = ({ courier, handleSelect }: Props) => {
     } else setIsDisabled(false);
   }, [courier, isCashOnDelivery]);
 
-  if (courier.base_charge === 1 ) return null
-
   return (
     <div
       className={`flex flex-row items-center p-2 pl-5 gap-x-5 min-w-72 min-h-20 grow border rounded border-black05

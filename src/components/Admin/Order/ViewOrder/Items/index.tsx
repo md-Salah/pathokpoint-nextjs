@@ -5,7 +5,9 @@ import { useToken } from '@/hooks';
 import { Book, CartItem as CartItemInterface, OrderItem as OrderItemInterface } from '@/interface';
 import axiosInstance, { extractAxiosErr, fetcher } from '@/utils/axiosConfig';
 
-import OrderItem from './OrderItem';
+import ItemInMobile from './ItemInMobile';
+import ItemsInPC from './ItemsInPC';
+import OrderItem from './ItemsInPC/OrderItem';
 
 interface Props {
   order_id: string;
@@ -19,7 +21,7 @@ const Items = (props: Props) => {
 
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [editBtnLoading, setEditBtnLoading] = useState<boolean>(false);
-  const [updateErr, setUpdateErr] = useState<string>("");
+  const [err, setErr] = useState<string>("");
   const [updateBtnLoading, setUpdateBtnLoading] = useState<boolean>(false);
   const [newItems, setNewItems] = useState<CartItemInterface[]>([]);
 
@@ -85,7 +87,7 @@ const Items = (props: Props) => {
   };
 
   const handleUpdate = async () => {
-    setUpdateErr("");
+    setErr("");
     setUpdateBtnLoading(true);
     try {
       const payload = newItems.map((item) => ({
@@ -108,7 +110,7 @@ const Items = (props: Props) => {
       setIsEdit(false);
       setNewItems([]);
     } catch (error) {
-      setUpdateErr(extractAxiosErr(error));
+      setErr(extractAxiosErr(error));
       console.log(error);
     } finally {
       setUpdateBtnLoading(false);
@@ -151,38 +153,22 @@ const Items = (props: Props) => {
             </table>
           </div>
         ) : (
-          <div className="mt-4 overflow-x-auto min-h-48">
-            <table className="table table-pin-rows">
-              <thead className="">
-                <tr>
-                  <th>Item</th>
-                  <th>Regular Price</th>
-                  <th>Sold Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {order_items.map((item: OrderItemInterface) => (
-                  <tr key={item.book.id}>
-                    <td>
-                      <OrderItem item={item} />
-                    </td>
-                    <td>{item.regular_price}৳</td>
-                    <td>{item.sold_price}৳</td>
-                    <td>x{item.quantity}</td>
-                    <td>{item.sold_price * item.quantity}৳</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <>
+            <div className="lg:hidden">
+              {order_items.map((item: OrderItemInterface) => (
+                <ItemInMobile key={item.book.id} item={item} />
+              ))}
+            </div>
+            <div className="hidden lg:block">
+              <ItemsInPC order_items={order_items} />
+            </div>
+          </>
         )}
       </div>
       {isEdit && (
         <div className="mt-4">
-          {updateErr && (
-            <p className="mb-2 text-center text-highlight">{updateErr}</p>
+          {err && (
+            <p className="mb-2 text-center text-highlight">{err}</p>
           )}
           <div className="flex items-center gap-4 justify-center">
             <button

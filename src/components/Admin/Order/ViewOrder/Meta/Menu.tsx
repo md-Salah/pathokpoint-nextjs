@@ -1,6 +1,22 @@
+import { useRef } from 'react';
 import { GoKebabHorizontal } from 'react-icons/go';
 
-const Menu = () => {
+import { Modal } from '@/components';
+import { Order } from '@/interface';
+
+import DeleteOrder from './DeleteOrder';
+
+interface Props {
+  order: Order;
+}
+
+const Menu = ({ order }: Props) => {
+  const modalRef = useRef<HTMLDialogElement>(null);
+
+  const closeModal = () => {
+    modalRef.current?.close();
+  };
+
   return (
     <div className="dropdown dropdown-bottom dropdown-end">
       <div
@@ -19,16 +35,18 @@ const Menu = () => {
         tabIndex={0}
         className="dropdown-content z-[1] menu p-1 shadow bg-base-100 rounded-box w-44"
       >
-        <li>
-          <span>Send Invoice</span>
-        </li>
-        <li>
-          <span>Print Invoice</span>
-        </li>
-        <li>
+        <li
+          onClick={() => {
+            modalRef.current?.showModal();
+          }}
+        >
           <span>Delete Order</span>
         </li>
       </ul>
+
+      <Modal modalRef={modalRef}>
+        <DeleteOrder orderId={order.id} closeModal={closeModal} />
+      </Modal>
     </div>
   );
 };

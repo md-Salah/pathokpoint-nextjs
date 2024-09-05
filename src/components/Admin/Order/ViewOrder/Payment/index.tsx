@@ -37,7 +37,7 @@ const Payment = ({ order, refresh }: Props) => {
           <tbody>
             {order.transactions.map((trx: Transaction) => (
               <tr key={trx.id} className="h-12">
-                <td>{dateTime(trx.created_at).datetime}</td>
+                <td className='min-w-20'>{dateTime(trx.created_at).datetime}</td>
                 <td>{trx.gateway.name}</td>
                 <td>{trx.account_number}</td>
                 <td>{trx.transaction_id}</td>
@@ -47,6 +47,7 @@ const Payment = ({ order, refresh }: Props) => {
                   }`}
                 >
                   {trx.is_refund && "-"}
+                  {"৳"}
                   {trx.amount}
                 </td>
                 <td>{trx.reference}</td>

@@ -11,7 +11,7 @@ const OrderItem = ({ item }: { item: OrderItemInterface }) => {
   return (
     <div className="w-full">
       <div className="flex w-full overflow-hidden">
-        <Link href={`/books/${book.public_id}/${book.slug}`}>
+        <Link href={`/books/${book.public_id}/${book.slug}`} target='_blank'>
           <figure className="h-full w-16 sm:min-w-24 sm:w-24 hover:opacity-80 relative rounded">
             <Image
               src={book.images[0]?.src || defaultSrc.book}
@@ -28,6 +28,7 @@ const OrderItem = ({ item }: { item: OrderItemInterface }) => {
           <Link
             href={`/books/${book.public_id}/${book.slug}`}
             className="w-full"
+            target='_blank'
           >
             <h1
               className={`font-semibold hover:underline ${

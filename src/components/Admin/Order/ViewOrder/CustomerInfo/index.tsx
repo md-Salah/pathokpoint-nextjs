@@ -9,9 +9,9 @@ interface Props {
 
 const CustomerInfo = ({ order }: Props) => {
   return (
-    <div className="border border-black05 p-8 rounded">
-      <div className="flex h-64 justify-between text-sm md:text-base">
-        <div className="w-[24%]">
+    <div className="border border-black05 p-4 lg:p-8 rounded overflow-x-auto w-full">
+      <div className="flex gap-8 h-64 justify-between text-sm md:text-base">
+        <div className="min-w-52">
           <h3 className="text-lg font-medium mb-5">Customer</h3>
           {order.customer ? (
             <>
@@ -31,7 +31,7 @@ const CustomerInfo = ({ order }: Props) => {
           )}
         </div>
         <Divider className="hidden lg:block mr-0 ml-0" />
-        <div className="w-[28%]">
+        <div className="min-w-48 max-w-72">
           <h3 className="text-lg font-medium mb-5">Shipping Address</h3>
           {order.address ? (
             <div className="font-light space-y-2">
@@ -46,7 +46,7 @@ const CustomerInfo = ({ order }: Props) => {
           )}
         </div>
         <Divider className="hidden lg:block mr-0 ml-0" />
-        <div className="w-[29%]">
+        <div className="min-w-60">
           <h3 className="text-lg font-medium mb-5">Shipping Method</h3>
           <ShippingMethod order={order} />
         </div>

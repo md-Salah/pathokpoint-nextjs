@@ -21,13 +21,13 @@ const Meta = ({ order, refresh }: Props) => {
         </span>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <Status
           statuses={order.order_status}
           order_id={order.id}
           refresh={refresh}
         />
-        <Menu />
+        <Menu order={order} />
       </div>
     </div>
   );

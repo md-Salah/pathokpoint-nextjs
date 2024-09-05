@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import { paymentGateway, TransactionInput } from '@/interface';
 import { RootState } from '@/redux/store';
 import { capitalize } from '@/utils';
-import axiosInstance, { extractAxiosErr, fetcher } from '@/utils/axiosConfig';
+import axiosInstance, { extractAxiosErr, fetcher, fetchWithToken } from '@/utils/axiosConfig';
 import { validateTransaction } from '@/utils/validate';
 
 const initialTransaction: TransactionInput = {
@@ -76,7 +76,10 @@ const Refund = ({ order_id, refresh }: Props) => {
     });
   };
 
-  const { data, error } = useSWR("/payment_gateway/all", fetcher);
+  const { data, error } = useSWR(
+    ["/payment_gateway/all?is_disabled=false", token],
+    ([url, token]) => fetchWithToken(url, token)
+  );
 
   return (
     <div>

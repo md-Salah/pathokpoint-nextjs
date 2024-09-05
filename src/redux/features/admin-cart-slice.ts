@@ -157,7 +157,7 @@ export const selectCourier = createAsyncThunk(
 );
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: "adminCart",
   initialState,
   reducers: {
     addItemToCart: (state, action: PayloadAction<CartItem>) => {

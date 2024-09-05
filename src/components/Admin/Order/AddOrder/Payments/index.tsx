@@ -59,39 +59,41 @@ const Payments = () => {
           </form>
         </dialog>
       </div>
-      {transactions.length > 0 && (
-        <table className="table table-sm">
-          <thead>
-            <tr>
-              <th>Payment Method</th>
-              <th>Account Number</th>
-              <th>Transaction ID</th>
-              <th>Amount</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map((transaction, index) => (
-              <tr key={index}>
-                <td>{transaction.payment_method}</td>
-                <td>{transaction.account_number}</td>
-                <td>{transaction.transaction_id}</td>
-                <td>{transaction.amount}</td>
-                <td>
-                  <button
-                    className="btn btn-sm btn-error"
-                    onClick={() =>
-                      dispatch(removeTransaction(transaction.transaction_id))
-                    }
-                  >
-                    Remove
-                  </button>
-                </td>
+      <div className="overflow-x-auto">
+        {transactions.length > 0 && (
+          <table className="table table-sm">
+            <thead>
+              <tr>
+                <th>Payment Method</th>
+                <th>Account Number</th>
+                <th>Transaction ID</th>
+                <th>Amount</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {transactions.map((transaction, index) => (
+                <tr key={index}>
+                  <td>{transaction.payment_method}</td>
+                  <td>{transaction.account_number}</td>
+                  <td>{transaction.transaction_id}</td>
+                  <td>{transaction.amount}</td>
+                  <td>
+                    <button
+                      className="btn btn-sm btn-error"
+                      onClick={() =>
+                        dispatch(removeTransaction(transaction.transaction_id))
+                      }
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };

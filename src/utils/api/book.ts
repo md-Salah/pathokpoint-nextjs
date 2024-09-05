@@ -5,7 +5,7 @@ export const getBookByPublicId = async (public_id: string | number) => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/book/public_id/${public_id}`,
       {
-        next: { revalidate: 60 },
+        next: { revalidate: 30 },
       }
     );
     return await res.json();

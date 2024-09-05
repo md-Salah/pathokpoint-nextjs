@@ -1,4 +1,4 @@
-import { capitalize } from "@/utils";
+import { capitalize } from '@/utils';
 
 interface Props {
   condition: string;
@@ -7,7 +7,7 @@ interface Props {
 const ConditionBadge = ({ condition }: Props) => {
   return (
     <div
-      className={`badge font-semibold text-xxs sm:text-xs 
+      className={`badge font-semibold text-xxs sm:text-xs ${condition === "new"? "": "w-28 lg:w-32"}
     ${
       condition === "new"
         ? "text-[#02BF6C] bg-[#02BF6C26]"

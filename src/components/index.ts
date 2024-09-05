@@ -4,6 +4,7 @@ export { default as Navbar } from "./Navbar";
 export { Footer } from "./Footer";
 
 // Common
+export { default as Modal } from "./Modal";
 export { default as Drawer } from "./Drawer";
 export { default as Carousel } from "./Carousel";
 export { default as Genre } from "./Genre";

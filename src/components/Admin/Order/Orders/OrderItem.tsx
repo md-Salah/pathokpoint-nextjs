@@ -29,7 +29,7 @@ const OrderItem = ({ order }: Props) => {
           target="_blank"
           className="hover:underline block w-full"
         >
-          {order.address ? order.address.name : "-"}
+          {order.address ? order.address.name : "Guest"}
         </Link>
       </td>
       <td className="text-black04">x{order.order_items.length}</td>
