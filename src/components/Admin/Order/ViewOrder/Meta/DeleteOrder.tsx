@@ -16,7 +16,7 @@ const DeleteOrder = ({ closeModal, orderId }: Props) => {
   const [restock, setRestock] = useState<boolean>(true);
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(true);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -47,7 +47,7 @@ const DeleteOrder = ({ closeModal, orderId }: Props) => {
               Successfully removed
             </h2>
           </div>
-          <button className="mt-2 btn btn-primary w-96" onClick={handleOk}>
+          <button className="mt-2 btn btn-primary w-full max-w-96" onClick={handleOk}>
             Ok
           </button>
         </>

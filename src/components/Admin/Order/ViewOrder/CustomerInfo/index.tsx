@@ -11,7 +11,7 @@ const CustomerInfo = ({ order }: Props) => {
   return (
     <div className="border border-black05 p-4 lg:p-8 rounded overflow-x-auto w-full">
       <div className="flex gap-8 h-64 justify-between text-sm md:text-base">
-        <div className="min-w-52">
+        <div className="min-w-48">
           <h3 className="text-lg font-medium mb-5">Customer</h3>
           {order.customer ? (
             <>
