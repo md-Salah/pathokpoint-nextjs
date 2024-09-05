@@ -16,7 +16,7 @@ const DeleteOrder = ({ closeModal, orderId }: Props) => {
   const [restock, setRestock] = useState<boolean>(true);
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(true);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const handleSubmit = async () => {
     setLoading(true);

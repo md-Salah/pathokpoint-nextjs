@@ -14,7 +14,7 @@ const Summary = ({ order }: Props) => {
         </p>
       </div>
       <div className="flex justify-end bg-[#F6F6F6] w-full lg:w-2/3 p4 lg:p-8 rounded">
-        <div className="my-4">
+        <div className="my-4 lg:my-0">
           <table className="table text-xs table-px-0 table-no-border w-72">
             <tbody>
               <tr>
