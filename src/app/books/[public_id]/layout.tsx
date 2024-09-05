@@ -1,3 +1,4 @@
+import { Book } from '@/interface';
 import { capitalize } from '@/utils';
 import { getBookByPublicId } from '@/utils/api';
 
@@ -8,9 +9,15 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const book = await getBookByPublicId(params.public_id);
+  const book: Book = await getBookByPublicId(params.public_id);
+  const description =
+    (book.authors.length > 0
+      ? `by ${book.authors[0]?.name}`
+      : book.short_description) + ` | ${book.sale_price} BDT`;
+
   return {
     title: `${capitalize(book.name)} | Pathok Point`,
+    description: description,
   };
 }
 
