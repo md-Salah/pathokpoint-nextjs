@@ -16,11 +16,20 @@ export const metadata: Metadata = {
   title: "Home | Pathok Point",
   description: "Best bookshop in Bangladesh",
   keywords: ["Cheap books", "Old books"],
-  metadataBase: new URL("https://pathokpoint.com"),
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}`),
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 
