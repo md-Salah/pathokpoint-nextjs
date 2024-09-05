@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import './globals.css';
 
 import { Anek_Bangla, Inter } from 'next/font/google';
-import { headers } from 'next/headers';
 
 import { Footer, Navbar, TopBanner } from '@/components';
 import { ReduxProvider } from '@/redux/provider';
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
   title: "Home | Pathok Point",
   description: "Best bookshop in Bangladesh",
   keywords: ["Cheap books", "Old books"],
-  metadataBase: new URL(`https://${headers().get("host")}`),
+  metadataBase: new URL("https://pathokpoint.com"),
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
