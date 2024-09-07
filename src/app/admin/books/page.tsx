@@ -1,18 +1,11 @@
-"use client";
-import { BooksContent } from "@/components/Admin/ProductManagement";
-import { useState } from "react";
+import { Books } from '@/components/Admin/Book';
 
-const Books = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 20;
-  const handleChangeCurrentPage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-  return (
-    <BooksContent
-      pagination={{ currentPage, handleChangeCurrentPage, totalPages }}
-    />
-  );
+type Props = {
+  searchParams?: any;
 };
 
-export default Books;
+const BooksPage = ({ searchParams }: Props) => {
+  return <Books searchParams={searchParams} />;
+};
+
+export default BooksPage;

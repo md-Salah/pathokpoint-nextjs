@@ -5,12 +5,13 @@ import { Publisher } from './publisher';
 
 export interface Book {
   id: string;
+  sku: string;
   public_id: number;
   name: string;
   slug: string;
   authors: Array<Author>;
   categories: Array<Category>;
-  publisher: Publisher;
+  publisher: Publisher | null;
   regular_price: number;
   sale_price: number;
   manage_stock: boolean;
