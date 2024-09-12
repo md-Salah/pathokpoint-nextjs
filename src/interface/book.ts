@@ -4,9 +4,8 @@ import { Image } from './image';
 import { Publisher } from './publisher';
 
 export interface Book {
-  id: string;
-  sku: string;
-  public_id: number;
+  id?: string;
+  public_id?: number;
   name: string;
   slug: string;
   authors: Array<Author>;
@@ -28,7 +27,7 @@ export interface Book {
   edition: string | null;
   notes?: string | null;
   cover: string | null;
-  translators?: Array<Author>;
+  translators: Array<Author>;
   language: string | null;
   isbn: string | null;
   no_of_pages: number | null;
@@ -37,8 +36,26 @@ export interface Book {
   bar_code: string | null;
   weight_in_gm: number;
 
-  created_at: string;
-  updated_at: string;
+  created_at?: string;
+  updated_at?: string;
+
+  is_draft: boolean;
+  is_featured: boolean;
+  is_must_read: boolean;
+  is_vintage: boolean;
+  is_islamic: boolean;
+  is_translated: boolean;
+  is_recommended: boolean;
+  is_big_sale: boolean;
+  is_popular: boolean;
+}
+
+export interface BookAdmin extends Book {
+  sku: string;
+  cost: number;
+  stock_location: string;
+  shelf: string | null;
+  row_col: string | null;
 }
 
 export interface CartItem {

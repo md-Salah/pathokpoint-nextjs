@@ -2,11 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { defaultSrc } from '@/constants';
-import { Author, Book } from '@/interface';
+import { Author, BookAdmin } from '@/interface';
 import { ConditionBadge } from '@/micro-components';
 import { isEnglish } from '@/utils';
 
-const Item = ({ book }: { book: Book }) => {
+const Item = ({ book }: { book: BookAdmin }) => {
   return (
     <tr>
       <td>
@@ -104,9 +104,9 @@ const Item = ({ book }: { book: Book }) => {
       </td>
       <td>{book.manage_stock ? "Yes" : "No"}</td>
       <td>
-        <button className="btn btn-outline btn-primary btn-sm w-16">
+        <Link href={`/admin/books/edit/${book.public_id}`} className="btn btn-outline btn-primary btn-sm w-16">
           Edit
-        </button>
+        </Link>
       </td>
     </tr>
   );

@@ -4,6 +4,7 @@ export { default as Navbar } from "./Navbar";
 export { Footer } from "./Footer";
 
 // Common
+export { default as MultiSelect } from "./MultiSelect";
 export { default as Modal } from "./Modal";
 export { default as Drawer } from "./Drawer";
 export { default as Carousel } from "./Carousel";
@@ -52,6 +53,6 @@ export { default as ImageContainer } from "./Admin/AdminImages/ImageContainer";
 export { default as CarouselModal } from "./Admin/AdminReviews/CarouselModal";
 export { default as ReviewDetailsModal } from "./Admin/AdminReviews/ReviewDetailsModal";
 export { default as StarRating } from "./Admin/AdminReviews/StarRating";
-export { default as MultipleItemSelector } from "./MultipleItemSelector";
+export { default as MultipleItemSelector } from "./MultiSelect";
 
 export { default as OrderSummary } from "./Checkout/OrderSummary";

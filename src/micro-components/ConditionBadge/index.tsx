@@ -7,12 +7,13 @@ interface Props {
 const ConditionBadge = ({ condition }: Props) => {
   return (
     <div
-      className={`badge font-semibold text-xxs sm:text-xs ${condition === "new"? "": "w-28 lg:w-32"}
+      className={`badge block font-semibold text-xxs sm:text-xs whitespace-nowrap
     ${
       condition === "new"
         ? "text-[#02BF6C] bg-[#02BF6C26]"
         : "text-[#EDAB15] bg-[#EDAB1526]"
     }
+        
     `}
     >
       {capitalize(condition.replace(/-/g, " "))}

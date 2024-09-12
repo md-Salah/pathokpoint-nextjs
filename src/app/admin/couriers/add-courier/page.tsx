@@ -1,16 +1,16 @@
 "use client";
-import AddCourierForm from "@/components/Admin/AdminCouriers/AddCourierForm";
-import { SuggestionOpitonType } from "@/components/MultipleItemSelector";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
+import AddCourierForm from '@/components/Admin/AdminCouriers/AddCourierForm';
 
 const AddCourier = () => {
   const [includedCountries, setIncludedCountries] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
-  const [includedCities, setIncludedCities] = useState<SuggestionOpitonType[]>(
+  const [includedCities, setIncludedCities] = useState<any[]>(
     []
   );
-  const [excludedCities, setExcludedCities] = useState<SuggestionOpitonType[]>(
+  const [excludedCities, setExcludedCities] = useState<any[]>(
     []
   );
   const [value, setValue] = useState("");

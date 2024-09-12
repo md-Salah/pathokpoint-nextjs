@@ -1,7 +1,6 @@
-import MultipleItemSelector, {
-  SuggestionOpitonType,
-} from "@/components/MultipleItemSelector";
-import React from "react";
+import React from 'react';
+
+import MultipleItemSelector, { SuggestionOpitonType } from '@/components/MultiSelect';
 
 type Props = {
   includedCountries: SuggestionOpitonType[];

@@ -1,6 +1,7 @@
-import React from "react";
-import { MultipleItemSelector } from "@/components";
-import { SuggestionOpitonType } from "@/components/MultipleItemSelector";
+import React from 'react';
+
+import { MultipleItemSelector } from '@/components';
+import { SuggestionOpitonType } from '@/components/MultiSelect';
 
 type Props = {
   includedConditions: SuggestionOpitonType[];

@@ -2,7 +2,7 @@ export interface Category {
   id: string;
   name: string;
   slug: string;
-  image: {
+  image?: {
     src: string;
   } | null;
   description?: string;

@@ -8,7 +8,8 @@ export const getBookByPublicId = async (public_id: string | number) => {
         next: { revalidate: 30 },
       }
     );
-    return await res.json();
+    if (res.status === 200) return await res.json();
+    return null;
   } catch (error) {
     return null;
   }

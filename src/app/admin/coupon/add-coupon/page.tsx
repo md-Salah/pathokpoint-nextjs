@@ -1,8 +1,8 @@
 "use client";
 
-import AddCouponForm from "@/components/Admin/AdminCoupon/AddCouponForm";
-import { SuggestionOpitonType } from "@/components/MultipleItemSelector";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
+import AddCouponForm from '@/components/Admin/AdminCoupon/AddCouponForm';
 
 const bookSuggestions = [
   {
@@ -132,36 +132,36 @@ const userSuggestions = [
 ];
 
 const AddCoupon = () => {
-  const [includedBooks, setIncludedBooks] = useState<SuggestionOpitonType[]>(
+  const [includedBooks, setIncludedBooks] = useState<any[]>(
     []
   );
   const [includedConditions, setIncludedConditions] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
   const [includedAuthors, setIncludedAuthors] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
   const [includedCategories, setIncludedCategories] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
   const [includedPublishers, setIncludedPublishers] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
-  const [includedTags, setIncludedTags] = useState<SuggestionOpitonType[]>([]);
-  const [excludedBooks, setExcludedBooks] = useState<SuggestionOpitonType[]>(
+  const [includedTags, setIncludedTags] = useState<any[]>([]);
+  const [excludedBooks, setExcludedBooks] = useState<any[]>(
     []
   );
   const [excludedAuthors, setExcludedAuthors] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
   const [excludedCategories, setExcludedCategories] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
   const [excludedPublishers, setExcludedPublishers] = useState<
-    SuggestionOpitonType[]
+    any[]
   >([]);
-  const [excludedTags, setExcludedTags] = useState<SuggestionOpitonType[]>([]);
-  const [allowedUsers, setAllowedUsers] = useState<SuggestionOpitonType[]>([]);
+  const [excludedTags, setExcludedTags] = useState<any[]>([]);
+  const [allowedUsers, setAllowedUsers] = useState<any[]>([]);
 
   return (
     <AddCouponForm

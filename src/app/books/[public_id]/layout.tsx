@@ -10,6 +10,14 @@ interface Props {
 
 export async function generateMetadata({ params }: Props) {
   const book: Book = await getBookByPublicId(params.public_id);
+
+  if (!book) {
+    return {
+      title: "Book not found | Pathok Point",
+      description: "Book not found",
+    };
+  }
+
   const description =
     (book.authors.length > 0
       ? `by ${book.authors[0]?.name}`
