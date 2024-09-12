@@ -64,6 +64,7 @@ export interface CartItem {
   name: string;
   slug: string;
   authors: Array<Author>;
+  categories: Array<Category>;
   regular_price: number;
   sale_price: number;
   in_stock: boolean;

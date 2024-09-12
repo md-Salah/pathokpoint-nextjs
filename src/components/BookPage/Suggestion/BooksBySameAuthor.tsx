@@ -10,7 +10,8 @@ const BooksBySameAuthor = ({ book }: { book: Book }) => {
     fetcher
   );
 
-  if (!books || books.length === 0) return null;
+  if (!books || books.filter((b: Book) => b.id !== book.id).length === 0)
+    return null;
   return (
     <Carousel
       title="Books by same author"
@@ -18,7 +19,9 @@ const BooksBySameAuthor = ({ book }: { book: Book }) => {
       isLoading={isLoading}
     >
       {books &&
-        books.map((book: Book) => <BookCard key={book.id} book={book} />)}
+        books
+          .filter((b: Book) => b.id !== book.id)
+          .map((book: Book) => <BookCard key={book.id} book={book} />)}
     </Carousel>
   );
 };

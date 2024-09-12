@@ -10,7 +10,8 @@ const SimilarBooks = ({ book }: { book: Book }) => {
     .join(",")}&in_stock=true`;
   const { data: books, isLoading } = useSWR(`/book/all?${query}`, fetcher);
 
-  if (!books || books.length === 0) return null;
+  if (!books || books.filter((b: Book) => b.id !== book.id).length === 0)
+    return null;
   return (
     <Carousel
       title="Similar books"
@@ -18,7 +19,9 @@ const SimilarBooks = ({ book }: { book: Book }) => {
       isLoading={isLoading}
     >
       {books &&
-        books.map((book: Book) => <BookCard key={book.id} book={book} />)}
+        books
+          .filter((b: Book) => b.id !== book.id)
+          .map((book: Book) => <BookCard key={book.id} book={book} />)}
     </Carousel>
   );
 };
