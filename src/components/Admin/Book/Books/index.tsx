@@ -8,7 +8,7 @@ import PaginationHandler from '@/components/PaginationHandler';
 import { useToken } from '@/hooks';
 import { BookAdmin } from '@/interface';
 import { DataCount } from '@/micro-components';
-import { Error, Skeleton } from '@/micro-components/Admin';
+import { Error } from '@/micro-components/Admin';
 import { fetchWithTokenAndHeader } from '@/utils/axiosConfig';
 
 import Item from './Item';
@@ -60,7 +60,7 @@ const Books = ({ searchParams }: Props) => {
 
       {/* Table */}
       {isLoading ? (
-        <Skeleton />
+        <div className='mt-4 skeleton h-96'></div>
       ) : (
         <div className="mt-4 overflow-x-auto min-h-64">
           <table className="table w-full text-xs sm:text-sm table-pin-rows">
