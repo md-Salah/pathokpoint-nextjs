@@ -4,8 +4,8 @@ import { Image } from './image';
 import { Publisher } from './publisher';
 
 export interface Book {
-  id?: string;
-  public_id?: number;
+  id: string;
+  public_id: number;
   name: string;
   slug: string;
   authors: Array<Author>;

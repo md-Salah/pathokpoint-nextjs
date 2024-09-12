@@ -1,22 +1,22 @@
 import React from 'react';
 
-import MultipleItemSelector, { SuggestionOpitonType } from '@/components/MultiSelect';
+import MultipleItemSelector from '@/components/MultiSelect';
 
 type Props = {
-  includedCountries: SuggestionOpitonType[];
+  includedCountries: any[];
   setIncludedCountries: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  includedCities: SuggestionOpitonType[];
+  includedCities: any[];
   setIncludedCities: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  excludedCities: SuggestionOpitonType[];
+  excludedCities: any[];
   setExcludedCities: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  countrySuggestions: SuggestionOpitonType[];
-  citySuggestions: SuggestionOpitonType[];
+  countrySuggestions: any[];
+  citySuggestions: any[];
 };
 
 const AddCourierForm = ({
@@ -69,7 +69,7 @@ const AddCourierForm = ({
               className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
-          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
+          {/* <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Country</label>
             <MultipleItemSelector
               value={includedCountries}
@@ -93,7 +93,7 @@ const AddCourierForm = ({
               setValue={setExcludedCities}
               suggestions={citySuggestions}
             />
-          </div>
+          </div> */}
           <div className="space-y-2 flex flex-col items-start">
             <label>Allow Cash on Delivery</label>
             <input type="checkbox" className="toggle toggle-primary" />

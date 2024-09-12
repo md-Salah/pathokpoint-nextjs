@@ -1,58 +1,57 @@
 import React from 'react';
 
 import { MultipleItemSelector } from '@/components';
-import { SuggestionOpitonType } from '@/components/MultiSelect';
 
 type Props = {
-  includedConditions: SuggestionOpitonType[];
+  includedConditions: any[];
   setIncludedConditions: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  includedBooks: SuggestionOpitonType[];
+  includedBooks: any[];
   setIncludedBooks: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  includedAuthors: SuggestionOpitonType[];
+  includedAuthors: any[];
   setIncludedAuthors: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  includedCategories: SuggestionOpitonType[];
+  includedCategories: any[];
   setIncludedCategories: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  includedPublishers: SuggestionOpitonType[];
+  includedPublishers: any[];
   setIncludedPublishers: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  includedTags: SuggestionOpitonType[];
-  setIncludedTags: React.Dispatch<React.SetStateAction<SuggestionOpitonType[]>>;
-  excludedBooks: SuggestionOpitonType[];
+  includedTags: any[];
+  setIncludedTags: React.Dispatch<React.SetStateAction<any[]>>;
+  excludedBooks: any[];
   setExcludedBooks: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  excludedAuthors: SuggestionOpitonType[];
+  excludedAuthors: any[];
   setExcludedAuthors: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  excludedCategories: SuggestionOpitonType[];
+  excludedCategories: any[];
   setExcludedCategories: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  excludedPublishers: SuggestionOpitonType[];
+  excludedPublishers: any[];
   setExcludedPublishers: React.Dispatch<
-    React.SetStateAction<SuggestionOpitonType[]>
+    React.SetStateAction<any[]>
   >;
-  excludedTags: SuggestionOpitonType[];
-  setExcludedTags: React.Dispatch<React.SetStateAction<SuggestionOpitonType[]>>;
-  allowedUsers: SuggestionOpitonType[];
-  setAllowedUsers: React.Dispatch<React.SetStateAction<SuggestionOpitonType[]>>;
-  conditionSuggestions: SuggestionOpitonType[];
-  bookSuggestions: SuggestionOpitonType[];
-  authorSuggestions: SuggestionOpitonType[];
-  categorySuggestions: SuggestionOpitonType[];
-  publisherSuggestions: SuggestionOpitonType[];
-  tagSuggestions: SuggestionOpitonType[];
-  userSuggestions: SuggestionOpitonType[];
+  excludedTags: any[];
+  setExcludedTags: React.Dispatch<React.SetStateAction<any[]>>;
+  allowedUsers: any[];
+  setAllowedUsers: React.Dispatch<React.SetStateAction<any[]>>;
+  conditionSuggestions: any[];
+  bookSuggestions: any[];
+  authorSuggestions: any[];
+  categorySuggestions: any[];
+  publisherSuggestions: any[];
+  tagSuggestions: any[];
+  userSuggestions: any[];
 };
 
 const AddCouponForm = ({
@@ -185,7 +184,7 @@ const AddCouponForm = ({
               className="input rounded-lg input-sm w-full sm:w-[80%] sm:input-md"
             />
           </div>
-          <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
+          {/* <div className="flex flex-col items-start space-y-2 w-full md:w-[80%]">
             <label>Include Conditions</label>
             <MultipleItemSelector
               value={includedConditions}
@@ -280,7 +279,7 @@ const AddCouponForm = ({
               setValue={setAllowedUsers}
               suggestions={userSuggestions}
             />
-          </div>
+          </div> */}
         </div>
         <div className="grid grid-cols-4 gap-3">
           <div className="space-y-2 flex flex-col items-start">

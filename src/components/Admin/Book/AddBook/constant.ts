@@ -1,6 +1,8 @@
 import { BookAdmin } from '@/interface';
 
 export const initialBook: BookAdmin = {
+  id: "",
+  public_id: 0,
   name: "",
   slug: "",
   authors: [],
