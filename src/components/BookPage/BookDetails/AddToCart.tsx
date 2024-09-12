@@ -39,10 +39,9 @@ const AddToCart = ({ book, qty }: Props) => {
         </Link>
       ) : (
         <button
-          className={`btn btn-primary max-w-60 flex-1 h-full ${
-            book.quantity === 0 && "btn-disabled"
-          }`}
+          className={`btn btn-primary max-w-60 flex-1 h-full`}
           onClick={handleAddToCart}
+          disabled={!book.in_stock || book.quantity === 0}
         >
           Add to Cart
         </button>

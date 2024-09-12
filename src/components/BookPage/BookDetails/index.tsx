@@ -110,14 +110,14 @@ const BookDetails = ({ book }: Props) => {
             <span className="mr-4">Quantity:</span>
             <NumberInput
               min={1}
-              max={book.quantity}
+              max={book.in_stock ? book.quantity: 1}
               value={qty}
               setValue={setQty}
             />
           </div>
 
           <div>
-            {book.quantity > 0 ? (
+            {book.in_stock && book.quantity > 0 ? (
               <div>
                 <IoIosCheckmarkCircle className="inline-block text-success w-[14px] h-[14px]" />
                 <span className="text-success text-sm font-medium inline-block ml-[6px]">{`${book.quantity} Items in stock`}</span>
