@@ -5,6 +5,7 @@ import { Anek_Bangla, Inter } from 'next/font/google';
 
 import { Footer, Navbar, TopBanner } from '@/components';
 import { ReduxProvider } from '@/redux/provider';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const anek = Anek_Bangla({
@@ -49,6 +50,9 @@ export default function RootLayout({
             <Footer />
           </main>
         </body>
+        {process.env.NEXT_PUBLIC_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID} />
+        )}
       </html>
     </ReduxProvider>
   );
