@@ -1,7 +1,8 @@
-import { MobileHeader } from "@/components/UserProfile";
-import AuthorItem from "./AuthorItem";
-import { authors } from "@/constants";
-import { Pagination } from "@/components";
+// import { authors } from "@/constants";
+import { Pagination } from '@/components';
+import { MobileHeader } from '@/components/UserProfile';
+
+import AuthorItem from './AuthorItem';
 
 const Following = () => {
   return (
@@ -12,9 +13,9 @@ const Following = () => {
           Following
         </h4>
         <div className="mt-4 md:mt-6">
-          {authors.map((author) => (
+          {/* {authors.map((author) => (
             <AuthorItem key={author.id} author={author} />
-          ))}
+          ))} */}
         </div>
       </div>
       {/* <Pagination

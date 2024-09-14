@@ -4,7 +4,8 @@ import React from 'react';
 import { FiPlus } from 'react-icons/fi';
 import useSWR from 'swr';
 
-import PaginationHandler from '@/components/PaginationHandler';
+import { PaginationHandler } from '@/components';
+import { SearchBar } from '@/components/Admin';
 import { useToken } from '@/hooks';
 import { BookAdmin } from '@/interface';
 import { DataCount } from '@/micro-components';
@@ -12,7 +13,7 @@ import { Error } from '@/micro-components/Admin';
 import { fetchWithTokenAndHeader } from '@/utils/axiosConfig';
 
 import Item from './Item';
-import Search from './Search';
+import KeyValueFilter from './KeyValueFilter';
 
 interface Props {
   searchParams?: any;
@@ -52,50 +53,67 @@ const Books = ({ searchParams }: Props) => {
         </Link>
       </div>
 
-      <div className="mt-4">
+      {/* Filters */}
+      <div className="mt-4 flex gap-2">
         <div className="max-w-72">
-          <Search />
+          <SearchBar />
+        </div>
+        <div className="max-w-36">
+          <KeyValueFilter name="sku" placeholder="SKU" />
+        </div>
+        <div className="max-w-36">
+          <KeyValueFilter name="public_id" placeholder="Public ID" />
+        </div>
+        <div className="max-w-56">
+          <KeyValueFilter name="author__name__in" placeholder="Author Name" />
         </div>
       </div>
 
       {/* Table */}
       {isLoading ? (
-        <div className='mt-4 skeleton h-96'></div>
+        <div className="mt-4 skeleton h-96"></div>
       ) : (
-        <div className="mt-4 overflow-x-auto min-h-64">
-          <table className="table w-full text-xs sm:text-sm table-pin-rows">
-            <thead className="bg-base-200">
-              <tr>
-                <th>
-                  SKU &<br /> Public ID
-                </th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Author</th>
-                <th>Publisher</th>
-                <th>
-                  Cover &<br /> Condition
-                </th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Stock</th>
-                <th>
-                  Manage
-                  <br />
-                  Stock
-                </th>
-                <th>Actions</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {data &&
-                data.data.map((book: BookAdmin) => (
-                  <Item key={book.id} book={book} />
-                ))}
-            </tbody>
-          </table>
-        </div>
+        <>
+          {data?.data.length === 0 ? (
+            <p className="text-black04 py-10 text-center mt-4">
+              No result found
+            </p>
+          ) : (
+            <div className="mt-4 overflow-x-auto min-h-64">
+              <table className="table w-full text-xs sm:text-sm table-pin-rows">
+                <thead>
+                  <tr>
+                    <th>
+                      SKU &<br /> Public ID
+                    </th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>
+                      Cover &<br /> Condition
+                    </th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Stock</th>
+                    <th>
+                      Manage
+                      <br />
+                      Stock
+                    </th>
+                    <th>Actions</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data?.data.map((book: BookAdmin) => (
+                    <Item key={book.id} book={book} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
       )}
 
       {/* Pagination */}

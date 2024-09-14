@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { defaultSrc } from '@/constants';
-import { Author, BookAdmin } from '@/interface';
+import { AuthorWithBook, BookAdmin } from '@/interface';
 import { ConditionBadge } from '@/micro-components';
 import { isEnglish } from '@/utils';
 
@@ -14,7 +14,7 @@ const Item = ({ book }: { book: BookAdmin }) => {
         <div className="mt-1 text-xs text-black04">{`PID: ${book.public_id}`}</div>
       </td>
       <td>
-        <figure className='w-8'>
+        <figure className="w-8">
           <Image
             src={book.images[0]?.src || defaultSrc.book}
             alt=""
@@ -38,9 +38,13 @@ const Item = ({ book }: { book: BookAdmin }) => {
         </div>
       </td>
       <td className="min-w-48">
-        {book.authors.slice(0, 1).map((author: Author) => (
+        {book.authors.slice(0, 1).map((author: AuthorWithBook) => (
           <div key={author.id}>
-            <Link href="/admin/authors/add-author" className="hover:underline">
+            <Link
+              href={`/authors/${author.slug}`}
+              className="hover:underline"
+              target="_blank"
+            >
               <div
                 className={`line-clamp-1 ${
                   !isEnglish(author.name) && "font-bn"
@@ -59,8 +63,9 @@ const Item = ({ book }: { book: BookAdmin }) => {
         {book.publisher && (
           <>
             <Link
-              href="/admin/publishers/add-publisher"
+              href={`/publishers/${book.publisher.slug}`}
               className="hover:underline"
+              target="_blank"
             >
               <div
                 className={`line-clamp-1 ${
@@ -104,7 +109,11 @@ const Item = ({ book }: { book: BookAdmin }) => {
       </td>
       <td>{book.manage_stock ? "Yes" : "No"}</td>
       <td>
-        <Link href={`/admin/books/edit/${book.public_id}`} className="btn btn-outline btn-primary btn-sm w-16">
+        <Link
+          href={`/admin/books/edit/${book.public_id}`}
+          className="btn btn-outline btn-primary btn-sm w-16"
+          target="_blank"
+        >
           Edit
         </Link>
       </td>

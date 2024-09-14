@@ -1,10 +1,9 @@
 "use client";
-import './styles.css';
 
 import { BookAdmin } from '@/interface';
+import { Checkbox } from '@/micro-components/Admin';
 import { dateTime, isEnglish } from '@/utils';
 
-import Checkbox from './Checkbox';
 import SelectAuthor from './SelectAuthor';
 import SelectCategory from './SelectCategory';
 import SelectPublisher from './SelectPublisher';
@@ -19,7 +18,7 @@ interface Props {
 
 const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setBook({ ...book, [e.target.name]: e.target.value });
     if (handleTouched) handleTouched();
@@ -124,7 +123,10 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
             <div className="relative w-full">
               <textarea
                 className="textarea textarea-sm w-full focus:outline-none focus:border-primary"
-                placeholder="Enter Product Description"
+                name="description"
+                value={book.description || ""}
+                onChange={handleChange}
+                placeholder="Enter book description"
               ></textarea>
               <span className="absolute right-2 bottom-2 z-20 text-xs">
                 {book.description?.length || 0}/10,000
@@ -329,17 +331,6 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
         </div>
 
         {/* Inventory management */}
-        {/* <div className="grid grid-cols-3 gap-3 lg:gap-8">
-          <div>
-            <label>Pre-Order</label>
-            <input type="checkbox" className="toggle toggle-primary" />
-          </div>
-          <div>
-            <label>Shipping Required</label>
-            <input type="checkbox" className="toggle toggle-primary" />
-          </div>
-        </div> */}
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
           <div>
             <label className="label-2">Cost</label>
@@ -406,135 +397,7 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
         </div>
 
         {/* Images */}
-        {/* <div>
-          <label>Select Image Files</label>
-          <input
-            type="file"
-            className="hidden"
-            ref={fileInput1 as any}
-            onChange={(e) => handleChangeImage(1, e)}
-            accept="image/*"
-          />
-          <input
-            type="file"
-            className="hidden"
-            ref={fileInput2 as any}
-            onChange={(e) => handleChangeImage(2, e)}
-            accept="image/*"
-          />
-          <input
-            type="file"
-            className="hidden"
-            ref={fileInput3 as any}
-            onChange={(e) => handleChangeImage(3, e)}
-            accept="image/*"
-          />
-          <input
-            type="file"
-            className="hidden"
-            ref={fileInput4 as any}
-            onChange={(e) => handleChangeImage(4, e)}
-            accept="image/*"
-          />
-          <div className="grid grid-cols-2 grid-flow-row gap-3 sm:flex sm:items-center sm:space-x-4">
-            {images.find((image) => image.id === 1) ? (
-              <div className="relative">
-                <img
-                  src={
-                    images.find((image) => image.id === 1)?.previewUrl as string
-                  }
-                  className="w-32 h-24 rounded-lg relative"
-                  alt="preview image 1"
-                />
-                <div
-                  className="bg-red-500 bg-opacity-80 hover:bg-opacity-100 p-1 rounded-full absolute z-30 top-1 right-1 cursor-pointer"
-                  onClick={() => handleDeleteImage(1)}
-                >
-                  <RxCross2 color="#f2f2f2" />
-                </div>
-              </div>
-            ) : (
-              <div
-                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
-                onClick={() => fileInput1.current?.click()}
-              >
-                <GoPlus size={56} className="mx-auto" />
-              </div>
-            )}
-            {images.find((image) => image.id === 2) ? (
-              <div className="relative">
-                <img
-                  src={
-                    images.find((image) => image.id === 2)?.previewUrl as string
-                  }
-                  className="w-32 h-24 rounded-lg relative"
-                  alt="preview image 2"
-                />
-                <div
-                  className="bg-red-500 bg-opacity-80 hover:bg-opacity-100 p-1 rounded-full absolute z-30 top-1 right-1 cursor-pointer"
-                  onClick={() => handleDeleteImage(2)}
-                >
-                  <RxCross2 color="#f2f2f2" />
-                </div>
-              </div>
-            ) : (
-              <div
-                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
-                onClick={() => fileInput2.current?.click()}
-              >
-                <GoPlus size={56} className="mx-auto" />
-              </div>
-            )}
-            {images.find((image) => image.id === 3) ? (
-              <div className="relative">
-                <img
-                  src={
-                    images.find((image) => image.id === 3)?.previewUrl as string
-                  }
-                  className="w-32 h-24 rounded-lg relative"
-                  alt="preview image 3"
-                />
-                <div
-                  className="bg-red-500 bg-opacity-80 hover:bg-opacity-100 p-1 rounded-full absolute z-30 top-1 right-1 cursor-pointer"
-                  onClick={() => handleDeleteImage(3)}
-                >
-                  <RxCross2 color="#f2f2f2" />
-                </div>
-              </div>
-            ) : (
-              <div
-                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
-                onClick={() => fileInput3.current?.click()}
-              >
-                <GoPlus size={56} className="mx-auto" />
-              </div>
-            )}
-            {images.find((image) => image.id === 4) ? (
-              <div className="relative">
-                <img
-                  src={
-                    images.find((image) => image.id === 4)?.previewUrl as string
-                  }
-                  className="w-32 h-24 rounded-lg relative"
-                  alt="preview image 4"
-                />
-                <div
-                  className="bg-red-500 bg-opacity-80 hover:bg-opacity-100 p-1 rounded-full absolute z-30 top-1 right-1 cursor-pointer"
-                  onClick={() => handleDeleteImage(4)}
-                >
-                  <RxCross2 color="#f2f2f2" />
-                </div>
-              </div>
-            ) : (
-              <div
-                className="bg-black07 w-32 h-24 rounded-lg flex flex-col justify-center cursor-pointer opacity-80 hover:opacity-100"
-                onClick={() => fileInput4.current?.click()}
-              >
-                <GoPlus size={56} className="mx-auto" />
-              </div>
-            )}
-          </div>
-        </div> */}
+        <div></div>
 
         {/* Featured */}
         <div className="grid grid-cols-2 gap-3 lg:gap-8 mt-8 border-t pt-8">
@@ -586,14 +449,6 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
             checked={book.is_popular}
             handleChange={toggleCheckbox}
           />
-          {/* <div>
-            <label>Pre-Order</label>
-            <input type="checkbox" className="toggle toggle-primary" />
-          </div> */}
-          {/* <div>
-            <label>Is Draft</label>
-            <input type="checkbox" className="toggle toggle-primary" />
-       */}
         </div>
       </div>
     </>

@@ -1,16 +1,27 @@
-import { Author } from './author';
-import { Category } from './category';
 import { Image } from './image';
-import { Publisher } from './publisher';
+
+interface Item {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string | null;
+  image?: Image | null;
+}
+
+export interface AuthorWithBook extends Item {}
+
+export interface CategoryWithBook extends Item {}
+
+export interface PublisherWithBook extends Item {}
 
 export interface Book {
   id: string;
   public_id: number;
   name: string;
   slug: string;
-  authors: Array<Author>;
-  categories: Array<Category>;
-  publisher: Publisher | null;
+  authors: Array<AuthorWithBook>;
+  categories: Array<CategoryWithBook>;
+  publisher: PublisherWithBook | null;
   regular_price: number;
   sale_price: number;
   manage_stock: boolean;
@@ -27,7 +38,7 @@ export interface Book {
   edition: string | null;
   notes?: string | null;
   cover: string | null;
-  translators: Array<Author>;
+  translators: Array<AuthorWithBook>;
   language: string | null;
   isbn: string | null;
   no_of_pages: number | null;
@@ -63,8 +74,8 @@ export interface CartItem {
   public_id: number;
   name: string;
   slug: string;
-  authors: Array<Author>;
-  categories: Array<Category>;
+  authors: Array<AuthorWithBook>;
+  categories: Array<CategoryWithBook>;
   regular_price: number;
   sale_price: number;
   in_stock: boolean;

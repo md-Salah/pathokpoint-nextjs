@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import { Author } from '@/interface';
+import { AuthorWithBook } from '@/interface';
 import { isEnglish } from '@/utils';
 
-const AuthorInfo = ({ author }: { author: Author }) => {
+const AuthorInfo = ({ author }: { author: AuthorWithBook }) => {
   return (
     <div>
       <div className="flex flex-col lg:flex-row mt-10">

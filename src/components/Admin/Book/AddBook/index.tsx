@@ -32,6 +32,7 @@ const AddBook = () => {
           publisher: book.publisher ? book.publisher.id : null,
           translators: book.translators.map((translator) => translator.id),
           tags: book.tags.map((tag) => tag.id),
+          images: book.images.map((image) => image.id),
         },
         {
           headers: {
@@ -46,6 +47,11 @@ const AddBook = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAddAnother = () => {
+    setBook(initialBook);
+    setSuccess(false);
   };
 
   return (
@@ -65,10 +71,10 @@ const AddBook = () => {
         </div>
         <div className="mt-4 flex items-center justify-center sm:justify-end gap-2">
           {success ? (
-            <>
+            <div className='flex flex-wrap gap-2 justify-center'>
               <Link
                 href={`/books/${book.public_id}/${book.slug}`}
-                target='_blank'
+                target="_blank"
                 className="btn btn-secondary btn-outline w-32"
               >
                 View
@@ -79,11 +85,11 @@ const AddBook = () => {
               >
                 Edit
               </Link>
-              <button className="btn btn-secondary">
+              <button className="btn btn-secondary w-72 sm:w-52" onClick={handleAddAnother}>
                 <FiPlus size={20} className="inline-block" />
                 Add Another Book
               </button>
-            </>
+            </div>
           ) : (
             <button
               className="btn btn-md btn-primary w-full sm:w-52 sm:max-w-52"

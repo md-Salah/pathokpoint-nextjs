@@ -1,12 +1,13 @@
-import { Description } from "@/micro-components";
-import { isEnglish } from "@/utils";
-import Image from "next/image";
+import Image from 'next/image';
+
+import { Description } from '@/micro-components';
+import { isEnglish } from '@/utils';
 
 interface Props {
   name: string;
   dp: string;
   cover?: string;
-  description?: string;
+  description?: string | null;
   handleFollow?: () => void;
 }
 

@@ -44,6 +44,7 @@ const EditBook = ({ public_id }: Props) => {
           publisher: book.publisher ? book.publisher.id : null,
           translators: book.translators.map((translator) => translator.id),
           tags: book.tags.map((tag) => tag.id),
+          images: book.images.map((image) => image.id),
         },
         {
           headers: {

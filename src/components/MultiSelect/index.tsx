@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 
@@ -19,6 +20,7 @@ interface Props {
   setQuery: (query: string) => void;
   isLoading: boolean;
   suggestions: Item[];
+  addNewLink?: string;
 }
 
 const MultiSelect = (props: Props) => {
@@ -30,6 +32,7 @@ const MultiSelect = (props: Props) => {
     setQuery,
     isLoading,
     suggestions,
+    addNewLink,
   } = props;
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -89,11 +92,16 @@ const MultiSelect = (props: Props) => {
               )}
             </ul>
           </div>
-          <div className="border-t border-[#E8E9EB] text-center py-3 text-primary font-semibold">
-            <span className="hover:cursor-pointer hover:underline">
-              Add New
-            </span>
-          </div>
+          {addNewLink && (
+            <div className="border-t border-[#E8E9EB] text-center py-3 text-primary font-semibold">
+              <Link
+                href={addNewLink}
+                className="hover:cursor-pointer hover:underline"
+              >
+                Add New
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </div>

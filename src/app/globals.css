@@ -71,6 +71,10 @@ input[type="text"] {
   @apply focus:outline-none focus:border-primary;
 }
 
+.label-2 {
+  @apply label text-black03 pl-0 font-medium;
+}
+
 /* Table */
 .table-left-0 :where(th, td) {
   padding-left: 0;

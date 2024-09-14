@@ -1,6 +1,6 @@
 import { Books } from '@/components/Admin/Book';
 
-type Props = {
+interface Props {
   searchParams?: any;
 };
 

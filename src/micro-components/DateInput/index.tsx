@@ -16,7 +16,6 @@ const DateInput = ({ currentDate, handleChange }: Props) => {
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    console.log(event.target.name, event.target.value);
     const newDate = { ...date, [event.target.name]: event.target.value };
     setDate(newDate);
     handleChange(`${newDate.year}-${newDate.month}-${newDate.day}`);

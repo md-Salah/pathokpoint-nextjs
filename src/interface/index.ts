@@ -1,6 +1,6 @@
 export type { Author, Tag } from "./author";
-export type { Book, BookAdmin, CartItem } from "./book";
-export type { Category } from "./category";
+export type { Book, BookAdmin, CartItem, AuthorWithBook, CategoryWithBook, PublisherWithBook } from "./book";
+export type { Category, CatParent } from "./category";
 export type { Publisher } from "./publisher";
 export type { Review } from "./review";
 export type { User } from "./user";

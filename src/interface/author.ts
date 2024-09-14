@@ -1,16 +1,30 @@
+import { Image } from '@/interface';
+
 export interface Author {
-    id: string;
-    name: string;
-    slug: string;
-    image?: {
-        src: string;
-    } | null;
-    description?: string;
+  id: string;
+  created_at?: string;
+  updated_at?: string;
+  name: string;
+  slug: string;
+  description?: string | null;
+  birth_date?: string | null;
+  death_date?: string | null;
+  book_published?: number | null;
+  city?: string | null;
+  country?: string | null;
+  is_popular: boolean;
+  is_in_menu: boolean;
+  image?: Image | null;
+  banner?: Image | null;
+  followers_count?: number | null;
 }
 
 export interface Tag {
-    id: string;
-    name: string;
-    slug: string;
-    private: boolean;
+  id: string;
+  created_at?: string;
+  updated_at?: string;
+  name: string;
+  slug: string;
+  private: boolean;
+  is_in_menu: boolean;
 }

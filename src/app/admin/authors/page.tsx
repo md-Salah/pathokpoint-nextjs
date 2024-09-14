@@ -1,19 +1,11 @@
-"use client";
-import { AuthorsContent } from "@/components/Admin/ProductManagement";
-import React, { useState } from "react";
+import { Authors } from '@/components/Admin/Author';
 
-const Authors = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 20;
-  const handleChangeCurrentPage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
+interface Props {
+  searchParams?: any;
+}
 
-  return (
-    <AuthorsContent
-      pagination={{ currentPage, totalPages, handleChangeCurrentPage }}
-    />
-  );
+const AuthorsPage = ({ searchParams }: Props) => {
+  return <Authors searchParams={searchParams} />;
 };
 
-export default Authors;
+export default AuthorsPage;

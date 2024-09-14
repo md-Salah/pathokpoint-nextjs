@@ -10,9 +10,13 @@ const DataCount = ({
   const startingAt = (currentPage - 1) * perPage + 1;
   const endingAt = Math.min(startingAt + perPage - 1, totalCount);
 
+  const formatNumber = (num: number) => new Intl.NumberFormat().format(num);
+
   return (
     <div className="text-black04 text-sm">
-      {`Showing ${startingAt} to ${endingAt} of ${totalCount} items`}
+      {`Showing ${formatNumber(startingAt)} to ${formatNumber(
+        endingAt
+      )} of ${formatNumber(totalCount)} items`}
     </div>
   );
 };

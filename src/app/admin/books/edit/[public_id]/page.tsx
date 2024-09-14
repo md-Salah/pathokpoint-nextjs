@@ -1,6 +1,6 @@
 import { EditBook } from '@/components/Admin/Book';
 
-type Props = {
+interface Props {
   params: { public_id: string };
 };
 
