@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import useSWR from 'swr';
 
 import { MultiSelect } from '@/components';
+import { useToken } from '@/hooks';
 import { BookAdmin } from '@/interface';
-import { fetcher } from '@/utils/axiosConfig';
+import axiosInstance, { extractAxiosErr, fetcher } from '@/utils/axiosConfig';
+
+import AddNewModal from './AddNewModal';
 
 interface Item {
   id: string;
@@ -17,6 +20,11 @@ interface Props {
 }
 
 const SelectCategory = ({ book, setBook }: Props) => {
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const { token } = useToken();
+
   const [query, setQuery] = useState<string>("");
   const { data: suggestions, isLoading } = useSWR(
     `/category/all?q=${query}&per_page=20`,
@@ -29,19 +37,57 @@ const SelectCategory = ({ book, setBook }: Props) => {
   };
 
   const handleRemove = (id: string) => {
-    setBook({ ...book, categories: book.categories.filter((a) => a.id !== id) });
+    setBook({
+      ...book,
+      categories: book.categories.filter((a) => a.id !== id),
+    });
+  };
+
+  const handleAddNew = async (data: Item) => {
+    if (!data.name || !data.slug) {
+      setErr("Name and slug are required");
+      return;
+    }
+    setLoading(true);
+    setErr(null);
+    try {
+      const res = await axiosInstance.post("/category", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      handleSelect(res.data);
+      modalRef.current?.close();
+    } catch (error) {
+      setErr(extractAxiosErr(error));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const showModal = () => {
+    modalRef.current?.showModal();
   };
 
   return (
-    <MultiSelect
-      selectedItems={book.categories}
-      handleSelect={handleSelect}
-      handleRemove={handleRemove}
-      query={query}
-      setQuery={setQuery}
-      isLoading={isLoading}
-      suggestions={suggestions}
-    />
+    <>
+      <MultiSelect
+        selectedItems={book.categories}
+        handleSelect={handleSelect}
+        handleRemove={handleRemove}
+        query={query}
+        setQuery={setQuery}
+        isLoading={isLoading}
+        suggestions={suggestions}
+        handleAddNewClick={showModal}
+      />
+      <AddNewModal
+        modalRef={modalRef}
+        err={err}
+        loading={loading}
+        handleAddNew={handleAddNew}
+      />
+    </>
   );
 };
 

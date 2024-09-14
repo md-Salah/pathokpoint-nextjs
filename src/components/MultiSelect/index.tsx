@@ -20,7 +20,7 @@ interface Props {
   setQuery: (query: string) => void;
   isLoading: boolean;
   suggestions: Item[];
-  addNewLink?: string;
+  handleAddNewClick?: () => void;
 }
 
 const MultiSelect = (props: Props) => {
@@ -32,7 +32,7 @@ const MultiSelect = (props: Props) => {
     setQuery,
     isLoading,
     suggestions,
-    addNewLink,
+    handleAddNewClick,
   } = props;
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -67,11 +67,11 @@ const MultiSelect = (props: Props) => {
       </label>
 
       {isDropdownOpen && (
-        <div
-          className="dropdown-content bg-white shadow-md w-full z-10"
-          onClick={() => setIsDropdownOpen(false)}
-        >
-          <div className="max-h-72 overflow-y-auto">
+        <div className="dropdown-content bg-white shadow-md w-full z-10">
+          <div
+            className="max-h-72 overflow-y-auto"
+            onClick={() => setIsDropdownOpen(false)}
+          >
             <ul className="menu">
               {isLoading ? (
                 <li className="flex items-center">
@@ -92,14 +92,14 @@ const MultiSelect = (props: Props) => {
               )}
             </ul>
           </div>
-          {addNewLink && (
+          {handleAddNewClick && (
             <div className="border-t border-[#E8E9EB] text-center py-3 text-primary font-semibold">
-              <Link
-                href={addNewLink}
+              <p
                 className="hover:cursor-pointer hover:underline"
+                onClick={handleAddNewClick}
               >
                 Add New
-              </Link>
+              </p>
             </div>
           )}
         </div>
