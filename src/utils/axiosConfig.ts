@@ -41,7 +41,10 @@ const fetcher = async (url: string) => {
   }
 };
 
-const fetchWithToken = async (url: string, token: string | null | undefined) => {
+const fetchWithToken = async (
+  url: string,
+  token: string | null | undefined
+) => {
   if (!token) {
     throw "Unauthorized, Please login first";
   }
@@ -57,7 +60,10 @@ const fetchWithToken = async (url: string, token: string | null | undefined) => 
   }
 };
 
-const fetchWithTokenAndHeader = async (url: string, token: string | null | undefined) => {
+const fetchWithTokenAndHeader = async (
+  url: string,
+  token: string | null | undefined
+) => {
   if (!token) {
     throw "Unauthorized, Please login first";
   }
@@ -76,6 +82,24 @@ const fetchWithTokenAndHeader = async (url: string, token: string | null | undef
   }
 };
 
+const fetchWithHeader = async (url: string) => {
+  try {
+    const res = await axiosInstance.get(url);
+    return {
+      data: res.data,
+      headers: res.headers,
+    };
+  } catch (error) {
+    throw extractAxiosErr(error);
+  }
+};
+
 export type { AxiosError };
-export { extractAxiosErr, fetcher, fetchWithToken, fetchWithTokenAndHeader };
+export {
+  extractAxiosErr,
+  fetcher,
+  fetchWithToken,
+  fetchWithTokenAndHeader,
+  fetchWithHeader,
+};
 export default axiosInstance;

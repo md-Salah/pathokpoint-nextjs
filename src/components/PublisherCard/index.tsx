@@ -1,14 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { defaultSrc } from '@/constants';
 import { Publisher } from '@/interface';
 import { isEnglish } from '@/utils';
 
-const PublisherCard = ({ publisher }: { publisher: Publisher }) => {
+interface Props {
+  publisher: Publisher;
+  fixW?: boolean;
+}
+
+const PublisherCard = ({ publisher, fixW = true }: Props) => {
   return (
     <Link
       href={`publishers/${publisher.slug}`}
-      className="card w-[140px] sm:w-[236px] h-[146px] sm:h-[247px] bg-white text-black02 border border-black06 hover:shadow-lg group"
+      className={`card h-[146px] sm:h-[247px] bg-white text-black02 border border-black06 hover:shadow-lg group
+        ${fixW ? "w-[140px] sm:w-[236px]" : "w-full"}
+        `}
     >
       <Frame name={publisher.name} src={publisher.image?.src || null} />
 
@@ -22,18 +30,15 @@ const PublisherCard = ({ publisher }: { publisher: Publisher }) => {
 export default PublisherCard;
 
 const Frame = ({ name, src }: { name: string; src: string | null }) => {
-  const defaultSrc = "/default/publisher.png";
   return (
     <div className="w-full h-[181px] rounded-t bg-[#F1F2F4] text-center p-6">
       <figure className="relative w-full h-full">
         <Image
-          src={src || defaultSrc}
-          alt={name}
+          src={src || defaultSrc.publisher}
+          alt=""
           fill
           className="object-contain object-center"
           loading="lazy"
-          placeholder="blur"
-          blurDataURL={defaultSrc}
           sizes="50vw"
         />
       </figure>
@@ -43,12 +48,12 @@ const Frame = ({ name, src }: { name: string; src: string | null }) => {
 
 const Title = ({ title }: { title: string }) => {
   return (
-    <h1
-      className={`card-title text-xs sm:text-base font-normal group-hover:underline truncate ${
+    <div
+      className={`card-title text-xs sm:text-base font-normal group-hover:underline truncate w-full ${
         isEnglish(title) ? "" : "font-bn"
       }`}
     >
-      {title}
-    </h1>
+      <h1 className="text-center w-full">{title}</h1>
+    </div>
   );
 };

@@ -14,6 +14,7 @@ export { Filter } from "./Filter";
 export { default as FilterInMobile } from "./FilterInMobile";
 export { default as Pagination } from "./Pagination";
 export { default as PaginationHandler } from "./PaginationHandler";
+export { default as OnPageSearchBar } from "./OnPageSearchBar";
 
 // Pages
 export { default as Home } from "./Home";

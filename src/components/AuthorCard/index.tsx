@@ -4,11 +4,18 @@ import Link from 'next/link';
 import { Author } from '@/interface';
 import { isEnglish } from '@/utils';
 
-const AuthorCard = ({ author }: { author: Author }) => {
+interface Props {
+  fixW?: boolean;
+  author: Author
+}
+
+const AuthorCard = ({ author, fixW = true }: Props) => {
   return (
     <Link
       href={`authors/${author.slug}`}
-      className="card w-[140px] sm:w-[194px] h-[176px] sm:h-[247px] bg-white shadow-sm group border border-black06 hover:shadow-lg"
+      className={`card h-[176px] sm:h-[247px] bg-white shadow-sm group border border-black06 hover:shadow-lg
+        ${fixW ? "w-[140px] sm:w-[194px]": "w-full"}
+        `}
     >
       <Frame name={author.name} src={author.image?.src || null} />
       <div className="card-body p-0 w-4/5 mx-auto items-center justify-center">

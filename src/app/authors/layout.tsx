@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lilabotir Mrittu | Pathok Point",
-  description: "Lilabotir mrittu by humayun ahmed",
+  title: "Authors | Pathok Point",
+  description: "Author list of Pathok Point",
 };
 
 export default function RootLayout({
