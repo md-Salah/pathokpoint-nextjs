@@ -5,12 +5,11 @@ import { FiPlus } from 'react-icons/fi';
 import useSWR from 'swr';
 
 import { PaginationHandler } from '@/components';
-import { SearchBar } from '@/components/Admin';
 import { defaultSrc } from '@/constants';
 import { useToken } from '@/hooks';
 import { Category, CatParent } from '@/interface';
 import { DataCount } from '@/micro-components';
-import { Error } from '@/micro-components/Admin';
+import { Error, SearchBar } from '@/micro-components/Admin';
 import { isEnglish } from '@/utils';
 import { fetchWithTokenAndHeader } from '@/utils/axiosConfig';
 

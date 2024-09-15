@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ImageResponse } from 'next/og';
 
 import { Book } from '@/interface';
@@ -12,7 +13,7 @@ interface Props {
 }
 
 // Image generation
-export default async function Image({ params }: Props) {
+export default async function ImageGenerator({ params }: Props) {
   const book: Book = await getBookByPublicId(params.public_id);
 
   return new ImageResponse(
@@ -29,7 +30,8 @@ export default async function Image({ params }: Props) {
         }}
       >
         {book.images.length > 0 ? (
-          <img src={book.images[0].src} height="550px" alt={book.name} />
+          <Image 
+          src={book.images[0].src} height="186" width="130" alt={book.name} />
         ) : (
           <div style={{ margin: "50px 25px" }}>
             <h1>{book.name}</h1>
