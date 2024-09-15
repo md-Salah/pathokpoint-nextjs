@@ -53,9 +53,7 @@ const EditTag = ({ tag_id }: Props) => {
 
   const handleCancel = () => {
     setTag(data);
-    setTimeout(() => {
-      setTouched(false);
-    }, 300);
+    setTouched(false);
   };
 
   const handleTouched = () => {

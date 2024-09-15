@@ -9,7 +9,7 @@ import { isEnglish } from '@/utils';
 const Item = ({ book }: { book: BookAdmin }) => {
   return (
     <tr>
-      <td>
+      <td className='min-w-20'>
         <div>{book.sku}</div>
         <div className="mt-1 text-xs text-black04">{`PID: ${book.public_id}`}</div>
       </td>

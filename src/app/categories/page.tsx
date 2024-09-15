@@ -24,11 +24,14 @@ const Categories = async ({ searchParams }: Props) => {
               currentPage={parseInt(headers["x-current-page"])}
               perPage={parseInt(headers["x-per-page"])}
               totalCount={parseInt(headers["x-total-count"])}
+              context="categories"
             />
           )}
         </div>
         <div className="mt-4 flex justify-end">
-          <OnPageSearchBar placeholder="Search Category" />
+          <div className="w-64 sm:w-72 h-10 sm:h-12">
+            <OnPageSearchBar placeholder="Search Category" />
+          </div>
         </div>
         {data.length === 0 && (
           <p className="mt-4 text-center text-black04 py-10">

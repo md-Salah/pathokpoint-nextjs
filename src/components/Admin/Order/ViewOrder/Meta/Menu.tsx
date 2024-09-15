@@ -4,6 +4,7 @@ import { GoKebabHorizontal } from 'react-icons/go';
 import { Modal } from '@/components';
 import { Order } from '@/interface';
 
+import CopyText from './CopyText';
 import DeleteOrder from './DeleteOrder';
 
 interface Props {
@@ -42,6 +43,7 @@ const Menu = ({ order }: Props) => {
         >
           <span>Delete Order</span>
         </li>
+        <CopyText order={order} />
       </ul>
 
       <Modal modalRef={modalRef}>

@@ -1,16 +1,20 @@
 "use client";
-import { useState } from "react";
-import { SlEqualizer } from "react-icons/sl";
+import { useState } from 'react';
+import { SlEqualizer } from 'react-icons/sl';
 
-import { Drawer, Filter } from "@/components";
+import { Drawer, Filter } from '@/components';
 
-const FilterInMobile = () => {
+interface Props {
+  className?: string;
+}
+
+const FilterInMobile = ({ className = "btn-sm" }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleDrawer = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <button className="btn btn-sm bg-white" onClick={toggleDrawer}>
+      <button className={`btn bg-white ${className}`} onClick={toggleDrawer}>
         Filter
         <SlEqualizer className="w-4 h-4 inline-block" />
       </button>

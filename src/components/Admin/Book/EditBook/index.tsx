@@ -41,7 +41,7 @@ const EditBook = ({ public_id }: Props) => {
           ...book,
           authors: book.authors.map((author) => author.id),
           categories: book.categories.map((category) => category.id),
-          publisher: book.publisher ? book.publisher.id : null,
+          publisher_id: book.publisher ? book.publisher.id : null,
           translators: book.translators.map((translator) => translator.id),
           tags: book.tags.map((tag) => tag.id),
           images: book.images.map((image) => image.id),
@@ -63,9 +63,7 @@ const EditBook = ({ public_id }: Props) => {
 
   const handleCancel = () => {
     setBook(data);
-    setTimeout(() => {
-      setTouched(false);
-    }, 300);
+    setTouched(false);
   };
 
   const handleTouched = () => {

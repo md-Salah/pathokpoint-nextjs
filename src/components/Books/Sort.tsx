@@ -49,7 +49,7 @@ const Sort = () => {
 
   return (
     <select
-      className="select select-bordered select-sm sm:max-w-36 md:max-w-max focus:border-primary focus:outline-none"
+      className="select select-bordered select-sm h-10 min-w-0 w-full bg-white focus:border-primary focus:outline-none"
       value={value}
       onChange={(e) => handleSort(e.target.value)}
     >

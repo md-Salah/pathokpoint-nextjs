@@ -6,4 +6,3 @@ export { default as AdminReviews } from "./AdminReviews";
 export { default as AdminUsers } from "./AdminUsers";
 
 export { default as Sidebar } from "./Sidebar";
-export { default as SearchBar } from "./SearchBar";

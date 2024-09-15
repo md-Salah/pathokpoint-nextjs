@@ -60,9 +60,7 @@ const EditCategory = ({ category_id }: Props) => {
 
   const handleCancel = () => {
     setCategory(data);
-    setTimeout(() => {
-      setTouched(false);
-    }, 300);
+    setTouched(false);
   };
 
   const handleTouched = () => {

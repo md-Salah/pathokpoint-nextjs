@@ -17,9 +17,10 @@ interface Item {
 interface Props {
   book: BookAdmin;
   setBook: (book: BookAdmin) => void;
+  handleTouched?: () => void;
 }
 
-const SelectTag = ({ book, setBook }: Props) => {
+const SelectTag = ({ book, setBook, handleTouched }: Props) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -34,10 +35,13 @@ const SelectTag = ({ book, setBook }: Props) => {
   const handleSelect = (tag: Item) => {
     if (book.tags.find((a) => a.id === tag.id)) return;
     setBook({ ...book, tags: [...book.tags, tag] });
+    if (handleTouched) handleTouched();
+    setQuery("");
   };
 
   const handleRemove = (id: string) => {
     setBook({ ...book, tags: book.tags.filter((a) => a.id !== id) });
+    if (handleTouched) handleTouched();
   };
 
   const handleAddNew = async (data: Item) => {

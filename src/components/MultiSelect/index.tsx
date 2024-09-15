@@ -67,11 +67,11 @@ const MultiSelect = (props: Props) => {
       </label>
 
       {isDropdownOpen && (
-        <div className="dropdown-content bg-white shadow-md w-full z-10">
-          <div
-            className="max-h-72 overflow-y-auto"
-            onClick={() => setIsDropdownOpen(false)}
-          >
+        <div
+          className="dropdown-content bg-white shadow-md w-full z-10"
+          onClick={() => setIsDropdownOpen(false)}
+        >
+          <div className="max-h-72 overflow-y-auto">
             <ul className="menu">
               {isLoading ? (
                 <li className="flex items-center">

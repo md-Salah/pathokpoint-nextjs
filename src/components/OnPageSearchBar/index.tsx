@@ -28,10 +28,10 @@ const OnPageSearchBar = ({ placeholder = "Search" }: Props) => {
   };
 
   return (
-    <label className="input input-bordered input-sm sm:input-md h-10 sm:h-12 bg-white flex items-center gap-2 focus-within:outline-none focus-within:border-primary">
+    <label className="input input-bordered input-sm min-h-10 h-full bg-white flex items-center gap-2 focus-within:outline-none focus-within:border-primary">
       <input
         type="text"
-        className="w-52 sm:w-60"
+        className="min-w-0 grow"
         placeholder={placeholder}
         value={q}
         onChange={(e) => handleChange(e.target.value)}
@@ -39,7 +39,7 @@ const OnPageSearchBar = ({ placeholder = "Search" }: Props) => {
       <RxCross1
         size="16"
         className={`cursor-pointer text-black04 min-w-4 hover:text-primary ${
-          q.length === 0 && "opacity-0"
+          !q && "opacity-0"
         }`}
         onClick={() => handleChange("")}
       />

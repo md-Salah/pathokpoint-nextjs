@@ -53,9 +53,7 @@ const EditPublisher = ({ publisher_id }: Props) => {
 
   const handleCancel = () => {
     setPublisher(data);
-    setTimeout(() => {
-      setTouched(false);
-    }, 300);
+    setTouched(false);
   };
 
   const handleTouched = () => {

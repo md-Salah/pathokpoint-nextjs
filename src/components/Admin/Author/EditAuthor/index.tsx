@@ -53,9 +53,7 @@ const EditAuthor = ({ author_id }: Props) => {
 
   const handleCancel = () => {
     setAuthor(data);
-    setTimeout(() => {
-      setTouched(false);
-    }, 300);
+    setTouched(false);
   };
 
   const handleTouched = () => {

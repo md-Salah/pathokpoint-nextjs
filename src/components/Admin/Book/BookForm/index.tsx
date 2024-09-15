@@ -135,23 +135,23 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
           </div>
           <div>
             <label className="label-2">Author</label>
-            <SelectAuthor book={book} setBook={setBook} />
+            <SelectAuthor book={book} setBook={setBook} handleTouched={handleTouched} />
           </div>
           <div>
             <label className="label-2">Translator</label>
-            <SelectTranslator book={book} setBook={setBook} />
+            <SelectTranslator book={book} setBook={setBook} handleTouched={handleTouched} />
           </div>
           <div>
             <label className="label-2">Publisher</label>
-            <SelectPublisher book={book} setBook={setBook} />
+            <SelectPublisher book={book} setBook={setBook} handleTouched={handleTouched} />
           </div>
           <div>
             <label className="label-2">Category</label>
-            <SelectCategory book={book} setBook={setBook} />
+            <SelectCategory book={book} setBook={setBook} handleTouched={handleTouched} />
           </div>
           <div>
             <label className="label-2">Tag</label>
-            <SelectTag book={book} setBook={setBook} />
+            <SelectTag book={book} setBook={setBook} handleTouched={handleTouched} />
           </div>
           <div></div>
           <div>

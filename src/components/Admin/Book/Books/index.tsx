@@ -4,16 +4,14 @@ import React from 'react';
 import { FiPlus } from 'react-icons/fi';
 import useSWR from 'swr';
 
-import { PaginationHandler } from '@/components';
-import { SearchBar } from '@/components/Admin';
+import { FilterInMobile, PaginationHandler } from '@/components';
 import { useToken } from '@/hooks';
 import { BookAdmin } from '@/interface';
 import { DataCount } from '@/micro-components';
-import { Error } from '@/micro-components/Admin';
+import { Error, KeyValueFilter, SearchBar } from '@/micro-components/Admin';
 import { fetchWithTokenAndHeader } from '@/utils/axiosConfig';
 
 import Item from './Item';
-import KeyValueFilter from './KeyValueFilter';
 
 interface Props {
   searchParams?: any;
@@ -54,7 +52,7 @@ const Books = ({ searchParams }: Props) => {
       </div>
 
       {/* Filters */}
-      <div className="mt-4 flex gap-2">
+      <div className="mt-4 flex overflow-x-scroll pb-2 gap-2">
         <div className="max-w-72">
           <SearchBar />
         </div>
@@ -64,9 +62,7 @@ const Books = ({ searchParams }: Props) => {
         <div className="max-w-36">
           <KeyValueFilter name="public_id" placeholder="Public ID" />
         </div>
-        <div className="max-w-56">
-          <KeyValueFilter name="author__name__in" placeholder="Author Name" />
-        </div>
+        <FilterInMobile className="btn-sm btn-outline btn-primary w-24 h-10 lg:btn-md" />
       </div>
 
       {/* Table */}

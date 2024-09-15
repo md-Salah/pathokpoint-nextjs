@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 
-import { BookCard, Filter, FilterInMobile, PaginationHandler } from '@/components';
+import { BookCard, Filter, FilterInMobile, OnPageSearchBar, PaginationHandler } from '@/components';
 import { Book } from '@/interface';
+import { DataCount } from '@/micro-components';
 import { getBooksAndPagination } from '@/utils/api';
 
-import Search from './Search';
 import Sort from './Sort';
 
 interface Props {
@@ -40,9 +40,6 @@ const Books = async ({
     totalCount: number;
   } = await getBooksAndPagination(query);
 
-  const startingAt = (currentPage - 1) * perPage + 1;
-  const endingAt = Math.min(startingAt + perPage - 1, totalCount);
-
   return (
     <>
       <div className="flex sm:hidden mt-3 justify-end layout-container layout-px">
@@ -55,12 +52,19 @@ const Books = async ({
         </aside>
         <div className="layout-p sm:p-4 bg-white flex flex-col justify-between col-span-12 sm:col-span-8 lg:col-span-9 xl:col-span-10">
           <div className="w-full overflow-hidden">
-            <div className="text-black04 text-sm mb-3">
-              {`Showing ${startingAt} to ${endingAt} of ${totalCount} books`}
-            </div>
-            <div className="flex justify-between gap-2.5">
-              <Search />
-              <Sort />
+            <DataCount
+              currentPage={currentPage}
+              perPage={perPage}
+              totalCount={totalCount}
+              context="books"
+            />
+            <div className="mt-3 flex justify-between gap-2">
+              <div className="grow max-w-52 md:max-w-60">
+                <OnPageSearchBar placeholder="Search on this page..." />
+              </div>
+              <div className="w-36 md:w-40">
+                <Sort />
+              </div>
             </div>
             <Suspense
               fallback={<div className="skeleton w-full h-60 my-3"></div>}

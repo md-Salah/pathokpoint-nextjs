@@ -24,21 +24,19 @@ const SearchBar = () => {
   };
 
   return (
-    <label className="input input-bordered input-sm lg:input-md bg-white flex items-center gap-2 focus-within:outline-none focus-within:border-primary">
+    <label className="input input-bordered input-sm h-10 lg:input-md bg-white flex items-center gap-2 focus-within:outline-none focus-within:border-primary">
       <input
         type="text"
-        className="w-auto min-w-0 grow"
+        className="grow min-w-0"
         placeholder="Search"
         value={q}
         onChange={(e) => handleChange(e.target.value)}
       />
-      {q.length > 0 && (
-        <RxCross1
-          size="16"
-          className="cursor-pointer text-black04 min-w-4 hover:text-primary"
-          onClick={() => handleChange("")}
-        />
-      )}
+      <RxCross1
+        size="16"
+        className={`cursor-pointer text-black04 min-w-4 hover:text-primary ${!q && "opacity-0"}`}
+        onClick={() => handleChange("")}
+      />
     </label>
   );
 };

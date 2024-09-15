@@ -24,7 +24,7 @@ const StatusFilter = () => {
 
   return (
     <select
-      className="select select-bordered bg-white select-sm focus-within:outline-none focus-within:border-primary"
+      className="select select-bordered bg-white focus-within:outline-none focus-within:border-primary select-sm h-10 lg:select-md"
       onChange={handleChange}
       value={selectedStatus}
     >

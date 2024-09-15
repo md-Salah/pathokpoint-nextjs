@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { settings } from '@/constants';
 import { CartItem as CartItemType } from '@/interface';
 import {
     applyCoupon, refreshCartItems, removeCoupon, verifyStock
@@ -20,7 +21,7 @@ import Summary from './Summary';
 const Cart = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const { cartItems, coupon } = useSelector((state: RootState) => state.cart);
+  const { cartItems, coupon, subTotal } = useSelector((state: RootState) => state.cart);
 
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -42,6 +43,9 @@ const Cart = () => {
     setErr(null);
     if (cartItems.length === 0) {
       setErr("Cart is empty");
+      return;
+    } else if (subTotal < settings.minOrderAmount) {
+      setErr(`Order amount should be at least ${settings.minOrderAmount} Tk`);      
       return;
     }
 

@@ -7,12 +7,11 @@ import useSWR from 'swr';
 import { PaginationHandler } from '@/components';
 import { Order } from '@/interface';
 import { DataCount } from '@/micro-components';
-import { Error, Skeleton } from '@/micro-components/Admin';
+import { Error, KeyValueFilter, SearchBar, Skeleton } from '@/micro-components/Admin';
 import { RootState } from '@/redux/store';
 import { fetchWithTokenAndHeader } from '@/utils/axiosConfig';
 
 import OrderItem from './OrderItem';
-import Search from './Search';
 import StatusFilter from './StatusFilter';
 
 type Props = {
@@ -53,8 +52,13 @@ const Orders = ({ searchParams }: Props) => {
           Add Order
         </Link>
       </div>
-      <div className="mt-4 flex justify-between items-center gap-2">
-        <Search />
+      <div className="mt-4 flex items-center gap-2 overflow-x-scroll pb-2">
+        <div className="max-w-56">
+          <SearchBar />
+        </div>
+        <div className="max-w-28">
+          <KeyValueFilter name="invoice" placeholder="Invoice" />
+        </div>
         <StatusFilter />
       </div>
       <div className="mt-4 overflow-x-auto min-h-64">

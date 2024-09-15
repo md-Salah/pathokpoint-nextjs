@@ -12,6 +12,7 @@ export const store = configureStore({
     search: searchSlice,
     adminCart: adminCartSlice,
   },
+  devTools: false,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
