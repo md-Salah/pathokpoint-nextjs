@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 
 import { AuthorForm } from '@/components/Admin/Author';
+import Modal from '@/components/Modal';
 import { useToken } from '@/hooks';
 import { Author } from '@/interface';
-import { Error, Skeleton } from '@/micro-components/Admin';
+import { AreYouSure, Error, Skeleton } from '@/micro-components/Admin';
 import axiosInstance, { extractAxiosErr, fetchWithToken } from '@/utils/axiosConfig';
 
 interface Props {
@@ -20,6 +21,7 @@ const EditAuthor = ({ author_id }: Props) => {
   const [success, setSuccess] = useState<boolean>(false);
   const [touched, setTouched] = useState<boolean>(false);
   const [refresh, setRefresh] = useState<boolean>(false);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   const { token } = useToken();
 
@@ -62,14 +64,49 @@ const EditAuthor = ({ author_id }: Props) => {
     setErr(null);
   };
 
+  const handleDelete = async () => {
+    if (!author) return;
+    setErr(null);
+    setLoading(true);
+    try {
+      await axiosInstance.delete(`/author/${author.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      setErr(extractAxiosErr(error));
+    } finally {
+      setLoading(false);
+      modalRef.current?.close();
+    }
+  };
+
   if (isLoading) return <Skeleton />;
   if (error) return <Error err={error} />;
   if (!author) return <Error err="Author not found" />;
 
   return (
     <div className="bg-white admin-container">
-      <div className="border-b border-[#E6E6E6] py-4">
-        <h1 className="font-medium lg:px-14">Edit Author</h1>
+      <div className="border-b border-[#E6E6E6] py-2 lg:px-14 flex justify-between items-center">
+        <h1 className="font-medium">Edit Author</h1>
+        <button
+          className="btn btn-sm btn-error"
+          onClick={() => modalRef.current?.showModal()}
+        >
+          Delete
+        </button>
+        <Modal modalRef={modalRef}>
+          <AreYouSure
+            loading={loading}
+            err={err}
+            handleYes={handleDelete}
+            handleNo={() => {
+              modalRef.current?.close();
+            }}
+          />
+        </Modal>
       </div>
       <AuthorForm
         author={author}

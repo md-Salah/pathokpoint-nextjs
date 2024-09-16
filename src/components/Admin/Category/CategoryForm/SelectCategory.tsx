@@ -30,6 +30,7 @@ const SelectCategory = ({ category, setCategory, handleTouched }: Props) => {
       if (handleTouched)
         handleTouched();
     }
+    setQuery("");
   };
 
   const handleRemove = (id: string) => {

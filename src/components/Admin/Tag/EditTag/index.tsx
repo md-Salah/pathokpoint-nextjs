@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 
 import { TagForm } from '@/components/Admin/Tag';
+import Modal from '@/components/Modal';
 import { useToken } from '@/hooks';
 import { Tag } from '@/interface';
-import { Error, Skeleton } from '@/micro-components/Admin';
+import { AreYouSure, Error, Skeleton } from '@/micro-components/Admin';
 import axiosInstance, { extractAxiosErr, fetchWithToken } from '@/utils/axiosConfig';
 
 interface Props {
@@ -20,6 +21,7 @@ const EditTag = ({ tag_id }: Props) => {
   const [success, setSuccess] = useState<boolean>(false);
   const [touched, setTouched] = useState<boolean>(false);
   const [refresh, setRefresh] = useState<boolean>(false);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   const { token } = useToken();
 
@@ -62,14 +64,49 @@ const EditTag = ({ tag_id }: Props) => {
     setErr(null);
   };
 
+  const handleDelete = async () => {
+    if (!tag) return;
+    setErr(null);
+    setLoading(true);
+    try {
+      await axiosInstance.delete(`/tag/${tag.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      setErr(extractAxiosErr(error));
+    } finally {
+      setLoading(false);
+      modalRef.current?.close();
+    }
+  };
+
   if (isLoading) return <Skeleton />;
   if (error) return <Error err={error} />;
   if (!tag) return <Error err="Tag not found" />;
 
   return (
     <div className="bg-white admin-container">
-      <div className="border-b border-[#E6E6E6] py-4">
-        <h1 className="font-medium lg:px-14">Edit Tag</h1>
+      <div className="border-b border-[#E6E6E6] py-2 lg:px-14 flex justify-between items-center">
+        <h1 className="font-medium">Edit Tag</h1>
+        <button
+          className="btn btn-sm btn-error"
+          onClick={() => modalRef.current?.showModal()}
+        >
+          Delete
+        </button>
+        <Modal modalRef={modalRef}>
+          <AreYouSure
+            loading={loading}
+            err={err}
+            handleYes={handleDelete}
+            handleNo={() => {
+              modalRef.current?.close();
+            }}
+          />
+        </Modal>
       </div>
       <TagForm tag={tag} setTag={setTag} handleTouched={handleTouched} />
       <div className="lg:px-14 mb-4 sm:mb-8">

@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 
 import { BookForm } from '@/components/Admin/Book';
+import Modal from '@/components/Modal';
 import { useToken } from '@/hooks';
 import { BookAdmin } from '@/interface';
-import { Error, Skeleton } from '@/micro-components/Admin';
+import { AreYouSure, Error, Skeleton } from '@/micro-components/Admin';
 import axiosInstance, { extractAxiosErr, fetchWithToken } from '@/utils/axiosConfig';
 
 interface Props {
@@ -19,6 +20,7 @@ const EditBook = ({ public_id }: Props) => {
   const [success, setSuccess] = useState<boolean>(false);
   const [touched, setTouched] = useState<boolean>(false);
   const [refresh, setRefresh] = useState<boolean>(false);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   const { token } = useToken();
   const { data, isLoading, error } = useSWR(
@@ -72,14 +74,49 @@ const EditBook = ({ public_id }: Props) => {
     setErr(null);
   };
 
+  const handleDelete = async () => {
+    if (!book) return;
+    setErr(null);
+    setLoading(true);
+    try {
+      await axiosInstance.delete(`/book/${book.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      setErr(extractAxiosErr(error));
+    } finally {
+      setLoading(false);
+      modalRef.current?.close();
+    }
+  };
+
   if (isLoading) return <Skeleton />;
   if (error) return <Error err={error} />;
   if (!book) return <Error err="Book not found" />;
 
   return (
     <div className="bg-white admin-container">
-      <div className="border-b border-[#E6E6E6] py-4">
-        <h1 className="font-medium lg:px-14">Edit Book</h1>
+      <div className="border-b border-[#E6E6E6] py-2 lg:px-14 flex justify-between items-center">
+        <h1 className="font-medium">Edit Book</h1>
+        <button
+          className="btn btn-sm btn-error"
+          onClick={() => modalRef.current?.showModal()}
+        >
+          Delete
+        </button>
+        <Modal modalRef={modalRef}>
+          <AreYouSure
+            loading={loading}
+            err={err}
+            handleYes={handleDelete}
+            handleNo={() => {
+              modalRef.current?.close();
+            }}
+          />
+        </Modal>
       </div>
       <BookForm book={book} setBook={setBook} handleTouched={handleTouched} />
       <div className="lg:px-14 mb-4 sm:mb-8">
