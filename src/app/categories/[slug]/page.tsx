@@ -28,7 +28,7 @@ const CategoryPage = async ({ searchParams, params }: Props) => {
         name={category.name}
         description={category.description}
         dp={category.image?.src || defaultSrc.category}
-        cover={defaultSrc.categoryCover}
+        cover={category.banner?.src || defaultSrc.categoryCover}
       />
 
       <Books searchParams={searchParams} categorySlug={params.slug} />

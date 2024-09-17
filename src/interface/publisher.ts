@@ -14,6 +14,8 @@ export interface Publisher {
   is_in_menu: boolean;
   country?: string | null;
   book_published?: number | null;
+  image_id?: string | null;
+  banner_id?: string | null;
   image?: Image | null;
   banner?: Image | null;
 }

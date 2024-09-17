@@ -28,7 +28,7 @@ const AuthorPage = async ({ searchParams, params }: Props) => {
         name={author.name}
         description={author.description}
         dp={author.image?.src || defaultSrc.author}
-        cover={defaultSrc.authorCover}
+        cover={author.banner?.src || defaultSrc.authorCover}
         handleFollow={() => {}}
       />
 

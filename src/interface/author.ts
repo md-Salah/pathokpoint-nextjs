@@ -14,6 +14,8 @@ export interface Author {
   country?: string | null;
   is_popular: boolean;
   is_in_menu: boolean;
+  image_id?: string | null;
+  banner_id?: string | null;
   image?: Image | null;
   banner?: Image | null;
   followers_count?: number | null;

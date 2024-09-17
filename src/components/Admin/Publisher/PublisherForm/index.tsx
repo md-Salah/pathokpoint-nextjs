@@ -1,15 +1,23 @@
 "use client";
 import { Publisher } from '@/interface';
-import { Checkbox, SelectCountry } from '@/micro-components/Admin';
+import { Checkbox, FileUpload, ImageWithRemoveIcon, SelectCountry } from '@/micro-components/Admin';
 import { dateTime, isEnglish } from '@/utils';
 
 interface Props {
   publisher: Publisher;
   setPublisher: (publisher: Publisher) => void;
+  setLogo: (logo: File | null) => void;
+  setBanner: (banner: File | null) => void;
   handleTouched?: () => void;
 }
 
-const PublisherForm = ({ publisher, setPublisher, handleTouched }: Props) => {
+const PublisherForm = ({
+  publisher,
+  setPublisher,
+  handleTouched,
+  setLogo,
+  setBanner,
+}: Props) => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -21,6 +29,16 @@ const PublisherForm = ({ publisher, setPublisher, handleTouched }: Props) => {
 
   const toggleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPublisher({ ...publisher, [e.target.name]: e.target.checked });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveLogo = () => {
+    setPublisher({ ...publisher, image_id: null, image: null });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveBanner = () => {
+    setPublisher({ ...publisher, banner_id: null, banner: null });
     if (handleTouched) handleTouched();
   };
 
@@ -82,7 +100,7 @@ const PublisherForm = ({ publisher, setPublisher, handleTouched }: Props) => {
           <label className="label-2">Description</label>
           <div className="relative w-full">
             <textarea
-              className="textarea textarea-sm w-full focus:outline-none focus:border-primary"
+              className="textarea textarea-sm w-full h-32 focus:outline-none focus:border-primary"
               name="description"
               value={publisher.description || ""}
               onChange={handleChange}
@@ -114,6 +132,54 @@ const PublisherForm = ({ publisher, setPublisher, handleTouched }: Props) => {
             value={publisher.country || ""}
             handleChange={handleChange}
           />
+        </div>
+      </div>
+
+      {/* Logo & Banner */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mt-8 border-t pt-4">
+        <div>
+          <h3 className="label-2 mb-2">Profile Picture</h3>
+          <div
+            className="w-40"
+            style={{
+              aspectRatio: "187/133",
+            }}
+          >
+            {publisher.image ? (
+              <ImageWithRemoveIcon
+                src={publisher.image.src}
+                handleRemove={handleRemoveLogo}
+              />
+            ) : (
+              <FileUpload
+                setFile={setLogo}
+                handleTouched={handleTouched}
+                helperText="120x120px"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <h3 className="label-2 mb-2">Banner</h3>
+          <div
+            className="w-full"
+            style={{
+              aspectRatio: "1328/256",
+            }}
+          >
+            {publisher.banner ? (
+              <ImageWithRemoveIcon
+                src={publisher.banner.src}
+                handleRemove={handleRemoveBanner}
+              />
+            ) : (
+              <FileUpload
+                setFile={setBanner}
+                handleTouched={handleTouched}
+                helperText="1328x256px"
+              />
+            )}
+          </div>
         </div>
       </div>
 

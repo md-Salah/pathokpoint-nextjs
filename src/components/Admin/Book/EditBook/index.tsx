@@ -21,6 +21,7 @@ const EditBook = ({ public_id }: Props) => {
   const [touched, setTouched] = useState<boolean>(false);
   const [refresh, setRefresh] = useState<boolean>(false);
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [images, setImages] = useState<File[]>([]);
 
   const { token } = useToken();
   const { data, isLoading, error } = useSWR(
@@ -37,7 +38,7 @@ const EditBook = ({ public_id }: Props) => {
     setErr(null);
     setLoading(true);
     try {
-      const res = await axiosInstance.patch(
+      await axiosInstance.patch(
         `/book/${book.id}`,
         {
           ...book,
@@ -54,8 +55,26 @@ const EditBook = ({ public_id }: Props) => {
           },
         }
       );
+
+      // Upload images if exists
+      if (images.length > 0) {
+        const formData = new FormData();
+        images.forEach((image) => formData.append("files", image));
+        await axiosInstance.post(
+          `/image/admin?book_id=${book.id}&is_append=true`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+
       setSuccess(true);
       setRefresh(!refresh);
+      setImages([]);
     } catch (error) {
       setErr(extractAxiosErr(error));
     } finally {
@@ -65,6 +84,7 @@ const EditBook = ({ public_id }: Props) => {
 
   const handleCancel = () => {
     setBook(data);
+    setImages([]);
     setTouched(false);
   };
 
@@ -118,7 +138,13 @@ const EditBook = ({ public_id }: Props) => {
           />
         </Modal>
       </div>
-      <BookForm book={book} setBook={setBook} handleTouched={handleTouched} />
+      <BookForm
+        book={book}
+        setBook={setBook}
+        handleTouched={handleTouched}
+        setImages={setImages}
+        success={success}
+      />
       <div className="lg:px-14 mb-4 sm:mb-8">
         <div className="mt-12 flex justify-center lg:justify-end">
           {err && <p className="text-error text-sm">{err}</p>}

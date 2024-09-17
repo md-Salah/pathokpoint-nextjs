@@ -22,6 +22,8 @@ const EditCategory = ({ category_id }: Props) => {
   const [touched, setTouched] = useState<boolean>(false);
   const [refresh, setRefresh] = useState<boolean>(false);
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [logo, setLogo] = useState<File | null>(null);
+  const [banner, setBanner] = useState<File | null>(null);
 
   const { token } = useToken();
 
@@ -51,8 +53,43 @@ const EditCategory = ({ category_id }: Props) => {
           },
         }
       );
+
+      // Upload logo if exists
+      if (logo) {
+        const formData = new FormData();
+        formData.append("files", logo);
+        await axiosInstance.post(
+          `/image/admin?category_id=${category.id}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+
+      // Upload banner if exists
+      if (banner) {
+        const formData = new FormData();
+        formData.append("files", banner);
+        await axiosInstance.post(
+          `/image/admin?category_id=${category.id}&is_banner=true`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+
       setSuccess(true);
       setRefresh(!refresh);
+      setLogo(null);
+      setBanner(null);
     } catch (error) {
       setErr(extractAxiosErr(error));
     } finally {
@@ -62,6 +99,8 @@ const EditCategory = ({ category_id }: Props) => {
 
   const handleCancel = () => {
     setCategory(data);
+    setLogo(null);
+    setBanner(null);
     setTouched(false);
   };
 
@@ -96,7 +135,7 @@ const EditCategory = ({ category_id }: Props) => {
 
   return (
     <div className="bg-white admin-container">
-            <div className="border-b border-[#E6E6E6] py-2 lg:px-14 flex justify-between items-center">
+      <div className="border-b border-[#E6E6E6] py-2 lg:px-14 flex justify-between items-center">
         <h1 className="font-medium">Edit Category</h1>
         <button
           className="btn btn-sm btn-error"
@@ -118,6 +157,8 @@ const EditCategory = ({ category_id }: Props) => {
       <CategoryForm
         category={category}
         setCategory={setCategory}
+        setLogo={setLogo}
+        setBanner={setBanner}
         handleTouched={handleTouched}
       />
       <div className="lg:px-14 mb-4 sm:mb-8">

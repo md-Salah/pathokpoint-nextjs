@@ -6,3 +6,7 @@ export { default as SelectCountry } from "./SelectCountry";
 export { default as KeyValueFilter } from "./KeyValueFilter";
 export { default as SearchBar } from "./SearchBar";
 export { default as AreYouSure } from "./AreYouSure";
+export { default as FileUpload } from "./FileUpload";
+export { default as FileUploadMultiple } from "./FileUploadMultiple";
+export { default as ImageWithRemoveIcon } from "./ImageWithRemoveIcon";
+export { default as ImagePreview } from "./ImagePreview";

@@ -22,6 +22,8 @@ const EditPublisher = ({ publisher_id }: Props) => {
   const [touched, setTouched] = useState<boolean>(false);
   const [refresh, setRefresh] = useState<boolean>(false);
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [logo, setLogo] = useState<File | null>(null);
+  const [banner, setBanner] = useState<File | null>(null);
 
   const { token } = useToken();
 
@@ -44,8 +46,43 @@ const EditPublisher = ({ publisher_id }: Props) => {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      // Upload logo if exists
+      if (logo) {
+        const formData = new FormData();
+        formData.append("files", logo);
+        await axiosInstance.post(
+          `/image/admin?publisher_id=${publisher.id}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+
+      // Upload banner if exists
+      if (banner) {
+        const formData = new FormData();
+        formData.append("files", banner);
+        await axiosInstance.post(
+          `/image/admin?publisher_id=${publisher.id}&is_banner=true`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+
       setSuccess(true);
       setRefresh(!refresh);
+      setLogo(null);
+      setBanner(null);
     } catch (error) {
       setErr(extractAxiosErr(error));
     } finally {
@@ -55,6 +92,8 @@ const EditPublisher = ({ publisher_id }: Props) => {
 
   const handleCancel = () => {
     setPublisher(data);
+    setLogo(null);
+    setBanner(null);
     setTouched(false);
   };
 
@@ -111,6 +150,8 @@ const EditPublisher = ({ publisher_id }: Props) => {
       <PublisherForm
         publisher={publisher}
         setPublisher={setPublisher}
+        setLogo={setLogo}
+        setBanner={setBanner}
         handleTouched={handleTouched}
       />
       <div className="lg:px-14 mb-4 sm:mb-8">

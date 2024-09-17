@@ -1,6 +1,6 @@
 "use client";
 import { Category } from '@/interface';
-import { Checkbox } from '@/micro-components/Admin';
+import { Checkbox, FileUpload, ImageWithRemoveIcon } from '@/micro-components/Admin';
 import { dateTime, isEnglish } from '@/utils';
 
 import SelectCategory from './SelectCategory';
@@ -8,10 +8,18 @@ import SelectCategory from './SelectCategory';
 interface Props {
   category: Category;
   setCategory: (category: Category) => void;
+  setLogo: (logo: File | null) => void;
+  setBanner: (banner: File | null) => void;
   handleTouched?: () => void;
 }
 
-const CategoryForm = ({ category, setCategory, handleTouched }: Props) => {
+const CategoryForm = ({
+  category,
+  setCategory,
+  handleTouched,
+  setLogo,
+  setBanner,
+}: Props) => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -23,6 +31,16 @@ const CategoryForm = ({ category, setCategory, handleTouched }: Props) => {
 
   const toggleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategory({ ...category, [e.target.name]: e.target.checked });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveLogo = () => {
+    setCategory({ ...category, image_id: null, image: null });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveBanner = () => {
+    setCategory({ ...category, banner_id: null, banner: null });
     if (handleTouched) handleTouched();
   };
 
@@ -51,7 +69,7 @@ const CategoryForm = ({ category, setCategory, handleTouched }: Props) => {
       )}
 
       {/* Basic Info */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-8 border-b pb-8 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-8">
         <div className="relative">
           <label className="label-2">Name</label>
           <input
@@ -82,7 +100,7 @@ const CategoryForm = ({ category, setCategory, handleTouched }: Props) => {
           <label className="label-2">Description</label>
           <div className="relative w-full">
             <textarea
-              className="textarea textarea-sm w-full focus:outline-none focus:border-primary"
+              className="textarea textarea-sm w-full h-32 focus:outline-none focus:border-primary"
               name="description"
               value={category.description || ""}
               onChange={handleChange}
@@ -95,11 +113,63 @@ const CategoryForm = ({ category, setCategory, handleTouched }: Props) => {
         </div>
         <div>
           <label className="label-2">Parent Category</label>
-          <SelectCategory category={category} setCategory={setCategory} handleTouched={handleTouched} />
+          <SelectCategory
+            category={category}
+            setCategory={setCategory}
+            handleTouched={handleTouched}
+          />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 lg:gap-8">
+      {/* Logo & Banner */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mt-8 border-t pt-4">
+        <div>
+          <h3 className="label-2 mb-2">Profile Picture</h3>
+          <div
+            className="w-40"
+            style={{
+              aspectRatio: "237/181",
+            }}
+          >
+            {category.image ? (
+              <ImageWithRemoveIcon
+                src={category.image.src}
+                handleRemove={handleRemoveLogo}
+              />
+            ) : (
+              <FileUpload
+                setFile={setLogo}
+                handleTouched={handleTouched}
+                helperText="237x181px"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <h3 className="label-2 mb-2">Banner</h3>
+          <div
+            className="w-full"
+            style={{
+              aspectRatio: "1328/256",
+            }}
+          >
+            {category.banner ? (
+              <ImageWithRemoveIcon
+                src={category.banner.src}
+                handleRemove={handleRemoveBanner}
+              />
+            ) : (
+              <FileUpload
+                setFile={setBanner}
+                handleTouched={handleTouched}
+                helperText="1328x256px"
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 lg:gap-8 mt-8 border-t pt-8">
         <Checkbox
           label="Islamic Featured"
           name="is_islamic"

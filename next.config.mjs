@@ -9,11 +9,11 @@ const nextConfig = {
                 pathname: '/dtxh6e0wv/image/upload/**'
             },
             {
-                protocol: 'http',
-                hostname: 'mdsalah.customerserver003003.eurhosting.net',
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
                 port: '',
-                pathname: '/test/**'
-            }
+                pathname: '/dqbtwjck1/image/upload/**'
+            },
         ]
     }
 };

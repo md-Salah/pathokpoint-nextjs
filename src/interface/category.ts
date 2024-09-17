@@ -23,6 +23,8 @@ export interface Category {
   is_in_menu: boolean;
   parent: CatParent[];
   children?: CatParent[];
+  image_id?: string | null;
+  banner_id?: string | null;
   image?: Image | null;
   banner?: Image | null;
 }

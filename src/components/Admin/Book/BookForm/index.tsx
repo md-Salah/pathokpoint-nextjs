@@ -1,7 +1,9 @@
 "use client";
 
 import { BookAdmin } from '@/interface';
-import { Checkbox } from '@/micro-components/Admin';
+import {
+    Checkbox, FileUpload, FileUploadMultiple, ImageWithRemoveIcon
+} from '@/micro-components/Admin';
 import { dateTime, isEnglish } from '@/utils';
 
 import SelectAuthor from './SelectAuthor';
@@ -13,12 +15,22 @@ import SelectTranslator from './SelectTranslator';
 interface Props {
   book: BookAdmin;
   setBook: (book: BookAdmin) => void;
+  setImages: (images: File[]) => void;
   handleTouched?: () => void;
+  success?: boolean;
 }
 
-const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
+const AddBookForm = ({
+  book,
+  setBook,
+  handleTouched,
+  setImages,
+  success,
+}: Props) => {
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     setBook({ ...book, [e.target.name]: e.target.value });
     if (handleTouched) handleTouched();
@@ -32,6 +44,12 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
 
   const toggleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBook({ ...book, [e.target.name]: e.target.checked });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveImage = (id: string) => {
+    const newImages = book.images?.filter((image) => image.id !== id);
+    setBook({ ...book, images: newImages });
     if (handleTouched) handleTouched();
   };
 
@@ -122,7 +140,7 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
             <label className="label-2">Description</label>
             <div className="relative w-full">
               <textarea
-                className="textarea textarea-sm w-full focus:outline-none focus:border-primary"
+                className="textarea textarea-sm w-full h-32 focus:outline-none focus:border-primary"
                 name="description"
                 value={book.description || ""}
                 onChange={handleChange}
@@ -135,23 +153,43 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
           </div>
           <div>
             <label className="label-2">Author</label>
-            <SelectAuthor book={book} setBook={setBook} handleTouched={handleTouched} />
+            <SelectAuthor
+              book={book}
+              setBook={setBook}
+              handleTouched={handleTouched}
+            />
           </div>
           <div>
             <label className="label-2">Translator</label>
-            <SelectTranslator book={book} setBook={setBook} handleTouched={handleTouched} />
+            <SelectTranslator
+              book={book}
+              setBook={setBook}
+              handleTouched={handleTouched}
+            />
           </div>
           <div>
             <label className="label-2">Publisher</label>
-            <SelectPublisher book={book} setBook={setBook} handleTouched={handleTouched} />
+            <SelectPublisher
+              book={book}
+              setBook={setBook}
+              handleTouched={handleTouched}
+            />
           </div>
           <div>
             <label className="label-2">Category</label>
-            <SelectCategory book={book} setBook={setBook} handleTouched={handleTouched} />
+            <SelectCategory
+              book={book}
+              setBook={setBook}
+              handleTouched={handleTouched}
+            />
           </div>
           <div>
             <label className="label-2">Tag</label>
-            <SelectTag book={book} setBook={setBook} handleTouched={handleTouched} />
+            <SelectTag
+              book={book}
+              setBook={setBook}
+              handleTouched={handleTouched}
+            />
           </div>
           <div></div>
           <div>
@@ -397,10 +435,36 @@ const AddBookForm = ({ book, setBook, handleTouched }: Props) => {
         </div>
 
         {/* Images */}
-        <div></div>
+        <div className="grid grid-cols-1 mt-8 border-t pt-4">
+          <h3 className="label-2 mb-2">Images</h3>
+          <div className="flex flex-wrap gap-3">
+            {book.images?.map((img) => (
+              <div
+                key={img.id}
+                className="w-40"
+                style={{
+                  aspectRatio: "260/372",
+                }}
+              >
+                <ImageWithRemoveIcon
+                  src={img.src}
+                  handleRemove={() => handleRemoveImage(img.id)}
+                />
+              </div>
+            ))}
+            <FileUploadMultiple
+              setFiles={setImages}
+              success={success}
+              handleTouched={handleTouched}
+              aspectRatio='260/372'
+              helperText='260x372px'
+              widthClass='w-40'
+            />
+          </div>
+        </div>
 
         {/* Featured */}
-        <div className="grid grid-cols-2 gap-3 lg:gap-8 mt-8 border-t pt-8">
+        <div className="grid grid-cols-2 gap-3 lg:gap-8 mt-14 border-t pt-8">
           <Checkbox
             label="Featured"
             name="is_featured"

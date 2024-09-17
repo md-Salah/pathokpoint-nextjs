@@ -1,16 +1,25 @@
 "use client";
+
 import { Author } from '@/interface';
 import { DateInput } from '@/micro-components';
-import { Checkbox, SelectCountry } from '@/micro-components/Admin';
+import { Checkbox, FileUpload, ImageWithRemoveIcon, SelectCountry } from '@/micro-components/Admin';
 import { dateTime, isEnglish } from '@/utils';
 
 interface Props {
   author: Author;
   setAuthor: (author: Author) => void;
+  setLogo: (logo: File | null) => void;
+  setBanner: (banner: File | null) => void;
   handleTouched?: () => void;
 }
 
-const AuthorForm = ({ author, setAuthor, handleTouched }: Props) => {
+const AuthorForm = ({
+  author,
+  setAuthor,
+  handleTouched,
+  setLogo,
+  setBanner,
+}: Props) => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -32,6 +41,16 @@ const AuthorForm = ({ author, setAuthor, handleTouched }: Props) => {
 
   const toggleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAuthor({ ...author, [e.target.name]: e.target.checked });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveLogo = () => {
+    setAuthor({ ...author, image_id: null, image: null });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveBanner = () => {
+    setAuthor({ ...author, banner_id: null, banner: null });
     if (handleTouched) handleTouched();
   };
 
@@ -91,7 +110,7 @@ const AuthorForm = ({ author, setAuthor, handleTouched }: Props) => {
           <label className="label-2">Description</label>
           <div className="relative w-full">
             <textarea
-              className="textarea textarea-sm w-full focus:outline-none focus:border-primary"
+              className="textarea textarea-sm w-full h-32 focus:outline-none focus:border-primary"
               name="description"
               value={author.description || ""}
               onChange={handleChange}
@@ -147,6 +166,54 @@ const AuthorForm = ({ author, setAuthor, handleTouched }: Props) => {
             value={author.country || ""}
             handleChange={handleChange}
           />
+        </div>
+      </div>
+
+      {/* Logo & Banner */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mt-8 border-t pt-4">
+        <div>
+          <h3 className="label-2 mb-2">Profile Picture</h3>
+          <div
+            className="w-32"
+            style={{
+              aspectRatio: "120/120",
+            }}
+          >
+            {author.image ? (
+              <ImageWithRemoveIcon
+                src={author.image.src}
+                handleRemove={handleRemoveLogo}
+              />
+            ) : (
+              <FileUpload
+                setFile={setLogo}
+                handleTouched={handleTouched}
+                helperText="120x120px"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <h3 className="label-2 mb-2">Banner</h3>
+          <div
+            className="w-full"
+            style={{
+              aspectRatio: "1328/256",
+            }}
+          >
+            {author.banner ? (
+              <ImageWithRemoveIcon
+                src={author.banner.src}
+                handleRemove={handleRemoveBanner}
+              />
+            ) : (
+              <FileUpload
+                setFile={setBanner}
+                handleTouched={handleTouched}
+                helperText="1328x256px"
+              />
+            )}
+          </div>
         </div>
       </div>
 

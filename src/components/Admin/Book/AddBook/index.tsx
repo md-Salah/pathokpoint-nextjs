@@ -16,6 +16,7 @@ const AddBook = () => {
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
+  const [images, setImages] = useState<File[]>([]);
 
   const { token } = useToken();
 
@@ -40,8 +41,28 @@ const AddBook = () => {
           },
         }
       );
+
+      // Upload images if exists
+      if (images.length > 0) {
+        const formData = new FormData();
+        images.forEach((image) => {
+          formData.append("files", image);
+        });
+        await axiosInstance.post(
+          `/image/admin?book_id=${res.data.id}&is_append=true`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+
       setSuccess(true);
       setBook(res.data);
+      setImages([]);
     } catch (error) {
       setErr(extractAxiosErr(error));
     } finally {
@@ -52,6 +73,7 @@ const AddBook = () => {
   const handleAddAnother = () => {
     setBook(initialBook);
     setSuccess(false);
+    setImages([]);
   };
 
   return (
@@ -59,7 +81,7 @@ const AddBook = () => {
       <div className="border-b border-[#E6E6E6] py-4">
         <h1 className="font-medium lg:px-14">Add Book</h1>
       </div>
-      <BookForm book={book} setBook={setBook} />
+      <BookForm book={book} setBook={setBook} setImages={setImages} />
       <div className="lg:px-14 mb-2 lg:mb-8">
         <div className="mt-12 flex justify-center lg:justify-end">
           {err && <p className="text-error text-sm">{err}</p>}
@@ -71,7 +93,7 @@ const AddBook = () => {
         </div>
         <div className="mt-4 flex items-center justify-center sm:justify-end gap-2">
           {success ? (
-            <div className='flex flex-wrap gap-2 justify-center'>
+            <div className="flex flex-wrap gap-2 justify-center">
               <Link
                 href={`/books/${book.public_id}/${book.slug}`}
                 target="_blank"
@@ -85,7 +107,10 @@ const AddBook = () => {
               >
                 Edit
               </Link>
-              <button className="btn btn-secondary w-72 sm:w-52" onClick={handleAddAnother}>
+              <button
+                className="btn btn-secondary w-72 sm:w-52"
+                onClick={handleAddAnother}
+              >
                 <FiPlus size={20} className="inline-block" />
                 Add Another Book
               </button>
