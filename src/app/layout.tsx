@@ -55,7 +55,6 @@ export default function RootLayout({
             <>
               <Script id="meta-pixel" strategy="afterInteractive">
                 {`
-            <!-- Meta Pixel Code -->
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -70,7 +69,6 @@ export default function RootLayout({
             if (add.indexOf("/#!/") != -1){
               fbq('track', 'PageView');
             }
-            <!-- End Meta Pixel Code -->
           `}
               </Script>
               <noscript>
