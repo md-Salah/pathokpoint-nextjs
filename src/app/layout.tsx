@@ -53,7 +53,7 @@ export default function RootLayout({
 
           {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
             <>
-              <Script>
+              <Script id="meta-pixel" strategy="afterInteractive">
                 {`
             <!-- Meta Pixel Code -->
             !function(f,b,e,v,n,t,s)
