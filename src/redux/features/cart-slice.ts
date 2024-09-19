@@ -22,7 +22,6 @@ interface CartState {
   isCashOnDelivery: boolean;
   paymentMethod: string | null;
   courierId: string | null;
-  isLoading: boolean;
 }
 
 const initialState: CartState = {
@@ -33,7 +32,6 @@ const initialState: CartState = {
   discount: 0,
   subTotal: 0,
   grandTotal: 0,
-  isLoading: false,
   termsAggreed: false,
   address: {
     id: "",
@@ -269,16 +267,6 @@ const cartSlice = createSlice({
         localStorage.setItem("cartState", JSON.stringify(state));
       }
     );
-    builder.addCase(placeOrder.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(placeOrder.fulfilled, (state, action) => {
-      Object.assign(state, initialState);
-      localStorage.removeItem("cartState");
-    });
-    builder.addCase(placeOrder.rejected, (state) => {
-      state.isLoading = false;
-    });
     builder.addCase(selectCourier.fulfilled, (state, action) => {
       state.courierId = action.payload.courier_id;
       state.deliveryCharge = action.payload.shipping_charge;

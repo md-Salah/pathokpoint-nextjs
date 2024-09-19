@@ -1,7 +1,12 @@
+"use client";
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { social } from '@/constants';
 import { MessengerSVG, NotFound, PaymentSuccessSVG, WhatsAppSVG } from '@/micro-components';
+import { clearCart } from '@/redux/features/cart-slice';
+import { AppDispatch } from '@/redux/store';
 
 import CopyInvoice from './CopyInvoice';
 import TrackOrder from './TrackOrder';
@@ -17,6 +22,12 @@ const Success = ({ searchParams }: Props) => {
   const invoice = params.get("invoice") || null;
   const id = params.get("id") || null;
 
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(clearCart());
+  }, []);
+
   if (!invoice) return <NotFound>Empty!</NotFound>;
   return (
     <div className="layout-container layout-mt layout-p bg-white">
@@ -26,9 +37,9 @@ const Success = ({ searchParams }: Props) => {
           <PaymentSuccessSVG />
         </div>
         <p className="mt-6 text-xs sm:text-sm">Order placed successfully.</p>
-        <div className="mt-2 text-xs sm:text-sm flex items-center gap-1">
+        <div className="mt-2 text-base sm:text-lg flex items-center gap-1">
           <p>
-            Track your order with invoice&nbsp;
+            Invoice&nbsp;
             <span className="text-primary font-semibold">#{invoice}</span>
           </p>
           <CopyInvoice invoice={invoice} />

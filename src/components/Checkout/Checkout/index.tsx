@@ -12,36 +12,26 @@ import { useUser } from '@/hooks';
 import { OrderTerms } from '@/micro-components';
 import { placeOrder } from '@/redux/features/cart-slice';
 import { AppDispatch, RootState } from '@/redux/store';
-import axiosInstance from '@/utils/axiosConfig';
 
 const Checkout = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const { termsAggreed } = useSelector((state: RootState) => state.cart);
   const [err, setErr] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const { user } = useUser();
 
-  const handlePayment = async (orderId: string) => {
-    try {
-      const res = await axiosInstance.get("/payment/bkash", {
-        params: { order_id: orderId },
-      });
-      router.push(res.data);
-    } catch (error) {
-      setErr("Failed with payment gateway. Please try again.");
-    }
-  };
-
   const handleCheckout = async () => {
     setErr(null);
+    setLoading(true);
     const action = await dispatch(placeOrder());
     if (placeOrder.rejected.match(action)) {
       setErr(action.payload as string);
     } else if (placeOrder.fulfilled.match(action)) {
-      await handlePayment(action.payload.id);
+      router.push(action.payload.payment_url);
     }
-    // await handlePayment("00071f7e-f6e4-45f1-b611-a2a3a334d1c5");
+    setLoading(false);
   };
 
   return (
@@ -80,11 +70,11 @@ const Checkout = () => {
               <AcceptTerms />
               {err && <p className="text-highlight text-sm mt-8">{err}</p>}
               <button
-                className={`mt-4 btn btn-primary w-full ${
-                  !termsAggreed && "btn-disabled"
-                }`}
+                className="mt-4 btn btn-primary w-full"
                 onClick={handleCheckout}
+                disabled={!termsAggreed || loading}
               >
+                {loading && <span className="loading loading-spinner"></span>}
                 Pay now
               </button>
             </div>
