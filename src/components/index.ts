@@ -50,10 +50,9 @@ export { default as ProfitSummary } from "./Admin/AdminDashboard/ProfitSummary";
 export { default as DashboardOrderSummary } from "./Admin/AdminDashboard/DashboardOrderSummary";
 export { default as DeliverySummary } from "./Admin/AdminDashboard/DeliverySummary";
 export { default as StatisticBarChart } from "./Admin/AdminDashboard/StatisticBarChart";
-export { default as ImageContainer } from "./Admin/AdminImages/ImageContainer";
-export { default as CarouselModal } from "./Admin/AdminReviews/CarouselModal";
-export { default as ReviewDetailsModal } from "./Admin/AdminReviews/ReviewDetailsModal";
-export { default as StarRating } from "./Admin/AdminReviews/StarRating";
+export { default as CarouselModal } from "./Admin/Review/CarouselModal";
+export { default as ReviewDetailsModal } from "./Admin/Review/ReviewDetailsModal";
+export { default as StarRating } from "./Admin/Review/StarRating";
 export { default as MultipleItemSelector } from "./MultiSelect";
 
 export { default as OrderSummary } from "./Checkout/OrderSummary";

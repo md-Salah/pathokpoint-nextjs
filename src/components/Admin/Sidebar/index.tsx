@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { AiOutlineMail } from 'react-icons/ai';
-import { BsCartCheck, BsGraphUpArrow } from 'react-icons/bs';
+import { BsCartCheck } from 'react-icons/bs';
 import { CiUser } from 'react-icons/ci';
 import { GoImage } from 'react-icons/go';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -12,7 +11,6 @@ import { LiaHashtagSolid } from 'react-icons/lia';
 import { LuPenLine } from 'react-icons/lu';
 import { MdOutlineReviews, MdOutlineStorefront } from 'react-icons/md';
 import { PiBookLight, PiPackage } from 'react-icons/pi';
-import { RiFileList3Line } from 'react-icons/ri';
 import { RxDashboard } from 'react-icons/rx';
 import { SlPrinter } from 'react-icons/sl';
 import { TbCategory2, TbLocationDollar } from 'react-icons/tb';
@@ -53,7 +51,7 @@ const Sidebar = () => {
             <h2
               className={`font-semibold text-sm ${collapse && "text-center"}`}
             >
-              {user? `${user.first_name} ${user.last_name}` : "Anonymous"}
+              {user ? `${user.first_name} ${user.last_name}` : "Anonymous"}
             </h2>
             <h6 className={`text-xs opacity-50 ${collapse && "text-center"}`}>
               {user?.role || "Guest"}
@@ -93,14 +91,14 @@ const Sidebar = () => {
           <div className="collapse-content space-y-2">
             <MenuItem
               collapse={collapse}
-              name="Books"
+              name="Book"
               href="/admin/books"
               Icon={<PiBookLight size={24} />}
               sub
             />
             <MenuItem
               collapse={collapse}
-              name="Authors"
+              name="Author"
               href="/admin/authors"
               Icon={<LuPenLine size={24} />}
               sub
@@ -121,7 +119,7 @@ const Sidebar = () => {
             />
             <MenuItem
               collapse={collapse}
-              name="Tags"
+              name="Tag"
               href="/admin/tags"
               Icon={<LiaHashtagSolid size={24} />}
               sub
@@ -137,27 +135,21 @@ const Sidebar = () => {
         />
         <MenuItem
           collapse={collapse}
-          name="Images"
-          href="/admin/images"
-          Icon={<GoImage size={24} />}
+          name="User"
+          href="/admin/users"
+          Icon={<CiUser size={24} />}
         />
         <MenuItem
           collapse={collapse}
           name="Coupon"
-          href="/admin/coupon"
+          href="/admin/coupons"
           Icon={<IoPricetagsOutline size={24} />}
         />
         <MenuItem
           collapse={collapse}
-          name="Reviews"
+          name="Review"
           href="/admin/reviews"
           Icon={<MdOutlineReviews size={24} />}
-        />
-        <MenuItem
-          collapse={collapse}
-          name="User"
-          href="/admin/users"
-          Icon={<CiUser size={24} />}
         />
         <MenuItem
           collapse={collapse}
@@ -165,37 +157,18 @@ const Sidebar = () => {
           href="/admin/couriers"
           Icon={<PiPackage size={24} />}
         />
-        <details className="collapse collapse-arrow">
-          <summary className="collapse-title hover:bg-[#374151] hover:text-black05 rounded pl-6">
-            <div className="flex items-center gap-2">
-              <BsGraphUpArrow size={18} />
-              {!collapse && <span>Transaction</span>}
-            </div>
-          </summary>
-          <div className="collapse-content space-y-2">
-            <MenuItem
-              collapse={collapse}
-              name="Payment Gateway"
-              href="/admin/transaction/payment-gateway"
-              Icon={<TbLocationDollar size={22} />}
-              sub
-            />
-            <MenuItem
-              collapse={collapse}
-              name="Activity Log"
-              href="/admin/transaction/activity-log"
-              Icon={<RiFileList3Line size={22} />}
-              sub
-            />
-            <MenuItem
-              collapse={collapse}
-              name="Email Log"
-              href="/admin/transaction/email-log"
-              Icon={<AiOutlineMail size={22} />}
-              sub
-            />
-          </div>
-        </details>
+        <MenuItem
+          collapse={collapse}
+          name="Image"
+          href="/admin/images"
+          Icon={<GoImage size={24} />}
+        />
+        <MenuItem
+          collapse={collapse}
+          name="Transaction"
+          href="/admin/transactions"
+          Icon={<TbLocationDollar size={24} />}
+        />
       </div>
     </div>
   );

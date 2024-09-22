@@ -10,3 +10,4 @@ export { default as FileUpload } from "./FileUpload";
 export { default as FileUploadMultiple } from "./FileUploadMultiple";
 export { default as ImageWithRemoveIcon } from "./ImageWithRemoveIcon";
 export { default as ImagePreview } from "./ImagePreview";
+export { default as Tabs } from "./Tabs";

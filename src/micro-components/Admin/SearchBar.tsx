@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 import { useDebouncedCallback } from 'use-debounce';
 
-const SearchBar = () => {
+const SearchBar = ({placeholder}: {placeholder?: string}) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -28,7 +28,7 @@ const SearchBar = () => {
       <input
         type="text"
         className="grow min-w-0"
-        placeholder="Search"
+        placeholder={placeholder || "Search"}
         value={q}
         onChange={(e) => handleChange(e.target.value)}
       />

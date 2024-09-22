@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 
-import AddCourierForm from '@/components/Admin/AdminCouriers/AddCourierForm';
+import AddCourierForm from '@/components/Admin/Courier/AddCourierForm';
 
 const AddCourier = () => {
   const [includedCountries, setIncludedCountries] = useState<

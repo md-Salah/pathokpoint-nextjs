@@ -12,4 +12,5 @@ export interface Coupon {
   is_active: boolean;
   max_shipping_charge: number | null;
   expiry_date: string | null;
+  created_at?: string;
 }

@@ -3,24 +3,17 @@ export const adminMenuItems = [
     name: "Dashboard",
     href: "/admin/dashboard",
     submenus: [],
-    type: "admin",
-  },
-  {
-    name: "Orders",
-    href: "/admin/orders",
-    submenus: [],
-    type: "admin",
   },
   {
     name: "Inventory",
     href: "",
     submenus: [
       {
-        name: "Books",
+        name: "Book",
         href: "/admin/books",
       },
       {
-        name: "Authors",
+        name: "Author",
         href: "/admin/authors",
       },
       {
@@ -28,65 +21,50 @@ export const adminMenuItems = [
         href: "/admin/categories",
       },
       {
-        name: "Publishers",
+        name: "Publisher",
         href: "/admin/publishers",
       },
       {
-        name: "Tags",
+        name: "Tag",
         href: "/admin/tags",
       },
     ],
-    type: "admin",
-  },
-
-  {
-    name: "Images",
-    href: "/admin/images",
-    submenus: [],
-    type: "admin",
   },
   {
-    name: "Coupon",
-    href: "/admin/coupon",
+    name: "Order",
+    href: "/admin/orders",
     submenus: [],
-    type: "admin",
-  },
-  {
-    name: "Reviews",
-    href: "/admin/reviews",
-    submenus: [],
-    type: "admin",
   },
   {
     name: "User",
     href: "/admin/users",
     submenus: [],
-    type: "admin",
   },
+  {
+    name: "Coupon",
+    href: "/admin/coupons",
+    submenus: [],
+  },
+  {
+    name: "Review",
+    href: "/admin/reviews",
+    submenus: [],
+  },
+
   {
     name: "Courier",
     href: "/admin/couriers",
     submenus: [],
-    type: "admin",
+  },
+  {
+    name: "Image",
+    href: "/admin/images",
+    submenus: [],
   },
   {
     name: "Transaction",
-    href: "",
-    type: "admin",
-    submenus: [
-      {
-        name: "Payment Gateway",
-        href: "/admin/transaction/payment-gateway",
-      },
-      {
-        name: "Activity Log",
-        href: "/admin/transaction/activity-log",
-      },
-      {
-        name: "Email Log",
-        href: "/admin/transaction/email-log",
-      },
-    ],
+    href: "/admin/transactions",
+    submenus: [],
   },
 ];
 

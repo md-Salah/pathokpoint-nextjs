@@ -1,6 +1,7 @@
 "use client";
-import AddReviewForm from "@/components/Admin/AdminReviews/AddReviewForm";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
+
+import AddReviewForm from '@/components/Admin/Review/AddReviewForm';
 
 export type Image = { id: number; file: File; previewUrl: string };
 

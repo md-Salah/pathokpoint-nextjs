@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+'use client';
+import { useRef, useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 
 import { ImageWithRemoveIcon } from '@/micro-components/Admin';

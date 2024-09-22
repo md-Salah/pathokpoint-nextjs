@@ -1,40 +1,34 @@
-"use client";
-import AdminUsers from "@/components/Admin/AdminUsers";
-import React, { useState } from "react";
+import { Users } from '@/components/Admin/User';
 
 const tabOptions = [
   {
-    name: "Customer",
+    label: "All",
+    value: "all",
   },
   {
-    name: "Admin",
+    label: "Customer",
+    value: "customer",
   },
   {
-    name: "Super Admin",
+    label: "Admin",
+    value: "admin",
   },
   {
-    name: "Stuff",
+    label: "Super Admin",
+    value: "super-admin",
+  },
+  {
+    label: "Staff",
+    value: "staff",
   },
 ];
 
-const Users = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [activeTab, setActiveTab] = useState("Pending");
-  const handleSetActiveTabOption = (tab: string) => {
-    setActiveTab(tab);
-  };
-  const totalPages = 20;
-  const handleChangeCurrentPage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-  return (
-    <AdminUsers
-      pagination={{ currentPage, handleChangeCurrentPage, totalPages }}
-      tabOptions={tabOptions}
-      activeTab={activeTab}
-      handleSetActiveTabOption={handleSetActiveTabOption}
-    />
-  );
+interface Props {
+  searchParams?: any;
+}
+
+const UsersPage = ({ searchParams }: Props) => {
+  return <Users tabOptions={tabOptions} searchParams={searchParams} />;
 };
 
-export default Users;
+export default UsersPage;
