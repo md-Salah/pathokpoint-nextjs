@@ -4,15 +4,15 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'res.cloudinary.com',
+                hostname: 'pathokpoint.s3.ap-southeast-1.amazonaws.com',
                 port: '',
-                pathname: '/dtxh6e0wv/image/upload/**'
+                pathname: '/**'
             },
             {
                 protocol: 'https',
-                hostname: 'res.cloudinary.com',
+                hostname: 'test-pathokpoint.s3.ap-southeast-1.amazonaws.com',
                 port: '',
-                pathname: '/dqbtwjck1/image/upload/**'
+                pathname: '/**'
             },
         ]
     }
