@@ -1,21 +1,24 @@
-import { OrderStatusBadge } from '@/micro-components';
+import { BsExclamationTriangle } from 'react-icons/bs';
+
+import { NotFound } from '@/micro-components';
 
 const Test = () => {
-  const statusStyles = [
-    { status: "pending", style: "bg-[#FFF1CE] text-[#FFC327]" },
-    { status: "processing", style: "bg-[#FFF3E0] text-[#F57C00]" },
-    { status: "on-delivery", style: "bg-[#C2E6FF] text-[#157892]" },
-    { status: "delivered", style: "bg-[#CEFFEA] text-[#02BF6C]" },
-    { status: "cancelled", style: "bg-[#FFD3D3] text-[#EE485C]" },
-    { status: "default", style: "bg-[#FFD3D3] text-[#EE485C]" },
-  ];
-
   return (
-    <div className='bg-white space-y-3'>
-      {statusStyles.map((statusStyle, index) => (
-        <OrderStatusBadge key={index} status={statusStyle.status} />
-      ))}
-    </div>
+    <NotFound>
+      <div className="flex flex-col items-center gap-3">
+        <BsExclamationTriangle size="64" className='text-black04' />
+        <h2 className="text-xl lg:text-2xl text-black04">Something went wrong!</h2>
+        <button
+          className="mt-4 w-52 lg:w-60 btn btn-primary"
+          // onClick={
+          //   // Attempt to recover by trying to re-render the segment
+          //   () => reset()
+          // }
+        >
+          Try again
+        </button>
+      </div>
+    </NotFound>
   );
 };
 

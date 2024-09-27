@@ -15,8 +15,7 @@ const nextConfig = {
                 pathname: '/**'
             },
         ]
-    },
-    staticPageGenerationTimeout: 120,
+    }
 };
 
 export default nextConfig;
