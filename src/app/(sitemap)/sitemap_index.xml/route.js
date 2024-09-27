@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 
-export async function generateSitemaps() {
+async function generateSitemaps() {
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/book/all?page=1`
     );
@@ -20,12 +20,10 @@ export async function generateSitemaps() {
 export async function GET() {
     try {
         const dynamicSitemaps = await generateSitemaps();
-        console.log('Generated dynamic sitemaps:', dynamicSitemaps);
         const sitemaps = [
             `${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/sitemap.xml`,
             ...dynamicSitemaps.map(sitemap => sitemap.url)
         ]
-        console.log('Generated sitemap index:', sitemaps);
 
         const sitemapIndexXML = await buildSitemapIndex(sitemaps);
 
@@ -56,3 +54,4 @@ async function buildSitemapIndex(sitemaps) {
     xml += "</sitemapindex>";
     return xml;
 }
+
