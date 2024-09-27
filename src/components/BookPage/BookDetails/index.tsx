@@ -30,9 +30,11 @@ const BookDetails = ({ book }: Props) => {
       <figure className="w-full sm:w-[453px] h-64 sm:h-[568px] relative bg-black07 sm:bg-white">
         <Image
           src={book.images[0]?.src || defaultSrc.book}
-          alt="Book Image"
+          alt={book.name}
           fill
-          className="w-full h-full object-contain object-top"
+          className={`object-contain object-top ${
+            !isEnglish(book.name) && "font-bn"
+          }`}
         />
       </figure>
 
@@ -85,7 +87,7 @@ const BookDetails = ({ book }: Props) => {
           )}
 
           {book.condition && (
-            <div className="flex items-center dropdown">
+            <div className="flex items-center dropdown dropdown-open">
               <span className="mr-2 font-bn">কন্ডিশন:</span>
               <ConditionBadge condition={book.condition} />
               <ConditionExplain />
@@ -100,7 +102,7 @@ const BookDetails = ({ book }: Props) => {
               {book.sale_price}৳
             </span>
             {book.regular_price > book.sale_price && (
-              <span className="text-sm sm:text-base text-secondary-content line-through ml-2 font-normal sm:font-medium">
+              <span className="text-sm sm:text-base text-black04 line-through ml-2 font-normal sm:font-medium">
                 {book.regular_price}৳
               </span>
             )}
@@ -110,7 +112,7 @@ const BookDetails = ({ book }: Props) => {
             <span className="mr-4">Quantity:</span>
             <NumberInput
               min={1}
-              max={book.in_stock ? book.quantity: 1}
+              max={book.in_stock ? book.quantity : 1}
               value={qty}
               setValue={setQty}
             />

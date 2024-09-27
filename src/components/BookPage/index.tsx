@@ -6,7 +6,7 @@ import BookDetails from './BookDetails';
 import Suggestion from './Suggestion';
 import Variation from './Variation';
 
-const BookPage = async ({ book }: { book: Book | null }) => {
+const BookPage = ({ book }: { book: Book | null }) => {
   if (!book)
     return (
       <NotFound>

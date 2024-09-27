@@ -48,31 +48,40 @@ const Carousel = ({
       }`}
     >
       {title && <Title title={title} href={href} />}
-      {isLoading ? (
-        <div className="skeleton h-44 sm:h-52 md:h-64"></div>
-      ) : (
-        <div className="block relative">
-          <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
-            {children ? (
-              children.map((child, index) => {
-                return (
-                  <div key={index} className="carousel-item">
-                    {child}
-                  </div>
-                );
-              })
-            ) : (
-              <div className="h-44 sm:h-52 md:h-64 w-full flex items-center justify-center border">
-                <h4 className="text-center text-black04">Couldn&apos;t load data</h4>
-              </div>
-            )}
-          </div>
-          <div className="hidden sm:block">
-            <PrevArrow handlePrev={handlePrev} positionClass="-left-4" />
-            <NextArrow handleNext={handleNext} positionClass="-right-4" />
-          </div>
+      <div className="block relative">
+        <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
+          {isLoading ? (
+            [0, 1, 2, 3, 4].map((_, index) => (
+              <div
+                key={index}
+                className="skeleton carousel-item h-52 md:h-72 w-[163px] md:w-[236px]"
+              ></div>
+            ))
+          ) : (
+            <>
+              {children ? (
+                children.map((child, index) => {
+                  return (
+                    <div key={index} className="carousel-item">
+                      {child}
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="h-44 sm:h-52 md:h-64 w-full flex items-center justify-center border">
+                  <h4 className="text-center text-black04">
+                    Couldn&apos;t load data
+                  </h4>
+                </div>
+              )}
+            </>
+          )}
         </div>
-      )}
+        <div className="hidden sm:block">
+          <PrevArrow handlePrev={handlePrev} positionClass="-left-4" />
+          <NextArrow handleNext={handleNext} positionClass="-right-4" />
+        </div>
+      </div>
     </div>
   );
 };

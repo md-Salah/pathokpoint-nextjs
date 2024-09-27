@@ -21,7 +21,6 @@ const Cart = () => {
     if (!isOpen) return;
     const closeDropdown = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
-        console.log("click outside");
         setIsOpen(false);
       }
     };

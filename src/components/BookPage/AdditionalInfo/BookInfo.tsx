@@ -12,13 +12,13 @@ const BookInfo = ({
 }) => {
   return (
     <div className="mt-12">
-      <h1
+      <h2
         className={`font-semibold text-xl md:text-3xl ${
           isEnglish(book.name) ? "" : "font-bn"
         }`}
       >
         {book.name}
-      </h1>
+      </h2>
       {book.authors.length > 0 && (
         <h3
           className="mt-2 text-xs md:text-sm half-underline before:w-9 group w-fit hover:cursor-pointer pb-2"
@@ -47,16 +47,6 @@ const BookInfo = ({
 
       <table className="mt-8 table table-sm text-xs md:text-sm w-fit table-left-0">
         <tbody>
-          <tr>
-            <td
-              className={`${isEnglish(book.name) ? "" : "font-bn"}`}
-              colSpan={3}
-            >
-              {book.name}
-              {book.cover && <span className="ml-2">{`(${book.cover})`}</span>}
-            </td>
-          </tr>
-
           {book.authors.length > 0 && (
             <tr>
               <td className="font-bn w-28 sm:w-24 md:w-36">লেখক</td>

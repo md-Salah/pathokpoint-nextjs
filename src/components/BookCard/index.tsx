@@ -24,7 +24,7 @@ const BookCard = ({ book, fixW = true }: { book: Book; fixW?: boolean }) => {
         sale_price={book.sale_price}
       />
 
-      <div className="card-body px-3 pb-3 md:px-5 pt-3 gap-1 justify-between bg-white">
+      <div className="card-body p-3 gap-1 justify-between bg-white">
         <div className="">
           <Title name={book.name} public_id={book.public_id} slug={book.slug} />
           {book.authors.length > 0 && (
@@ -55,10 +55,12 @@ const Frame = ({ book }: { book: Book }) => (
     <figure className="relative h-[130px] md:h-[188px] w-full rounded-t bg-[#F1F2F4]">
       <Image
         src={book.images[0]?.src || defaultSrc.book}
-        alt="Book"
+        alt={book.name}
         fill
-        className="object-contain object-top"
-        sizes="50vw"
+        className={`object-contain object-top ${
+          !isEnglish(book.name) && "font-bn"
+        }`}
+        sizes="(max-width: 768px) 50vw, 20vw"
         loading="lazy"
       />
     </figure>

@@ -1,5 +1,5 @@
-import { BookPage } from "@/components";
-import { getBookByPublicId } from "@/utils/api";
+import { BookPage } from '@/components';
+import { getBookByPublicId } from '@/utils/api';
 
 type Props = {
   params: { public_id: string; slug: string };

@@ -1,72 +1,72 @@
-import Link from "next/link";
-import { social } from "@/constants";
-import { LiaInfoCircleSolid } from "react-icons/lia";
+"use client";
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import { LiaInfoCircleSolid } from 'react-icons/lia';
+
+import { social } from '@/constants';
 
 const ConditionExplain = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggleDropdown = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeDropdown = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("click", closeDropdown);
+    return () => document.removeEventListener("click", closeDropdown);
+  }, [isOpen]);
+
   return (
     <div>
       <LiaInfoCircleSolid
         tabIndex={0}
         role="button"
-        className="ml-2 cursor-pointer w-5 h-5"
+        className="ml-2 cursor-pointer btn btn-circle btn-ghost btn-xs"
+        size="20"
+        onClick={toggleDropdown}
       />
-      <div
-        tabIndex={0}
-        className="dropdown-content dropdown-open left-0 right-0 z-[1] bg-white shadow-lg py-4 px-2 mt-4"
-      >
-        <div className="overflow-x-scroll">
-          <table className="table table-xs table-zebra-zebra font-bn">
-            <thead>
-              <tr>
-                <th className="py-4">কন্ডিশন</th>
-                <th>বিস্তারিত</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>New</td>
-                <td>নতুন বই, বর্তমান এডিশন।</td>
-              </tr>
-              <tr>
-                <td>OLD-Like New</td>
-                <td>পুরাতন, প্রায় নতুন বলা যাবে।</td>
-              </tr>
-              <tr>
-                <td>OLD-Good Enough</td>
-                <td>
-                  পুরাতন, যথেষ্ট ভালো কন্ডিশন, বইয়ে দাগ থাকতে পারে তবে অনায়াসে
-                  পড়া যাবে।
-                </td>
-              </tr>
-              <tr>
-                <td>OLD-Readable</td>
-                <td>পুরাতন, বেশ আগের এডিশন। তবে বইটি পাঠযোগ্য।</td>
-              </tr>
-            </tbody>
-            <tfoot className="text-primary">
-              <tr>
-                <td colSpan={2} className="py-6">
-                  পুরাতন বই অর্ডার করে বইয়ের কন্ডিশন দেখতে
-                  <Link
-                    href={social.Messenger.href}
-                    className="btn btn-link btn-sm"
-                  >
-                    Messenger
-                  </Link>
-                  /
-                  <Link
-                    href={social.WhatsApp.href}
-                    className="btn btn-link btn-sm"
-                  >
-                    WhatsApp
-                  </Link>
-                  এ অর্ডার আইডি ইনবক্স করুন।
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+      {isOpen && (
+        <div
+          ref={ref}
+          className="dropdown-content left-0 right-0 z-[1] bg-white shadow-lg"
+        >
+          <div className="w-full bg-white p-4 space-y-3 text-sm">
+            <h3 className="font-semibold text-lg">
+              About Our Condition Ratings
+            </h3>
+            <div className="">
+              <h4 className="text-black02">New:</h4>
+              <p className="font-bn text-black03">
+                নতুন বই, বর্তমান এডিশন।
+              </p>
+            </div>
+            <div>
+              <h4 className="text-black02">OLD-Like New:</h4>
+              <p className="font-bn text-black03">
+                পুরাতন, প্রায় নতুন বলা যাবে।
+              </p>
+            </div>
+            <div>
+              <h4 className="text-black02">OLD-Good Enough:</h4>
+              <p className="font-bn text-black03">
+                পুরাতন, যথেষ্ট ভালো কন্ডিশন, বইয়ে দাগ থাকতে পারে তবে অনায়াসে পড়া
+                যাবে।
+              </p>
+            </div>
+            <div>
+              <h4 className="text-black02">OLD-Readable:</h4>
+              <p className="font-bn text-black03">
+                পুরাতন, আগের এডিশন। বইটি পাঠযোগ্য।
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
