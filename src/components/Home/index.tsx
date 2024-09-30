@@ -8,6 +8,7 @@ import EnglishBooks from './EnglishBooks';
 import FeaturedBooks from './FeaturedBooks';
 import HeroSection from './HeroSection';
 import IslamicBooks from './IslamicBooks';
+import IslamicCategories from './IslamicCategories';
 import MustReadBooks from './MustReadBooks';
 import PopularAuthors from './PopularAuthors';
 import PopularCategoriesBn from './PopularCategoriesBn';
@@ -107,6 +108,8 @@ const Home = async () => {
           <CategoryCard key={category.id} category={category} />
         ))}
       </Carousel> */}
+
+      <IslamicCategories />
 
       <PopularCategoriesEn />
 

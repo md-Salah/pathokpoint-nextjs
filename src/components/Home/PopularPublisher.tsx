@@ -6,7 +6,7 @@ import { Publisher } from '@/interface';
 import { fetcher } from '@/utils/axiosConfig';
 
 const PopularPublisher = () => {
-  const { data, isLoading } = useSWR("/publisher/all", fetcher);
+  const { data, isLoading } = useSWR("/publisher/all?is_popular=true", fetcher);
   return (
     <Carousel title="জনপ্রিয় প্রকাশনী" href="/publishers" isLoading={isLoading}>
       {data &&

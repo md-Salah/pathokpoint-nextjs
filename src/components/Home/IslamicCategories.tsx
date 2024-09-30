@@ -6,12 +6,12 @@ import { Category } from '@/interface';
 import { fetcher } from '@/utils/axiosConfig';
 
 const PopularCategoriesEn = () => {
-  const { data, isLoading } = useSWR("/category/all?is_english_featured=true", fetcher);
+  const { data, isLoading } = useSWR("/category/all?is_islamic=true", fetcher);
   return (
     <Carousel
-      title="জনপ্রিয় ইংরেজি ক্যাটাগরি"
+      title="ইসলামিক ক্যাটাগরি"
       isLoading={isLoading}
-      href="/categories"
+      href="/categories?is_islamic=true"
     >
       {data &&
         data.map((category: Category) => (

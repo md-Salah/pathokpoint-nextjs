@@ -6,7 +6,7 @@ import { Author } from '@/interface';
 import { fetcher } from '@/utils/axiosConfig';
 
 const PopularAuthors = () => {
-  const { data, isLoading } = useSWR("/author/all", fetcher);
+  const { data, isLoading } = useSWR("/author/all?is_popular=true", fetcher);
 
   return (
     <Carousel title="জনপ্রিয় লেখক" href="/authors" isLoading={isLoading}>

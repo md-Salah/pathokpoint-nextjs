@@ -52,8 +52,8 @@ const Carousel = ({
         <div ref={carouselRef} className="carousel gap-3 sm:gap-4">
           {isLoading ? (
             [0, 1, 2, 3, 4].map((_, index) => (
-              <div key={index} className="flex w-[163px] md:w-[236px] flex-col gap-4">
-                <div className="skeleton h-44 w-full"></div>
+              <div key={index} className="carousel-item flex flex-col w-[163px] md:w-[236px] gap-4">
+                <div className="skeleton h-36 md:h-44 w-full"></div>
                 <div className="skeleton h-4 w-28"></div>
                 <div className="skeleton h-4 w-full"></div>
                 <div className="skeleton h-4 w-full"></div>
