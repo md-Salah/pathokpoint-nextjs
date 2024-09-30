@@ -1,5 +1,5 @@
 "use client";
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { useDebouncedCallback } from 'use-debounce';
@@ -19,6 +19,7 @@ interface CategoryExtend extends Category {
 }
 
 const CategoryFilter = ({ updateParams }: Props) => {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const filterBy = "category__slug__in";
   const [search, setSearch] = useState<string>("");
@@ -29,10 +30,25 @@ const CategoryFilter = ({ updateParams }: Props) => {
     `/category/all?page=1&per_page=20&slug__in=${slugs}`,
     fetcher
   );
-  const { data, error, isLoading } = useSWR(
+
+  const query = [
     `/category/all?page=1&per_page=20`,
-    fetcher
-  );
+    pathname.split("/")[1] === "authors" &&
+      `author__slug__in=${pathname.split("/")[2]}`,
+    pathname.split("/")[1] === "publishers" &&
+      `publisher__slug__in=${pathname.split("/")[2]}`,
+    searchParams.get("tag__slug__in") &&
+      `tag__slug__in=${searchParams.get("tag__slug__in")}`,
+    searchParams.get("author__slug__in") &&
+      `author__slug__in=${searchParams.get("author__slug__in")}`,
+    searchParams.get("publisher__slug__in") &&
+      `publisher__slug__in=${searchParams.get("publisher__slug__in")}`,
+  ]
+    .filter(Boolean)
+    .join("&");
+
+  const { data, error, isLoading } = useSWR(query, fetcher);
+
   useEffect(() => {
     if (selected && data) {
       const selectedData = selected.map((cat: Category) => ({
@@ -54,10 +70,9 @@ const CategoryFilter = ({ updateParams }: Props) => {
   };
 
   const handleSearchDebounced = useDebouncedCallback(async (q: string) => {
-    q = q.trim();
-    if (q === "") return;
+    if (q.trim() === "") return;
 
-    const data = await getCategories(`q=${q}`);
+    const data = await getCategories(`${query}&q=${q.trim()}`);
     let selected = categories.filter((cat) => cat.selected);
     let newData = data.filter((cat: Category) => {
       return !selected.some((s) => s.id === cat.id);
@@ -95,11 +110,6 @@ const CategoryFilter = ({ updateParams }: Props) => {
     updateParams(filterBy, "");
   }, [filterBy, updateParams]);
 
-  if (isLoading) return <div className="skeleton w-full h-64"></div>;
-  if (error)
-    return (
-      <div className="bg-white">Failed to load categories. Try later.</div>
-    );
   return (
     <div>
       <MultiSelect
@@ -109,6 +119,8 @@ const CategoryFilter = ({ updateParams }: Props) => {
         resetFilter={resetFilter}
         search={search}
         handleSearch={handleSearch}
+        isLoading={isLoading}
+        error={error}
       />
     </div>
   );

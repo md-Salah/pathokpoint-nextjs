@@ -30,15 +30,9 @@ export const getBooks = async (
   }
 };
 
-export const getBooksAndPagination = async (
-  query: string = "",
-  page: number = 1,
-  per_page: number = 20
-) => {
+export const getBooksAndPagination = async (query: string) => {
   try {
-    const res = await axiosInstance.get(
-      `/book/all?page=${page}&per_page=${per_page}&${query}`
-    );
+    const res = await axiosInstance.get(`/book/all?${query}`);
     return {
       books: res.data,
       currentPage: parseInt(res.headers["x-current-page"]),
@@ -57,15 +51,9 @@ export const getBooksAndPagination = async (
   }
 };
 
-export const getCategories = async (
-  query: string = "",
-  page: number = 1,
-  per_page: number = 20
-) => {
+export const getCategories = async (query: string) => {
   try {
-    const res = await axiosInstance.get(
-      `/category/all?page=${page}&per_page=${per_page}&${query}`
-    );
+    const res = await axiosInstance.get(`/category/all?${query}`);
     return res.data;
   } catch (error) {
     return [];
@@ -81,15 +69,9 @@ export const getCategoryBySlug = async (slug: string) => {
   }
 };
 
-export const getAuthors = async (
-  query: string = "",
-  page: number = 1,
-  per_page: number = 20
-) => {
+export const getAuthors = async (query: string) => {
   try {
-    const res = await axiosInstance.get(
-      `/author/all?page=${page}&per_page=${per_page}&${query}`
-    );
+    const res = await axiosInstance.get(`/author/all?${query}`);
     return res.data;
   } catch (error) {
     return [];
@@ -105,15 +87,9 @@ export const getAuthorBySlug = async (slug: string) => {
   }
 };
 
-export const getPublishers = async (
-  query: string = "",
-  page: number = 1,
-  per_page: number = 20
-) => {
+export const getPublishers = async (query: string) => {
   try {
-    const res = await axiosInstance.get(
-      `/publisher/all?page=${page}&per_page=${per_page}&${query}`
-    );
+    const res = await axiosInstance.get(`/publisher/all?${query}`);
     return res.data;
   } catch (error) {
     return [];

@@ -24,6 +24,11 @@ const Books = async ({
   if (authorSlug) params.set("author__slug__in", authorSlug);
   else if (categorySlug) params.set("category__slug__in", categorySlug);
   else if (publisherSlug) params.set("publisher__slug__in", publisherSlug);
+  params.set(
+    "order_by",
+    ["-in_stock", params.get("order_by") || ""].filter(Boolean).join(",")
+  );
+  params.set("per_page", "20");
   const query = params.toString();
 
   const {
@@ -38,10 +43,10 @@ const Books = async ({
     currentPage: number;
     perPage: number;
     totalCount: number;
-  } = await getBooksAndPagination(query);
+  } = await getBooksAndPagination(`${query}&`);
 
   return (
-    <>
+    <div>
       <div className="flex sm:hidden mt-3 justify-end layout-container layout-px">
         <FilterInMobile />
       </div>
@@ -78,7 +83,7 @@ const Books = async ({
             </Suspense>
             {books && books.length === 0 && (
               <div className="py-20 text-center text-black04">
-                No books found
+                <p>No books found</p>
               </div>
             )}
           </div>
@@ -87,7 +92,7 @@ const Books = async ({
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
-import { Author, Category, Publisher } from "@/interface";
-import { isEnglish } from "@/utils";
-import { FiSearch } from "react-icons/fi";
+import React from 'react';
+import { FiSearch } from 'react-icons/fi';
+
+import { Author, Category, Publisher } from '@/interface';
+import { isEnglish } from '@/utils';
 
 interface CategoryExtend extends Category {
   selected: boolean;
@@ -21,6 +23,8 @@ interface Props {
   resetFilter: () => void;
   search: string;
   handleSearch: (text: string) => void;
+  error: string;
+  isLoading: boolean;
 }
 
 const MultiSelect = ({
@@ -30,6 +34,8 @@ const MultiSelect = ({
   resetFilter,
   search,
   handleSearch,
+  error,
+  isLoading,
 }: Props) => {
   const selectedItems = options.filter((item) => item.selected);
 
@@ -58,24 +64,40 @@ const MultiSelect = ({
           </label>
         </div>
         <div className="mt-3 form-control h-48 overflow-y-scroll">
-          {options.map((item) => (
-            <label
-              key={item.id}
-              className="label py-1 pl-0 cursor-pointer justify-start gap-2 hover:underline"
-            >
-              <input
-                type="checkbox"
-                className="checkbox checkbox-xs checkbox-primary"
-                checked={item.selected}
-                onChange={() => handleChange(item.slug)}
-              />
-              <span
-                className={`label-text ${!isEnglish(item.name) && "font-bn"}`}
+          {isLoading ? (
+            <div className="flex w-full flex-col gap-4 mt-2">
+              <div className="rounded-lg skeleton h-4 w-28"></div>
+              <div className="rounded-lg skeleton h-4 w-full"></div>
+              <div className="rounded-lg skeleton h-4 w-full"></div>
+              <div className="rounded-lg skeleton h-4 w-full"></div>
+              <div className="rounded-lg skeleton h-4 w-full"></div>
+            </div>
+          ) : error ? (
+            <div className="text-sm text-black04 text-center pt-4">{error}</div>
+          ) : options.length === 0 ? (
+            <div className="text-sm text-black04 text-center pt-4">
+              No {title.toLowerCase()} found
+            </div>
+          ) : (
+            options.map((item) => (
+              <label
+                key={item.id}
+                className="label py-1 pl-0 cursor-pointer justify-start gap-2 hover:underline"
               >
-                {item.name}
-              </span>
-            </label>
-          ))}
+                <input
+                  type="checkbox"
+                  className="checkbox checkbox-xs checkbox-primary"
+                  checked={item.selected}
+                  onChange={() => handleChange(item.slug)}
+                />
+                <span
+                  className={`label-text ${!isEnglish(item.name) && "font-bn"}`}
+                >
+                  {item.name}
+                </span>
+              </label>
+            ))
+          )}
         </div>
       </div>
     </div>

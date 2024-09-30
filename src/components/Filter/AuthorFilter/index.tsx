@@ -1,13 +1,14 @@
 "use client";
-import useSWR from "swr";
-import { useState, useEffect, useCallback } from "react";
-import { useDebouncedCallback } from "use-debounce";
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
+import useSWR from 'swr';
+import { useDebouncedCallback } from 'use-debounce';
 
-import { Author } from "@/interface";
-import { getAuthors } from "@/utils/api";
-import MultiSelect from "../MultiSelect";
-import { useSearchParams } from "next/navigation";
-import { fetcher } from "@/utils/axiosConfig";
+import { Author } from '@/interface';
+import { getAuthors } from '@/utils/api';
+import { fetcher } from '@/utils/axiosConfig';
+
+import MultiSelect from '../MultiSelect';
 
 interface Props {
   updateParams: (key: string, val: string) => void;
@@ -18,6 +19,7 @@ interface AuthorExtend extends Author {
 }
 
 const AuthorFilter = ({ updateParams }: Props) => {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const filterBy = "author__slug__in";
   const [search, setSearch] = useState<string>("");
@@ -28,10 +30,24 @@ const AuthorFilter = ({ updateParams }: Props) => {
     `/author/all?page=1&per_page=20&slug__in=${slugs}`,
     fetcher
   );
-  const { data, error, isLoading } = useSWR(
+
+  const query = [
     `/author/all?page=1&per_page=20`,
-    fetcher
-  );
+    pathname.split("/")[1] === "categories" &&
+      `category__slug__in=${pathname.split("/")[2]}`,
+    pathname.split("/")[1] === "publishers" &&
+      `publisher__slug__in=${pathname.split("/")[2]}`,
+    searchParams.get("tag__slug__in") &&
+      `tag__slug__in=${searchParams.get("tag__slug__in")}`,
+    searchParams.get("category__slug__in") &&
+      `category__slug__in=${searchParams.get("category__slug__in")}`,
+    searchParams.get("publisher__slug__in") &&
+      `publisher__slug__in=${searchParams.get("publisher__slug__in")}`,
+  ]
+    .filter(Boolean)
+    .join("&");
+
+  const { data, error, isLoading } = useSWR(query, fetcher);
   useEffect(() => {
     if (selected && data) {
       const selectedData = selected.map((athr: Author) => ({
@@ -55,7 +71,7 @@ const AuthorFilter = ({ updateParams }: Props) => {
   const handleSearchDebounced = useDebouncedCallback(async (q: string) => {
     q = q.trim();
     if (q === "") return;
-    const data = await getAuthors(`q=${q}`);
+    const data = await getAuthors(`${query}&q=${q}`);
     let selected = authors.filter((athr) => athr.selected);
     let newData = data.filter((athr: Author) => {
       return !selected.some((s) => s.id === athr.id);
@@ -93,9 +109,6 @@ const AuthorFilter = ({ updateParams }: Props) => {
     updateParams(filterBy, "");
   }, [filterBy, updateParams]);
 
-  if (isLoading) return <div className="skeleton w-full h-64"></div>;
-  if (error)
-    return <div className="bg-white">Failed to load authors. Try later.</div>;
   return (
     <MultiSelect
       title="Author"
@@ -104,6 +117,8 @@ const AuthorFilter = ({ updateParams }: Props) => {
       resetFilter={resetFilter}
       search={search}
       handleSearch={handleSearch}
+      isLoading={isLoading}
+      error={error}
     />
   );
 };
