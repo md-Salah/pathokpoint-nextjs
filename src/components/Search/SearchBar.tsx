@@ -59,7 +59,7 @@ const SearchBar = ({ handleSearch }: Props) => {
         {focus && query.length > 0 && (
           <RxCross2
             size="24"
-            className="cursor-pointer text-black04"
+            className="hover:cursor-pointer hover:text-primary text-black04"
             onClick={() => handleSearch("")}
           />
         )}

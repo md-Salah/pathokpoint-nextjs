@@ -7,7 +7,8 @@ import {
     setAuthors, setBooks, setCategories, setLoading, setQuery
 } from '@/redux/features/search-slice';
 import { AppDispatch, RootState } from '@/redux/store';
-import axiosInstance, { extractAxiosErr } from '@/utils/axiosConfig';
+import { getAuthors, getBooks, getCategories } from '@/utils/api';
+import { extractAxiosErr } from '@/utils/axiosConfig';
 
 import SearchBar from './SearchBar';
 import SearchSuggestion from './SearchSuggestion';
@@ -20,14 +21,14 @@ const Search = () => {
     try {
       dispatch(setLoading(true));
       if (tab === "book") {
-        const res = await axiosInstance.get(`/book/all?q=${val.trim()}`);
-        dispatch(setBooks(res.data));
+        const books = await getBooks(`q=${val.trim()}&order_by=-in_stock`);
+        dispatch(setBooks(books));
       } else if (tab === "author") {
-        const res = await axiosInstance.get(`/author/all?q=${val.trim()}`);
-        dispatch(setAuthors(res.data));
+        const authors = await getAuthors(`q=${val.trim()}`);
+        dispatch(setAuthors(authors));
       } else {
-        const res = await axiosInstance.get(`/category/all?q=${val.trim()}`);
-        dispatch(setCategories(res.data));
+        const categories = await getCategories(`q=${val.trim()}`);
+        dispatch(setCategories(categories));
       }
     } catch (error) {
       console.error(extractAxiosErr(error));

@@ -1,3 +1,4 @@
+import React from 'react';
 import useSWR from 'swr';
 
 import { SubMenuItem } from '@/interface';
@@ -17,7 +18,17 @@ export const MenuExpand = ({ query, hrefPrefix, filter }: Props) => {
 
   return (
     <aside className="h-96 w-full p-10 min-w-0 bg-white shadow-sm text-sm overflow-hidden">
-      {isLoading && <div className="skeleton h-full"></div>}
+      {isLoading && (
+        <div className="flex w-full h-full items-center justify-center">
+          <div className="loading loading-bars text-black04"></div>
+        </div>
+      )}
+      {data.length === 0 && (
+        <div className="flex w-full h-full items-center justify-center">
+          <p className="text-black04">No items found</p>
+        </div>
+      )}
+
       {!isLoading && (
         <div className="flex h-full">
           <ul className="min-w-20 w-40 max-w-40 overflow-hidden">

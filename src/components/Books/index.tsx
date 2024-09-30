@@ -46,7 +46,7 @@ const Books = async ({
   } = await getBooksAndPagination(`${query}&`);
 
   return (
-    <div>
+    <>
       <div className="flex sm:hidden mt-3 justify-end layout-container layout-px">
         <FilterInMobile />
       </div>
@@ -92,7 +92,7 @@ const Books = async ({
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

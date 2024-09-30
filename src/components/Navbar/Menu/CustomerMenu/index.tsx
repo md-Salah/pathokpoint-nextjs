@@ -19,11 +19,12 @@ const CustomerMenu = ({ handleClose }: Props) => {
                 {mainMenu.name}
               </h3>
             </summary>
-            <div className="h-64 overflow-y-scroll" onClick={handleClose}>
+            <div>
               <SubMenu
                 query={mainMenu.query}
                 hrefPrefix={mainMenu.hrefPrefix}
                 filter={mainMenu.filter}
+                handleClose={handleClose}
               />
             </div>
           </details>

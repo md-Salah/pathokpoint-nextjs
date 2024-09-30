@@ -15,15 +15,9 @@ export const getBookByPublicId = async (public_id: string | number) => {
   }
 };
 
-export const getBooks = async (
-  query: string = "",
-  page: number = 1,
-  per_page: number = 20
-) => {
+export const getBooks = async (query: string) => {
   try {
-    const res = await axiosInstance.get(
-      `/book/all?page=${page}&per_page=${per_page}&${query}`
-    );
+    const res = await axiosInstance.get(`/book/all?${query}`);
     return res.data;
   } catch (error) {
     return [];
