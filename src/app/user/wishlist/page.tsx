@@ -5,7 +5,7 @@ import { getBooks } from '@/utils/api';
 import BookItem from './BookItem';
 
 const Wishlist = async () => {
-  const books: Book[] = await getBooks();
+  const books: Book[] = await getBooks('');
   return (
     <div className="bg-white">
       <MobileHeader title="Wishlist" />
