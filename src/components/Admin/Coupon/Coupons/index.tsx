@@ -41,7 +41,7 @@ const AdminCoupon = ({ searchParams }: Props) => {
           )}
         </div>
         <Link
-          href="/admin/authors/add-author"
+          href="/admin/coupons/add-coupon"
           className="btn btn-primary btn-sm lg:h-11"
         >
           <FiPlus size={20} className="inline-block" />
@@ -78,7 +78,9 @@ const AdminCoupon = ({ searchParams }: Props) => {
                 <tbody>
                   {data?.data.map((item: Coupon) => (
                     <tr key={item.id}>
-                      <td className="text-primary font-semibold">{item.code}</td>
+                      <td className="text-primary font-medium">
+                        {item.code}
+                      </td>
                       {item.short_description ? (
                         <td
                           className={`${
@@ -93,10 +95,15 @@ const AdminCoupon = ({ searchParams }: Props) => {
                       <td>
                         {item.expiry_date
                           ? dateTime(item.expiry_date).datetime
-                          : "Continue"}
+                          : <span className='text-success'>Continue...</span>}
                       </td>
                       <td>
-                        {item.is_active ? (
+                        {item.expiry_date &&
+                        new Date(item.expiry_date) < new Date() ? (
+                          <span className="bg-[#FFD3D3] text-[#EE485C] py-1 px-3 text-xs w-fit rounded-full font-semibold">
+                            Expired
+                          </span>
+                        ) : item.is_active ? (
                           <span className="bg-[#CEFFEA] text-success py-1 px-3 text-xs w-fit rounded-full font-semibold">
                             Active
                           </span>
