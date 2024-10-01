@@ -19,119 +19,38 @@ import SebaBooks from './SebaBooks';
 import TranslatedBooks from './TranslatedBooks';
 
 const Home = async () => {
-  const categories: Category[] = await getCategories("");
+  const categories: Category[] = await getCategories("is_in_menu=true");
 
   return (
     <div className="min-h-screen">
       <HeroSection />
-
       <div className="md:hidden">
         <Genre categories={categories} />
       </div>
-
       <FeaturedBooks />
-
       <RecentlyAddedBooks />
-
       {/* <BigSale /> */}
-
       {/* <ServiceBanner /> */}
-
       <MustReadBooks />
-
       <IslamicBooks />
-
-      <EnglishBooks />
-
-      {/* কোলকাতার বই */}
-      {/* <Carousel title="কোলকাতার বই">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      {/* কবিতা কালেকশন */}
-      {/* <Carousel title="কবিতা কালেকশন">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      <TranslatedBooks />
-
-      {/* ভৌতিক ও থ্রিলার */}
-      {/* <Carousel title="ভৌতিক ও থ্রিলার">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      {/* গল্প ও উপন্যাস */}
-      {/* <Carousel title="গল্প ও উপন্যাস">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      {/* রাজনীতি, দর্শন, জীবনী ও আত্মজীবনী */}
-      {/* <Carousel title="রাজনীতি, দর্শন, জীবনী ও আত্মজীবনী">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      {/* আত্ম-উন্নয়ন */}
-      {/* <Carousel title="আত্ম-উন্নয়ন">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      <SebaBooks />
-
-      {/* পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই */}
-      {/* <Carousel title="পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      {/* চাকরির বই */}
-      {/* <Carousel title="চাকরির বই">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </Carousel> */}
-
-      {/* <Carousel title="ইসলামিক ক্যাটাগরি">
-        {categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
-      </Carousel> */}
-
       <IslamicCategories />
-
+      <EnglishBooks />
       <PopularCategoriesEn />
-
+      {/* কোলকাতার বই */}
+      {/* কবিতা কালেকশন */}
+      <TranslatedBooks />
       <PopularCategoriesBn />
-
+      {/* ভৌতিক ও থ্রিলার */}
+      {/* গল্প ও উপন্যাস */}
+      {/* রাজনীতি, দর্শন, জীবনী ও আত্মজীবনী */}
+      {/* আত্ম-উন্নয়ন */}
+      <SebaBooks />
+      {/* পাঞ্জেরী ও ফ্রেন্ডস প্রকাশনীর বই */}
+      {/* চাকরির বই */}
       <PopularAuthors />
-
       <PopularPublisher />
-
-      {/* <Carousel title="সেবা প্রকাশনীর ক্যাটাগরি">
-        {categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
-      </Carousel> */}
-
-      {/* 
-      <Carousel title="চাকরির ক্যাটাগরি">
-        {categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
-      </Carousel> */}
-
+      {/* সেবা প্রকাশনীর ক্যাটাগরি */}
+      {/* চাকরির ক্যাটাগরি */}
       <CustomerReviews />
     </div>
   );
