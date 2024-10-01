@@ -1,7 +1,12 @@
-interface IdName {
+export interface IdNameSlug {
   id: string;
   name: string;
   slug: string;
+}
+
+export interface Courier {
+  id: string;
+  method_name: string;
 }
 
 export interface Coupon {
@@ -21,17 +26,17 @@ export interface Coupon {
   is_active: boolean;
   max_shipping_charge: number | null;
   include_conditions: string[];
-  include_books: IdName[];
-  include_authors: IdName[];
-  include_categories: IdName[];
-  include_publishers: IdName[];
-  include_tags: IdName[];
-  exclude_books: IdName[];
-  exclude_authors: IdName[];
-  exclude_categories: IdName[];
-  exclude_publishers: IdName[];
-  exclude_tags: IdName[];
-  exclude_couriers: IdName[];
+  include_books: IdNameSlug[];
+  include_authors: IdNameSlug[];
+  include_categories: IdNameSlug[];
+  include_publishers: IdNameSlug[];
+  include_tags: IdNameSlug[];
+  exclude_books: IdNameSlug[];
+  exclude_authors: IdNameSlug[];
+  exclude_categories: IdNameSlug[];
+  exclude_publishers: IdNameSlug[];
+  exclude_tags: IdNameSlug[];
+  exclude_couriers: Courier[];
   user_id: string | null;
   updated_at?: string;
   created_at?: string;

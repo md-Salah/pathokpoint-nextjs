@@ -1,4 +1,5 @@
-import { useEffect, useReducer, useState } from 'react';
+'use client';
+import { useState } from 'react';
 import useSWR from 'swr';
 
 import { MultiSelect } from '@/components';

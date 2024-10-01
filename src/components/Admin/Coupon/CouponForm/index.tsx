@@ -1,58 +1,104 @@
-import MultiSelect from '@/components/MultiSelect';
 import { Coupon } from '@/interface';
-import { dateTime, isEnglish } from '@/utils';
+import { Courier, IdNameSlug } from '@/interface/coupon';
+import { dateTime } from '@/utils';
 
 import MultiSelector from './MultiSelector';
-
-interface Item {
-  id: string;
-  name: string;
-  slug: string;
-}
+import SelectConditions from './SelectConditions';
+import SelectShippingMethods from './SelectShippingMethods';
 
 interface Props {
   coupon: Coupon;
+  setCoupon: (coupon: Coupon) => void;
+  handleTouched?: () => void;
 }
 
-const AddCouponForm = ({ coupon }: Props) => {
+const CouponForm = ({ coupon, setCoupon, handleTouched }: Props) => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    // setCoupon({ ...coupon, [e.target.name]: e.target.value });
+    setCoupon({ ...coupon, [e.target.name]: e.target.value });
+    if (handleTouched) handleTouched();
   };
 
-  const handleSelect = (name: string, item: Item) => {
-    // setCoupon({ ...coupon, [name]: items });
+  const toggleIsActive = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCoupon({ ...coupon, is_active: e.target.checked });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleSelectCourier = (item: Courier) => {
+    if (coupon.exclude_couriers.find((c) => c.id === item.id)) return;
+    setCoupon({
+      ...coupon,
+      exclude_couriers: [...coupon.exclude_couriers, item],
+    });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveCourier = (id: string) => {
+    setCoupon({
+      ...coupon,
+      exclude_couriers: coupon.exclude_couriers.filter((c) => c.id !== id),
+    });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleSelect = (name: string, item: IdNameSlug) => {
+    // @ts-ignore
+    if (coupon[name].find((a) => a.id === item.id)) return;
+    // @ts-ignore
+    setCoupon({ ...coupon, [name]: [...coupon[name], item] });
+    if (handleTouched) handleTouched();
   };
 
   const handleRemove = (name: string, id: string) => {
-    // setCoupon({ ...coupon, [name]: coupon[name].filter((a) => a.id !== id) });
+    // @ts-ignore
+    setCoupon({ ...coupon, [name]: coupon[name].filter((a) => a.id !== id) });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleSelectCondition = (name: string) => {
+    if (coupon.include_conditions.find((c) => c === name)) return;
+    setCoupon({
+      ...coupon,
+      include_conditions: [...coupon.include_conditions, name],
+    });
+    if (handleTouched) handleTouched();
+  };
+
+  const handleRemoveCondition = (name: string) => {
+    setCoupon({
+      ...coupon,
+      include_conditions: coupon.include_conditions.filter((c) => c !== name),
+    });
+    if (handleTouched) handleTouched();
   };
 
   return (
     <div className="py-3 lg:px-14 lg:py-8 text-xs lg:text-sm">
       {/* Meta info */}
       {coupon.id && (
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 border-b pb-8 mb-4 font-medium">
-          <div className="col-span-2 lg:col-span-1">
-            <label className="label-2">ID</label>
-            <h4>{coupon.id}</h4>
-          </div>
-          <div>
-            <label className="label-2">Created at</label>
-            <h4>{coupon.created_at && dateTime(coupon.created_at).datetime}</h4>
-          </div>
-          <div>
-            <label className="label-2">Updated at</label>
-            <h4>{coupon.updated_at && dateTime(coupon.updated_at).datetime}</h4>
+        <div className="flex justify-end">
+          <div className="grid grid-cols-1 gap-3 font-medium w-fit">
+            <div className="flex gap-2">
+              <label className="text-black04">Created at:</label>
+              <h4>
+                {coupon.created_at && dateTime(coupon.created_at).datetime}
+              </h4>
+            </div>
+            <div className="flex gap-2">
+              <label className="text-black04">Updated at:</label>
+              <h4>
+                {coupon.updated_at && dateTime(coupon.updated_at).datetime}
+              </h4>
+            </div>
           </div>
         </div>
       )}
 
       {/* Basic Info */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-8">
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-8">
         <div className="relative">
           <label className="label-2">Coupon Code</label>
           <input
@@ -67,20 +113,27 @@ const AddCouponForm = ({ coupon }: Props) => {
           </span>
         </div>
         <div className="relative">
-          <label className="label-2">Expires at</label>
+          <label className="label-2">Expires at (mm/dd/yyyy)</label>
           <input
-            type="text"
+            type="datetime-local"
             name="expiry_date"
-            value={coupon.expiry_date || ""}
+            value={
+              coupon.expiry_date
+                ? new Date(coupon.expiry_date)
+                    .toLocaleString("sv-SE", { timeZoneName: "short" })
+                    .replace(" ", "T")
+                    .slice(0, 16)
+                : ""
+            }
             onChange={handleChange}
-            className="input w-full"
+            className="input w-full focus:outline-none focus:border-primary"
           />
         </div>
         <div className="sm:col-span-2">
           <label className="label-2">Short Description</label>
           <div className="relative w-full">
             <textarea
-              className="textarea textarea-sm w-full h-32 focus:outline-none focus:border-primary font-bn"
+              className="textarea textarea-sm w-full h-20 focus:outline-none focus:border-primary font-bn"
               name="short_description"
               value={coupon.short_description || ""}
               onChange={handleChange}
@@ -99,7 +152,7 @@ const AddCouponForm = ({ coupon }: Props) => {
           <select
             className="select select-bordered focus:outline-none focus:border-primary"
             name="discount_type"
-            value={coupon.discount_type || ""}
+            value={coupon.discount_type}
             onChange={handleChange}
           >
             <option value="percentage">Percentage</option>
@@ -108,22 +161,22 @@ const AddCouponForm = ({ coupon }: Props) => {
         </div>
         <div>
           <label className="label-2">Is Active</label>
-          <select
-            className="select select-bordered focus:outline-none focus:border-primary"
-            name="discount_type"
-            value={coupon.discount_type || ""}
-            onChange={handleChange}
-          >
-            <option value="percentage">Percentage</option>
-            <option value="fixed-amount">Fixed Amount</option>
-          </select>
+          <input
+            type="checkbox"
+            className="toggle toggle-primary"
+            name="is_active"
+            checked={coupon.is_active}
+            onChange={toggleIsActive}
+          />
         </div>
       </div>
 
       <h4 className="mt-8 border-b pb-2">Old book discount</h4>
       <div className="mt-3 lg:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
         <div>
-          <label className="label-2">Discount(%)</label>
+          <label className="label-2">
+            Discount({coupon.discount_type === "percentage" ? "%" : "৳"})
+          </label>
           <input
             type="text"
             className="input w-full"
@@ -158,7 +211,9 @@ const AddCouponForm = ({ coupon }: Props) => {
       <h4 className="mt-8 border-b pb-2">New book discount</h4>
       <div className="mt-3 lg:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
         <div>
-          <label className="label-2">Discount(%)</label>
+          <label className="label-2">
+            Discount({coupon.discount_type === "percentage" ? "%" : "৳"})
+          </label>
           <input
             type="text"
             className="input w-full"
@@ -227,12 +282,10 @@ const AddCouponForm = ({ coupon }: Props) => {
         </div>
         <div>
           <label className="label-2">Exclude Shipping Methods</label>
-          <MultiSelector
-            handleSelect={handleSelect}
-            handleRemove={handleRemove}
-            name="exclude_couriers"
+          <SelectShippingMethods
             selectedItems={coupon.exclude_couriers}
-            searchUrl="/courier/all"
+            handleSelect={handleSelectCourier}
+            handleRemove={handleRemoveCourier}
           />
         </div>
       </div>
@@ -339,9 +392,17 @@ const AddCouponForm = ({ coupon }: Props) => {
             searchUrl="/tag/all"
           />
         </div>
+        <div>
+          <label className="label-2">Include Conditions</label>
+          <SelectConditions
+            selectedItems={coupon.include_conditions}
+            handleSelect={handleSelectCondition}
+            handleRemove={handleRemoveCondition}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-export default AddCouponForm;
+export default CouponForm;

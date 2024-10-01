@@ -1,4 +1,3 @@
-"use client";
 import { AddCoupon } from '@/components/Admin/Coupon';
 
 const AddCouponPage = () => {

@@ -44,75 +44,75 @@ const AddCoupon = () => {
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
-  const [logo, setLogo] = useState<File | null>(null);
-  const [banner, setBanner] = useState<File | null>(null);
 
   const { token } = useToken();
 
   const handleSubmit = async () => {
-    console.log(coupon);
-    // setErr(null);
-    // setLoading(true);
-    // try {
-    //   const res = await axiosInstance.post(
-    //     "/category",
-    //     {
-    //       ...category,
-    //       parent: category.parent.map((p) => p.id),
-    //     },
-    //     {
-    //       headers: { Authorization: `Bearer ${token}` },
-    //     }
-    //   );
+    setErr(null);
+    setLoading(true);
+    const payload = {
+      ...coupon,
+      short_description: coupon.short_description
+        ? coupon.short_description
+        : null,
+      expiry_date: coupon.expiry_date
+        ? new Date(coupon.expiry_date).toISOString()
+        : null,
+      discount_old: coupon.discount_old ? coupon.discount_old : null,
+      discount_new: coupon.discount_new ? coupon.discount_new : null,
+      min_spend_old: coupon.min_spend_old ? coupon.min_spend_old : 0,
+      min_spend_new: coupon.min_spend_new ? coupon.min_spend_new : 0,
+      max_discount_old: coupon.max_discount_old
+        ? coupon.max_discount_old
+        : null,
+      max_discount_new: coupon.max_discount_new
+        ? coupon.max_discount_new
+        : null,
+      use_limit: coupon.use_limit ? coupon.use_limit : null,
+      use_limit_per_user: coupon.use_limit_per_user
+        ? coupon.use_limit_per_user
+        : null,
+      max_shipping_charge: coupon.max_shipping_charge
+        ? coupon.max_shipping_charge
+        : null,
+      user_id: coupon.user_id ? coupon.user_id : null,
+      include_books: coupon.include_books.map((book) => book.id),
+      include_authors: coupon.include_authors.map((author) => author.id),
+      include_categories: coupon.include_categories.map(
+        (category) => category.id
+      ),
+      include_publishers: coupon.include_publishers.map(
+        (publisher) => publisher.id
+      ),
+      include_tags: coupon.include_tags.map((tag) => tag.id),
+      exclude_books: coupon.exclude_books.map((book) => book.id),
+      exclude_authors: coupon.exclude_authors.map((author) => author.id),
+      exclude_categories: coupon.exclude_categories.map(
+        (category) => category.id
+      ),
+      exclude_publishers: coupon.exclude_publishers.map(
+        (publisher) => publisher.id
+      ),
+      exclude_tags: coupon.exclude_tags.map((tag) => tag.id),
+      exclude_couriers: coupon.exclude_couriers.map((courier) => courier.id),
+    };
+    try {
+      const res = await axiosInstance.post("/coupon", payload, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-    //   // Upload logo if exists
-    //   if (logo) {
-    //     const formData = new FormData();
-    //     formData.append("files", logo);
-    //     await axiosInstance.post(
-    //       `/image/admin?category_id=${res.data.id}`,
-    //       formData,
-    //       {
-    //         headers: {
-    //           Authorization: `Bearer ${token}`,
-    //           "Content-Type": "multipart/form-data",
-    //         },
-    //       }
-    //     );
-    //   }
-
-    //   // Upload banner if exists
-    //   if (banner) {
-    //     const formData = new FormData();
-    //     formData.append("files", banner);
-    //     await axiosInstance.post(
-    //       `/image/admin?category_id=${res.data.id}&is_banner=true`,
-    //       formData,
-    //       {
-    //         headers: {
-    //           Authorization: `Bearer ${token}`,
-    //           "Content-Type": "multipart/form-data",
-    //         },
-    //       }
-    //     );
-    //   }
-
-    //   setSuccess(true);
-    //   setCoupon(res.data);
-    //   setLogo(null);
-    //   setBanner(null);
-    // } catch (error) {
-    //   setErr(extractAxiosErr(error));
-    // } finally {
-    //   setLoading(false);
-    // }
+      setSuccess(true);
+      setCoupon(res.data);
+    } catch (error) {
+      setErr(extractAxiosErr(error));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleAddAnother = () => {
     setCoupon(initialCoupon);
     setSuccess(false);
-    setLogo(null);
-    setBanner(null);
   };
 
   return (
@@ -120,35 +120,20 @@ const AddCoupon = () => {
       <div className="border-b border-[#E6E6E6] py-4">
         <h1 className="font-medium lg:px-14">Add Coupon</h1>
       </div>
-      <CouponForm
-        coupon={coupon}
-        // setCoupon={setCoupon}
-        // setLogo={setLogo}
-        // setBanner={setBanner}
-      />
+      <CouponForm coupon={coupon} setCoupon={setCoupon} />
       <div className="lg:px-14 mb-2 lg:mb-8">
         <div className="mt-12 flex justify-center lg:justify-end">
           {err && <p className="text-error text-sm">{err}</p>}
           {success && (
             <p className="text-success font-medium">
-              Category is added successfully
+              Coupon is added successfully
             </p>
           )}
         </div>
         <div className="mt-4 flex items-center justify-center sm:justify-end gap-2">
           {success ? (
             <div className="flex flex-wrap gap-2 justify-center">
-              <Link
-                href={`/admin/coupons/${coupon.id}`}
-                target="_blank"
-                className="btn btn-secondary btn-outline w-32"
-              >
-                View
-              </Link>
-              <Link
-                href={`/admin/coupons/edit/${coupon.id}`}
-                className="btn btn-error w-32"
-              >
+              <Link href={`edit/${coupon.id}`} className="btn btn-error w-32">
                 Edit
               </Link>
               <button

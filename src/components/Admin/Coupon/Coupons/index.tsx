@@ -41,8 +41,9 @@ const AdminCoupon = ({ searchParams }: Props) => {
           )}
         </div>
         <Link
-          href="/admin/coupons/add-coupon"
+          href="coupons/add-coupon"
           className="btn btn-primary btn-sm lg:h-11"
+          target='_blank'
         >
           <FiPlus size={20} className="inline-block" />
           New Coupon
@@ -115,7 +116,7 @@ const AdminCoupon = ({ searchParams }: Props) => {
                       </td>
                       <td>
                         <Link
-                          href={`#`}
+                          href={`coupons/edit/${item.id}`}
                           className="btn btn-outline btn-primary btn-sm w-16"
                           target="_blank"
                         >
