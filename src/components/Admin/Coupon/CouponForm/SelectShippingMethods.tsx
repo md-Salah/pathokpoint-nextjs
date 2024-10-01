@@ -1,41 +1,27 @@
 "use client";
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
+import useSWR from 'swr';
 
 import { isEnglish } from '@/utils';
+import { fetcher } from '@/utils/axiosConfig';
 
 interface Item {
   id: string;
-  name: string;
-  slug: string;
+  method_name: string;
 }
 
 interface Props {
   selectedItems: Item[];
   handleSelect: (item: Item) => void;
   handleRemove: (id: string) => void;
-
-  query: string;
-  setQuery: (query: string) => void;
-  isLoading: boolean;
-  suggestions: Item[];
-  handleAddNewClick?: () => void;
 }
 
-const MultiSelect = (props: Props) => {
-  const {
-    selectedItems,
-    handleSelect,
-    handleRemove,
-    query,
-    setQuery,
-    isLoading,
-    suggestions,
-    handleAddNewClick,
-  } = props;
+const SelectShippingMethods = (props: Props) => {
+  const { selectedItems, handleSelect, handleRemove } = props;
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const { data: suggestions, isLoading } = useSWR(`/courier/all`, fetcher);
 
   return (
     <div className="dropdown w-full relative" tabIndex={0}>
@@ -48,8 +34,8 @@ const MultiSelect = (props: Props) => {
             key={item.id}
             className="flex items-center bg-gray-200 rounded px-2 py-1 w-fit text-sm gap-2"
           >
-            <span className={`${!isEnglish(item.name) && "font-bn"}`}>
-              {item.name}
+            <span className={`${!isEnglish(item.method_name) && "font-bn"}`}>
+              {item.method_name}
             </span>
             <RxCross2
               size="16"
@@ -58,12 +44,6 @@ const MultiSelect = (props: Props) => {
             />
           </div>
         ))}
-        <input
-          type="text"
-          value={query}
-          className="grow"
-          onChange={(e) => setQuery(e.target.value)}
-        />
       </label>
 
       {isDropdownOpen && (
@@ -84,28 +64,20 @@ const MultiSelect = (props: Props) => {
               ) : (
                 suggestions.map((item: Item) => (
                   <li key={item.id} onClick={() => handleSelect(item)}>
-                    <span className={`${!isEnglish(item.name) && "font-bn"}`}>
-                      {item.name}
+                    <span
+                      className={`${!isEnglish(item.method_name) && "font-bn"}`}
+                    >
+                      {item.method_name}
                     </span>
                   </li>
                 ))
               )}
             </ul>
           </div>
-          {handleAddNewClick && (
-            <div className="border-t border-[#E8E9EB] text-center py-3 text-primary font-semibold">
-              <p
-                className="hover:cursor-pointer hover:underline"
-                onClick={handleAddNewClick}
-              >
-                Add New
-              </p>
-            </div>
-          )}
         </div>
       )}
     </div>
   );
 };
 
-export default MultiSelect;
+export default SelectShippingMethods;
