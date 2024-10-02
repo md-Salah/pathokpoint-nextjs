@@ -24,7 +24,7 @@ export interface Coupon {
   use_limit: number | null;
   use_limit_per_user: number | null;
   is_active: boolean;
-  max_shipping_charge: number | null;
+  max_shipping_charge: number | string | null;
   include_conditions: string[];
   include_books: IdNameSlug[];
   include_authors: IdNameSlug[];

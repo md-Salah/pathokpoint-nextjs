@@ -18,6 +18,8 @@ const CouponForm = ({ coupon, setCoupon, handleTouched }: Props) => {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
+    let value: string | null = e.target.value;
+    if (value === "") value = null;
     setCoupon({ ...coupon, [e.target.name]: e.target.value });
     if (handleTouched) handleTouched();
   };
@@ -276,9 +278,21 @@ const CouponForm = ({ coupon, setCoupon, handleTouched }: Props) => {
             type="text"
             className="input w-full"
             name="max_shipping_charge"
-            value={coupon.max_shipping_charge || ""}
+            value={
+              coupon.max_shipping_charge !== null
+                ? coupon.max_shipping_charge
+                : ""
+            }
             onChange={handleChange}
           />
+          <span className="text-black04">
+            {coupon.max_shipping_charge === null ||
+            coupon.max_shipping_charge === "" 
+              ? "Regular charge applicable"
+              : coupon.max_shipping_charge == 0
+              ? "Free Shipping"
+              : `Max Shipping Charge: ${coupon.max_shipping_charge}`}
+          </span>
         </div>
         <div>
           <label className="label-2">Exclude Shipping Methods</label>

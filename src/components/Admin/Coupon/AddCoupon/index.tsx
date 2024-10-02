@@ -72,9 +72,8 @@ const AddCoupon = () => {
       use_limit_per_user: coupon.use_limit_per_user
         ? coupon.use_limit_per_user
         : null,
-      max_shipping_charge: coupon.max_shipping_charge
-        ? coupon.max_shipping_charge
-        : null,
+      max_shipping_charge:
+        coupon.max_shipping_charge === "" ? null : coupon.max_shipping_charge,
       user_id: coupon.user_id ? coupon.user_id : null,
       include_books: coupon.include_books.map((book) => book.id),
       include_authors: coupon.include_authors.map((author) => author.id),
