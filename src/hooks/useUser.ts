@@ -14,7 +14,6 @@ const useUser = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log('useUser hook, useEffect')
     const fetchUser = async () => {
       if (!token) {
         dispatch(updateUser(null));
@@ -23,16 +22,13 @@ const useUser = () => {
       }
   
       try {
-        console.log("Fetching user.");
         const userResponse = await axiosInstance.get("/user/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        // console.log("User data:", userResponse.data);
         dispatch(updateUser(userResponse.data));
       } catch (error) {
-        console.debug("Error fetching user:", error);
         dispatch(updateUser(null)); 
       } finally {
         setIsLoading(false); 
@@ -42,15 +38,6 @@ const useUser = () => {
     fetchUser(); 
   }, [token, dispatch]);
   
-  
-  
-
-  // const { data, isLoading }: { data: User | null; isLoading: boolean } = useSWR(
-  //   ["/user/me", token],
-  //   ([url, token]) => fetcher(url, token),
-  //   { revalidateOnFocus: false }
-  // );
-
   return {
     user: user,
     isLoading: isLoading,
