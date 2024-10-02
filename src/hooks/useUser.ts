@@ -1,9 +1,8 @@
 "use client";
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useSWR from 'swr';
 
 import { useToken } from '@/hooks';
-import { User } from '@/interface';
 import { updateUser } from '@/redux/features/auth-slice';
 import { AppDispatch, RootState } from '@/redux/store';
 import axiosInstance from '@/utils/axiosConfig';
@@ -12,41 +11,49 @@ const useUser = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { token } = useToken();
   const { user } = useSelector((state: RootState) => state.auth);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const fetcher = async (url: string, token: string | null | undefined) => {
-    try {
-      if (token) {
-        const userResponse = await axiosInstance.get(url, {
+  useEffect(() => {
+    console.log('useUser hook, useEffect')
+    const fetchUser = async () => {
+      if (!token) {
+        dispatch(updateUser(null));
+        setIsLoading(false);
+        return;
+      }
+  
+      try {
+        console.log("Fetching user.");
+        const userResponse = await axiosInstance.get("/user/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+        // console.log("User data:", userResponse.data);
         dispatch(updateUser(userResponse.data));
-        return userResponse.data;
-      } else {
-        return null;
+      } catch (error) {
+        console.debug("Error fetching user:", error);
+        dispatch(updateUser(null)); 
+      } finally {
+        setIsLoading(false); 
       }
-    } catch (error) {
-      return null;
-    }
-  };
-
-  const { data, isLoading }: { data: User | null; isLoading: boolean } = useSWR(
-    ["/user/me", token],
-    ([url, token]) => fetcher(url, token),
-    { revalidateOnFocus: false }
-  );
-
-  if (user) {
-    return {
-      user,
-      isLoading: false,
     };
-  }
+  
+    fetchUser(); 
+  }, [token, dispatch]);
+  
+  
+  
+
+  // const { data, isLoading }: { data: User | null; isLoading: boolean } = useSWR(
+  //   ["/user/me", token],
+  //   ([url, token]) => fetcher(url, token),
+  //   { revalidateOnFocus: false }
+  // );
 
   return {
-    user: data,
-    isLoading,
+    user: user,
+    isLoading: isLoading,
   };
 };
 

@@ -60,9 +60,9 @@ export const authSlice = createSlice({
           ? localStorage.getItem("access_token")
           : null;
     },
-    updateUser: (state, action: PayloadAction<User>) => {
+    updateUser: (state, action: PayloadAction<User | null>) => {
       state.user = action.payload;
-      state.isStaff = isStaff(action.payload.role);
+      state.isStaff = action.payload ? isStaff(action.payload.role) : false;
     },
   },
   extraReducers: (builder) => {
