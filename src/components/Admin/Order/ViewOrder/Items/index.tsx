@@ -2,16 +2,15 @@ import { useState } from 'react';
 
 import { AddItem, CartItem } from '@/components/Admin/Order/Common';
 import { useToken } from '@/hooks';
-import { Book, CartItem as CartItemInterface, OrderItem as OrderItemInterface } from '@/interface';
+import { Book, CartItem as CartItemInterface, OrderItem } from '@/interface';
 import axiosInstance, { extractAxiosErr, fetcher } from '@/utils/axiosConfig';
 
 import ItemInMobile from './ItemInMobile';
 import ItemsInPC from './ItemsInPC';
-import OrderItem from './ItemsInPC/OrderItem';
 
 interface Props {
   order_id: string;
-  order_items: OrderItemInterface[];
+  order_items: OrderItem[];
   refresh: () => void;
 }
 
@@ -63,13 +62,17 @@ const Items = (props: Props) => {
     const ids = order_items.map((item) => item.book.id);
     try {
       setEditBtnLoading(true);
-      const books = await fetcher(`/book/all?id__in=${ids.join(",")}`);
+      const books = await fetcher(
+        `/book/all?id__in=${ids.join(",")}&per_page=100`
+      );
       setNewItems(
-        books.map((book: Book) => {
-          const item = order_items.find((item) => item.book.id === book.id);
+        order_items.map((item: OrderItem) => {
+          const book = books.find((book: Book) => book.id === item.book.id);
+          if (!book)
+            setErr(`Book not found with public_id ${item.book.public_id}`);
           return {
             ...book,
-            selectedQuantity: item?.quantity || 0,
+            selectedQuantity: item.quantity,
           };
         })
       );
@@ -155,7 +158,7 @@ const Items = (props: Props) => {
         ) : (
           <>
             <div className="lg:hidden">
-              {order_items.map((item: OrderItemInterface) => (
+              {order_items.map((item: OrderItem) => (
                 <ItemInMobile key={item.book.id} item={item} />
               ))}
             </div>
@@ -167,9 +170,7 @@ const Items = (props: Props) => {
       </div>
       {isEdit && (
         <div className="mt-4">
-          {err && (
-            <p className="mb-2 text-center text-highlight">{err}</p>
-          )}
+          {err && <p className="mb-2 text-center text-highlight">{err}</p>}
           <div className="flex items-center gap-4 justify-center">
             <button
               className="btn btn-primary w-36"

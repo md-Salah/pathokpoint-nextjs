@@ -10,13 +10,21 @@ import { isStaff } from '@/utils';
 
 const Template = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
 
   useEffect(() => {
-    if (user === null) {
+    if (!isLoading && user === null) {
       router.push("/auth/login");
     }
-  }, [user]);
+  }, [user, isLoading]);
+
+  if (isLoading) {
+    return (
+      <div className="layout-container layout-mt w-full h-96 flex items-center justify-center">
+        <span className="loading loading-bars"></span>
+      </div>
+    );
+  }
 
   if (user && isStaff(user.role))
     return (
@@ -27,10 +35,8 @@ const Template = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full overflow-hidden">{children}</div>
       </div>
     );
-  else if (user && !isStaff(user.role)) return <Unauthorized />;
-  return (
-    <div className="layout-container layout-mt skeleton w-full h-96"></div>
-  );
+  if (user && !isStaff(user.role)) return <Unauthorized />;
+  return null;
 };
 
 export default Template;
