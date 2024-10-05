@@ -37,7 +37,7 @@ export default function sitemap() {
       priority: 1,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/t&c`,
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/t&amp;c`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
