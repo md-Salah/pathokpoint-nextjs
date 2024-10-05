@@ -30,6 +30,10 @@ export const usefulLinks = [
     title: "My Orders",
     link: "/user/my-order",
   },
+  {
+    title: "Offers",
+    link: "/offers",
+  },
 ];
 
 export const legal = [

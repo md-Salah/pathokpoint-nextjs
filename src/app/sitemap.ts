@@ -24,5 +24,29 @@ export default function sitemap() {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/about-us`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/contact-us`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/t&c`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_BASE_URL}/offers`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
   ];
 }
