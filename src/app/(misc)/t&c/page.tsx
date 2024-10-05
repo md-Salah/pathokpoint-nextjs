@@ -5,7 +5,7 @@ const TermsAndConditions = () => {
     <div>
       <MiscHeader
         title="Terms and Conditions"
-        subtitle="Terms of service — what you need to know"
+        subtitle="Terms of service — what you need to know."
       />
       <div className="layout-container layout-px text-sm lg:text-base">
         <section className="layout-mt p-4 sm:p-6 md:p-8 lg:p-10 bg-white">
