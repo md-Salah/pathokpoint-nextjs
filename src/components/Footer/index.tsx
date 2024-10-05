@@ -11,25 +11,30 @@ import { legal, shopBy, usefulLinks } from '@/constants/footer';
 const Footer = () => {
   return (
     <div className="bg-neutral layout-mt">
-      <div className="layout-container layout-px font-bn">
+      <div className="layout-container layout-px">
         <footer className="footer footer-center text-white md:footer py-10">
           <aside>
             <p className="text-3xl font-semibold font-bn">পাঠক পয়েন্ট</p>
-            <p className="max-w-72 md:text-justify tracking-wide uppercase">
-              Since 2020, Pathok Point delivers literary treasures, old & new,
-              right to your doorstep.
+            <p className="sm:max-w-96 text-center md:text-left">
+              We offer original books at unbeatable prices, helping you discover
+              rare finds and new releases. we&apos;re making books affordable!
             </p>
-            <p className="max-w-72 md:text-justify tracking-wide uppercase mt-2">
-              <FaMapMarkerAlt className="inline-block mr-2 text-primary" />
-              Head office:
-              <br />
-              House-4/7, Av-3, Mirpur-11, Dhaka -1216
-            </p>
+            <div className="sm:max-w-96 mt-4">
+              <div className="flex gap-2 items-center justify-center md:justify-start">
+                <FaMapMarkerAlt className="text-primary" />
+                <span>Head office:</span>
+              </div>
+              <h4 className="mt-2">{social.Address.text}</h4>
+            </div>
           </aside>
           <nav>
             <h6 className="footer-title">shop by</h6>
             {shopBy.map((item, index) => (
-              <Link href={item.link} key={index} className="link link-hover">
+              <Link
+                href={item.link}
+                key={index}
+                className="link link-hover font-bn"
+              >
                 {item.title}
               </Link>
             ))}
@@ -57,42 +62,42 @@ const Footer = () => {
               <Link
                 href={social.Phone.href}
                 className="fill-current tooltip"
-                data-tip={social.Phone.tooltip}
+                data-tip={social.Phone.text}
               >
                 <MdOutlineCall className="w-6 h-6" />
               </Link>
               <Link
                 href={social.Email.href}
                 className="fill-current tooltip"
-                data-tip={social.Email.tooltip}
+                data-tip={social.Email.text}
               >
                 <LuMail className="w-6 h-6" />
               </Link>
               <Link
                 href={social.Messenger.href}
                 className="fill-current tooltip"
-                data-tip={social.Messenger.tooltip}
+                data-tip={social.Messenger.text}
               >
                 <RiMessengerLine className="w-7 h-7" />
               </Link>
               <Link
                 href={social.Facebook.href}
                 className="fill-current tooltip"
-                data-tip={social.Facebook.tooltip}
+                data-tip={social.Facebook.text}
               >
                 <RiFacebookCircleLine className="w-7 h-7" />
               </Link>
               <Link
                 href={social.WhatsApp.href}
                 className="fill-current tooltip"
-                data-tip={social.WhatsApp.tooltip}
+                data-tip={social.WhatsApp.text}
               >
                 <BsWhatsapp className="w-6 h-6" />
               </Link>
               <Link
                 href={social.Instagram.href}
                 className="fill-current tooltip"
-                data-tip={social.Instagram.tooltip}
+                data-tip={social.Instagram.text}
               >
                 <BsInstagram className="w-6 h-6" />
               </Link>

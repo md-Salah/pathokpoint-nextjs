@@ -70,16 +70,20 @@ export const adminMenuItems = [
 
 export const importantLinks = [
   {
+    name: "Offers",
+    href: "/offers",
+  },
+  {
     name: "My Orders",
     href: "/user/my-order",
   },
   {
     name: "Contact Us",
-    href: "/info/contact-us",
+    href: "/contact-us",
   },
   {
     name: "FAQ",
-    href: "/info/faq",
+    href: "/faq",
   },
 ];
 

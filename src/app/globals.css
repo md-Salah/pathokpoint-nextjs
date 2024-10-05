@@ -45,6 +45,9 @@
 .layout-mt {
   @apply mt-4 sm:mt-5 md:mt-6 lg:mt-8;
 }
+.layout-first-mt {
+  @apply mt-0 sm:mt-5 md:mt-6 lg:mt-8;
+}
 
 .layout-p {
   @apply p-4 sm:p-6 md:p-7 lg:p-10;

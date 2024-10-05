@@ -1,7 +1,7 @@
 // Header Footer
 export { default as TopBanner } from "./TopBanner";
 export { default as Navbar } from "./Navbar";
-export { Footer } from "./Footer";
+export { default as Footer } from "./Footer";
 
 // Common
 export { default as MultiSelect } from "./MultiSelect";

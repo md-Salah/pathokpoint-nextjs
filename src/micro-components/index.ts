@@ -12,6 +12,7 @@ export { default as Gender } from "./Gender";
 export { default as NotFound } from "./NotFound";
 export { default as DataCount } from "./DataCount";
 export { default as Divider } from "./Divider";
+export { default as MiscHeader } from "./MiscHeader";
 
 // Icons
 export { default as HambugerIcon } from "./HamburgerIcon";
