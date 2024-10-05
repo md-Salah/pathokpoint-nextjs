@@ -38,7 +38,7 @@ const HeroBanner = () => {
         {banners.map((banner, index) => (
           <Link
             key={index}
-            href="/info/offers"
+            href="/offers"
             className="cursor-pointer block h-44 sm:h-96"
           >
             <Image
