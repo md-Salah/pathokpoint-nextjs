@@ -45,11 +45,6 @@ export { default as LoginForm } from "./LoginForm";
 export { default as VerifyOTP } from "./VerifyOTP";
 
 //Admin
-export { default as DashboardSummaryBox } from "./Admin/AdminDashboard/DashboardSummaryBox";
-export { default as ProfitSummary } from "./Admin/AdminDashboard/ProfitSummary";
-export { default as DashboardOrderSummary } from "./Admin/AdminDashboard/DashboardOrderSummary";
-export { default as DeliverySummary } from "./Admin/AdminDashboard/DeliverySummary";
-export { default as StatisticBarChart } from "./Admin/AdminDashboard/StatisticBarChart";
 export { default as CarouselModal } from "./Admin/Review/CarouselModal";
 export { default as ReviewDetailsModal } from "./Admin/Review/ReviewDetailsModal";
 export { default as StarRating } from "./Admin/Review/StarRating";

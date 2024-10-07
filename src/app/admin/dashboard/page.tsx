@@ -1,4 +1,4 @@
-import { AdminDashboard } from "@/components/Admin";
+import AdminDashboard from '@/components/Admin/Dashboard';
 
 const Dashboard = () => {
   return <AdminDashboard />;
