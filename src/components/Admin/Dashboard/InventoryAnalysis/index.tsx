@@ -52,11 +52,11 @@ const InventoryAnalysis = () => {
                 <tbody>
                   {data?.map((group: ProductGroup) => (
                     <tr key={group.tag}>
-                      <td>{group.tag}</td>
+                      <td className='min-w-32'>{group.tag}</td>
                       <td>{group.unique_product.toLocaleString("en-IN")}</td>
                       <td>{group.in_stock.toLocaleString("en-IN")}</td>
                       <td>{group.out_of_stock.toLocaleString("en-IN")}</td>
-                      <td className="border-l">
+                      <td>
                         {group.quantity.toLocaleString("en-IN")}
                       </td>
                       <td>{group.cost.toLocaleString("en-IN")}</td>
