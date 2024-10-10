@@ -9,9 +9,21 @@ interface Props {
   cover?: string;
   description?: string | null;
   handleFollow?: () => void;
+  following?: boolean;
+  handleUnfollow?: () => void;
+  loading?: boolean;
 }
 
-const Profile = ({ name, dp, cover, description, handleFollow }: Props) => {
+const Profile = ({
+  name,
+  dp,
+  cover,
+  description,
+  handleFollow,
+  following,
+  handleUnfollow,
+  loading,
+}: Props) => {
   return (
     <section className="bg-white pb-8 layout-container">
       <figure className="w-full h-24 sm:h-64 relative bg-gray-300">
@@ -41,14 +53,38 @@ const Profile = ({ name, dp, cover, description, handleFollow }: Props) => {
           </h1>
           <div className="flex flex-col-reverse sm:flex-col items-center sm:items-start">
             {description && (
-              <div className="mt-3 lg:mt-6">
+              <div className="mt-3 lg:mt-4">
                 <Description text={description} char={120} />
               </div>
             )}
-            {handleFollow && (
-              <button className="btn btn-primary btn-outline btn-sm w-24 mt-4 lg:mt-8">
-                Follow
-              </button>
+
+            {/* Follow Author */}
+            {handleFollow && handleUnfollow && (
+              <div className="mt-3 lg:mt-5">
+                {following ? (
+                  <button
+                    className="btn btn-primary btn-outline btn-sm"
+                    onClick={handleUnfollow}
+                    disabled={loading}
+                  >
+                    {loading && (
+                      <span className="loading loading-spinner"></span>
+                    )}
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-primary btn-outline btn-sm"
+                    onClick={handleFollow}
+                    disabled={loading}
+                  >
+                    {loading && (
+                      <span className="loading loading-spinner"></span>
+                    )}
+                    Follow
+                  </button>
+                )}
+              </div>
             )}
           </div>
         </div>

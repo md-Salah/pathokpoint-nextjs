@@ -8,13 +8,13 @@ import { useUser } from '@/hooks';
 
 const Template = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
 
   useEffect(() => {
-    if (user === null) {
+    if (!isLoading && user === null) {
       router.push("/auth/login");
     }
-  }, [user]);
+  }, [user, isLoading]);
 
   if (user)
     return (

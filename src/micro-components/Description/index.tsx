@@ -1,5 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState } from 'react';
+
+import { isEnglish } from '@/utils';
 
 const Description = ({
   text,
@@ -17,7 +19,7 @@ const Description = ({
   };
 
   return (
-    <div className="text-justify font-normal font-bn text-xs sm:text-sm text-black02">
+    <div className={`font-normal text-xs sm:text-sm text-black02 ${!isEnglish(text) && "font-bn"}`}>
       {text.length > 75 ? (
         <p>
           {readMore ? text : text.slice(0, char) + "..."}

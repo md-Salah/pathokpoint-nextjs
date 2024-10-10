@@ -20,7 +20,7 @@ const useUser = () => {
         setIsLoading(false);
         return;
       }
-  
+
       try {
         const userResponse = await axiosInstance.get("/user/me", {
           headers: {
@@ -29,18 +29,20 @@ const useUser = () => {
         });
         dispatch(updateUser(userResponse.data));
       } catch (error) {
-        dispatch(updateUser(null)); 
+        dispatch(updateUser(null));
+        if (token) localStorage.removeItem("access_token");
       } finally {
-        setIsLoading(false); 
+        setIsLoading(false);
       }
     };
-  
-    fetchUser(); 
+
+    fetchUser();
   }, [token, dispatch]);
-  
+
   return {
     user: user,
     isLoading: isLoading,
+    token: token,
   };
 };
 

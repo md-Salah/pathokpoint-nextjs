@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Book } from '@/interface';
@@ -11,9 +11,11 @@ import { AppDispatch, RootState } from '@/redux/store';
 const AddToCart = ({ book }: { book: Book }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { cartItems } = useSelector((state: RootState) => state.cart);
-  const [isAdded, setIsAdded] = useState<boolean>(
-    cartItems.some((item) => item.id === book.id)
-  );
+  const [isAdded, setIsAdded] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsAdded(cartItems.some((item) => item.id === book.id));
+  }, []);
 
   const handleAddToCart = () => {
     dispatch(

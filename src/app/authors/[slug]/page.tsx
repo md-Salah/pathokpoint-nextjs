@@ -1,8 +1,9 @@
-import { Books, Profile } from '@/components';
-import { defaultSrc } from '@/constants';
+import { Books } from '@/components';
 import { Author } from '@/interface';
 import { NotFound } from '@/micro-components';
 import { getAuthorBySlug } from '@/utils/api';
+
+import AuthorProfile from './AuthorProfile';
 
 interface Props {
   searchParams?: any;
@@ -24,14 +25,7 @@ const AuthorPage = async ({ searchParams, params }: Props) => {
 
   return (
     <div>
-      <Profile
-        name={author.name}
-        description={author.description}
-        dp={author.image?.src || defaultSrc.author}
-        cover={author.banner?.src || defaultSrc.authorCover}
-        handleFollow={() => {}}
-      />
-
+      <AuthorProfile author={author} />
       <Books searchParams={searchParams} authorSlug={params.slug} />
     </div>
   );

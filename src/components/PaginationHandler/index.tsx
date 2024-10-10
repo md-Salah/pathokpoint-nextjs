@@ -13,9 +13,10 @@ const PaginationHandler = ({ totalPages }: { totalPages: number }) => {
   const handlePageChange = (page: number) => {
     const queryParams = new URLSearchParams(searchParams.toString());
     queryParams.set("page", page.toString());
-    router.push(`${pathname}?${queryParams.toString()}`, { scroll: false });
+    router.push(`${pathname}?${queryParams.toString()}`, { scroll: true });
   };
 
+  if (totalPages <= 1) return null;
   return (
     <Pagination
       currentPage={currentPage}
