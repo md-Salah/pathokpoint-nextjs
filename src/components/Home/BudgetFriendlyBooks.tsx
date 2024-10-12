@@ -15,7 +15,7 @@ const BudgetFriendlyBooks = () => {
     <Carousel
       title="Budget Friendly Books"
       isLoading={isLoading}
-      href="/books?order_by=-created_at&in_stock=true"
+      href="/books?sale_price__lte=100&sale_price__gte=70"
     >
       {data && data.map((book: Book) => <BookCard key={book.id} book={book} />)}
     </Carousel>
