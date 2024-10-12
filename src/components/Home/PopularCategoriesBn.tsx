@@ -6,7 +6,7 @@ import { Category } from '@/interface';
 import { fetcher } from '@/utils/axiosConfig';
 
 const PopularCategoriesBn = () => {
-  const { data, isLoading } = useSWR("/category/all?is_bangla_featured=true", fetcher);
+  const { data, isLoading } = useSWR("/category/all?per_page=20&is_bangla_featured=true", fetcher);
   return (
     <Carousel
       title="জনপ্রিয় বাংলা ক্যাটাগরি"

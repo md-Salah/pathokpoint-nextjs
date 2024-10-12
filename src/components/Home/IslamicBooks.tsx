@@ -7,7 +7,7 @@ import { fetcher } from '@/utils/axiosConfig';
 
 const IslamicBooks = () => {
   const { data, isLoading } = useSWR(
-    "book/all?is_islamic=true&in_stock=true",
+    "book/all?per_page=20&is_islamic=true&in_stock=true",
     fetcher
   );
 

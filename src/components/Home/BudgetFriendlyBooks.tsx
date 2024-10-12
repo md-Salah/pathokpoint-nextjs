@@ -5,15 +5,15 @@ import { BookCard, Carousel } from '@/components';
 import { Book } from '@/interface';
 import { fetcher } from '@/utils/axiosConfig';
 
-const RecentlyAddedBooks = () => {
+const BudgetFriendlyBooks = () => {
   const { data, isLoading } = useSWR(
-    "book/all?per_page=20&order_by=-created_at&in_stock=true",
+    "book/all?per_page=20&sale_price__lte=100&sale_price__gte=70&order_by=-in_stock,sale_price",
     fetcher
   );
 
   return (
     <Carousel
-      title="Recently Added Books"
+      title="Budget Friendly Books"
       isLoading={isLoading}
       href="/books?order_by=-created_at&in_stock=true"
     >
@@ -22,4 +22,4 @@ const RecentlyAddedBooks = () => {
   );
 };
 
-export default RecentlyAddedBooks;
+export default BudgetFriendlyBooks;

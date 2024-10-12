@@ -7,7 +7,7 @@ import { fetcher } from '@/utils/axiosConfig';
 
 const FeaturedBooks = () => {
   const { data, isLoading } = useSWR(
-    "book/all?is_featured=true&in_stock=true",
+    "book/all?per_page=20&is_featured=true&in_stock=true",
     fetcher
   );
 

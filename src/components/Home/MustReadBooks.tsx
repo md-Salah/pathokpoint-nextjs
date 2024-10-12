@@ -7,7 +7,7 @@ import { fetcher } from '@/utils/axiosConfig';
 
 const MustReadBooks = () => {
   const { data, isLoading } = useSWR(
-    "book/all?is_must_read=true&in_stock=true",
+    "book/all?per_page=20&is_must_read=true&in_stock=true",
     fetcher
   );
 

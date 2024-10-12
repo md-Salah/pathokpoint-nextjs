@@ -7,7 +7,7 @@ import { fetcher } from '@/utils/axiosConfig';
 
 const SebaBooks = () => {
   const { data, isLoading } = useSWR(
-    "book/all?publisher__name__in=সেবা প্রকাশনী&in_stock=true",
+    "book/all?per_page=20&publisher__name__in=সেবা প্রকাশনী&in_stock=true",
     fetcher
   );
 

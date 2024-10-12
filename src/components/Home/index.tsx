@@ -3,6 +3,7 @@ import { Category } from '@/interface';
 import { getCategories } from '@/utils/api';
 
 import BigSale from './BigSale';
+import BudgetFriendlyBooks from './BudgetFriendlyBooks';
 import CustomerReviews from './CustomerReviews';
 import EnglishBooks from './EnglishBooks';
 import FeaturedBooks from './FeaturedBooks';
@@ -29,6 +30,7 @@ const Home = async () => {
       </div>
       <FeaturedBooks />
       <RecentlyAddedBooks />
+      <BudgetFriendlyBooks />
       {/* <BigSale /> */}
       {/* <ServiceBanner /> */}
       <MustReadBooks />

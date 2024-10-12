@@ -7,7 +7,7 @@ import { fetcher } from '@/utils/axiosConfig';
 
 const TranslatedBooks = () => {
   const { data, isLoading } = useSWR(
-    "book/all?is_translated=true&in_stock=true",
+    "book/all?per_page=20&is_translated=true&in_stock=true",
     fetcher
   );
   return (
